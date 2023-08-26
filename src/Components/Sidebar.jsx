@@ -1,0 +1,217 @@
+import React from 'react'
+import { Link } from 'react-router-dom'
+import Cookies from 'universal-cookie'
+import { useBalance } from './SidebarComponents/BalanceContext'
+
+const Sidebar = () => {
+    const loggedInUser = new Cookies().get("kisDiamond_LoggedIn")
+    const { balance } = useBalance();
+
+    return (
+        <>
+            <div className="rounded-m pcsidebar">
+                <div className="bg-theme mx-3 align-items-center rounded-m shadow-m mt-3 mb-3"
+                    style={{ backgroundColor: "#000000" }}
+                >
+                    <div className="px-2 pb-2 pt-2">
+                        <div className="ps-2 align-self-center">
+                            <h5 className="ps-1 mb-0 line-height-xs pt-1">
+                                <img src="../imagies/kdm.gif" style={{ width: 150 }} />
+                            </h5>
+                        </div>
+                    </div>
+                </div>
+                <div className="bg-theme mx-3 rounded-m shadow-m mt-3 mb-3">
+                    <div className="px-2 pb-2 pt-2 userInfo">
+                        <div className="ps-2 align-self-center">
+
+                            <div
+                                className="pc_wallet "
+                                style={{ cursor: "pointer" }}
+                                onclick="window.location='/gamecredit'"
+                            >
+                                <a
+                                    href="#"
+                                    data-bs-toggle="offcanvas"
+                                    data-bs-target="#WalletModal"
+                                    id="nav-comps"
+                                >
+                                    IDR:<span className="wallet">{balance}  </span> &nbsp;&nbsp;
+                                    <i
+                                        className="bi bi-info-circle"
+                                        style={{ color: "#AC92EC !important" }}
+                                    />
+                                </a>
+                            </div>
+                            <h5 className="ps-1 mb-0 line-height-xs pt-1">{loggedInUser?.Name}</h5>
+                            <h6 className="ps-1 mb-0 font-400 opacity-40" style={{ width: "20%" }}>
+                                <span>{loggedInUser?.UId}</span>{" "}
+                            </h6>
+                        </div>
+                    </div>
+                </div>
+                {/* <span class="menu-divider">NAVIGATION</span> */}
+                <div className="menu-list menuList">
+                    <div className="card card-style rounded-m p-3 py-2 mb-0 card-styles">
+                        <a
+                            href="#"
+                            data-bs-toggle="offcanvas"
+                            data-bs-target="#DepositSelectMethod"
+                            id="nav-homes"
+                        >
+                            <i className="gradient-mint shadow-bg shadow-bg-xs bi bi-coin" />
+                            <span className="trn" data-trn-key="Deposit">
+                                Deposit
+                            </span>
+                            <i className="bi bi-chevron-right" />
+                        </a>
+                        <a
+                            href="#"
+                            data-bs-toggle="offcanvas"
+                            data-bs-target="#WithdrawMethod"
+                            onclick="get_turnover();"
+                            id="nav-homes"
+                        >
+                            <i className="gradient-orange shadow-bg shadow-bg-xs bi bi-box-arrow-up" />
+                            <span className="trn" data-trn-key="Withdraw">
+                                Withdraw
+                            </span>
+                            <i className="bi bi-chevron-right" />
+                        </a>
+                        <a href="#"
+                            data-bs-toggle="offcanvas"
+                            data-bs-target="#BetHistoryModal"
+                            id="nav-comps">
+                            <i className="gradient-pink shadow-bg shadow-bg-xs bi bi-clock-history" />
+                            <span className="trn" data-trn-key="Promotion">
+                                History
+                            </span>
+                            <i className="bi bi-chevron-right" />
+                        </a>
+                        {/*<a href="/promotion/" id="nav-comps"><i class="gradient-red shadow-bg shadow-bg-xs bi bi-gift-fill"></i><span class="trn">Reward</span><i class="bi bi-chevron-right"></i></a>*/}
+                        {/* <a
+                            href="#"
+                            data-bs-toggle="offcanvas"
+                            data-bs-target="#CreditModal"
+                            id="nav-comps"
+                        >
+                            <i className="gradient-red shadow-bg shadow-bg-xs bi bi-gift-fill" />
+                            <span className="trn" data-trn-key="Rewards">
+                                Rewards
+                            </span>
+                            <i className="bi bi-chevron-right" />
+                        </a> */}
+                        <a
+                            href="#"
+                            data-bs-toggle="offcanvas"
+                            data-bs-target="#HistoryModal"
+                            id="nav-comps"
+                        >
+                            <i className="gradient-brown shadow-bg shadow-bg-xs bi bi-clock-history" />
+                            <span className="trn" data-trn-key="History">
+                                Transactions
+                            </span>
+                            <i className="bi bi-chevron-right" />
+                        </a>
+
+                        <a
+                            href="#"
+                            data-bs-toggle="offcanvas"
+                            data-bs-target="#BankTransaction"
+                            id="nav-comps"
+                        >
+                            <i className="gradient-blue shadow-bg shadow-bg-xs bi bi bi-bank2" />
+                            <span className="trn" data-trn-key="History">
+                                Bank Transaction
+                            </span>
+                            <i className="bi bi-chevron-right" />
+                        </a>
+
+                        <a
+                            href="#"
+                            data-bs-toggle="offcanvas"
+                            data-bs-target="#TransferCredit"
+                            id="nav-comps"
+                        >
+                            <i className="gradient-blues shadow-bg shadow-bg-xs bi bi bi-arrow-left-right" />
+                            <span className="trn" data-trn-key="History">
+                                Transfer Credit
+                            </span>
+                            <i className="bi bi-chevron-right" />
+                        </a>
+
+                        <a
+                            href="#"
+                            data-bs-toggle="offcanvas"
+                            data-bs-target="#ReadBank"
+                            id="nav-homes"
+                        >
+                            <i className="gradient-bluess shadow-bg shadow-bg-xs bi bi bi-bank2" />
+                            <span className="trn" data-trn-key="Deposit">
+                                Bank Account
+                            </span>
+                            <i className="bi bi-chevron-right" />
+                        </a>
+
+                        {/* <a href="/downline/">
+                            <i className="gradient-blue shadow-bg shadow-bg-xs bi bi-people-fill" />
+                            <span className="trn" data-trn-key="Downline Player">
+                                Downline Player
+                            </span>
+                            <i className="bi bi-chevron-right" />
+                        </a> */}
+                        {/* <a
+                            href="#"
+                            data-bs-toggle="offcanvas"
+                            data-bs-target="#supportmodal"
+                            id="nav-support"
+                        >
+                            <i className="gradient-yellow shadow-bg shadow-bg-xs bi bi-headset" />
+                            <span className="trn" data-trn-key="Support">
+                                Support
+                            </span>
+                            <i className="bi bi-chevron-right" />
+                        </a> */}
+                        {/* <a
+                            href="#"
+                            data-bs-toggle="offcanvas"
+                            data-bs-target="#QrModal"
+                            id="nav-invitation"
+                        >
+                            <i className="gradient-magenta shadow-bg shadow-bg-xs bi bi-qr-code" />
+                            <span className="trn" data-trn-key="Invitation">
+                                Invitation
+                            </span>
+                            <i className="bi bi-chevron-right" />
+                        </a> */}
+                        <a href="#" id="nav-mails" onclick="switch_lang()">
+                            <i className="gradient-teal shadow-bg shadow-bg-xs bi bi-translate" />
+                            <span className="trn" data-trn-key="Lang">
+                                Language
+                            </span>
+                            <i className="bi bi-chevron-right" />
+                        </a>
+                        <a href="/instruction/">
+                            <i className="gradient-red shadow-bg shadow-bg-xs bi bi-card-image" />
+                            <span className="trn" data-trn-key="Instruction">
+                                Instruction
+                            </span>
+                            <i className="bi bi-chevron-right" />
+                        </a>
+                        <a href="/login.html?logout=1" id="nav-mails">
+                            <i className="gradient-dark shadow-bg shadow-bg-xs bi bi-box-arrow-left" />
+                            <span className="trn" data-trn-key="Logout">
+                                Logout
+                            </span>
+                            <i className="bi bi-chevron-right" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+
+        </>
+    )
+}
+
+export default Sidebar
