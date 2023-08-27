@@ -23,8 +23,9 @@ jobs:
 
       - name: npm install, build, and test
         run: |
+            shell: bash
           npm install
-          node_modules/.bin/react-scripts build --if-present
+          npm run build --if-present
           --npm run test --if-present
 
       - name: Upload artifact for deployment job
