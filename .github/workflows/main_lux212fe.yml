@@ -23,7 +23,7 @@ jobs:
 
       - name : Seupt permission
         run : 
-            chmod a+x app/node_modules/.bin/react-scripts
+            chmod a+x node_modules/.bin/react-scripts
       - name: npm install, build, and test
         run: |
           npm install
