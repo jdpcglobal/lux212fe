@@ -284,7 +284,7 @@ const Registration = (props) => {
                         </a>
                         */}
                         {/* {showOtpInput && ( )} */}
-                            <a href="#">
+                            <a >
                                 <span />
                                 <span />
                                 <span />

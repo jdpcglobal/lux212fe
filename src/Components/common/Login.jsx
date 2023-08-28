@@ -81,14 +81,14 @@ const Login = (props) => {
                 <Button variant="dark" onClick={handleForgetPassword}>Forget</Button> Password
               </div>
 
-              <a href="#">
+              <a >
                 <span />
                 <span />
                 <span />
                 <span />
                 <Button variant="warning" onClick={handleLogin}>Submit</Button>
               </a>
-              <a href="#">
+              <a >
                 <span />
                 <span />
                 <span />
