@@ -1,9 +1,6 @@
 import axios from "axios";
 
-const headerMap = {
-    authorization: '',
-    'Content-Type': 'application/json'
-};
+
 
 export const callPostApi = (url, data, successCallBack, failedCallBack) => {
     axios.post(url, data).then((result) => {
