@@ -81,20 +81,19 @@ const Login = (props) => {
                 <Button variant="dark" onClick={handleForgetPassword}>Forget</Button> Password
               </div>
 
-              <a >
+              
                 <span />
                 <span />
                 <span />
                 <span />
                 <Button variant="warning" onClick={handleLogin}>Submit</Button>
-              </a>
-              <a >
+            
                 <span />
                 <span />
                 <span />
                 <span />
                 <Button variant="warning" onClick={() => setCreateRegisterModal(true)}>Register</Button>
-              </a>
+             
             </form>
           </div>
         </Modal.Body>

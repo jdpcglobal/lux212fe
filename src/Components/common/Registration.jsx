@@ -284,13 +284,13 @@ const Registration = (props) => {
                         </a>
                         */}
                         {/* {showOtpInput && ( )} */}
-                            <a >
+                            
                                 <span />
                                 <span />
                                 <span />
                                 <span />
                                 <Button variant="warning" onClick={() => { handleClick(); }}>Register</Button>
-                            </a>
+                            
                         
                         <label style={{ color: "goldenrod" }}>
                             By creating an account, you agree to our Terms & Conditions and confirm that you are at least 25 years old.
