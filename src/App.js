@@ -28,7 +28,7 @@ const MyApp = () => {
     } else {
       setShowLoginForm(false)
     }
-  }, [drawCount])
+  }, [])
 
   
 
