@@ -52,6 +52,7 @@ const Login = (props) => {
         if (response.data?.isSuccess) {
           toast.success(response.data.message);
           props.handleLogin(response.data.data);
+          window.location.reload();
         } else {
           toast.error(response.data.message);
         }
