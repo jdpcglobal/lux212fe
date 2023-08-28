@@ -24,11 +24,9 @@ jobs:
       - name : Seupt permission
         run : 
             chmod a+x node_modules/.bin/react-scripts
-            
       - name: npm install, build, and test
         run: |
-            npm cache clean --force
-          npm ci
+          npm install
           npm run build --if-present
 
       - name: Upload artifact for deployment job
