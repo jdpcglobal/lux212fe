@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect,useMemo } from "react";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import Login from "./Components/common/Login";
 import Cookies from "universal-cookie";
@@ -14,7 +14,7 @@ import Registration from "./Components/common/Registration";
 
 const MyApp = () => {
   const [drawCount, setDrawCount] = useState(0)
-  const cookies = new Cookies();
+  const cookies = useMemo(() => new Cookies(), []);
   const [showLoginForm, setShowLoginForm] = useState(false)
 
   const handleLogin = (data) => {
