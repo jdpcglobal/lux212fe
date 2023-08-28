@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect,useCallback  } from 'react'
 import { Modal } from 'react-bootstrap'
 import Button from 'react-bootstrap/Button';
 import { ToastContainer, toast } from 'react-toastify';
@@ -37,7 +37,7 @@ const Registration = (props) => {
         //     return;
         // }
         // Call the Register function to get the data and message
-        if (name.length === 0 || userName.length === 0 || userName.length < 3 || email.length === 0 || phone.length === 0 || password.length === 0 || confPassword.length === 0 || bank.length === 0 || bankAccountNo.length === 0) {
+        if (name.length === 0 || userName.length === 0 || userName.length < 3 || email.length === 0 || phone.length === 0 || password.length === 0 || confPassword.length === 0 || bank.length === 0 || bankAccountNo.length === 0 || apiResponse === false ) {
             setError(true);
             return;
         }   
@@ -117,12 +117,9 @@ const Registration = (props) => {
     //*****Request Otp *****/
 
     // ***** UserName Api *****//
-    useEffect(() => {
-        if (userName.length >= 3) {
-            checkUsername();
-        }
-    }, [userName]);
-    const checkUsername = async () => {
+    
+    
+    const checkUsername = useCallback(async () => {
         let formData = new FormData();
         formData.append('Username', userName);
         try {
@@ -135,11 +132,18 @@ const Registration = (props) => {
             setApiResponse(jsonData.isSuccess);
         } catch (error) {
             console.error('Error:', error);
-            setApiResponse(false); // Set apiResponse to false in case of an error
+            setApiResponse(false); 
         } finally {
             setUsernameLoader(false);
         }
-    };
+    }, [userName]);
+
+    useEffect(() => {
+        if (userName.length >= 3) {
+            checkUsername();
+        }
+    }, [userName, checkUsername]);
+
     
     // ***** UserName Api *****//
 
