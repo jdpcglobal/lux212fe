@@ -118,13 +118,15 @@ const ForgetPassword = (props) => {
                                 </div>
                             )}
                             
-                            <a href="#">
+                            
+							
                                 <span />
                                 <span />
                                 <span />
                                 <span />
                                 <Button variant="warning" onClick={handleClick} >Submit</Button>
-                            </a>
+                            
+							
                         </form>
                     </div>
                     {verifyOtp && (
