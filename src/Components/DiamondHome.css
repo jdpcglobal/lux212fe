@@ -5452,7 +5452,7 @@
     --WhiteColor: white;
     --borderColor: #0d0707;
     --goldColor: #e8b923;
-    --backGround: #04115c ;
+    --backGround: #04115c;
     --goldBackground: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #d29c2b 30%, #c2983a 40%, transparent 80%), radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #ffc748 62.5%, #5d4a1f 100%);
   }
 
