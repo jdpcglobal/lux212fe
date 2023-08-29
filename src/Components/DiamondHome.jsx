@@ -19,6 +19,7 @@ import TransferCredit from "./SidebarComponents/TransferCredit";
 import ReadBank from "./SidebarComponents/ReadBank";
 import UserProfile from "./SidebarComponents/UserProfile";
 import { useBalance } from "./SidebarComponents/BalanceContext";
+import LogoutModal from "./common/LogoutModal";
 
 const DiamondHome = () => {
 
@@ -32,6 +33,10 @@ const DiamondHome = () => {
     const [AdsData, setAdsData] = useState([])
     const loggedInUser = new Cookies().get("kisDiamond_LoggedIn")
     const { balance } = useBalance();
+    const[logoutModal, setLogoutModal] = useState(false);
+    const toggleLogoutModal = () => {
+        setLogoutModal(false)
+    }
 
     const [launchGameReqObj, setLaunchGameReqObj] = useState({
         TCode: "",
@@ -278,20 +283,6 @@ const DiamondHome = () => {
                     {/* slider */}
 
                     <div className="content mx-3 mt-0" id="mobilediv">
-                        <div className="d-flex py-1 mt-n3 rounded-xs justify-content-md-center" style={{ background: 'linear-gradient(to bottom, #9a7edf, #d061f1) !important' }}>
-                            <img src="https://m.kissdiamond.net/images/kdpool8.png" alt="KDpool" width="200px" />
-                            <div className="d-flex align-items-center justify-content-start ps-2">
-                                <a href="#" data-bs-toggle="offcanvas" data-bs-target="#RankModal" style={{ background: 'linear-gradient(to bottom, #9a7edf52, #d0feff75) !important', borderRadius: '8px', marginTop: '2.5px' }}>
-                                    <img src="	https://m.kissdiamond.net/images/icon/trophy.gif" alt="Wheel" height="43px" className="px-1" />
-                                </a>
-                                <a href="/luckydraw2/" style={{ background: 'linear-gradient(to bottom, #dbd3f3, #e9fefe) !important', borderRadius: '8px', marginTop: '2.5px' }} className="ms-2">
-                                    <img src="https://m.kissdiamond.net/images/wheel3.gif
-                                         " className="p-1" alt="Wheel" height="43px" />
-                                </a>
-                                <a href="getappversion://" id="dlapp" className="dlapp" />
-                            </div>
-
-                        </div>
 
                         <div className="row">
                             {/* end category app */}
@@ -468,7 +459,7 @@ const DiamondHome = () => {
             {/* INCLUDE SIDE BAR  */}
             {/* App Side Bar */}
             <style media="screen" dangerouslySetInnerHTML={{ __html: "\n  @media screen and (max-width: 991px) {\n    .pcsidebar {\n      display: none !important;\n    }\n    #mobile_header {\n      display: block !important;\n    }\n    .catslider_app {\n      display: block !important;\n    }\n    .catslider_pc {\n      display: none !important;\n    }\n    #footer-bar {\n      margin-left: 0;\n    }\n  }\n  @media screen and (min-width: 991px) {\n    .pcsidebar {\n      display: block !important;\n    }\n    .pcview {\n      margin-left: 310px;\n    }\n    #mobile_header {\n      display: none !important;\n    }\n    .catslider_app {\n      display: none !important;\n    }\n    .catslider_pc {\n      display: block !important;\n    }\n    #footer-bar {\n      display: none !important;\n      margin-left: 300px;\n    }\n    .pcview .header-clear-medium {\n      padding-top: 30px !important;\n    }\n    .splide__slide img {\n      vertical-align: middle !important;\n    }\n  }\n" }} />
-            <div id="menu-main" style={{ width: '280px' }} className="offcanvas offcanvas-start offcanvas-detached rounded-m  ">
+            <div id="menu-main" style={{ width: '280px' }} className="offcanvas offcanvas-start offcanvas-detached rounded-m  SSidebar">
 
                 <div className="bg-theme mx-3 align-items-center rounded-m shadow-m mt-3 mb-3"
                     style={{ backgroundColor: "#000000" }}
@@ -650,14 +641,14 @@ const DiamondHome = () => {
                             </span>
                             <i className="bi bi-chevron-right" />
                         </a>
-                        <a href="/login.html?logout=1" id="nav-mails">
+                        <a  id="nav-mails" style={{cursor:'pointer'}} onClick={() => setLogoutModal(true)}>
                             <i className="gradient-dark shadow-bg shadow-bg-xs bi bi-box-arrow-left" />
-                            <span className="trn" data-trn-key="Logout">
+                            <span className="trn"  >
                                 Logout
                             </span>
                             <i className="bi bi-chevron-right" />
                         </a>
-                        <a href="#" data-bs-toggle="offcanvas" data-bs-target="#DepositSelectMethod" id="nav-homes"><i className="gradient-mint shadow-bg shadow-bg-xs bi bi-coin" /><span className="trn" data-trn-key="Deposit">Deposit</span><i className="bi bi-chevron-right" /></a>
+                        {/* <a href="#" data-bs-toggle="offcanvas" data-bs-target="#DepositSelectMethod" id="nav-homes"><i className="gradient-mint shadow-bg shadow-bg-xs bi bi-coin" /><span className="trn" data-trn-key="Deposit">Deposit</span><i className="bi bi-chevron-right" /></a>
                         <a href="#" data-bs-toggle="offcanvas" data-bs-target="#WithdrawMethod" id="nav-homes"><i className="gradient-blue shadow-bg shadow-bg-xs bi bi-box-arrow-up" /><span className="trn" data-trn-key="Withdraw">Withdraw</span><i className="bi bi-chevron-right" /></a>
 
                         <a id="nav-mails" data-bs-toggle="offcanvas" data-bs-target="#TransferModal"><i className="gradient-magenta shadow-bg shadow-bg-xs bi bi-arrow-left-right" /><span className="trn" data-trn-key="Transfer">Transfer</span><img className="ms-2" src="https://m.kissdiamond.net/images/new.png" alt="" style={{ width: '35px', filter: 'invert(42%) sepia(39%) saturate(5807%) hue-rotate(328deg) brightness(91%) contrast(86%)' }} /><i className="bi bi-chevron-right" /></a>
@@ -671,7 +662,7 @@ const DiamondHome = () => {
                         <a href="#" id="nav-mails" ><i className="gradient-blue shadow-bg shadow-bg-xs bi bi-translate" /><span className="trn" data-trn-key="Lang">Language</span><i className="bi bi-chevron-right" /></a>
                         <a href="/instruction/"><i className="gradient-magenta shadow-bg shadow-bg-xs bi bi-card-image" /><span className="trn" data-trn-key="Instruction">Instruction</span><i className="bi bi-chevron-right" /></a>
                         <a href="" data-bs-toggle="offcanvas" id="nav-comps" data-bs-target="#DepositSelectMethod"><i className="gradient-red shadow-bg shadow-bg-xs bi bi-gift-fill" /><span className="trn" data-trn-key="Promotion">Promotion</span><i className="bi bi-chevron-right" /></a>
-                        <a href="/login.html?logout=1" id="nav-mails"><i className="gradient-dark shadow-bg shadow-bg-xs bi bi-box-arrow-left" /><span className="trn" data-trn-key="Logout">Logout</span><i className="bi bi-chevron-right" /></a>
+                        <a href="/login.html?logout=1" id="nav-mails"><i className="gradient-dark shadow-bg shadow-bg-xs bi bi-box-arrow-left" /><span className="trn" data-trn-key="Logout">Logout</span><i className="bi bi-chevron-right" /></a> */}
                     </div>
                     <div className="mt-3 mb-3 p-3 py-2" style={{ opacity: '0.5' }}>
                         <small><small>
@@ -2118,6 +2109,7 @@ const DiamondHome = () => {
                 </div>
             </div>
             {/* Overlimit Action Sheet End */}
+            <LogoutModal show={logoutModal} close={toggleLogoutModal}/>
         </>
     )
 }

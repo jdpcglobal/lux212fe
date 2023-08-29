@@ -1,11 +1,15 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
 import Cookies from 'universal-cookie'
 import { useBalance } from './SidebarComponents/BalanceContext'
+import LogoutModal from './common/LogoutModal'
 
 const Sidebar = () => {
     const loggedInUser = new Cookies().get("kisDiamond_LoggedIn")
     const { balance } = useBalance();
+    const[logoutModal, setLogoutModal] = useState(false);
+    const toggleLogoutModal = () => {
+        setLogoutModal(false)
+    }
 
     return (
         <>
@@ -198,9 +202,9 @@ const Sidebar = () => {
                             </span>
                             <i className="bi bi-chevron-right" />
                         </a>
-                        <a href="/login.html?logout=1" id="nav-mails">
+                        <a  id="nav-mails" style={{cursor:'pointer'}} onClick={() => setLogoutModal(true)}>
                             <i className="gradient-dark shadow-bg shadow-bg-xs bi bi-box-arrow-left" />
-                            <span className="trn" data-trn-key="Logout">
+                            <span className="trn"  >
                                 Logout
                             </span>
                             <i className="bi bi-chevron-right" />
@@ -208,8 +212,7 @@ const Sidebar = () => {
                     </div>
                 </div>
             </div>
-
-
+            <LogoutModal show={logoutModal} close={toggleLogoutModal}/>
         </>
     )
 }

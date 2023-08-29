@@ -75,7 +75,7 @@ const TransferCredit = () => {
 
     return (
         <>
-            <div id="TransferCredit" style={{ width: '30%', height: '100%' }} className="offcanvas offcanvas-end bg-theme">
+            <div id="TransferCredit" style={{height: '100%' }} className="offcanvas offcanvas-end bg-theme">
                 <div className="content">
                     <div className="d-flex pb-2">
                         <div className="align-self-center">

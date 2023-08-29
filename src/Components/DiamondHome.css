@@ -5735,6 +5735,11 @@
     }
   }
 
+  .SSidebar{
+    background: linear-gradient(338deg, #a690de3d, #000000);
+    backdrop-filter: blur(10px);
+  }
+
   
 
  

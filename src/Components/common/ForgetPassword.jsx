@@ -117,16 +117,16 @@ const ForgetPassword = (props) => {
                                     <Button variant="warning" onClick={handleVeryFyClick} >Submit otp</Button>
                                 </div>
                             )}
-                            
-                            
-							
+
+
+                            <a>
                                 <span />
                                 <span />
                                 <span />
                                 <span />
                                 <Button variant="warning" onClick={handleClick} >Submit</Button>
-                            
-							
+                            </a>
+
                         </form>
                     </div>
                     {verifyOtp && (
@@ -135,7 +135,7 @@ const ForgetPassword = (props) => {
                     )}
                     <ToastContainer />
                 </Modal.Body>
-            </Modal>
+            </Modal >
         </>
     )
 }

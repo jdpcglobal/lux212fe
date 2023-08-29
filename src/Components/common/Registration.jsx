@@ -1,4 +1,4 @@
-import React, { useState, useEffect,useCallback  } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import { Modal } from 'react-bootstrap'
 import Button from 'react-bootstrap/Button';
 import { ToastContainer, toast } from 'react-toastify';
@@ -37,10 +37,10 @@ const Registration = (props) => {
         //     return;
         // }
         // Call the Register function to get the data and message
-        if (name.length === 0 || userName.length === 0 || userName.length < 3 || email.length === 0 || phone.length === 0 || password.length === 0 || confPassword.length === 0 || bank.length === 0 || bankAccountNo.length === 0 || apiResponse === false ) {
+        if (name.length === 0 || userName.length === 0 || userName.length < 3 || email.length === 0 || phone.length === 0 || password.length === 0 || confPassword.length === 0 || bank.length === 0 || bankAccountNo.length === 0 || apiResponse === false) {
             setError(true);
             return;
-        }   
+        }
         await Register();
     };
 
@@ -117,8 +117,8 @@ const Registration = (props) => {
     //*****Request Otp *****/
 
     // ***** UserName Api *****//
-    
-    
+
+
     const checkUsername = useCallback(async () => {
         let formData = new FormData();
         formData.append('Username', userName);
@@ -132,7 +132,7 @@ const Registration = (props) => {
             setApiResponse(jsonData.isSuccess);
         } catch (error) {
             console.error('Error:', error);
-            setApiResponse(false); 
+            setApiResponse(false);
         } finally {
             setUsernameLoader(false);
         }
@@ -144,7 +144,7 @@ const Registration = (props) => {
         }
     }, [userName, checkUsername]);
 
-    
+
     // ***** UserName Api *****//
 
 
@@ -284,14 +284,14 @@ const Registration = (props) => {
                         </a>
                         */}
                         {/* {showOtpInput && ( )} */}
-                            
-                                <span />
-                                <span />
-                                <span />
-                                <span />
-                                <Button variant="warning" onClick={() => { handleClick(); }}>Register</Button>
-                            
-                        
+                        <a>
+                            <span />
+                            <span />
+                            <span />
+                            <span />
+                            <Button variant="warning" onClick={() => { handleClick(); }}>Register</Button>
+                        </a>
+
                         <label style={{ color: "goldenrod" }}>
                             By creating an account, you agree to our Terms & Conditions and confirm that you are at least 25 years old.
                         </label>
