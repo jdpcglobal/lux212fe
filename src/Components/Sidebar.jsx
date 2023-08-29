@@ -26,7 +26,7 @@ const Sidebar = () => {
                     </div>
                 </div>
                 <div className="bg-theme mx-3 rounded-m shadow-m mt-3 mb-3">
-                    <div className="px-2 pb-2 pt-2 userInfo">
+                    <div className="px-2 pb-2 pt-2 userInfo" style={{marginBottom:'21px'}}>
                         <div className="ps-2 align-self-center">
 
                             <div
@@ -34,8 +34,7 @@ const Sidebar = () => {
                                 style={{ cursor: "pointer" }}
                                 onclick="window.location='/gamecredit'"
                             >
-                                <a
-                                    href="#"
+                                <div
                                     data-bs-toggle="offcanvas"
                                     data-bs-target="#WalletModal"
                                     id="nav-comps"
@@ -45,7 +44,7 @@ const Sidebar = () => {
                                         className="bi bi-info-circle"
                                         style={{ color: "#AC92EC !important" }}
                                     />
-                                </a>
+                                </div>
                             </div>
                             <h5 className="ps-1 mb-0 line-height-xs pt-1">{loggedInUser?.Name}</h5>
                             <h6 className="ps-1 mb-0 font-400 opacity-40" style={{ width: "20%" }}>

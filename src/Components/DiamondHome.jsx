@@ -20,6 +20,7 @@ import ReadBank from "./SidebarComponents/ReadBank";
 import UserProfile from "./SidebarComponents/UserProfile";
 import { useBalance } from "./SidebarComponents/BalanceContext";
 import LogoutModal from "./common/LogoutModal";
+import Login from "./common/Login";
 
 const DiamondHome = () => {
 
@@ -34,9 +35,11 @@ const DiamondHome = () => {
     const loggedInUser = new Cookies().get("kisDiamond_LoggedIn")
     const { balance } = useBalance();
     const[logoutModal, setLogoutModal] = useState(false);
+
     const toggleLogoutModal = () => {
         setLogoutModal(false)
     }
+
 
     const [launchGameReqObj, setLaunchGameReqObj] = useState({
         TCode: "",
@@ -174,7 +177,10 @@ const DiamondHome = () => {
                 a.click();
                 // console.log();
                 setLaunchGameData(jsonData.data);
+            }else{
+                window.location.reload();
             }
+            
         } catch (error) {
             console.log('Error:', error);
         }
@@ -481,7 +487,7 @@ const DiamondHome = () => {
                                 data-bs-target="#WalletModal"
                                 id="nav-comps"
                             >
-                                $ <span className="wallet ">   {balance}  </span> &nbsp;&nbsp;
+                                IDR<span className="wallet ">:{balance}</span> 
                                 <i
                                     className="bi bi-info-circle"
                                     style={{ color: "#AC92EC !important" }}
@@ -2110,6 +2116,7 @@ const DiamondHome = () => {
             </div>
             {/* Overlimit Action Sheet End */}
             <LogoutModal show={logoutModal} close={toggleLogoutModal}/>
+
         </>
     )
 }

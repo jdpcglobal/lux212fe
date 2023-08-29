@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Cookies from 'universal-cookie';
 import Loader from '../common/Loader';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'; // Assuming you are using reactstrap for modals
+import { Button, Modal, ModalBody } from 'reactstrap'; // Assuming you are using reactstrap for modals
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Table from 'react-bootstrap/Table';
