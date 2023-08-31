@@ -19,6 +19,7 @@ import TransferCredit from "./SidebarComponents/TransferCredit";
 import ReadBank from "./SidebarComponents/ReadBank";
 import UserProfile from "./SidebarComponents/UserProfile";
 import { useBalance } from "./SidebarComponents/BalanceContext";
+import Loader from "./common/Loader";
 
 const DiamondHome = () => {
 
@@ -32,6 +33,7 @@ const DiamondHome = () => {
     const [AdsData, setAdsData] = useState([])
     const loggedInUser = new Cookies().get("kisDiamond_LoggedIn")
     const { balance } = useBalance();
+    const [gameLoader, setGameLoader] = useState(false);
 
     const handleLogout = () => {
         const cookies = new Cookies();
@@ -175,10 +177,10 @@ const DiamondHome = () => {
                 a.click();
                 // console.log();
                 setLaunchGameData(jsonData.data);
-            }else{
+            } else {
                 window.location.reload();
             }
-            
+
         } catch (error) {
             console.log('Error:', error);
         }
@@ -201,6 +203,7 @@ const DiamondHome = () => {
         formData.append('TCode', `${tCode}`);
         formData.append('PCode', `${pCode}`);
         try {
+            setGameLoader(true)
             const response = await fetch('https://lux212.azurewebsites.net/Api/GetGames', {
                 method: 'POST',
                 body: formData,
@@ -210,9 +213,10 @@ const DiamondHome = () => {
             if (jsonData.isSuccess) {
                 // console.log(jsonData.data);
                 setResponseData(jsonData.data);
-                setGameImageLoader(false)
+                setGameLoader(false)
             }
         } catch (error) {
+            setGameLoader(false)
             // console.log('Error:', error);
         }
     };
@@ -318,7 +322,7 @@ const DiamondHome = () => {
                                                 <div className='TabPanel' >
                                                     {tabpanelData.length > 0 && tabpanelData.map((data, i) =>
                                                         <>
-                                                            <a className='mx-1 provider cursor' style={{display:"inline-block", marginRight:'5px'}} onClick={() => handleButtonClick(data.Code, data.GameTypeCode)}>{data.Name}</a>
+                                                            <a className='mx-1 provider cursor' style={{ display: "inline-block", marginRight: '5px' }} onClick={() => handleButtonClick(data.Code, data.GameTypeCode)}>{data.Name}</a>
                                                         </>
                                                     )}
                                                 </div>
@@ -333,21 +337,27 @@ const DiamondHome = () => {
                         <div className="row row-cols-3 row-cols-md-6">
 
                             {/* KING855 */}
-                            {responseData.length > 0 && responseData.map((data) =>
-                                <div className="col-3 p-1 game-item livecasino allgame" style={{ cursor: 'pointer' }}>
-                                    <div className="card card-style rounded-s m-0">
-                                        <img src="/images/process.gif" alt="" className="KING855 process" />
-                                        <img onClick={() => handleGameClick(data.GameCode)}
-                                            className="lazyload cursor"
-                                            data-src="./imagies/live_855.jpg"
-                                            src={data.ImageURL}
-                                            alt=""
-                                            onclick="action_live('KING855')"
-                                        />
-                                    </div>
-                                    <div className="game-title" >{data.GameName}</div>
-                                </div>
-                            )}
+                            
+                                <>
+                                    {responseData.length > 0 && responseData.map((data) =>
+                                        <div className="col-3 p-1 game-item livecasino allgame" style={{ cursor: 'pointer' }}>
+                                            <div className="card card-style rounded-s m-0">
+                                                <img src="/images/process.gif" alt="" className="KING855 process" />
+                                                {gameLoader ? <Loader /> :
+                                                    <img onClick={() => handleGameClick(data.GameCode)}
+                                                        className="lazyload cursor"
+                                                        data-src="./imagies/live_855.jpg"
+                                                        src={data.ImageURL}
+                                                        alt=""
+                                                        onclick="action_live('KING855')"
+                                                    />
+                                                }
+                                            </div>
+                                            <div className="game-title" >{data.GameName}</div>
+                                        </div>
+                                    )}
+                                </>
+                            
                             {/* end KING855 */}
 
                         </div>
@@ -485,7 +495,7 @@ const DiamondHome = () => {
                                 data-bs-target="#WalletModal"
                                 id="nav-comps"
                             >
-                                IDR<span className="wallet ">:{balance}</span> 
+                                IDR<span className="wallet ">:{balance}</span>
                                 <i
                                     className="bi bi-info-circle"
                                     style={{ color: "#AC92EC !important" }}
@@ -645,7 +655,7 @@ const DiamondHome = () => {
                             </span>
                             <i className="bi bi-chevron-right" />
                         </a>
-                        <a  id="nav-mails" style={{cursor:'pointer'}} onClick={handleLogout}>
+                        <a id="nav-mails" style={{ cursor: 'pointer' }} onClick={handleLogout}>
                             <i className="gradient-dark shadow-bg shadow-bg-xs bi bi-box-arrow-left" />
                             <span className="trn"  >
                                 Logout
