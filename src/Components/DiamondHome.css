@@ -4519,257 +4519,6 @@
     font-size: 15px;
   }
 
-  /* Sidebar.css */
-  .pcsidebar {
-    width: 280px;
-    position: fixed;
-    margin: 10px;
-    left: 10px;
-    top: calc(10px + env(safe-area-inset-top));
-    bottom: calc(10px + env(safe-area-inset-bottom));
-    background: linear-gradient(338deg, #a690de3d, #fcfaff);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 -5px 5px 0 rgb(0 0 0 / 4%);
-  }
-
-  .rounded-m {
-    border-radius: 20px !important;
-  }
-
-  .card-style {
-    overflow: hidden;
-    border-radius: 10px !important;
-    margin: 0px 15px 30px 15px;
-    border: none;
-    box-shadow: rgba(0, 0, 0, 0.03) 0px 20px 25px -5px, rgba(0, 0, 0, 0.02) 0px 10px 10px -5px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-  }
-
-
-  .card-overlay {
-    position: absolute;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    top: -2px;
-    z-index: 1;
-    border-radius: 30px;
-  }
-
-  .rounded-0 {
-    border-radius: 0px !important;
-  }
-
-  .shadow-m {
-    box-shadow: 0 8px 24px 0 rgba(0, 0, 0, 0.08) !important;
-  }
-
-
-  .pb-2 {
-    padding-bottom: 0.5rem !important;
-  }
-
-  .pt-2 {
-    padding-top: 0.5rem !important;
-  }
-
-  .px-2 {
-    padding-right: 0.5rem !important;
-    padding-left: 0.5rem !important;
-  }
-
-  .line-height-xs {
-    line-height: 14px !important;
-  }
-
-  .menu-list a {
-    display: block;
-    position: relative;
-    line-height: 48px;
-  }
-
-  a {
-    text-decoration: none !important;
-  }
-
-  .menu-list a i:first-child,
-  .menu-list a img:first-child {
-    position: absolute;
-    width: 32px;
-    height: 32px;
-    border-radius: 32px;
-    color: #FFF !important;
-    text-align: center;
-    line-height: 32px;
-    font-size: 13px;
-    left: 0px;
-    top: 8px;
-  }
-
-  .fa-rotate-180,
-  .fa-rotate-90,
-  [data-bs-toggle] i {
-    transition: all 250ms ease;
-  }
-
-  .shadow-bg {
-    background-size: cover;
-    position: relative;
-    z-index: 10;
-    overflow: visible !important;
-  }
-
-  .gradient-mint {
-    border: none;
-    background-image: linear-gradient(to bottom, #48CFAD, #37BC9B);
-  }
-
-  .gradient-orange {
-    border: none;
-    background-image: linear-gradient(to bottom, #FC6E51, #E9573F);
-  }
-
-  .gradient-red {
-    border: none;
-    background-image: linear-gradient(to bottom, #ED5565, #d84558);
-  }
-
-  .gradient-pink {
-    border: none;
-    background-image: linear-gradient(to bottom, #ff5982, #fb3365);
-  }
-
-  .gradient-brown {
-    border: none;
-    background-image: linear-gradient(to bottom, #BAA286, #AA8E69);
-  }
-
-
-  .gradient-yellow {
-    border: none;
-    background-image: linear-gradient(to bottom, #FFCE54, #F6BB42);
-  }
-
-  .gradient-magenta {
-    border: none;
-    background-image: linear-gradient(to bottom, #AC92EC, #967ADC);
-  }
-
-  .gradient-teal {
-    border: none;
-    background-image: linear-gradient(to bottom, #A0CECB, #7DB1B1);
-  }
-
-  .shadow-bg-xs::after {
-    transform: scale(0.7) translateY(3px) translateZ(0px);
-    filter: blur(8px);
-  }
-
-  .shadow-bg:after {
-    content: "";
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    height: 100%;
-    background: inherit;
-    z-index: -1;
-  }
-
-  .menu-list a span {
-    font-size: 13px;
-    padding-left: 45px;
-    font-weight: 400;
-    color: #6d6d6d;
-    font-family: #6d6d6d;
-  }
-
-  .menu-list a i:last-child {
-    position: absolute;
-    right: 0px;
-    color: #6d6d6d;
-    height: 45px;
-    line-height: 48px;
-    font-size: 9px;
-  }
-
-  .fa-rotate-180,
-  .fa-rotate-90,
-  [data-bs-toggle] i {
-    transition: all 250ms ease;
-  }
-
-  a {
-    text-decoration: none !important;
-  }
-
-
-  .pt-1 {
-    font-size: 16px;
-    font-weight: 700;
-  }
-
-  .pt-2 {
-    font-size: 11px;
-    line-height: 20px;
-
-    letter-spacing: 0px;
-  }
-
-  .opacity-40 {
-    opacity: 0.4 !important;
-  }
-
-  .font-400 {
-    font-weight: 400 !important;
-  }
-
-  .line-height-xs {
-    line-height: 14px !important;
-  }
-
-  .bg-23 {
-    background-image: url(https://m.kissdiamond.net/assets/images/pictures/23.jpg);
-  }
-
-  h5 {
-    font-size: 16px;
-    line-height: 22px;
-    font-weight: 700;
-  }
-
-  .menu-list a i:first-child,
-  .menu-list a img:first-child {
-    position: absolute;
-    width: 32px;
-    height: 32px;
-    border-radius: 32px;
-    color: #FFF !important;
-    text-align: center;
-    line-height: 32px;
-    font-size: 13px;
-    left: 0px;
-    top: 8px;
-  }
-
-  .fa-rotate-180,
-  .fa-rotate-90,
-  [data-bs-toggle] i {
-    transition: all 250ms ease;
-  }
-
-
-  /* Responsive */
-  @media screen and (min-width: 991px) {
-    .pcsidebar {
-      display: block !important;
-    }
-  }
-
-  /* Sidebar.css End */
 
   /* Read Bank css */
   .BankName {
@@ -5141,7 +4890,7 @@
     left: 10px;
     top: calc(10px + env(safe-area-inset-top));
     bottom: calc(10px + env(safe-area-inset-bottom));
-    background: linear-gradient(338deg, #a690de3d, #fcfaff);
+    background: linear-gradient(338deg, #a690de3d, #403c71);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     box-shadow: 0 -5px 5px 0 rgb(0 0 0 / 4%);
@@ -5736,15 +5485,14 @@
   }
 
   .SSidebar{
-    background: linear-gradient(338deg, #a690de3d, #000000);
+    background: linear-gradient(338deg, #1a3d70, #000000);
     backdrop-filter: blur(10px);
   }
   .TabPanel{
-    overflow: scroll;
+    height: 40px;
+    white-space: nowrap;
+    overflow-x: scroll;
   }
 
-  
-
- 
   /* Main Deposit Modal css End */
   /* Theme change css Ended */

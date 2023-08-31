@@ -19,8 +19,6 @@ import TransferCredit from "./SidebarComponents/TransferCredit";
 import ReadBank from "./SidebarComponents/ReadBank";
 import UserProfile from "./SidebarComponents/UserProfile";
 import { useBalance } from "./SidebarComponents/BalanceContext";
-import LogoutModal from "./common/LogoutModal";
-import Login from "./common/Login";
 
 const DiamondHome = () => {
 
@@ -34,12 +32,12 @@ const DiamondHome = () => {
     const [AdsData, setAdsData] = useState([])
     const loggedInUser = new Cookies().get("kisDiamond_LoggedIn")
     const { balance } = useBalance();
-    const[logoutModal, setLogoutModal] = useState(false);
 
-    const toggleLogoutModal = () => {
-        setLogoutModal(false)
-    }
-
+    const handleLogout = () => {
+        const cookies = new Cookies();
+        cookies.remove('kisDiamond_LoggedIn');
+        window.location.reload();
+    };
 
     const [launchGameReqObj, setLaunchGameReqObj] = useState({
         TCode: "",
@@ -305,7 +303,7 @@ const DiamondHome = () => {
                             </div>
                             <div className="Tabs" style={{ cursor: 'pointer' }}>
                                 <Tabs selectedIndex={tabIndex} onSelect={(index) => handleTabSelect(index)}>
-                                    <div className="get">
+                                    <div className="get TabPanel">
                                         <TabList>
                                             {tabsData.length > 0 && tabsData.map((games) =>
                                                 <>
@@ -647,7 +645,7 @@ const DiamondHome = () => {
                             </span>
                             <i className="bi bi-chevron-right" />
                         </a>
-                        <a  id="nav-mails" style={{cursor:'pointer'}} onClick={() => setLogoutModal(true)}>
+                        <a  id="nav-mails" style={{cursor:'pointer'}} onClick={handleLogout}>
                             <i className="gradient-dark shadow-bg shadow-bg-xs bi bi-box-arrow-left" />
                             <span className="trn"  >
                                 Logout
@@ -677,7 +675,7 @@ const DiamondHome = () => {
                 </div>
             </div>
 
-            <style media="screen" dangerouslySetInnerHTML={{ __html: "\n  .pcsidebar {\n    width:280px;\n    position: fixed;\n    margin: 10px;\n    left: 10px;\n    top: calc(10px + env(safe-area-inset-top));\n    bottom: calc(10px + env(safe-area-inset-bottom));\n    background: linear-gradient(338deg, #a690de3d, #fcfaff);\n    backdrop-filter: blur(10px);\n    -webkit-backdrop-filter: blur(10px);\n    box-shadow: 0 -5px 5px 0 rgb(0 0 0 / 4%);\n  }\n  .pc_wallet{\n    top: 2px;\n    margin-right: 27px;\n    float: right;\n    border: 1px solid;\n    border-color: #dbd1f3;\n    padding: 3px 12px;\n    font-size: 15px;\n    border-radius: 10px;\n    /* font-weight: bold; */\n    color: #a58de1 !important;\n    position: relative;\n  }\n  @media screen and (max-width: 991px) {\n    #pc_main {\n      display: none !important;\n    }\n    #mobile_main {\n      display: flex !important;\n    }\n    #footer-bar {\n      margin-left: 0;\n    }\n  }\n  @media screen and (min-width: 991px) {\n    #pc_main {\n      display: flex !important;\n    }\n    #mobile_main {\n      display: none !important;\n    }\n    #footer-bar {\n      display: none !important;\n      margin-left: 300px;\n    }\n  }\n" }} />
+            <style media="screen" dangerouslySetInnerHTML={{ __html: "\n  .pcsidebar {\n    width:280px;\n    position: fixed;\n    margin: 10px;\n    left: 10px;\n    top: calc(10px + env(safe-area-inset-top));\n    bottom: calc(10px + env(safe-area-inset-bottom));\n    background: linear-gradient(338deg, #a690de3d, #1a3d70);\n    backdrop-filter: blur(10px);\n    -webkit-backdrop-filter: blur(10px);\n    box-shadow: 0 -5px 5px 0 rgb(0 0 0 / 4%);\n  }\n  .pc_wallet{\n    top: 2px;\n    margin-right: 27px;\n    float: right;\n    border: 1px solid;\n    border-color: #dbd1f3;\n    padding: 3px 12px;\n    font-size: 15px;\n    border-radius: 10px;\n    /* font-weight: bold; */\n    color: #a58de1 !important;\n    position: relative;\n  }\n  @media screen and (max-width: 991px) {\n    #pc_main {\n      display: none !important;\n    }\n    #mobile_main {\n      display: flex !important;\n    }\n    #footer-bar {\n      margin-left: 0;\n    }\n  }\n  @media screen and (min-width: 991px) {\n    #pc_main {\n      display: flex !important;\n    }\n    #mobile_main {\n      display: none !important;\n    }\n    #footer-bar {\n      display: none !important;\n      margin-left: 300px;\n    }\n  }\n" }} />
             {/* App side bar */}
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
             <style media="screen" dangerouslySetInnerHTML={{ __html: "\n\n.playerbutton {\n\n  background-color: transparent;\n\n  color: #222222;\n\n  width: fit-content;\n\n  border: 2px solid #818181;\n\n  padding: 0 10px;\n\n  border-radius: 10px;\n\n  font-size: 12px;\n\n  text-transform: uppercase;\n\n}\n\n.playerbutton:active,.playerbutton:focus {\n\n  background-color: transparent; /* Green */\n\n  border-color: #92c659;\n\n}\n\n.transfer_slider .swiper-wrapper .swiper-slide {\n\n  width: auto !important;\n\n  padding: 0 5px 10px 0;\n\n}\n\n#qrcode_transfer img {\n\n  max-width: 250px;\n\n  margin: 0 auto;\n\n}\n\n.processdiv {\n\n  position: absolute;\n\n  width: 100%;\n\n  top: 0;\n\n  background: #fdfdfd;\n\n  z-index: 99;\n\n  pointer-events: none;\n\n  height: 100%;\n\n  display: flex;\n\n  flex-direction: column;\n\n  justify-content: center;\n\n  align-items: center;\n\n}\n\n#TransferModal #turnover_requirement {\n\n  border: 1px solid #ced4da;\n\n  background: #e9ecef;\n\n}\n\n" }} />
@@ -2115,7 +2113,6 @@ const DiamondHome = () => {
                 </div>
             </div>
             {/* Overlimit Action Sheet End */}
-            <LogoutModal show={logoutModal} close={toggleLogoutModal}/>
 
         </>
     )

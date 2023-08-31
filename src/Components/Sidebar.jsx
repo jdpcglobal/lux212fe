@@ -1,15 +1,15 @@
 import React, { useState } from 'react'
 import Cookies from 'universal-cookie'
 import { useBalance } from './SidebarComponents/BalanceContext'
-import LogoutModal from './common/LogoutModal'
-
 const Sidebar = () => {
     const loggedInUser = new Cookies().get("kisDiamond_LoggedIn")
     const { balance } = useBalance();
-    const[logoutModal, setLogoutModal] = useState(false);
-    const toggleLogoutModal = () => {
-        setLogoutModal(false)
-    }
+
+    const handleLogout = () => {
+        const cookies = new Cookies();
+        cookies.remove('kisDiamond_LoggedIn');
+        window.location.reload();
+    };
 
     return (
         <>
@@ -201,7 +201,7 @@ const Sidebar = () => {
                             </span>
                             <i className="bi bi-chevron-right" />
                         </a>
-                        <a  id="nav-mails" style={{cursor:'pointer'}} onClick={() => setLogoutModal(true)}>
+                        <a  id="nav-mails" style={{cursor:'pointer'}} onClick={handleLogout}>
                             <i className="gradient-dark shadow-bg shadow-bg-xs bi bi-box-arrow-left" />
                             <span className="trn"  >
                                 Logout
@@ -211,9 +211,8 @@ const Sidebar = () => {
                     </div>
                 </div>
             </div>
-            <LogoutModal show={logoutModal} close={toggleLogoutModal}/>
         </>
-    )
+    ) 
 }
 
 export default Sidebar
