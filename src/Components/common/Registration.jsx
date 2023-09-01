@@ -152,7 +152,6 @@ const Registration = (props) => {
         <Modal show={show} onHide={close} className='Registration'>
             <Modal.Body>
                 <div className="login-box">
-                    <h2>Login</h2>
                     <h4>Create Luxury212 account</h4>
                     <form>
                         <div className="user-box">

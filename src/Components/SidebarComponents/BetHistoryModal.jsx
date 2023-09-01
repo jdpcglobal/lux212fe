@@ -67,11 +67,11 @@ const BetHistoryModal = () => {
                         }}
                     />
                     <div className="table-responsive">
-                        <Card style={{ width: '375px', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.3)' }} className="mb-2">
+                        <Card style={{boxShadow: '0 2px 4px rgba(0, 0, 0, 0.3)' }} className="mb-2">
                             <ListGroup variant="flush ">
                                 <ListGroup.Item className='listGroup'>
                                     <div className="row BankName">
-                                        <div className="col-4">
+                                        <div className="col-4 CardFont">
                                             Date From :
                                         </div>
 
@@ -98,7 +98,7 @@ const BetHistoryModal = () => {
                                 </ListGroup.Item>
                                 <ListGroup.Item className='listGroup'>
                                     <div className="row BankName">
-                                        <div className="col-4">
+                                        <div className="col-4 CardFont">
                                             Date To :
                                         </div>
 
@@ -149,11 +149,7 @@ const BetHistoryModal = () => {
                                             Amount
                                         </small>
                                     </th>
-                                    <th className="border-fade-blue" scope="col">
-                                        <small className="trn" data-trn-key="Remark">
-                                            Remark
-                                        </small>
-                                    </th>
+                                   
                                     <th className="border-fade-blue" scope="col">
                                         <small className="trn" data-trn-key="Status">
                                             Status
@@ -185,11 +181,6 @@ const BetHistoryModal = () => {
                                         </td>
                                         <td>
                                             <small>{(data.Amount).toFixed(2)}</small>
-                                        </td>
-                                        <td>
-                                            <small>
-                                                <small>{data.Remark}</small>
-                                            </small>
                                         </td>
                                         <td className="text-center">
                                             <i className="bi  bi-x-octagon color-red-dark" />

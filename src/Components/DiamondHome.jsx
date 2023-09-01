@@ -29,7 +29,6 @@ const DiamondHome = () => {
     const [tabpanelData, setTabpanelData] = useState([])
     const [tabsData, setTabsData] = useState([])
     const [loadingTabs, setLoadingTabs] = useState(false)
-    const [gameImageLoader, setGameImageLoader] = useState(false);
     const [AdsData, setAdsData] = useState([])
     const loggedInUser = new Cookies().get("kisDiamond_LoggedIn")
     const { balance } = useBalance();
@@ -72,11 +71,8 @@ const DiamondHome = () => {
                     if (adContents.length > 0) {
                         adContents.map((data, i) => {
                             options = [...options, ...data.AdContents]
-                            // options.push([])
                         })
                     }
-                    // const sliderURl =
-                    // console.log("========= response.data ", options)
                     setAdsData(options)
                 }
             },)
@@ -104,7 +100,6 @@ const DiamondHome = () => {
                     setLoadingTabs(false)
                 }
             }, (error) => {
-                // console.log("error===== ", error)
             })
         } catch (error) {
             // console.log('Error:', error);
@@ -121,7 +116,6 @@ const DiamondHome = () => {
     const handleTabSelect = (index) => {
         getTabPanelData(index)
         setTabIndex(index)
-        // console.log("=========== ", index)
     }
 
     const getTabPanelData = async (i) => {
@@ -136,7 +130,6 @@ const DiamondHome = () => {
                 });
             const jsonData = await response.json();
             if (jsonData.isSuccess) {
-                // setData(jsonData.data);
                 setTabpanelData(jsonData.data)
             }
         } catch (error) {
@@ -167,7 +160,6 @@ const DiamondHome = () => {
             const response = await fetch('https://lux212.azurewebsites.net/Api/LaunchGame', {
                 method: 'POST',
                 body: formData,
-                // headers: { Authorization: 'f3c6c10757ade51e1d7a47c8ba3959d4' }
             });
             const jsonData = await response.json();
             if (jsonData.isSuccess) {
@@ -194,7 +186,7 @@ const DiamondHome = () => {
             TCode: pCode,
             PCode: tCode,
         })
-        setGameImageLoader(true)
+        setGameLoader(true)
         GetGames(tCode, pCode)
     }
 
@@ -203,15 +195,12 @@ const DiamondHome = () => {
         formData.append('TCode', `${tCode}`);
         formData.append('PCode', `${pCode}`);
         try {
-            setGameLoader(true)
             const response = await fetch('https://lux212.azurewebsites.net/Api/GetGames', {
                 method: 'POST',
                 body: formData,
-                // headers: {Authorization: 'f3c6c10757ade51e1d7a47c8ba3959d4'}
             });
             const jsonData = await response.json();
             if (jsonData.isSuccess) {
-                // console.log(jsonData.data);
                 setResponseData(jsonData.data);
                 setGameLoader(false)
             }

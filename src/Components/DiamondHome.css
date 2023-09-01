@@ -4709,7 +4709,7 @@
   }
 
   @media screen and (max-width: 600px) {
-    .login-box  {
+    .login-box {
       width: 300px;
     }
   }
@@ -5201,7 +5201,7 @@
     --WhiteColor: white;
     --borderColor: #0d0707;
     --goldColor: #e8b923;
-    --backGround: #04115c;
+    --backGround: #002D62;
     --goldBackground: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #d29c2b 30%, #c2983a 40%, transparent 80%), radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #ffc748 62.5%, #5d4a1f 100%);
   }
 
@@ -5304,7 +5304,6 @@
 
   .Title {
     top: 2px;
-    margin-right: 27px;
     border: 1px solid;
     padding: 3px 12px;
     font-size: 15px;
@@ -5414,9 +5413,17 @@
     color: var(--WhiteColor) !important;
   }
 
+  .CardFont {
+    font-size: 13px;
+    align-self: center;
+  }
+
   .rayan {
     background: #555;
     border: 1px solid var(--goldColor) !important;
+    width: 130px;
+    height: 48px;
+    border-radius: 10px;
   }
 
   /* ---- */
@@ -5470,28 +5477,58 @@
   .TabPanel {
     overflow: scroll !important;
   }
-  
+
 
   @media screen and (max-width: 990px) {
-    .MainSidebar  {
+    .MainSidebar {
       display: none;
     }
   }
 
   @media screen and (max-width: 450px) {
-    .UserTable  {
+    .UserTable {
       font-size: 12px !important;
     }
   }
 
-  .SSidebar{
+  .SSidebar {
     background: linear-gradient(338deg, #1a3d70, #000000);
     backdrop-filter: blur(10px);
   }
-  .TabPanel{
+
+  .TabPanel {
     height: 40px;
     white-space: nowrap;
     overflow-x: scroll;
+  }
+
+  .Table{
+    border: 2px solid black;
+    color: white;
+    font-size: 15px;
+    margin-bottom: 20px;
+  }
+
+  .Tr{
+    background-color: #1a3d70;
+    padding-right: 20px;
+  }
+
+  .Tr2{
+    background-color: #04115c;
+  }
+
+  .Td{
+    padding-left: 20px;
+  }
+
+  .Table:hover {
+    color: var(--goldColor) !important;
+    font-weight: 700 !important;
+    letter-spacing: 3px;
+    background: none;
+    transition: all 0.3s ease 0s;
+    
   }
 
   /* Main Deposit Modal css End */

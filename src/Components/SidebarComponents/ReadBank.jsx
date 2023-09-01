@@ -75,31 +75,29 @@ const ReadBank = () => {
                                     </div>
 
                                     {MyBank.length > 0 && MyBank.map((data) =>
-                                        <Table striped bordered hover variant="dark">
+                                        <table  className="Table">
                                         <thead>
-                                            <tr>
-
-                                                <th>Bank Name :  {data.BankName}</th>
+                                            <tr className="Tr">
+                                                <th className="Td">Bank Name :  {data.BankName}</th>
                                                 <th></th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-
-                                                <td>Acc Number : {data.HolderName}</td>
+                                            <tr className="Tr2">
+                                                <td className="Td">Acc Number : {data.HolderName}</td>
                                                
                                                 <td>{
                                                     data.Status === 1 ? <img width="48" height="48" src="https://img.icons8.com/emoji/48/check-mark-button-emoji.png" alt="check-mark-button-emoji" /> : <img width="48" height="48" src="https://img.icons8.com/color/48/close-window.png" alt="close-window" />
                                                 }</td>
                                             </tr>
-                                            <tr>
+                                            <tr className="Tr">
 
-                                                <td>Holder Name:{data.AccNumber}</td>
+                                                <td className="Td">Holder Name:{data.AccNumber}</td>
                                                 
                                                 <td></td>
                                             </tr>
                                         </tbody>
-                                    </Table>
+                                    </table>
                                     )}
 
                                     

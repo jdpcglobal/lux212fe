@@ -15,7 +15,7 @@ const HistoryModal = () => {
     const [dateFrom, setDateFrom] = useState('');
     const [dateFromTo, setDateFromTo] = useState('');
     const [transaction, setTransaction] = useState('');
-    
+
     //*****  Transactions API  *****/
 
     const handleGameClick = () => {
@@ -73,11 +73,11 @@ const HistoryModal = () => {
                         }}
                     />
                     <div className="table-responsive">
-                        <Card style={{ width: '375px', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.3)' }} className="mb-2">
+                        <Card style={{ boxShadow: '0 2px 4px rgba(0, 0, 0, 0.3)' }} className="mb-2">
                             <ListGroup variant="flush ">
                                 <ListGroup.Item className='listGroup'>
                                     <div className="row BankName">
-                                        <div className="col-4">
+                                        <div className="col-4 CardFont">
                                             Date From :
                                         </div>
 
@@ -86,25 +86,25 @@ const HistoryModal = () => {
                                                 onChange={(e) => setDateFrom(e.target.value)} /> */}
                                             <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="de">
                                                 <DatePicker
+                                                    className='rayan'
                                                     label="Date To"
                                                     value={dateFrom ? dayjs(dateFrom, 'DD/MM/YYYY').toDate() : null} // Convert the state date to a Date object
                                                     onChange={(date) => setDateFrom(dayjs(date).format('DD/MM/YYYY'))} // Update the state with the selected date
                                                     renderInput={(props) => (
-                                                        <input
+                                                        <input className='sahil'
                                                             {...props}
                                                             value={dateFrom} // Display the state value directly in the input field
                                                             onChange={(e) => setDateFrom(e.target.value)} // Update the state on input change
                                                         />
                                                     )}
-                                                    className='rayan'
                                                 />
                                             </LocalizationProvider>
                                         </div>
                                     </div>
                                 </ListGroup.Item>
-                                <ListGroup.Item className='listGroup'> 
+                                <ListGroup.Item className='listGroup'>
                                     <div className="row BankName">
-                                        <div className="col-4">
+                                        <div className="col-4 CardFont">
                                             Date To :
                                         </div>
 
@@ -155,11 +155,7 @@ const HistoryModal = () => {
                                             Amount
                                         </small>
                                     </th>
-                                    <th className="border-fade-blue" scope="col">
-                                        <small className="trn" data-trn-key="Remark">
-                                            Remark
-                                        </small>
-                                    </th>
+
                                     <th className="border-fade-blue" scope="col">
                                         <small className="trn" data-trn-key="Status">
                                             Status
@@ -192,11 +188,7 @@ const HistoryModal = () => {
                                         <td>
                                             <small>{(data.Amount).toFixed(2)}</small>
                                         </td>
-                                        <td>
-                                            <small>
-                                                <small>{data.Remark}</small>
-                                            </small>
-                                        </td>
+
                                         <td className="text-center">
                                             <i className="bi  bi-x-octagon color-red-dark" />
                                         </td>
