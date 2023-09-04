@@ -398,7 +398,8 @@ const DepositModal = () => {
                             <small className="badge gradient-yellow color-black">亲爱的用户我们只接受INSTANT TRANSFER</small><br />
                             <small className="badge gradient-yellow color-black">备注请写上账号 勿使用GIRO/IBG转账</small><br />
                             <small className="badge gradient-yellow color-black">Dear user, we accept only INSTANT TRANSFER</small><br />
-                            <small className="badge gradient-yellow color-black">Fill your User ID on reference.  Do not use GIRO/IBG Bank transfer</small><br />
+                            <small className="badge gradient-yellow color-black">Fill your User ID on reference.<br/>
+                              Do not use GIRO/IBG Bank transfer</small><br />
                             <div id="imgupload" className="img-fluid rounded-s" style={{ textAlign: 'center', marginBottom: '10px' }}>
                             </div>
                             <span className="upload-file-name d-block text-center" data-text-before="<i class='bi bi-check-circle-fill color-green-dark pe-2'></i> Image:" data-text-after=" is ready.">
@@ -503,7 +504,7 @@ const DepositModal = () => {
                     <div className="d-flex pb-2">
                         <div className="align-self-center">
                             <h5 className="mb-n2 font-12 color-highlight font-700 text-uppercase pt-1 trn BankTransfer" data-trn-key="Bank Transfer">Bank Transfer</h5>
-                            <h1 className="font-800 font-22  Title">{bankName}</h1>
+                            <h1 className="font-800 font-22  Title" style={{}}>{bankName}</h1>
                         </div>
                         <div className="align-self-center ms-auto">
                             <a href="#" data-bs-dismiss="offcanvas" className="icon icon-m"><i className="bi bi-x-circle-fill color-red-dark font-18 me-n4" /></a>
@@ -525,7 +526,8 @@ const DepositModal = () => {
                             <small className="badge gradient-yellow color-black">亲爱的用户我们只接受INSTANT TRANSFER</small><br />
                             <small className="badge gradient-yellow color-black">备注请写上账号 勿使用GIRO/IBG转账</small><br />
                             <small className="badge gradient-yellow color-black">Dear user, we accept only INSTANT TRANSFER</small><br />
-                            <small className="badge gradient-yellow color-black">Fill your User ID on reference.  Do not use GIRO/IBG Bank transfer</small><br />
+                            <small className="badge gradient-yellow color-black">Fill your User ID on reference.<br/>
+                            Do not use GIRO/IBG Bank transfer</small><br />
                             <div id="imgupload" className="img-fluid rounded-s" style={{ textAlign: 'center', marginBottom: '10px' }}>
                             </div>
                             <span className="upload-file-name d-block text-center" data-text-before="<i class='bi bi-check-circle-fill color-green-dark pe-2'></i> Image:" data-text-after=" is ready.">
@@ -589,7 +591,8 @@ const DepositModal = () => {
                             <small className="badge gradient-yellow color-black">亲爱的用户我们只接受INSTANT TRANSFER</small><br />
                             <small className="badge gradient-yellow color-black">备注请写上账号 勿使用GIRO/IBG转账</small><br />
                             <small className="badge gradient-yellow color-black">Dear user, we accept only INSTANT TRANSFER</small><br />
-                            <small className="badge gradient-yellow color-black">Fill your User ID on reference.  Do not use GIRO/IBG Bank transfer</small><br />
+                            <small className="badge gradient-yellow color-black">Fill your User ID on reference.<br/>
+                              Do not use GIRO/IBG Bank transfer</small><br />
                             <div id="imgupload" className="img-fluid rounded-s" style={{ textAlign: 'center', marginBottom: '10px' }}>
                             </div>
                             <span className="upload-file-name d-block text-center" data-text-before="<i class='bi bi-check-circle-fill color-green-dark pe-2'></i> Image:" data-text-after=" is ready.">

@@ -69,9 +69,9 @@ const ReadBank = () => {
                             </div>
                                     
                             <div className="col-lg-4 offset-sm-1 Roman">
-                                <div className="row ReadBankCard">
-                                    <div className="d-flex justify-content-between m-2 Title" style={{ width: '15rem' }}>
-                                        <h2 className="selectBank ">Bank Accounts</h2>
+                                <div className="row ">
+                                    <div className=" bankcard Title" >
+                                        <h2>Bank Accounts</h2>
                                     </div>
 
                                     {MyBank.length > 0 && MyBank.map((data) =>

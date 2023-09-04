@@ -49,7 +49,7 @@ const DiamondHome = () => {
 
     var settings = {
         infinite: true,
-        speed: 500,
+        speed: 500, 
         slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: true,
@@ -295,7 +295,7 @@ const DiamondHome = () => {
                             </div>
                             <div className="Tabs" style={{ cursor: 'pointer' }}>
                                 <Tabs selectedIndex={tabIndex} onSelect={(index) => handleTabSelect(index)}>
-                                    <div className="get TabPanel">
+                                    <div className="get TabPanel" style={{ marginTop: '7px'}}>
                                         <TabList>
                                             {tabsData.length > 0 && tabsData.map((games) =>
                                                 <>
@@ -310,7 +310,7 @@ const DiamondHome = () => {
                                                 <div className='TabPanel' >
                                                     {tabpanelData.length > 0 && tabpanelData.map((data, i) =>
                                                         <>
-                                                            <a className='mx-1 provider cursor' style={{ display: "inline-block", marginTop: '5px' }} onClick={() => handleButtonClick(data.Code, data.GameTypeCode)}>{data.Name}</a>
+                                                            <a className='mx-1 provider cursor' style={{ display: "inline-block" }} onClick={() => handleButtonClick(data.Code, data.GameTypeCode)}>{data.Name}</a>
                                                         </>
                                                     )}
                                                 </div>
