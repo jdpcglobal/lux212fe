@@ -49,22 +49,22 @@ const BankTransaction = () => {
                                 <div className="align-self-center" style={{width:'16rem'}}>
                                     <h1 className="font-800 font-22 trn Title" data-trn-key="Deposit">Bank Transaction </h1>
                                 </div>
-                                <Table striped bordered hover variant="dark" className="table" >
-                                    <tbody style={{ fontSize: 18, fontWeight: "bold" }}>
-                                        {transactionData.map((transaction, index) => (
+                                {transactionData.map((transaction, index) => (
+                                <table className="table" >
+                                    <tbody style={{ fontSize: 15, fontWeight: "bold" }}>
+                                        
                                             <tr>
-                                                <th scope="row"><p>{transaction.Id}</p></th>
-                                                <th>
+                                                <th className="Th">
                                                     <p>Bank :{transaction.BankName} </p>
                                                     <p style={{ color: transaction.Type === "BankDr" ? "green" : "red" }}>
                                                         Amount: {transaction.Amount}
                                                     </p>
                                                 </th>
-                                                <td>
+                                                <td className="Th">
                                                     <p>{transaction.Type}</p>
                                                     <p>{transaction.Date}</p>
                                                 </td>
-                                                <td>
+                                                <td className="Th">
                                                     {transaction.Status === "Pending" ? (
                                                         <img
                                                             src="./imagies/sahil.png"
@@ -80,9 +80,10 @@ const BankTransaction = () => {
                                                     )}
                                                 </td>
                                             </tr>
-                                        ))}
+                                        
                                     </tbody>
-                                </Table>
+                                </table>
+                                ))}
                             </div>
                         </div>
                     </div>

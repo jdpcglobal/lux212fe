@@ -5512,8 +5512,15 @@
   }
 
   .Tr{
-    background-color: #1a3d70;
+    background-color: #1a3d70 !important;
     padding-right: 20px;
+  }
+
+  .Th{
+    background-color: #1a3d70 !important;
+  }
+  .Th P{
+    color: white ;
   }
 
   .Tr2{
@@ -5532,6 +5539,7 @@
     transition: all 0.3s ease 0s;
     
   }
+  
 
   /* RESPONSIVE CSS */
 
@@ -5559,7 +5567,7 @@
 
   @media screen and (max-width:650px){
     .font-22{
-      font-size: 15px !important;
+      font-size: 18px !important;
     }
   }
 
