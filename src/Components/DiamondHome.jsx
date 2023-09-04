@@ -261,12 +261,11 @@ const DiamondHome = () => {
                                     <div className="banner w-100">
                                         <div className="splide__slide is-active is-visible">
                                             <div
-                                                className="card card-style mx-0 shadow-card shadow-card-m"
+                                                className="card card-style mx-0 shadow-card shadow-card-m sliderImage"
                                                 data-card-height={300}
                                                 style={{
                                                     backgroundImage: `url(${data.Url})`,
-                                                    height: 350,
-                                                    objectFit: "contain"
+                                            
                                                 }}
                                             >
                                             </div>
@@ -311,7 +310,7 @@ const DiamondHome = () => {
                                                 <div className='TabPanel' >
                                                     {tabpanelData.length > 0 && tabpanelData.map((data, i) =>
                                                         <>
-                                                            <a className='mx-1 provider cursor' style={{ display: "inline-block", marginRight: '5px' }} onClick={() => handleButtonClick(data.Code, data.GameTypeCode)}>{data.Name}</a>
+                                                            <a className='mx-1 provider cursor' style={{ display: "inline-block", marginTop: '5px' }} onClick={() => handleButtonClick(data.Code, data.GameTypeCode)}>{data.Name}</a>
                                                         </>
                                                     )}
                                                 </div>

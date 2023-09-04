@@ -5531,5 +5531,27 @@
     
   }
 
+  /* RESPONSIVE CSS */
+
+  .sliderImage{
+    height: 350px !important;
+    object-fit: contain !important;
+  }
+  @media screen and (max-width:650px){
+    .sliderImage{
+      background-size: 100% !important;
+      height: 130px !important;
+      background-color: #000 !important;
+    }
+  }
+
+  @media screen and (max-width:650px){
+    .Tabs{
+      font-size: 13px;
+    }
+  }
+  /* RESPONSIVE CSS END */
+
+
   /* Main Deposit Modal css End */
   /* Theme change css Ended */
