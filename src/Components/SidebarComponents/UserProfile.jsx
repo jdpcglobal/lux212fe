@@ -7,6 +7,7 @@ import ChangePasswordModal from './ChangePasswordModal';
 import SetPinApi from './SetPinApi';
 import Cookies from 'universal-cookie';
 import Sidebar from '../Sidebar';
+import ChangeExample from './changeExample';
 
 const UserProfile = () => {
 
@@ -33,6 +34,7 @@ const UserProfile = () => {
     const toggleChangePhoneModal = () => {
         setChangePhoneModal(false)
     }
+    
     const toggleChangeEmailModal = () => {
         setChangeEmailModal(false)
     }

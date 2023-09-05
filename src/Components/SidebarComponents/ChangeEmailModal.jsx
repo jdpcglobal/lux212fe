@@ -117,11 +117,11 @@ const ChangeEmailModal = (props) => {
                     </form>
                 </div>
                 {data && (
-                            <div className={`alert alert-${messageType}`} role="alert">
+                    <div className={`alert alert-${messageType}`} role="alert">
 
-                            </div>
-                        )}
-                        <ToastContainer />
+                    </div>
+                )}
+                <ToastContainer />
             </Modal.Body>
         </Modal>
     );
