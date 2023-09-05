@@ -76,87 +76,71 @@ const UserProfile = () => {
     return (
         <>
             <div id="WalletModal" style={{ width: '100%' }} className="offcanvas offcanvas-end bg-theme">
-                <div className="content">
-                    <div className="container">
 
-
-                        <div className="container">
-                            
-                            <div className="row">
-                                <div className="col-3 MainSidebar">
-                                    <Sidebar />
-                                </div>
-
-                                <div className="col-lg-8 UserTable">
-                                    <div className="d-flex pb-2">
-                                        <div className="align-self-center ms-auto">
-                                            <a href="#" data-bs-dismiss="offcanvas" className="icon icon-m"><i className="bi bi-x-circle-fill color-red-dark font-18 me-n4" /></a>
-                                        </div>
-                                        
-                                    </div>
-                                    <h3 className='Title' style={{ fontSize: '25px', fontWeight: '800', width: '11.5rem' }}>User Profile</h3>
-                                    <Table striped bordered hover variant="dark">
-                                        <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Id</td>
-                                                <td>{data.Id}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>Name</td>
-                                                <td>{data.Name}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>3</td>
-                                                <td>User Name</td>
-                                                <td>{data.UId}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>4</td>
-                                                <td>Email</td>
-                                                <td>{data.Email} <Button style={{ marginLeft: '30px', width: '50px' }} variant="outline-secondary" onClick={() => setChangeEmailModal(true)}><i class="bi bi-pencil-fill"></i></Button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>5</td>
-                                                <td>Phone</td>
-                                                <td>{data.Phone}<Button style={{ marginLeft: '30px', width: '50px' }} variant="outline-secondary" onClick={() => setChangePhoneModal(true)}><i class="bi bi-pencil-fill"></i></Button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>6</td>
-                                                <td>CreditBalance</td>
-                                                <td>{data.CreditBalance}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>7</td>
-                                                <td>ParentId</td>
-                                                <td>{data.ParentId}</td>
-                                            </tr>
-                                        </tbody>
-                                    </Table>
-                                </div>
-                            </div>
-                            <div className="row " >
-                                <div className="col-3"></div>
-                                <div className="col-4 UserTable">
-                                    <Table striped bordered hover variant="dark">
-                                        <tbody>
-                                            <tr>
-                                                <td><h4>Change Password ?</h4></td>
-                                                <td><Button style={{ marginLeft: '30px', width: '50px' }} variant="outline-secondary" onClick={() => setChangePasswordModal(true)}><i class="bi bi-pencil-fill"></i></Button></td>
-                                            </tr>
-                                            <tr>
-                                                <td><h4>Set Pin ?</h4></td>
-                                                <td><Button style={{ marginLeft: '30px', width: '50px' }} variant="outline-secondary" onClick={() => setPinApiModal(true)}><i class="bi bi-pencil-fill"></i> </Button></td>
-                                            </tr>
-                                        </tbody>
-                                    </Table>
-                                </div>
-                            </div>
+                <div className="container">
+                    <div className="row">
+                        <div className="col-3 MainSidebar">
+                            <Sidebar />
                         </div>
 
+                        <div className="col-lg-8 UserTable">
+                            <div className="d-flex pb-2">
+                                <div className="align-self-center ms-auto">
+                                    <a href="#" data-bs-dismiss="offcanvas" className="icon icon-m"><i className="bi bi-x-circle-fill color-red-dark font-18 me-n4" /></a>
+                                </div>
+                            </div>
+                            <div className="align-self-center" >
+                                <label className="font-800 font-22 trn Title" data-trn-key="Deposit">User Profile </label>
+                            </div>
+                            <table className="UserProfileTable">
+                                <tbody>
+                                    <tr className="Tr">
+                                        <td className="Td">Id</td>
+                                        <td>{data.Id}</td>
+                                    </tr>
+                                    <tr className="Tr2">
+                                        <td className="Td">Name</td>
+                                        <td>{data.Name}</td>
+                                    </tr>
+                                    <tr className="Tr">
+                                        <td className="Td">User Name</td>
+                                        <td>{data.UId}</td>
+                                    </tr>
+                                    <tr className="Tr2">
+                                        <td className="Td">Email</td>
+                                        <td>{data.Email} <Button style={{ marginLeft: '30px', width: '50px' }} variant="outline-secondary" onClick={() => setChangeEmailModal(true)}><i class="bi bi-pencil-fill"></i></Button></td>
+                                    </tr>
+                                    <tr className="Tr">
+                                        <td className="Td">Phone</td>
+                                        <td>{data.Phone}<Button style={{ marginLeft: '30px', width: '50px' }} variant="outline-secondary" onClick={() => setChangePhoneModal(true)}><i class="bi bi-pencil-fill"></i></Button></td>
+                                    </tr>
+                                    <tr className="Tr2">
+                                        <td className="Td">Balance</td>
+                                        <td>{data.CreditBalance}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div className="row " >
+                        <div className="col-3"></div>
+                        <div className="col-4 UserTable">
+                            <table className='Table' >
+                                <tbody>
+                                    <tr className='Tr'>
+                                        <td className="font-800 font-22 Td">Change Password ?</td>
+                                        <td><Button style={{ marginLeft: '30px', width: '50px' }} variant="outline-secondary" onClick={() => setChangePasswordModal(true)}><i class="bi bi-pencil-fill"></i></Button></td>
+                                    </tr>
+                                    <tr className='Tr2'>
+                                        <td className="font-800 font-22 Td">Set Pin ?</td>
+                                        <td><Button style={{ marginLeft: '30px', width: '50px' }} variant="outline-secondary" onClick={() => setPinApiModal(true)}><i class="bi bi-pencil-fill"></i> </Button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
+
             </div>
             <ChangePhone show={changePhoneModal} close={toggleChangePhoneModal} setDrawCount={setDrawCount} />
             <ChangeEmailModal show={changeEmailModal} close={toggleChangeEmailModal} setDrawCount={setDrawCount} />

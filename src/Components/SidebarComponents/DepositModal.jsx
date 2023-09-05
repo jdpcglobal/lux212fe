@@ -223,8 +223,8 @@ const DepositModal = () => {
             <div id="DepositSelectMethod" style={{ width: '100%' }} className="offcanvas offcanvas-end bg-theme">
                 <div className="content">
                     <div className="d-flex pb-2">
-                        <div className="align-self-center">
-                            <h1 className="font-800 font-22 trn Title" data-trn-key="Deposit">Deposit</h1>
+                        <div className="align-self-center" >
+                            <label className="font-800 font-22 trn Title" data-trn-key="Deposit">Deposit </label>
                         </div>
                         <div className="align-self-center ms-auto">
                             <a href="#" data-bs-dismiss="offcanvas" className="icon icon-m"><i className="bi bi-x-circle-fill color-red-dark font-18 me-n4" /></a>
@@ -274,7 +274,7 @@ const DepositModal = () => {
                         </a>
 
                         <div className="AlignSelf">
-                            <h1 className="font-800 font-22 trn Title" data-trn-key="Deposit"> Payment Get Ways</h1>
+                            <label className="font-800 font-22 trn Title" data-trn-key="Deposit"> Payment Get Ways</label>
                         </div>
                         <a onClick={() => handleOnlineClick()} className="list-group-item DepositModal" data-bs-toggle="offcanvas" data-bs-target="#OnlinePayment">
                             <i className="has-bg bg-red-darkss rounded-xs bi bi-cash-stack" />
@@ -292,7 +292,7 @@ const DepositModal = () => {
                 <div className="content">
                     <div className="d-flex pb-2">
                         <div className="align-self-center">
-                            <h1 className="font-800 font-22 trn Title" data-trn-key="Select Bank">Select Payment Method</h1>
+                            <label className="font-800 font-22 trn Title" data-trn-key="Select Bank">Select Payment Method</label>
                         </div>
                         <div className="align-self-center ms-auto">
                             <a href="#" data-bs-dismiss="offcanvas" className="icon icon-m"><i className="bi bi-x-circle-fill color-red-dark font-18 me-n4" /></a>
@@ -376,7 +376,7 @@ const DepositModal = () => {
                     <div className="d-flex pb-2">
                         <div className="align-self-center">
                             <h5 className="mb-n2 font-12 color-highlight font-700 text-uppercase pt-1 trn BankTransfer" data-trn-key="Bank Transfer">Bank Transfer</h5>
-                            <h1 className="font-800 font-22 Title">{bankName}</h1>
+                            <label className="font-800 font-22 Title">{bankName}</label>
                         </div>
                         <div className="align-self-center ms-auto">
                             <a href="#" data-bs-dismiss="offcanvas" className="icon icon-m"><i className="bi bi-x-circle-fill color-red-dark font-18 me-n4" /></a>
@@ -398,8 +398,8 @@ const DepositModal = () => {
                             <small className="badge gradient-yellow color-black">亲爱的用户我们只接受INSTANT TRANSFER</small><br />
                             <small className="badge gradient-yellow color-black">备注请写上账号 勿使用GIRO/IBG转账</small><br />
                             <small className="badge gradient-yellow color-black">Dear user, we accept only INSTANT TRANSFER</small><br />
-                            <small className="badge gradient-yellow color-black">Fill your User ID on reference.<br/>
-                              Do not use GIRO/IBG Bank transfer</small><br />
+                            <small className="badge gradient-yellow color-black">Fill your User ID on reference.<br />
+                                Do not use GIRO/IBG Bank transfer</small><br />
                             <div id="imgupload" className="img-fluid rounded-s" style={{ textAlign: 'center', marginBottom: '10px' }}>
                             </div>
                             <span className="upload-file-name d-block text-center" data-text-before="<i class='bi bi-check-circle-fill color-green-dark pe-2'></i> Image:" data-text-after=" is ready.">
@@ -504,7 +504,7 @@ const DepositModal = () => {
                     <div className="d-flex pb-2">
                         <div className="align-self-center">
                             <h5 className="mb-n2 font-12 color-highlight font-700 text-uppercase pt-1 trn BankTransfer" data-trn-key="Bank Transfer">Bank Transfer</h5>
-                            <h1 className="font-800 font-22  Title" style={{}}>{bankName}</h1>
+                            <label className="font-800 font-22  Title" style={{}}>{bankName}</label>
                         </div>
                         <div className="align-self-center ms-auto">
                             <a href="#" data-bs-dismiss="offcanvas" className="icon icon-m"><i className="bi bi-x-circle-fill color-red-dark font-18 me-n4" /></a>
@@ -526,8 +526,8 @@ const DepositModal = () => {
                             <small className="badge gradient-yellow color-black">亲爱的用户我们只接受INSTANT TRANSFER</small><br />
                             <small className="badge gradient-yellow color-black">备注请写上账号 勿使用GIRO/IBG转账</small><br />
                             <small className="badge gradient-yellow color-black">Dear user, we accept only INSTANT TRANSFER</small><br />
-                            <small className="badge gradient-yellow color-black">Fill your User ID on reference.<br/>
-                            Do not use GIRO/IBG Bank transfer</small><br />
+                            <small className="badge gradient-yellow color-black">Fill your User ID on reference.<br />
+                                Do not use GIRO/IBG Bank transfer</small><br />
                             <div id="imgupload" className="img-fluid rounded-s" style={{ textAlign: 'center', marginBottom: '10px' }}>
                             </div>
                             <span className="upload-file-name d-block text-center" data-text-before="<i class='bi bi-check-circle-fill color-green-dark pe-2'></i> Image:" data-text-after=" is ready.">
@@ -565,7 +565,7 @@ const DepositModal = () => {
                             selectedId === data.Id && (
                                 <div className="align-self-center">
                                     <h5 className="mb-n2 font-12 color-highlight font-700 text-uppercase pt-1 trn BankTransfer" data-trn-key="Bank Transfer">Bank Transfer</h5>
-                                    <h1 className="font-800 font-22 Title">{data.Name}</h1>
+                                    <label className="font-800 font-22 Title">{data.Name}</label>
                                 </div>
                             )
                         ))}
@@ -591,8 +591,8 @@ const DepositModal = () => {
                             <small className="badge gradient-yellow color-black">亲爱的用户我们只接受INSTANT TRANSFER</small><br />
                             <small className="badge gradient-yellow color-black">备注请写上账号 勿使用GIRO/IBG转账</small><br />
                             <small className="badge gradient-yellow color-black">Dear user, we accept only INSTANT TRANSFER</small><br />
-                            <small className="badge gradient-yellow color-black">Fill your User ID on reference.<br/>
-                              Do not use GIRO/IBG Bank transfer</small><br />
+                            <small className="badge gradient-yellow color-black">Fill your User ID on reference.<br />
+                                Do not use GIRO/IBG Bank transfer</small><br />
                             <div id="imgupload" className="img-fluid rounded-s" style={{ textAlign: 'center', marginBottom: '10px' }}>
                             </div>
                             <span className="upload-file-name d-block text-center" data-text-before="<i class='bi bi-check-circle-fill color-green-dark pe-2'></i> Image:" data-text-after=" is ready.">

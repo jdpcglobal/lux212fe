@@ -49,9 +49,9 @@ const BetHistoryModal = () => {
                     <div className="d-flex pb-2">
                         <div className="align-self-center">
                             {/* <h5 class="mb-n2 font-12 color-highlight font-700 text-uppercase pt-1">Deposit</h5> */}
-                            <h1 className="font-800 font-22 trn Title" data-trn-key="History">
+                            <label className="font-800 font-22 trn Title" data-trn-key="History">
                                 History
-                            </h1>
+                            </label>
                         </div>
                         <div className="align-self-center ms-auto">
                             <a href="#" data-bs-dismiss="offcanvas" className="icon icon-m">

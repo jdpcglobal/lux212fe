@@ -2016,6 +2016,7 @@
 
   .font-22 {
     font-size: 22px !important;
+    font-family: system-ui !important;
   }
 
   .font-23 {
@@ -5510,6 +5511,34 @@
     font-size: 15px;
     margin-bottom: 20px;
   }
+
+  .UserProfileTable{
+    border: 2px solid black;
+    color: white;
+    font-size: 15px;
+    margin-bottom: 20px;
+    width: 600px;
+  }
+
+  @media screen and (max-width:750px){
+    .UserProfileTable{
+      width: 500px;
+    }
+  }
+
+  @media screen and (max-width:550px){
+    .UserProfileTable{
+      width: 350px
+    }
+  }
+
+  @media screen and (max-width:390px){
+    .UserProfileTable{
+      width: 280px
+    }
+  }
+
+  
 
   .Tr{
     background-color: #1a3d70 !important;

@@ -299,7 +299,7 @@ const DiamondHome = () => {
                                         <TabList>
                                             {tabsData.length > 0 && tabsData.map((games) =>
                                                 <>
-                                                    <Tab>{games.Description}</Tab>
+                                                    <Tab >{games.Description}</Tab>
                                                 </>
                                             )}
                                         </TabList>
@@ -310,7 +310,7 @@ const DiamondHome = () => {
                                                 <div className='TabPanel' >
                                                     {tabpanelData.length > 0 && tabpanelData.map((data, i) =>
                                                         <>
-                                                            <a className='mx-1 provider cursor' style={{ display: "inline-block" }} onClick={() => handleButtonClick(data.Code, data.GameTypeCode)}>{data.Name}</a>
+                                                            <a className='mx-1 provider cursor' style={{ display: "inline-block", marginRight:'10px' }} onClick={() => handleButtonClick(data.Code, data.GameTypeCode)}>{data.Name}</a>
                                                         </>
                                                     )}
                                                 </div>

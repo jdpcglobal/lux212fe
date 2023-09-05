@@ -79,7 +79,7 @@ const TransferCredit = () => {
                 <div className="content">
                     <div className="d-flex pb-2">
                         <div className="align-self-center">
-                            <h1 className="font-800 font-22 trn Title eWallet" data-trn-key="Deposit">Transfer Credit</h1>
+                            <label className="font-800 font-22 trn Title eWallet" data-trn-key="Deposit">Transfer Credit</label>
                         </div>
                         <div className="align-self-center ms-auto">
                             <a href="#" data-bs-dismiss="offcanvas" className="icon icon-m"><i className="bi bi-x-circle-fill color-red-dark font-18 me-n4" /></a>

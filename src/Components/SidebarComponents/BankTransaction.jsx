@@ -46,18 +46,20 @@ const BankTransaction = () => {
                         </div>
                         <div className="row">
                             <div className="col-sm-10 offset-sm-1 " style={{ marginTop: '30px' }}>
-                                <div className="align-self-center" style={{width:'16rem'}}>
-                                    <h1 className="font-800 font-22 trn Title" data-trn-key="Deposit">Bank Transaction </h1>
+                                <div className="align-self-center" style={{ width: '16rem' }}>
+                                    <label className="font-800 font-22 trn Title" data-trn-key="Deposit">Bank Transaction </label>
                                 </div>
+                                
                                 {transactionData.map((transaction, index) => (
-                                <table className="table" >
-                                    <tbody style={{ fontSize: 15, fontWeight: "bold" }}>
-                                        
+                                    <table className="table" >
+                                        <tbody style={{ fontSize: 15, fontWeight: "bold" }}>
+
                                             <tr>
                                                 <th className="Th">
-                                                    <p>Bank :{transaction.BankName} </p>
+                                                    <p>Bank : {transaction.BankName} </p>
                                                     <p style={{ color: transaction.Type === "BankDr" ? "green" : "red" }}>
-                                                        Amount: {transaction.Amount}
+                                                        Amount: {transaction.Amount.toString().slice(0, 8)}
+                                                        {transaction.Amount.toString().length > 8 ? "..." : ""}
                                                     </p>
                                                 </th>
                                                 <td className="Th">
@@ -80,9 +82,9 @@ const BankTransaction = () => {
                                                     )}
                                                 </td>
                                             </tr>
-                                        
-                                    </tbody>
-                                </table>
+
+                                        </tbody>
+                                    </table>
                                 ))}
                             </div>
                         </div>
