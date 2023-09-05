@@ -5371,7 +5371,9 @@
   }
 
   .rounded-xss {
-    background: darkgray !important;
+    background-color: #363b84 !important;
+    color: white !important;
+    border-radius: 10px !important;
   }
 
   /* =========== */
