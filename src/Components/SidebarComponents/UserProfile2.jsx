@@ -99,7 +99,7 @@ const UserProfile2 = () => {
                                     <td className="Td">User Name</td>
                                     <td>{data.UId}</td>
                                 </tr>
-                                <tr className="Tr2">
+                                <tr className="Tr2 m-1">
                                     <td className="Td">Email</td>
                                     <td>{data.Email} <Button style={{ marginLeft: '30px', width: '50px' }} variant="outline-secondary" onClick={() => setChangeEmailModal(true)}><i class="bi bi-pencil-fill"></i></Button></td>
                                 </tr>

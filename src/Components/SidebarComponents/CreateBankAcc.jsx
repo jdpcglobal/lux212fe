@@ -1,4 +1,5 @@
-import { Button, Modal } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
+import { Button } from 'reactstrap';
 import Cookies from 'universal-cookie';
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
@@ -32,55 +33,46 @@ const CreateBankAcc = ({ show, close, setDrawCount }) => {
 
     return (
         <Modal show={show} onHide={close}>
-            <Modal.Header closeButton>
-                <Modal.Title>Add Bank Account</Modal.Title>
-            </Modal.Header>
             <Modal.Body>
                 <div className="container w-100%">
                     <div className="row">
                         <div className="col-lg-12">
                             <div className="row">
-                                <form>
-                                    <div className="mb-3">
-                                        <label htmlFor="bankNameInput" className="form-label">
-                                            Select Bank
-                                        </label>
-                                        <input type="text" autoComplete="off" className=" form-control"
-                                            id="bankNameInput" name="bankName"
-                                            onChange={(e) => setBankName(e.target.value)}
-                                        />
-                                    </div>
+                                <div className="login-box">
+                                    <h2>Change Phone</h2>
+                                    <form>
+                                        <div className="user-box">
+                                            <input type="text" required="" autoComplete='off' id="bankNameInput" name="bankName"
+                                                onChange={(e) => setBankName(e.target.value)} />
+                                            <label>Select Bank</label>
+                                        </div>
+                                        <div className="user-box">
+                                            <input type="text" required="" autoComplete='off'
+                                                id="accountHolderInput" name="accountHolder"
+                                                onChange={(e) => setAccNumber(e.target.value)} />
+                                            <label>Enter Account Holder's Name</label>
+                                        </div>
+                                        <div className="user-box">
+                                            <input type="number" required="" autoComplete='off'
+                                                id="accountNoInput" name="accountNo"
+                                                onChange={(e) => setHolderName(e.target.value)} />
+                                            <label>Account No</label>
+                                        </div>
 
-                                    <div className="mb-3">
-                                        <label htmlFor="accountHolderInput" className="form-label">
-                                            Enter Account Holder's Name
-                                        </label>
-                                        <input type="text" autoComplete="off" className="form-control"
-                                            id="accountHolderInput" name="accountHolder"
-                                            onChange={(e) => setAccNumber(e.target.value)}
-                                        />
-                                    </div>
-
-                                    <div className="mb-3">
-                                        <label htmlFor="accountNoInput" className="form-label">
-                                            Account No
-                                        </label>
-                                        <input
-                                            type="number" autoComplete="off" className="form-control" id="accountNoInput" name="accountNo"
-                                            onChange={(e) => setHolderName(e.target.value)}
-                                        />
-                                    </div>
-                                </form>
+                                        <a href="#">
+                                            <span />
+                                            <span />
+                                            <span />
+                                            <span />
+                                            <Button outline color='warning' onClick={handleSubmit}>Submit</Button>
+                                        </a>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </Modal.Body>
-            <Modal.Footer>
-                <Button variant="primary" onClick={handleSubmit}>
-                    Submit
-                </Button>
-            </Modal.Footer>
         </Modal>
     )
 }

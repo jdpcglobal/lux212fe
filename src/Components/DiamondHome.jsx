@@ -18,6 +18,7 @@ import InvitionModal from "./SidebarComponents/InvitionModal";
 import BankTransaction from "./SidebarComponents/BankTransaction";
 import TransferCredit from "./SidebarComponents/TransferCredit";
 import { useBalance } from "./SidebarComponents/BalanceContext";
+import { Link } from 'react-router-dom'
 import Loader from "./common/Loader";
 
 const DiamondHome = () => {
@@ -48,7 +49,7 @@ const DiamondHome = () => {
 
     var settings = {
         infinite: true,
-        speed: 500, 
+        speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: true,
@@ -212,15 +213,15 @@ const DiamondHome = () => {
 
     return (
         <>
-       
-           <Sidebar/>
+
+            <Sidebar />
 
             <section id="mobile_header">
                 <div className="header-bar header-fixed header-app header-bar-detached">
                     <a data-bs-toggle="offcanvas" data-bs-target="#menu-main" href="#"><i className="bi bi-list color-magenta-light" /></a>
-                    <a href="#" className="header-title color-magenta-light">
-                        <img src="https://m.kissdiamond.net/images/kdmE.png" alt="KISSDIAMOND" width="110px" />
-                    </a>
+                    <div  className="header-title color-magenta-light">
+                        <img src="../imagies/logo.png" alt="KISSDIAMOND" width="110px" style={{marginLeft:"30%"}} />
+                    </div>
                     <a href="gamecredit/index.html" style={{ display: 'inherit' }}> <i className="bi bi-wallet2" style={{ color: '#AC92EC !important', marginRight: '11px', textAlign: 'center', marginTop: '-15px', fontSize: '17px' }}>
                         <small style={{ lineHeight: '2px', display: 'block', textAlign: 'center', marginTop: '-9px', fontSize: '9px' }} className="trn">Return</small></i></a>
                 </div>
@@ -233,31 +234,36 @@ const DiamondHome = () => {
             <div id="menu-main" style={{ width: '280px' }} className="offcanvas offcanvas-start offcanvas-detached rounded-m  SSidebar">
 
                 <div className="bg-theme mx-3 align-items-center rounded-m shadow-m mt-3 mb-3"
-                    style={{ backgroundColor: "#000000" }}
+                    style={{ backgroundColor: "#0C2340" }}
                 >
-                    <div className="px-2 pb-2 pt-2">
+                    <div className=" pb-2 pt-2" style={{ paddingLeft: '34px' }}>
                         <div className="ps-2 align-self-center">
                             <h5 className="ps-1 mb-0 line-height-xs pt-1">
-                                <img src="../imagies/kdm.gif" style={{ width: 150 }} />
+                                <img src="../imagies/logo.png" style={{ width: 150 }} />
                             </h5>
                         </div>
                     </div>
                 </div>
                 <div className="bg-theme mx-3 rounded-m shadow-m mt-3 mb-3 Title">
                     <div className="px-2 pb-2 pt-2 ">
-                        <div className="ps-2 align-self-center Title">
-                            <a
-                                href="#"
-                                data-bs-toggle="offcanvas"
-                                data-bs-target="#WalletModal"
-                                id="nav-comps"
+                        <div className="ps-2 align-self-center">
+
+                            <div
+                                className="pc_wallet "
+                                style={{ cursor: "pointer" }}
+                                onclick="window.location='/gamecredit'"
                             >
-                                IDR<span className="wallet ">:{balance}</span>
-                                <i
-                                    className="bi bi-info-circle"
-                                    style={{ color: "#AC92EC !important" }}
-                                />
-                            </a>
+                                <Link to="/UserProfile2" id="nav-bank">
+                                    <div id="nav-comps">
+                                        IDR:<span className="wallet">{balance}  </span> &nbsp;&nbsp;
+                                        <i
+                                            className="bi bi-info-circle"
+                                            style={{ color: "#AC92EC !important" }}
+                                        />
+                                    </div>
+                                </Link>
+                            </div>
+                            <h5 className="ps-1 mb-0 line-height-xs pt-1">{loggedInUser?.Name}</h5>
                             <h6 className="ps-1 mb-0 font-400 opacity-40" style={{ width: "20%" }}>
                                 <span>{loggedInUser?.UId}</span>{" "}
                             </h6>
@@ -354,18 +360,15 @@ const DiamondHome = () => {
                             <i className="bi bi-chevron-right" />
                         </a>
 
-                        <a
-                            href="#"
-                            data-bs-toggle="offcanvas"
-                            data-bs-target="#ReadBank"
-                            id="nav-homes"
-                        >
-                            <i className="gradient-bluess shadow-bg shadow-bg-xs bi bi bi-bank2" />
-                            <span className="trn" data-trn-key="Deposit">
-                                Bank Account
-                            </span>
-                            <i className="bi bi-chevron-right" />
-                        </a>
+                        <Link to="/ReadBank" id="nav-bank">
+                            <div id="nav-homes">
+                                <i className="gradient-bluess shadow-bg shadow-bg-xs bi bi bi-bank2" />
+                                <span className="trn" data-trn-key="Deposit">
+                                    Bank Account
+                                </span>
+                                <i className="bi bi-chevron-right" />
+                            </div>
+                        </Link>
 
                         {/* <a href="/downline/">
                             <i className="gradient-blue shadow-bg shadow-bg-xs bi bi-people-fill" />
@@ -1259,7 +1262,7 @@ const DiamondHome = () => {
             <BetHistoryModal />
 
             <BankTransaction />
-            
+
 
             {/* Profile Modal */}
             <div id="ProfileModal" className="offcanvas offcanvas-end bg-theme">

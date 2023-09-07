@@ -20,12 +20,12 @@ const Sidebar = () => {
         <>
             <div className="rounded-m pcsidebar">
                 <div className="bg-theme mx-3 align-items-center rounded-m shadow-m mt-3 mb-3"
-                    style={{ backgroundColor: "#000000" }}
+                    style={{ backgroundColor: "#0C2340" }}
                 >
-                    <div className="px-2 pb-2 pt-2">
+                    <div className=" pb-2 pt-2" style={{paddingLeft:'34px'}}>
                         <div className="ps-2 align-self-center">
                             <h5 className="ps-1 mb-0 line-height-xs pt-1">
-                                <img src="../imagies/kdm.gif" style={{ width: 150 }} />
+                                <img src="../imagies/logo.png" style={{ width: 150 }} />
                             </h5>
                         </div>
                     </div>
@@ -145,12 +145,9 @@ const Sidebar = () => {
                             </span>
                             <i className="bi bi-chevron-right" />
                         </a>
+                        
                         <Link to="/ReadBank" id="nav-bank">
-                        <div
-                           
-                            
-                            id="nav-homes"
-                        >
+                        <div id="nav-homes">
                             <i className="gradient-bluess shadow-bg shadow-bg-xs bi bi bi-bank2" />
                             <span className="trn" data-trn-key="Deposit">
                                 Bank Account
