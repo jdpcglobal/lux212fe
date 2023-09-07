@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import { Button} from 'reactstrap';
 import Cookies from 'universal-cookie';
 import { useBalance } from './BalanceContext';
+
 const TransferCredit = () => {
+
     const [data, setData] = useState('');
     const [toUserId, setToUserId] = useState('');
     const [amount, setAmount] = useState('');
@@ -124,14 +126,12 @@ const TransferCredit = () => {
                                         />
                                     ))}
                                 </div>
-                                
                                 <Button outline color="warning"  className=" mt-4"  onClick={() => { handleClick(); }}>Submit</Button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            
         </>
     )
 }

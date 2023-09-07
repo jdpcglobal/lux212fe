@@ -1,6 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Cookies from 'universal-cookie'
 import { useBalance } from './SidebarComponents/BalanceContext'
+
+import Button from 'react-bootstrap/Button';
+import { Link } from 'react-router-dom'
+
+
 const Sidebar = () => {
     const loggedInUser = new Cookies().get("kisDiamond_LoggedIn")
     const { balance } = useBalance();
@@ -26,7 +31,7 @@ const Sidebar = () => {
                     </div>
                 </div>
                 <div className="bg-theme mx-3 rounded-m shadow-m mt-3 mb-3">
-                    <div className="px-2 pb-2 pt-2 userInfo" style={{marginBottom:'21px'}}>
+                    <div className="px-2 pb-2 pt-2 userInfo" style={{ marginBottom: '21px' }}>
                         <div className="ps-2 align-self-center">
 
                             <div
@@ -34,17 +39,15 @@ const Sidebar = () => {
                                 style={{ cursor: "pointer" }}
                                 onclick="window.location='/gamecredit'"
                             >
-                                <div
-                                    data-bs-toggle="offcanvas"
-                                    data-bs-target="#WalletModal"
-                                    id="nav-comps"
-                                >
-                                    IDR:<span className="wallet">{balance}  </span> &nbsp;&nbsp;
-                                    <i
-                                        className="bi bi-info-circle"
-                                        style={{ color: "#AC92EC !important" }}
-                                    />
-                                </div>
+                                <Link to="/UserProfile2" id="nav-bank">
+                                    <div id="nav-comps">
+                                        IDR:<span className="wallet">{balance}  </span> &nbsp;&nbsp;
+                                        <i
+                                            className="bi bi-info-circle"
+                                            style={{ color: "#AC92EC !important" }}
+                                        />
+                                    </div>
+                                </Link>
                             </div>
                             <h5 className="ps-1 mb-0 line-height-xs pt-1">{loggedInUser?.Name}</h5>
                             <h6 className="ps-1 mb-0 font-400 opacity-40" style={{ width: "20%" }}>
@@ -142,11 +145,10 @@ const Sidebar = () => {
                             </span>
                             <i className="bi bi-chevron-right" />
                         </a>
-
-                        <a
-                            href="#"
-                            data-bs-toggle="offcanvas"
-                            data-bs-target="#ReadBank"
+                        <Link to="/ReadBank" id="nav-bank">
+                        <div
+                           
+                            
                             id="nav-homes"
                         >
                             <i className="gradient-bluess shadow-bg shadow-bg-xs bi bi bi-bank2" />
@@ -154,7 +156,8 @@ const Sidebar = () => {
                                 Bank Account
                             </span>
                             <i className="bi bi-chevron-right" />
-                        </a>
+                        </div>
+                        </Link>
 
                         {/* <a href="/downline/">
                             <i className="gradient-blue shadow-bg shadow-bg-xs bi bi-people-fill" />
@@ -201,7 +204,7 @@ const Sidebar = () => {
                             </span>
                             <i className="bi bi-chevron-right" />
                         </a>
-                        <a  id="nav-mails" style={{cursor:'pointer'}} onClick={handleLogout}>
+                        <a id="nav-mails" style={{ cursor: 'pointer' }} onClick={handleLogout}>
                             <i className="gradient-dark shadow-bg shadow-bg-xs bi bi-box-arrow-left" />
                             <span className="trn"  >
                                 Logout
@@ -212,7 +215,7 @@ const Sidebar = () => {
                 </div>
             </div>
         </>
-    ) 
+    )
 }
 
 export default Sidebar

@@ -1,20 +1,20 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import DiamondHome from "./Components/DiamondHome";
-import Sidebar from "./Components/Sidebar";
 import ReadBank from "./Components/SidebarComponents/ReadBank";
-import UserProfile from "./Components/SidebarComponents/UserProfile";
+import UserProfile2 from "./Components/SidebarComponents/UserProfile2";
 import "./Components/DiamondHome.css"
+import SliderTabs from "./Components/SliderTabs";
 
 const RouteConfig = () => {
     return (
         <div>
             <BrowserRouter>
-                <Sidebar />
+            <DiamondHome />
                 <Routes>
-                    <Route path="/" element={<DiamondHome />} />
-                    <Route path="/bank" element={<ReadBank />} />
-                    <Route path="/userprofile" element={<UserProfile />} />
+                    <Route path="/" element={<SliderTabs/>} />
+                    <Route path="/ReadBank" element={<ReadBank />} />
+                    <Route path="/UserProfile2" element={<UserProfile2 />} />
                 </Routes>
             </BrowserRouter>
         </div>

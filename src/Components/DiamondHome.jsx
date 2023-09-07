@@ -1,5 +1,6 @@
 import React, { useEffect, useState, ChangeEvent } from "react";
 import Slider from "react-slick";
+import Sidebar from "./Sidebar";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { callPostApiWithoutPayload } from './ApiCaller';
@@ -16,8 +17,6 @@ import SupportModal from "./SidebarComponents/SupportModal";
 import InvitionModal from "./SidebarComponents/InvitionModal";
 import BankTransaction from "./SidebarComponents/BankTransaction";
 import TransferCredit from "./SidebarComponents/TransferCredit";
-import ReadBank from "./SidebarComponents/ReadBank";
-import UserProfile from "./SidebarComponents/UserProfile";
 import { useBalance } from "./SidebarComponents/BalanceContext";
 import Loader from "./common/Loader";
 
@@ -213,9 +212,8 @@ const DiamondHome = () => {
 
     return (
         <>
-            <div className="container">
-                <div className="row"></div>
-            </div>
+       
+           <Sidebar/>
 
             <section id="mobile_header">
                 <div className="header-bar header-fixed header-app header-bar-detached">
@@ -229,235 +227,6 @@ const DiamondHome = () => {
             </section>
             {/* END PAGE CONTENT */}
 
-            <section className="pcview">
-                <div className="page-content header-clear-medium">
-                    <div
-                        className="alert bg-fade-magenta color-magenta-dark alert-dismissible rounded-0 py-2 mt-n2"
-                        role="alert"
-                        id="versionalert"
-                        style={{ display: "none" }}
-                    >
-                        <i className="bi bi-cloud-download pe-2" />
-                        <span>New version is available now - </span>
-                        <a className="color-magenta-dark fst-italic" href="/download/">
-                            Download
-                        </a>
-                        <button
-                            type="button"
-                            className="btn-close opacity-20 font-11 pt-1 mt-1"
-                            data-bs-dismiss="alert"
-                            aria-label="Close"
-                        />
-                    </div>
-
-                    <div
-                        className="splide single-slider slider-no-dots slider-no-arrows slider-boxed text-center mt-n1 splide--loop splide--ltr splide--draggable is-active"
-                        id="mobilebanner"
-                        style={{ visibility: "visible" }}
-                    >
-                        <Slider {...settings}>
-                            {AdsData.length > 0 && AdsData.map((data, i) => (
-                                <>
-                                    <div className="banner w-100">
-                                        <div className="splide__slide is-active is-visible">
-                                            <div
-                                                className="card card-style mx-0 shadow-card shadow-card-m sliderImage"
-                                                data-card-height={300}
-                                                style={{
-                                                    backgroundImage: `url(${data.Url})`,
-                                            
-                                                }}
-                                            >
-                                            </div>
-                                        </div>
-                                    </div>
-                                </>
-                            ))}
-                        </Slider>
-                    </div>
-
-                    {/* slider */}
-
-                    <div className="content mx-3 mt-0" id="mobilediv">
-
-                        <div className="row">
-                            {/* end category app */}
-                            {/* category pc */}
-                            <div className="col-md-12 m-auto catslider_pc" style={{ padding: 0 }}>
-                                {/*<div class="profile-tabs">*/}
-                                <div className="splide slider-no-dots slider-no-arrows slider-visible-center text-center splide--slide splide--ltr splide--draggable is-active" id="category-pc" style={{ visibility: 'visible' }}>
-                                    <div className="splide__track" style={{ borderBottom: 'solid 1px rgba(0, 0, 0, 0.07)' }} id="category-pc-track">
-                                        <div className="splide__list" id="category-pc-list" style={{ transform: 'translateX(0px)' }}>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="Tabs" style={{ cursor: 'pointer' }}>
-                                <Tabs selectedIndex={tabIndex} onSelect={(index) => handleTabSelect(index)}>
-                                    <div className="get TabPanel" style={{ marginTop: '7px'}}>
-                                        <TabList>
-                                            {tabsData.length > 0 && tabsData.map((games) =>
-                                                <>
-                                                    <Tab >{games.Description}</Tab>
-                                                </>
-                                            )}
-                                        </TabList>
-                                    </div>
-                                    {tabsData.length > 0 && tabsData.map((rowData, i) =>
-                                        <TabPanel className=" ">
-                                            <>
-                                                <div className='TabPanel' >
-                                                    {tabpanelData.length > 0 && tabpanelData.map((data, i) =>
-                                                        <>
-                                                            <a className='mx-1 provider cursor' style={{ display: "inline-block", marginRight:'10px' }} onClick={() => handleButtonClick(data.Code, data.GameTypeCode)}>{data.Name}</a>
-                                                        </>
-                                                    )}
-                                                </div>
-                                            </>
-                                        </TabPanel>
-                                    )}
-                                </Tabs>
-                            </div>
-                            {/* end category pc */}
-                        </div>
-                        <div className="mt-3"></div>
-                        <div className="row row-cols-3 row-cols-md-6">
-
-                            {/* KING855 */}
-                            
-                                <>
-                                    {responseData.length > 0 && responseData.map((data) =>
-                                        <div className="col-3 p-1 game-item livecasino allgame" style={{ cursor: 'pointer' }}>
-                                            <div className="card card-style rounded-s m-0">
-                                                <img src="/images/process.gif" alt="" className="KING855 process" />
-                                                {gameLoader ? <Loader /> :
-                                                    <img onClick={() => handleGameClick(data.GameCode)}
-                                                        className="lazyload cursor"
-                                                        data-src="./imagies/live_855.jpg"
-                                                        src={data.ImageURL}
-                                                        alt=""
-                                                        onclick="action_live('KING855')"
-                                                    />
-                                                }
-                                            </div>
-                                            <div className="game-title" >{data.GameName}</div>
-                                        </div>
-                                    )}
-                                </>
-                            
-                            {/* end KING855 */}
-
-                        </div>
-                        <div className="col-12 p-2 game-item promo" style={{ display: 'none' }}>
-                            <div className="row" id="allpromotion1">        <div className="col-12 col-md-6 promo">
-                                <div className="card card-style mb-0 mx-0">
-                                    <img src="https://media.btnexus.net/DMD/7859220230608174548.jpg" alt="King855" width="100%" />
-                                </div>
-                                <div className="row promo-text" style={{ display: 'none' }}>
-                                    <div className="col-12" style={{ whiteSpace: 'pre-line' }}>
-                                        <p /><p><br /></p><p />
-                                    </div>
-                                </div>
-                            </div>
-                                <div className="col-12 col-md-6 promo">
-                                    <div className="card card-style mb-0 mx-0">
-                                        <img src="https://media.btnexus.net/DMD/8798620220905173537.jpg" alt="King855" width="100%" />
-                                    </div>
-                                    <div className="row promo-text" style={{ display: 'none' }}>
-                                        <div className="col-12" style={{ whiteSpace: 'pre-line' }}>
-                                            <p /><div id="sportpromo_cn">
-                                                <p><strong>如何申请：</strong></p><p>仅适用于 MYR 帐户会员。</p><p>所有会员均有资格参与此优惠活动。</p><p>会员需在任何足球比赛中至少连胜7场，并投注至少 MYR 1000 有效投注额。</p><p>一旦会员完成上述条件，请联系我们的客服专员以领取您的奖励。</p>
-                                                <p>KISS DIAMOND 将在客服验证成功后的 24 小时内以发放奖金至会员账户。</p><p><br /></p><p><strong>条款与条规：</strong></p><p>以上活动支持早盘以及滚球盘下注。仅有产生赢的投注将被计入连胜。如果和局或输局连胜将无效，并重新计算。</p><p>仅视1x2, 让分盘, 大/小, 单/双和有在半场/全场比赛时间内的投注为有效。任何低于0.7（马来赔率），0.7（香港/中国赔率）或 1.7（小数制）的球盘，提钱兑现和在同一场比赛中同时投注双方队伍的情况将不被视为合格投注。</p>
-                                                <p>特别投注和取消比赛时的投注将不被计为连胜局，但是不影响连胜局数。</p><p>无论在任何游戏商提钱兑现或在同一场比赛中同时投注双方队伍的情况，连胜将无效，并重新计算。</p><p>同个盘口多个注单将视为一次（x1）连赢，同场比赛多个盘口给予计算连胜局数。</p><p>同一场赛事中同时下注 M8BET, OBET33 , BCSPORT 仅计算一次。7连胜局数必须来自同一个游戏商才能享有此优惠。</p><p>此优惠活动仅限于【足球】赛事。虚拟体育不包括在内。</p>
-                                                <p>此优惠一天(00:00:00-23:59:59 GMT+8)内仅能申请一次。连赢场次完成后24小时内联系客服进行申请，如会员在连赢完成后24小时内未联系客服进行申请，视为主动放弃该活动奖金。</p>
-                                                <p>所有送出的优惠仅限一人一份。此处所指的一人一份指的是一个家庭、住家地址、IP地址（网际协议地址）、电子邮件地址、电话号码 /电子支付、或公共电脑（例子：学校、公共图书馆或工作地点等等地点的电脑）</p><p>所有产生输赢的投注将被计算在有效投注额内，任何平局或取消的赌注皆不计算为有效投注额。</p><p>此优惠活动不可与KISS DIAMOND其他的优惠活动同时使用/进行。</p><p>KISS DIAMOND 保留可单方面执行的绝对决定权, 可以在任何时候无事先通知的情况下修改、改变此优惠活动的条件与条款/停止、终止或取消此优惠活动。</p>
-                                                <p>参与此优惠活动的会员必须接受并遵守上述条款与条规以及KISS DIAMOND 的所有相关条款与条规。</p>
-                                                <p>中英文版本如有歧义，概以英文版本为准。</p><p><br /></p><p><strong>优惠生效日期 ：6/9/2022 12:00:00 至 30/9/2022 23:59:59</strong></p><p><br /></p><p><strong>适用于 KISS DIAMOND 一般的条款与条规。</strong></p><p><br /></p><p>奖金</p><p>1000&nbsp;&nbsp;: 168</p><p>5000&nbsp;&nbsp;: 338</p><p>20000 : 778</p><p>50000 : 1128</p><p>88888 : 1688</p><p><br /></p></div>
-                                            <div id="sportpromo_en">
-                                                <p><strong>How to Apply: </strong></p><p>Only available for MYR account members.</p><p>All members are entitled to this promotion.</p><p>Members are required to win at least 7x in a row on any Soccer games and have a total minimum valid bet of MYR 1000 for all 7 and above winning streak bets.</p>
-                                                <p>Once members have achieved the requirements, kindly contact Customer Support to claim your rewards.</p><p>KISS DIAMOND will issue bonuses to member accounts within 24 hours after customer service verification is successful.</p><p><br /></p>
-                                                <p><strong>Term and Conditions:</strong></p><p>This promotion in only applicable for early and live match (Match already started) betting. Only the bet amount that has been settled and resulted in a winning result will be counted towards a winning streak. Draw and Lose betting results will void the winning streak.</p><p>Only applicable to 1x2, Handicap, Over/Under, Odd/Even, within half/full game will be counted towards a winning streak.</p>
-                                                <p>Mix Parlay, Special Bets, and cancelation match will not be counted as winning round, however it won’t affect the existing winning streak.</p><p>Any bet below odds of 0.70 (Malay odds), 0.70 (Hong Kong/China odds), or 1.70 (Decimal odds), early redemption of bet (cash out), bet on both team in the same match will not be counted towards a winning streak.</p><p>Early redemption of bet (cash out) and bet on both team in the same match regardless of provider will void the winning streak.</p>
-                                                <p>Bets on the same 1x2, Handicap, Over/Under, Odd/Even with different stake amounts will be counted as one winning streak. Bets on different 1x2, Handicap, Over/Under, Odd/Even during the same match will be counted towards a winning streak.</p><p>Bets on M8BET, OBET33 , BCSPORT providers at the same time in the same event will only be counted once. Only bets resulting in x7 winning streak in one (1) single provider will be applicable.</p><p>This offer is only limited to [Soccer] events. Virtual Sports is excluded.</p>
-                                                <p>This promotion is only applicable to be claimed maximum once (1) a day (00:00:00 – 23:59:59 GMT+8). Members need to claim this bonus from Customer Service within 24 hours from the last game of a winning streak. Claims outside 24 hours after the last winning streak game will not be applicable.</p><p>All customer offers are limited to one per person. Meaning one per family, household address, IP address, email address, telephone number,&nbsp;e-payment account, or shared computer (e.g. school, public library or workplace).</p>
-                                                <p>Bonuses are valid for seven (7) days upon issuance unless stated otherwise. Money won will be tranfers to the member’s account if conditions are not fulfilled within a given time frame.</p><p>Any bets resulting in void, tie, cancelled, or made on opposite sides with the same outcome will not be counted as a valid turnover.</p><p>This promotion cannot be used in conjunction with other KISS DIAMOND promotions.</p><p>KISS DIAMOND reserves the right to modify, cancel, suspend or terminate the promotion and/or change the terms of the said promotion at any time without prior notice.</p>
-                                                <p>Participating members must accept and comply with all the terms mentioned above as well as all relevant rules and regulations stated on the KISS DIAMOND website.</p><p><br /></p><p><strong>Promotion Available Period ：6/9/2022 12:00:00 to 30/9/2022 23:59:59</strong></p><p><br /></p><p><strong>General KISS DIAMOND Terms &amp; Conditions apply. </strong></p><p><br /></p><p>Bonus:</p><p>1000&nbsp;&nbsp;: 168</p><p>5000&nbsp;&nbsp;: 338</p><p>20000 : 778</p><p>50000 : 1128</p><p>88888 : 1688</p></div>
-                                            <div id="sportpromo_my">
-                                                <p><strong>Kaedah Penyertaan: </strong></p><p>Promosi ini terbuka kepada semua ahli.</p><p>Ahli dikehendaki menang sekurang-kurangnya 7 kali berturut-turut pada mana-mana perlawanan bola sepak dan mencapai jumlah taruhan yang sah MYR 1000 dalam 7 kemenangan berturut-turut dan ke atas.</p><p>Selepas ahli memenuhi syarat, sila menghubungi Perkhidmatan Pelanggan kami untuk menuntut bonus anda.</p><p>Ganjaran akan dikreditkan dalam masa 24 jam setelah pengesahan dari Perkhidmatan Pelanggan.</p><p><br /></p><p><strong>Terma dan Syarat: </strong></p>
-                                                <p>Promosi ini hanya berlaku untuk pertaruhan awal dan langsung (Perlawanan sudah dimulakan). Hanya jumlah pertaruhan yang telah diselesaikan dan menghasilkan keputusan yang menang akan dikira ke arah kemenangan berturutan. Hasil pertaruhan seri (draw) dan kalah (lose) akan membatalkan kemenangan berturutan.</p><p>Hanya berlaku untuk 1x2, Handicap, Over/Under, Ganjil/Genap, dalam separuh/penuh permainan akan dikira ke arah kemenangan berturutan. Sebarang pertaruhan di bawah kemungkinan 0.70 (kemungkinan Melayu), 0.70 (kemungkinan Hong Kong / China),&nbsp;1.70 (kemungkinan Perpuluhan), penebusan awal pertaruhan (cash out), bertaruh kedua-dua pasukan
-                                                    dalam perlawanan yang sama tidak akan dikira ke arah kemenangan berturutan.</p>
-                                                <p>Mix Parlay, Pertaruhan Khas, dan pertandingan dibatalkan tidak akan dikira sebagai pusingan kemenangan, namun ia tidak akan mempengaruhi rentak kemenangan berturutan yang ada.</p><p>Penebusan pertaruhan awal (cash out) dan pertaruhan kedua-dua pasukan dalam perlawanan yang sama tanpa mengira provider akan membatalkan kemenangan berturutan.</p><p>Taruhan pada 1x2, Handicap, Over/Under, Odd/Even yang sama dengan jumlah taruhan yang berbeza akan dikira sebagai satu kemenangan berturutan. Taruhan pada 1x2, Handicap, Over/Under, Ganjil/Genap semasa perlawanan yang sama akan dikira sebagai kemenangan berturutan.</p><p>Taruhan pada provider M8BET, OBET33 , BCSPORT pada masa yang sama dalam acara
-                                                    yang sama hanya akan dikira sekali. Hanya pertaruhan yang menghasilkan rentak kemenangan berturutan x7 dalam satu (1) provider tunggal yang akan berlaku.</p><p>Tawaran ini hanya terhad untuk acara [Bola Sepak]. Tidak termasuk Virtual Sports.</p><p>Promosi ini hanya berlaku untuk dituntut maksimum sekali (1) sehari (00:00:00 - 23:59:59 GMT + 8). Ahli perlu menuntut bonus ini dari Perkhidmatan Pelanggan dalam masa 24 jam dari permainan terakhir kemenangan berturutan. Tuntutan di luar 24 jam selepas permainan kemenangan berturutan
-                                                        terakhir tidak akan berlaku.</p><p>Semua promosi yang ditawarkan kepada pelanggan adalah seorang hanya akan mendapat satu sahaja, maksudnya satu per keluarga, alamat rumah tangga, alamat IP, alamat e-mel, nombor telefon, e-pembayaran, atau komputer awam, (contohnya sekolah, perpustakaan awam atau tempat kerja).</p><p>Hanya Taruhan yang berakhir dengan menang/kalah akan dihitung ke dalam Taruhan yang memenuhi syarat. Taruhan yang dibatalkan atau tidak berlaku dan taruhan yang dipasang pada dua kemunkinan di pertandingan tidak akan dihitung ke dalam Taruhan yang memenuhi syarat.</p><p>Promosi ini tidak sah dengan promosi lain.</p><p>KISS DIAMOND mempunyai hak untuk mengubahsuai,
-                                                            membatalkan, menggantung atau menamatkan promosi dan / atau menukar syarat promosi tersebut pada bila-bila masa tanpa notis terlebih dahulu.</p><p>Ahli-ahli yang mengambil bahagian mesti menerima dan mematuhi semua terma yang dinyatakan di atas serta semua peraturan dan peraturan yang berkaitan yang dinyatakan di laman web KISS DIAMOND.</p><p>Di mana Terma dan Syarat Promosi disediakan dalam bahawa Bahasa Inggeris dan bahasan lain, sekiranya terdapat sebarang ketidakseragaman antara bahasa Inggeris dan bahasa lain, versi bahasa Inggeris hendaklah diguna pakai dan dikuatkuasakan dalam semua hal.</p>
-                                                <p><br /></p><p><strong>Promotion Available Period ：6/9/2022 12:00:00 to 30/9/2022 23:59:59</strong></p><p><br /></p><p><strong>Terma dan Syarat Umum KISS DIAMOND berlaku. </strong></p><p><br /></p><p>Bonus：</p><p>1000&nbsp;&nbsp;: 168</p><p>5000&nbsp;&nbsp;: 338</p><p>20000 : 778</p><p>50000 : 1128</p><p>88888 : 1688</p></div>
-                                            <p><br /></p><p><br /></p><p />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-12 col-md-6 promo">
-                                    <div className="card card-style mb-0 mx-0">
-                                        <img src="https://media.btnexus.net/DMD/6549720220905184608.jpg" alt="King855" width="100%" />
-                                    </div>
-                                    <div className="row promo-text" style={{ display: 'none' }}>
-                                        <div className="col-12" style={{ whiteSpace: 'pre-line' }}>
-                                            <p /><div id="live_cn">
-                                                <p><strong>如何申请：</strong></p><p><br /></p><p>所有会员均有资格参与此优惠活动。</p><p>会员需在任何真人娱乐游戏中至少连胜7场, 并累积至少 MYR 1000 有效投注额。</p><p>一旦会员完成上述条件，请联系我们的客服以领取您的奖励。</p><p>KISS DIAMOND 将在客服验证成功后的 24 小时内发放奖金至会员账户。</p><p><br /></p><p><strong>条款与条规：</strong></p><p><br /></p><p>此优惠连赢仅计算百家乐游戏中的"庄"/"闲"投注玩法, 如果投注百家乐游戏的其它玩法无论输赢，连胜将无效，并重新计算。</p><p>游戏过程中如出现和局或输局，连胜将无效，并重新计算。</p><p>如果局号相同的"庄"/"闲"多次投注，该回合赢了，将视为一次（x1）连赢。</p><p>此优惠一天 (00:00:00-23:59:59 GMT+8) 内仅能申请一次。</p><p>连赢次数完成后24小时内联系客服进行申请，如会员在连赢完成后24小时内未联系客服进行申请，将视为主动放弃该活动奖金。</p><p>任何和局，取消或对赌的赌注皆不计为连胜局数。</p><p>所有送出的优惠仅限一人一份。此处所指的一人一份指的是一个家庭、住家地址、IP地址（网际协议地址）、电子邮件地址、电话号码、电子支付、或公共电脑（例子：学校、公共图书馆或工作地点等等地点的电脑）。</p><p>此优惠活动不可与KISS DIAMOND其他的优惠活动同时使用/进行。</p><p>KISS DIAMOND 保留可单方面执行的绝对酌情决定权, 可以在任何时候无事先通知的情况下修改、改变此优惠活动的条件与条款/停止、终止或取消此优惠活动。</p><p>参与此优惠活动的会员必须接受并遵守上述条款与条规以及KISS DIAMOND 的所有相关条款与条规。</p><p>中英文版本如有歧义，概以英文版本为准。</p><p><br /></p><p><strong>优惠生效日期 ：6/9/2022 12:00:00 至 30/9/2022 23:59:59</strong></p><p><br /></p><p><strong>适用于KISS DIAMOND一般的条款与条规。</strong></p><p><br /></p><p>奖金</p><p><br /></p><p>1000&nbsp;&nbsp;: 168</p><p>5000&nbsp;&nbsp;: 338</p><p>20000 : 778</p><p>50000 : 1128</p><p>88888 : 1688</p></div>
-                                            <div id="live_en">
-                                                <p><strong>How to apply:</strong></p><p><br /></p><p>All members are entitled to this promotion.</p><p>Members are required to win at least 7x in a row on any Live Baccarat games and have a total minimum valid bet of MYR 1000 for all 7 and above winning streak bets.</p><p>Once members have achieved the requirements, kindly contact Customer Service to claim your rewards.</p><p>KISS DIAMOND will issue bonuses to member accounts within 24 hours after customer service verification is successful.</p><p><br /></p><p><strong>Term and Conditions:</strong></p><p><br /></p><p>Only bets on banker or player are applicable for this promo, side bets will not be counted towards a winning streak and side bets resulting in win/loss will void the winning streak.</p><p>Bets resulting in a tie or lose will void the winning streak.</p><p>Multiple bets on banker or player on the same table round will only be considered as one times (x1) winning streak if the round results in a win.</p><p>This promotion is only applicable to be claimed maximum once (1) a day (00:00:00 – 23:59:59 GMT+8).</p><p>Members need to claim this bonus from Customer Service within 24 hours from the last game of a winning streak. Claims outside 24 hours after the last winning streak game will not be applicable.</p><p>Any bets resulting in void, tie, cancelled, or made on opposite sides with the same outcome will not be counted as a winning streak.</p><p>All customer offers are limited to one per person. Meaning one per family, household address, IP address, email address, telephone number, e-payment account, or shared computer (e.g. school, public library or workplace).</p><p>Bonuses are valid for seven (7) days upon issuance unless stated otherwise. Money won&nbsp;will be tranfer to member’s account if conditions are not fulfilled within a given time frame.</p><p>This promotion cannot be used in conjunction with other KISS DIAMOND promotions.</p><p>KISS DIAMOND reserves the right to modify, cancel, suspend or terminate the promotion and/or change the terms of the said promotion at any time without prior notice.</p><p>Participating members must accept and comply with all the terms mentioned above as well as all relevant rules and regulations stated on the KISS DIAMOND website.</p><p><br /></p><p><strong>Promotion Available Period ：6/9/2022 12:00:00 to 30/9/2022 23:59:59</strong></p><p><br /></p><p><strong>General KISS DIAMOND Terms &amp; Conditions apply.</strong></p><p><br /></p><p>Bonus</p><p><br /></p><p>1000&nbsp;&nbsp;: 168</p><p>5000&nbsp;&nbsp;: 338</p><p>20000 : 778</p><p>50000 : 1128</p><p>88888 : 1688</p></div>
-                                            <div id="live_my">
-                                                <p><strong>Kaedah Penyertaan:</strong></p><p><br /></p><p>Promosi ini terbuka kepada semua ahli.</p><p>Ahli dikehendaki menang sekurang-kurangnya 7 kali berturut-turut pada mana-mana permainan Live Baccarat dan mencapai jumlah taruhan yang sah MYR 1000 dalam 7 kemenangan berturut-turut dan ke atas.</p><p>Selepas ahli memenuhi syarat, sila menghubungi Perkhidmatan Pelanggan kami untuk menuntut bonus anda.</p><p>Ganjaran akan dikreditkan dalam masa 24 jam setelah pengesahan dari Perkhidmatan Pelanggan.</p><p><br /></p><p><strong>Terma dan Syarat:</strong></p><p><br /></p><p>Hanya pertaruhan pada "banker" atau "player" akan layak untuk promosi ini, pertaruhan sampingan tidak akan dikira ke arah rentak kemenangan berturutan dan pertaruhan sampingan yang mengakibatkan kemenangan/kekalahan akan membatalkan kemenangan berturutan.</p><p>Taruhan yang menghasilkan seri atau kalah akan membatalkan kemenangan berturutan.</p><p>Pelbagai pertaruhan pada "banker" atau "player" pada pusingan meja yang sama hanya akan dianggap sebagai satu kali (x1) kemenangan berturutan jika pusingan menghasilkan kemenangan.</p><p>Promosi ini hanya berlaku untuk dituntut maksimum sekali (1) sehari (00:00:00 - 23:59:59 GMT + 8).</p><p>Ahli perlu menuntut bonus ini dari Perkhidmatan Pelanggan dalam masa 24 jam dari permainan terakhir kemenangan berturutan. Tuntutan di luar 24 jam selepas permainan kemenangan berturutan terakhir tidak akan berlaku.</p><p>Sebarang pertaruhan yang mengakibatkan kekalahan, seri, dibatalkan, atau dibuat di seberang dengan hasil yang sama tidak akan dikira ke arah kemenangan berturutan.</p><p>Semua promosi yang ditawarkan kepada pelanggan adalah seorang hanya akan mendapat satu sahaja, maksudnya satu per keluarga, alamat rumah tangga, alamat IP, alamat e-mel, nombor telefon, e-pembayaran, atau komputer awam, (contohnya sekolah, perpustakaan awam atau tempat kerja).</p><p>Promosi ini tidak sah dengan promosi lain.</p><p>KISS DIAMOND mempunyai hak untuk mengubahsuai, membatalkan, menggantung atau menamatkan promosi dan / atau menukar syarat promosi tersebut pada bila-bila masa tanpa notis terlebih dahulu.</p><p>Ahli-ahli yang mengambil bahagian mesti menerima dan mematuhi semua terma yang dinyatakan di atas serta semua peraturan dan peraturan yang berkaitan yang dinyatakan di laman web KISS DIAMOND.</p><p>Di mana Terma dan Syarat Promosi disediakan dalam bahawa Bahasa Inggeris dan bahasan lain, sekiranya terdapat sebarang ketidakseragaman antara bahasa Inggeris dan bahasa lain, versi bahasa Inggeris hendaklah diguna pakai dan dikuatkuasakan dalam semua hal.</p><p><br /></p><p><strong>Promotion Available Period ：6/9/2022 12:00:00 to 30/9/2022 23:59:59</strong></p><p><br /></p><p><strong>Terma dan Syarat Umum KISS DIAMOND berlaku.</strong></p><p><br /></p><p><br /></p><p>Bonus</p><p><br /></p><p>1000&nbsp;&nbsp;: 168</p><p>5000&nbsp;&nbsp;: 338</p><p>20000 : 778</p><p>50000 : 1128</p><p>88888 : 1688</p></div>
-                                            <p><br /></p><p><br /></p><p />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-12 col-md-6 promo">
-                                    <div className="card card-style mb-0 mx-0">
-                                        <img src="https://media.btnexus.net/DMD/5898920220922115107.png" alt="King855" width="100%" />
-                                    </div>
-                                    <div className="row promo-text" style={{ display: 'none' }}>
-                                        <div className="col-12" style={{ whiteSpace: 'pre-line' }}>
-                                            <p /><p><br /></p><p />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-12 col-md-6 promo">
-                                    <div className="card card-style mb-0 mx-0">
-                                        <img src="https://media.btnexus.net/DMD/8203720230104151724.jpg" alt="King855" width="100%" />
-                                    </div>
-                                    <div className="row promo-text" style={{ display: 'none' }}>
-                                        <div className="col-12" style={{ whiteSpace: 'pre-line' }}>
-                                            <p /><p><br /></p><p />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="offcanvas offcanvas-top rounded-m offcanvas-detached gradient-magenta" data-bs-backdrop="false" data-bs-scroll="true" id="transfernotice" style={{ height: 'fit-content', top: '77px' }} role="dialog">
-                            <div className="gradient-magenta px-3 py-3">
-                                <div className="d-flex">
-                                    <div className="align-self-center">
-                                        <i className="bi bi-coin font-20 pe-2 scale-box color-white" />
-                                    </div>
-                                    <div className="align-self-center">
-                                        <h1 className="color-white font-700 font-20 mb-0 trn" data-trn-key="Accept Transfer">Accept Transfer</h1>
-                                    </div>
-                                </div>
-                                <h5 className="color-white font-200 font-14 mt-2" style={{ letterSpacing: '0px' }}><t data-trn-key="You have a">You have a</t> <span className="font-600 color-yellow-light" id="tamt" /> <t data-trn-key="credit transfer from">credit transfer from</t>
-                                    <span className="font-600 color-yellow-light" id="tfrom" /> <t data-trn-key="with">with</t><br /> <span className="font-600 color-yellow-light" id="tturnover" /> <t data-trn-key="turnover requirement.">turnover requirement.</t></h5>
-                                <h5 className="color-white font-200 font-14 mb-3 trn" style={{ letterSpacing: '0px' }} data-trn-key="Do you want to accept it?">Do you want to accept it?</h5>
-                                <div className="d-flex w-100 justify-content-between">
-                                    <button className="transfer_action btn btn-full btn-xs gradient-red shadow-bg shadow-bg-s trn" data-action="decline" id="transfer_decline" data-ind style={{ width: '48%' }} data-trn-key="Decline">Decline</button>
-                                    <button className="transfer_action btn btn-full btn-xs gradient-mint shadow-bg shadow-bg-s trn" data-action="accept" id="transfer_accept" data-ind style={{ width: '48%' }} data-trn-key="Accept">Accept</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* END PAGE CONTENT */}
             {/* INCLUDE SIDE BAR  */}
             {/* App Side Bar */}
             <style media="screen" dangerouslySetInnerHTML={{ __html: "\n  @media screen and (max-width: 991px) {\n    .pcsidebar {\n      display: none !important;\n    }\n    #mobile_header {\n      display: block !important;\n    }\n    .catslider_app {\n      display: block !important;\n    }\n    .catslider_pc {\n      display: none !important;\n    }\n    #footer-bar {\n      margin-left: 0;\n    }\n  }\n  @media screen and (min-width: 991px) {\n    .pcsidebar {\n      display: block !important;\n    }\n    .pcview {\n      margin-left: 310px;\n    }\n    #mobile_header {\n      display: none !important;\n    }\n    .catslider_app {\n      display: none !important;\n    }\n    .catslider_pc {\n      display: block !important;\n    }\n    #footer-bar {\n      display: none !important;\n      margin-left: 300px;\n    }\n    .pcview .header-clear-medium {\n      padding-top: 30px !important;\n    }\n    .splide__slide img {\n      vertical-align: middle !important;\n    }\n  }\n" }} />
@@ -1490,8 +1259,7 @@ const DiamondHome = () => {
             <BetHistoryModal />
 
             <BankTransaction />
-            <ReadBank />
-            <UserProfile />
+            
 
             {/* Profile Modal */}
             <div id="ProfileModal" className="offcanvas offcanvas-end bg-theme">

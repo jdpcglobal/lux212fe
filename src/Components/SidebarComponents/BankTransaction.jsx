@@ -2,23 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Cookies from 'universal-cookie';
-import ChangeExample from './changeExample';
-import Button from 'react-bootstrap/Button';
-
 
 const BankTransaction = () => {
 
     const [transactionData, setTransactionData] = useState([]);
     const token = new Cookies().get("kisDiamond_LoggedIn")?.Token;
-    const [changeExample, setChangeExample] = useState(false)
-    const [drawCount, setDrawCount] = useState(0)
-
-
-    const toggleChangeExample = () => {
-        setChangeExample(false)
-    }
-    useEffect(() => {
-    }, [drawCount]);
 
     useEffect(() => {
         fetchBankTransactions();
@@ -101,9 +89,7 @@ const BankTransaction = () => {
                         </div>
                     </div>
                 </div>
-                <Button style={{ marginLeft: '30px', width: '50px' }} variant="outline-secondary" onClick={() => setChangeExample(true)}><i class="bi bi-pencil-fill"></i> </Button>
             </div>
-            <ChangeExample show={changeExample} close={toggleChangeExample} setDrawCount={setDrawCount} />
         </>
     )
 }
