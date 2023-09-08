@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Cookies from 'universal-cookie'
 import { useBalance } from './SidebarComponents/BalanceContext'
-
-import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom'
 
 

@@ -19,6 +19,7 @@ const ChangeEmailModal = (props) => {
     const [email, setEmail] = useState('');
     const [otp, setOtp] = useState('');
     const [showOtpInput, setShowOtpInput] = useState(false);
+    const [hideButton, setHideButton] = useState(true);
     const [messageType, setMessageType] = useState('');
 
 
@@ -38,6 +39,7 @@ const ChangeEmailModal = (props) => {
             if (jsonData.isSuccess) {
                 setData(jsonData.data);
                 setShowOtpInput(true);
+                setHideButton(false);
                 toast(jsonData.message, {
                     type: jsonData.isSuccess ? 'success' : 'error',
                 });
@@ -67,7 +69,6 @@ const ChangeEmailModal = (props) => {
             });
             if (jsonData.isSuccess) {
                 setChangeEmail(jsonData.message);
-                setShowOtpInput(true);
             }
         } catch (error) {
             console.log('Error:', error);
@@ -83,47 +84,51 @@ const ChangeEmailModal = (props) => {
     };
 
     return (
-        <Modal show={show} onHide={close}>
-            <Modal.Body>
-                <div className="login-box">
-                    <h2>Change Email</h2>
-                    <form>
-                        <div className="user-box">
-                            <input type="text" name="" required="" autoComplete="off"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)} />
-                            <label>Enter Email</label>
-                        </div>
-                        {showOtpInput && (
+        <>
+            <Modal show={show} onHide={close}>
+                <Modal.Body>
+                    <div className="login-box">
+                        <h2>Change Email</h2>
+                        <form>
                             <div className="user-box">
                                 <input type="text" name="" required="" autoComplete="off"
-                                    value={otp}
-                                    onChange={(e) => setOtp(e.target.value)} />
-                                <label>Enter Otp</label>
-                                <Button outline color="warning" onClick={handleClick}>
-                                    Submit
-                                </Button>
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)} />
+                                <label>Enter Email</label>
                             </div>
-                        )}
-                        <a href="#">
-                            <span />
-                            <span />
-                            <span />
-                            <span />
-                            <Button outline color="warning" onClick={onHandleClick}>
-                                Submit
-                            </Button>
-                        </a>
-                    </form>
-                </div>
-                {data && (
-                    <div className={`alert alert-${messageType}`} role="alert">
+                            {showOtpInput && (
+                                <div className="user-box">
+                                    <input type="text" name="" required="" autoComplete="off"
+                                        value={otp}
+                                        onChange={(e) => setOtp(e.target.value)} />
+                                    <label>Enter Otp</label>
+                                    <Button outline color="warning" onClick={handleClick}>
+                                        Submit
+                                    </Button>
+                                </div>
+                            )}
 
+                            {hideButton && (
+                                <a href="#">
+                                    <span />
+                                    <span />
+                                    <span />
+                                    <span />
+                                    <Button outline color="warning" onClick={onHandleClick}>
+                                        Submit
+                                    </Button>
+                                </a>
+                            )}
+                        </form>
                     </div>
-                )}
-                <ToastContainer />
-            </Modal.Body>
-        </Modal>
+                    {data && (
+                        <span className={`alert alert-${messageType}`} role="alert">
+                        </span>
+                    )}
+                    <ToastContainer />
+                </Modal.Body>
+            </Modal>
+        </>
     );
 };
 

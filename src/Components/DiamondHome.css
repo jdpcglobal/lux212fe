@@ -4703,11 +4703,9 @@
   .login-box {
     width: 480px;
     padding: 40px;
-    background: rgba(0, 0, 0, .5);
     box-sizing: border-box;
-    box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
     border-radius: 10px;
-  }
+}
 
   @media screen and (max-width: 600px) {
     .login-box {
@@ -4884,7 +4882,10 @@
 
 
   .modal-body {
-    background: black;
+    background: #0a2351;
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
+    border-radius: 9px;
   }
 
   /* Login Register Modal css End */
@@ -5371,7 +5372,7 @@
   }
 
   .rounded-xss {
-    background-color: #363b84 !important;
+    background-color: #113e73 !important;
     color: white !important;
     border-radius: 10px !important;
   }

@@ -5,6 +5,7 @@ import { Button, Modal, ModalBody } from 'reactstrap'; // Assuming you are using
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Table from 'react-bootstrap/Table';
+import { useBalance } from './BalanceContext';
 
 
 const DepositModal = () => {
@@ -17,6 +18,9 @@ const DepositModal = () => {
     const [launchGameReqObj, setLaunchGameReqObj] = useState({
         Token: new Cookies().get("kisDiamond_LoggedIn")?.Token,
     })
+    const { userData } = useBalance();
+
+    
     const [selectedBank, setSelectedBank] = useState({
         AccNumber: "",
         BankName: "",
@@ -49,7 +53,7 @@ const DepositModal = () => {
     const [deposit, setDeposit] = useState({
         InvoiceUrl: "",
     });
-
+    
     //***** CreditAccount *****/
     const CreditAccount = async (payloadType) => {
         let reqObj = {
@@ -197,7 +201,7 @@ const DepositModal = () => {
         let formData = new FormData();
         formData.append('Amount', amount);
         formData.append('ReceiptUrl', UploadReceipt);
-        formData.append('UserId', `16`);
+        formData.append('UserId', userData.Id);
         formData.append('DestBankId', selectedBank.Id);
         try {
             const response = await fetch('https://lux212.azurewebsites.net/Api/SaveCreditInfo', {

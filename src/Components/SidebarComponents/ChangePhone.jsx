@@ -16,6 +16,7 @@ const ChangePhone = (props) => {
         Token: new Cookies().get("kisDiamond_LoggedIn")?.Token,
     });
     const [showOtpInput, setShowOtpInput] = useState(false);
+    const [hideButton, setHideButton] = useState(true);
     const [messageType, setMessageType] = useState('');
 
 
@@ -43,6 +44,7 @@ const ChangePhone = (props) => {
             if (jsonData.isSuccess) {
                 setData(jsonData.data);
                 setShowOtpInput(true);
+                setHideButton(false);
             }
         } catch (error) {
             console.log('Error:', error);
@@ -106,10 +108,11 @@ const ChangePhone = (props) => {
                                 </div>
                             )}
                             {data && (
-                                <div className={`alert alert-${messageType}`} role="alert">
-                                </div>
+                                <span className={`alert alert-${messageType}`} role="alert">
+                                </span>
                             )}
                             <ToastContainer />
+                            {hideButton && (
                             <a href="#">
                                 <span />
                                 <span />
@@ -117,6 +120,7 @@ const ChangePhone = (props) => {
                                 <span />
                                 <Button outline color='warning' onClick={onHandleClick}>Submit</Button>
                             </a>
+                            )}
                         </form>
                     </div>
                 </Modal.Body>
