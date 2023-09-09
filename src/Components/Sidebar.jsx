@@ -18,7 +18,7 @@ const Sidebar = () => {
         <>
             <div className="rounded-m pcsidebar">
                 <div className="bg-theme mx-3 align-items-center rounded-m shadow-m mt-3 mb-3"
-                    style={{ backgroundColor: "#0C2340" }}
+                    style={{ backgroundColor: "#007FFF" }}
                 >
                     <div className=" pb-2 pt-2" style={{paddingLeft:'34px'}}>
                         <div className="ps-2 align-self-center">

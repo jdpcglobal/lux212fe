@@ -11,8 +11,7 @@ const SetPinApi = (props) => {
     const [pinApi, setPinApi] = useState({
         Token: new Cookies().get("kisDiamond_LoggedIn")?.Token,
     });
-    const [pin, setPin] = useState('');
-    const [oldPin, setOldPin] = useState('');
+    
     const [data, setData] = useState({
         Token: new Cookies().get("kisDiamond_LoggedIn")?.Token,
     });

@@ -1,11 +1,7 @@
-import React, { useEffect, useState, ChangeEvent } from "react";
-import Slider from "react-slick";
+import React from "react";
 import Sidebar from "./Sidebar";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { callPostApiWithoutPayload } from './ApiCaller';
-import * as ApiConst from './ApiConst';
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import Cookies from 'universal-cookie';
 import DepositModal from "./SidebarComponents/DepositModal";
@@ -19,20 +15,12 @@ import BankTransaction from "./SidebarComponents/BankTransaction";
 import TransferCredit from "./SidebarComponents/TransferCredit";
 import { useBalance } from "./SidebarComponents/BalanceContext";
 import { Link } from 'react-router-dom'
-import Loader from "./common/Loader";
+
 
 const DiamondHome = () => {
-
-    const [launchGameData, setLaunchGameData] = useState([]);
-    const [responseData, setResponseData] = useState([]);
-    const [tabIndex, setTabIndex] = useState(1);
-    const [tabpanelData, setTabpanelData] = useState([])
-    const [tabsData, setTabsData] = useState([])
-    const [loadingTabs, setLoadingTabs] = useState(false)
-    const [AdsData, setAdsData] = useState([])
     const loggedInUser = new Cookies().get("kisDiamond_LoggedIn")
     const { balance } = useBalance();
-    const [gameLoader, setGameLoader] = useState(false);
+    
 
     const handleLogout = () => {
         const cookies = new Cookies();
@@ -40,175 +28,7 @@ const DiamondHome = () => {
         window.location.reload();
     };
 
-    const [launchGameReqObj, setLaunchGameReqObj] = useState({
-        TCode: "",
-        PCode: "",
-        GCode: "",
-        Token: new Cookies().get("kisDiamond_LoggedIn")?.Token,
-    })
-
-    var settings = {
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 3000
-    };
-
-    //***** SLIDER API *****/
-    useEffect(() => {
-        ADS();
-        getADSLists();
-    }, []);
-
-    const ADS = async () => {
-        try {
-            callPostApiWithoutPayload(ApiConst.ADS_Post, (response) => {
-                if (response.isSuccess) {
-                    var options = [];
-                    const adContents = response.data.filter((x) => x.Type === 1);
-                    if (adContents.length > 0) {
-                        adContents.map((data, i) => {
-                            options = [...options, ...data.AdContents]
-                        })
-                    }
-                    setAdsData(options)
-                }
-            },)
-        } catch (error) {
-            console.log('Error:', error);
-        }
-    };
-
-    const getADSLists = () => {
-    }
-    //***** SLIDER API END *****/
-
-    // ***** GET GAME TYPES API *****
-    useEffect(() => {
-        setLoadingTabs(true)
-        fetchData();
-        getGamesList();
-    }, []);
-
-    const fetchData = async () => {
-        try {
-            callPostApiWithoutPayload(ApiConst.Get_Game_Types_Post, (response) => {
-                if (response.isSuccess) {
-                    setTabsData(response.data)
-                    setLoadingTabs(false)
-                }
-            }, (error) => {
-            })
-        } catch (error) {
-            // console.log('Error:', error);
-        }
-    };
-
-    const getGamesList = () => {
-
-    }
-    // ***** GET GAME TYPES END *****
-
-
-    //*****GET PROVIDERS API *****/
-    const handleTabSelect = (index) => {
-        getTabPanelData(index)
-        setTabIndex(index)
-    }
-
-    const getTabPanelData = async (i) => {
-        let formData = new FormData();
-        formData.append('TCode', `${i + 1}`);
-        try {
-            const response = await fetch('https://lux212.azurewebsites.net/Api/GetProviders',
-                {
-                    method: 'POST',
-                    body: formData
-
-                });
-            const jsonData = await response.json();
-            if (jsonData.isSuccess) {
-                setTabpanelData(jsonData.data)
-            }
-        } catch (error) {
-            // console.log('Error:', error);
-        }
-
-    }
-    //***** GET PROVIDER API END *****
-
-    //***** GET LaunchGame API  *****/
-
-    const handleGameClick = (gCode) => {
-        let reqObj = {
-            ...launchGameReqObj,
-            GCode: gCode,
-        }
-        LaunchGame(reqObj);
-    };
-
-    const LaunchGame = async (reqObj) => {
-        let formData = new FormData();
-        formData.append('TCode', reqObj?.PCode);
-        formData.append('PCode', reqObj?.TCode);
-        formData.append('GCode', reqObj?.GCode);
-        formData.append('Token', reqObj?.Token);
-
-        try {
-            const response = await fetch('https://lux212.azurewebsites.net/Api/LaunchGame', {
-                method: 'POST',
-                body: formData,
-            });
-            const jsonData = await response.json();
-            if (jsonData.isSuccess) {
-                let a = document.createElement('a');
-                a.target = '_blank';
-                a.href = jsonData.data;
-                a.click();
-                // console.log();
-                setLaunchGameData(jsonData.data);
-            } else {
-                window.location.reload();
-            }
-
-        } catch (error) {
-            console.log('Error:', error);
-        }
-    };
-    //***** GET LaunchGame API END *****/
-
-    //***** GET GAME API *****/
-    const handleButtonClick = (pCode, tCode) => {
-        setLaunchGameReqObj({
-            ...launchGameReqObj,
-            TCode: pCode,
-            PCode: tCode,
-        })
-        setGameLoader(true)
-        GetGames(tCode, pCode)
-    }
-
-    const GetGames = async (tCode, pCode) => {
-        let formData = new FormData();
-        formData.append('TCode', `${tCode}`);
-        formData.append('PCode', `${pCode}`);
-        try {
-            const response = await fetch('https://lux212.azurewebsites.net/Api/GetGames', {
-                method: 'POST',
-                body: formData,
-            });
-            const jsonData = await response.json();
-            if (jsonData.isSuccess) {
-                setResponseData(jsonData.data);
-                setGameLoader(false)
-            }
-        } catch (error) {
-            setGameLoader(false)
-            // console.log('Error:', error);
-        }
-    };
+    
     //***** GET GAME API END *****/
 
     return (
@@ -445,7 +265,7 @@ const DiamondHome = () => {
                 </div>
             </div>
 
-            <style media="screen" dangerouslySetInnerHTML={{ __html: "\n  .pcsidebar {\n    width:280px;\n    position: fixed;\n    margin: 10px;\n    left: 10px;\n    top: calc(10px + env(safe-area-inset-top));\n    bottom: calc(10px + env(safe-area-inset-bottom));\n    background: linear-gradient(338deg, #a690de3d, #1a3d70);\n    backdrop-filter: blur(10px);\n    -webkit-backdrop-filter: blur(10px);\n    box-shadow: 0 -5px 5px 0 rgb(0 0 0 / 4%);\n  }\n  .pc_wallet{\n    top: 2px;\n    margin-right: 2px;\n    float: right;\n    border: 1px solid;\n    border-color: #dbd1f3;\n    padding: 3px 12px;\n    font-size: 15px;\n    border-radius: 10px;\n    /* font-weight: bold; */\n    color: #a58de1 !important;\n    position: relative;\n  }\n  @media screen and (max-width: 991px) {\n    #pc_main {\n      display: none !important;\n    }\n    #mobile_main {\n      display: flex !important;\n    }\n    #footer-bar {\n      margin-left: 0;\n    }\n  }\n  @media screen and (min-width: 991px) {\n    #pc_main {\n      display: flex !important;\n    }\n    #mobile_main {\n      display: none !important;\n    }\n    #footer-bar {\n      display: none !important;\n      margin-left: 300px;\n    }\n  }\n" }} />
+            
             {/* App side bar */}
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
             <style media="screen" dangerouslySetInnerHTML={{ __html: "\n\n.playerbutton {\n\n  background-color: transparent;\n\n  color: #222222;\n\n  width: fit-content;\n\n  border: 2px solid #818181;\n\n  padding: 0 10px;\n\n  border-radius: 10px;\n\n  font-size: 12px;\n\n  text-transform: uppercase;\n\n}\n\n.playerbutton:active,.playerbutton:focus {\n\n  background-color: transparent; /* Green */\n\n  border-color: #92c659;\n\n}\n\n.transfer_slider .swiper-wrapper .swiper-slide {\n\n  width: auto !important;\n\n  padding: 0 5px 10px 0;\n\n}\n\n#qrcode_transfer img {\n\n  max-width: 250px;\n\n  margin: 0 auto;\n\n}\n\n.processdiv {\n\n  position: absolute;\n\n  width: 100%;\n\n  top: 0;\n\n  background: #fdfdfd;\n\n  z-index: 99;\n\n  pointer-events: none;\n\n  height: 100%;\n\n  display: flex;\n\n  flex-direction: column;\n\n  justify-content: center;\n\n  align-items: center;\n\n}\n\n#TransferModal #turnover_requirement {\n\n  border: 1px solid #ced4da;\n\n  background: #e9ecef;\n\n}\n\n" }} />

@@ -1173,7 +1173,8 @@
     font-family: "Roboto", sans-serif !important;
     line-height: 24px !important;
     color: #747474 !important;
-    background-color:   #0a2351 !important;
+    /* background-color:   #0a2351 !important; */
+    background-color:   white !important;
   }
 
   h1,
@@ -4898,7 +4899,7 @@
     left: 10px;
     top: calc(10px + env(safe-area-inset-top));
     bottom: calc(10px + env(safe-area-inset-bottom));
-    background: linear-gradient(338deg, #a690de3d, #403c71);
+    background: linear-gradient(338deg, #a690de3d, #007FFF );
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     box-shadow: 0 -5px 5px 0 rgb(0 0 0 / 4%);
@@ -5209,8 +5210,10 @@
     --WhiteColor: white;
     --borderColor: #0d0707;
     --goldColor: #e8b923;
-    --backGround: #002D62;
-    --goldBackground: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #d29c2b 30%, #c2983a 40%, transparent 80%), radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #ffc748 62.5%, #5d4a1f 100%);
+    /* --backGround: #002D62; */
+    --backGround: #007FFF;
+    /* --goldBackground: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #d29c2b 30%, #c2983a 40%, transparent 80%), radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #ffc748 62.5%, #5d4a1f 100%); */
+    --goldBackground:#007FFF;
   }
 
   .SideBar {
@@ -5613,6 +5616,15 @@
     }
   }
   
+  @media screen and (max-width:992px){
+    .LaNight{
+      display: none;
+    }
+
+    .LaNight2{
+      margin-top: 100px;
+    }
+  }
   
   /* RESPONSIVE CSS END */
 

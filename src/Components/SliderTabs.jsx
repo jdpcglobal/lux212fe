@@ -24,11 +24,6 @@ const SliderTabs = () => {
     const { balance } = useBalance();
     const [gameLoader, setGameLoader] = useState(false);
 
-    const handleLogout = () => {
-        const cookies = new Cookies();
-        cookies.remove('kisDiamond_LoggedIn');
-        window.location.reload();
-    };
 
     const [launchGameReqObj, setLaunchGameReqObj] = useState({
         TCode: "",
@@ -250,7 +245,7 @@ const SliderTabs = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="Tabs" style={{ cursor: 'pointer' }}>
+                            <div className="Tabs" style={{ cursor: 'pointer', borderRadius:'15px' }}>
                                 <Tabs selectedIndex={tabIndex} onSelect={(index) => handleTabSelect(index)}>
                                     <div className="get TabPanel" style={{ marginTop: '7px' }}>
                                         <TabList>
@@ -282,7 +277,6 @@ const SliderTabs = () => {
                         <div className="row row-cols-3 row-cols-md-6">
 
                             {/* KING855 */}
-
                             <>
                                 {responseData.length > 0 && responseData.map((data) =>
                                     <div className="col-3 p-1 game-item livecasino allgame" style={{ cursor: 'pointer' }}>
