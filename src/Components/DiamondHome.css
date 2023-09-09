@@ -1174,7 +1174,7 @@
     line-height: 24px !important;
     color: #747474 !important;
     /* background-color:   #0a2351 !important; */
-    background-color:   rgb(189, 194, 225) !important;
+    background-color:   White!important;
   }
 
   h1,
@@ -4899,7 +4899,7 @@
     left: 10px;
     top: calc(10px + env(safe-area-inset-top));
     bottom: calc(10px + env(safe-area-inset-bottom));
-    background: linear-gradient(338deg, #a690de3d, #007FFF );
+    background: linear-gradient(338deg, #a690de3d, #fcfaff);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     box-shadow: 0 -5px 5px 0 rgb(0 0 0 / 4%);
@@ -5073,17 +5073,12 @@
   .menu-list a span {
     font-size: 13px;
     padding-left: 45px;
-    font-weight: 600;
-    color: white;
+    font-weight: 400;
+    color: #6d6d6d;
     font-family: #6d6d6d;
   }
 
-  .menu-list a span:hover {
-    color: var(--goldColor);
-  }
-
-
-
+ 
   .menu-list a i:last-child {
     position: absolute;
     right: 0px;
@@ -5210,10 +5205,9 @@
     --WhiteColor: white;
     --borderColor: #0d0707;
     --goldColor: #e8b923;
-    /* --backGround: #002D62; */
-    --backGround: #007FFF;
+    --backGround: rgba(255, 255, 255, 0.9);
+    --LinearGradient: linear-gradient(338deg, #a690de3d, #fcfaff);
     /* --goldBackground: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #d29c2b 30%, #c2983a 40%, transparent 80%), radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #ffc748 62.5%, #5d4a1f 100%); */
-    --goldBackground:#007FFF;
   }
 
   .SideBar {
@@ -5232,7 +5226,7 @@
   .userInfo {
     color: black;
     border-radius: 15px;
-    background: var(--goldBackground);
+    background: linear-gradient(338deg, #a690de3d, #fcfaff);
   }
 
   .pc_wallet {
@@ -5247,7 +5241,7 @@
     /* font-weight: bold; */
     color: #a58de1 !important;
     position: relative;
-    background: var(--goldBackground);
+    background: var(--LinearGradient);
     margin-bottom: 5px !important;
   }
 
@@ -5259,22 +5253,24 @@
   /* SideBar css End */
 
   /* Diamond Css */
-  .Tabs {
+  
+  /* .Tabs {
     background: var(--backGround);
     color: var(--WhiteColor);
-  }
+  } */
 
   .react-tabs__tab--selected {
-    /* background: gold; */
-    border-color: var(--borderColor);
+    
+    /* border-color: var(--borderColor); */
     color: #030303;
     border-radius: 5px;
-    background: var(--goldBackground);
+    /* background: var(--goldBackground); */
     font-weight: 700;
   }
 
   .mx-1 {
-    color: var(--WhiteColor);
+    color: black;
+    /* color: var(--WhiteColor); */
     margin-right: 0.25rem !important;
     margin-left: 0.25rem !important;
   }
@@ -5295,14 +5291,15 @@
     padding: 0 8px;
     text-transform: uppercase;
     text-align: center;
-    color: var(--WhiteColor);
+    /* color: var(--WhiteColor); */
+    color: black;
     font-size: 10px;
     line-height: 20px;
-    background: var(--backGround);
+    background: #ededed;
+    /* background: var(--backGround); */
   }
 
   .game-title:hover {
-    color: var(--goldColor);
     font-weight: 700;
   }
 
@@ -5315,13 +5312,13 @@
 
   .Title {
     top: 2px;
-    border: 1px solid;
+    /* border: 1px solid; */
     padding: 3px 12px;
     font-size: 15px;
     border-radius: 10px;
     position: relative;
     color: #000 !important;
-    background: var(--goldBackground);
+    /* background: var(--goldBackground); */
     margin-bottom: 5px !important;
   }
 
@@ -5331,11 +5328,11 @@
     margin-bottom: 1rem;
   }
 
-  .DepositModal {
+  /* .DepositModal {
     background: var(--backGround) !important;
     border: 1px solid #e8b923 !important;
     color: #e8b923 !important;
-  }
+  } */
 
 
   /* ======= */
@@ -5344,41 +5341,43 @@
   }
 
   .eWallet {
-    color: var(--WhiteColor);
+    color: black;
+    font-weight: 800;
+    /* color: var(--WhiteColor); */
   }
 
-  .eWallet:hover {
+  /* .eWallet:hover {
     color: var(--goldColor);
-  }
+  } */
 
   #EWallet {
     background: var(--backGround);
   }
 
-  .BankTransfer {
+  /* .BankTransfer {
     color: var(--goldColor) !important;
-  }
+  } */
 
-  .bg-green-dark {
+  /* .bg-green-dark {
     background: var(--goldBackground) !important;
     color: #FFF !important;
-  }
+  } */
 
-  .color-red-dark {
+  /* .color-red-dark {
     color: var(--goldColor) !important;
-  }
+  } */
 
-  .BankHolderN {
+  /* .BankHolderN {
     background: var(--backGround) !important;
     border: 1px solid #e8b923 !important;
     color: var(--goldColor) !important;
-  }
+  } */
 
-  .rounded-xss {
+  /* .rounded-xss {
     background-color: #113e73 !important;
     color: white !important;
     border-radius: 10px !important;
-  }
+  } */
 
   /* =========== */
 
@@ -5420,24 +5419,24 @@
     background: var(--backGround);
   }
 
-  .listGroup {
+  /* .listGroup {
     background: var(--backGround) !important;
     border: 1px solid var(--goldColor) !important;
     color: var(--WhiteColor) !important;
-  }
+  } */
 
   .CardFont {
     font-size: 13px;
     align-self: center;
   }
 
-  .rayan {
+  /* .rayan {
     background: #555;
     border: 1px solid var(--goldColor) !important;
     width: 130px;
     height: 48px;
     border-radius: 10px;
-  }
+  } */
 
   /* ---- */
   #HistoryModal {
@@ -5478,7 +5477,7 @@
   }
 
   #nav-comps {
-    color: #000;
+    color: #a58de1 !important;
     font-size: 17px;
     font-weight: 700;
   }
@@ -5590,9 +5589,6 @@
     }
   }
 
-  .Tabs{
-    
-  }
 
   @media screen and (max-width:650px){
     .Tabs{
@@ -5616,15 +5612,6 @@
     }
   }
   
-  @media screen and (max-width:992px){
-    .LaNight{
-      display: none;
-    }
-
-    .LaNight2{
-      margin-top: 100px;
-    }
-  }
   
   /* RESPONSIVE CSS END */
 

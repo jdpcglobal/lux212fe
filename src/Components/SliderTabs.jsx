@@ -245,7 +245,7 @@ const SliderTabs = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="Tabs" style={{ cursor: 'pointer', borderRadius:'15px' }}>
+                            <div className="Tabs" style={{ cursor: 'pointer', borderRadius:'15px', backgroundColor:'#ededed' }}>
                                 <Tabs selectedIndex={tabIndex} onSelect={(index) => handleTabSelect(index)}>
                                     <div className="get TabPanel" style={{ marginTop: '7px' }}>
                                         <TabList>

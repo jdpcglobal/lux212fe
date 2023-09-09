@@ -132,7 +132,7 @@ const HistoryModal = () => {
                             </ListGroup>
                         </Card>
                         <Button outline className='mb-3' color="warning" onClick={handleGameClick}>Submit</Button>
-                        <Table striped bordered hover variant="dark" className="table color-theme mb-2 history">
+                        <Table className="table color-theme mb-2 history">
                             <thead>
                                 <tr>
                                     <th className="border-fade-blue" scope="col" style={{ width: 55 }}>
