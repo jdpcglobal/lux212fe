@@ -90,7 +90,7 @@ const ChangePasswordModal = (props) => {
                                 <label>Confirm Password</label>
                             </div>
 
-                            <Button outline color="warning" onClick={handleClick}>
+                            <Button outline color="success" onClick={handleClick}>
                                 Submit
                             </Button>
                         </form>

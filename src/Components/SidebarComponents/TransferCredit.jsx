@@ -126,7 +126,7 @@ const TransferCredit = () => {
                                         />
                                     ))}
                                 </div>
-                                <Button outline color="warning"  className=" mt-4"  onClick={() => { handleClick(); }}>Submit</Button>
+                                <Button outline color="success"  className=" mt-4"  onClick={() => { handleClick(); }}>Submit</Button>
                             </div>
                         </div>
                     </div>

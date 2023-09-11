@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import { Modal } from 'react-bootstrap'
-import Button from 'react-bootstrap/Button';
+import { Button } from 'reactstrap';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Loader from './Loader';
@@ -283,15 +283,11 @@ const Registration = (props) => {
                         </a>
                         */}
                         {/* {showOtpInput && ( )} */}
-                        <a>
-                            <span />
-                            <span />
-                            <span />
-                            <span />
-                            <Button variant="warning" onClick={() => { handleClick(); }}>Register</Button>
-                        </a>
 
-                        <label style={{ color: "goldenrod" }}>
+                        <Button outline color="success mb-4" onClick={() => { handleClick(); }}>Register</Button>
+
+
+                        <label >
                             By creating an account, you agree to our Terms & Conditions and confirm that you are at least 25 years old.
                         </label>
                     </form>

@@ -4730,7 +4730,7 @@
   .login-box h4 {
     margin: 0 0 30px;
     padding: 0;
-    color: #e8b923;
+    color: black;
     text-align: center;
   }
 
@@ -4742,10 +4742,10 @@
     width: 100%;
     padding: 10px 0;
     font-size: 16px;
-    color: #fff;
+    color: black;
     margin-bottom: 30px;
     border: none;
-    border-bottom: 1px solid #fff;
+    border-bottom: 1px solid black;
     outline: none;
     background: transparent;
   }
@@ -4765,7 +4765,7 @@
   .login-box .user-box input:valid~label {
     top: -20px;
     left: 0;
-    color: #e8b923;
+    color: black;
     font-size: 12px;
   }
 
@@ -4773,7 +4773,7 @@
     position: relative;
     display: inline-block;
     padding: 3px;
-    color: #e8b923;
+    color: black;
     font-size: 16px;
     text-decoration: none;
     text-transform: uppercase;
@@ -4783,15 +4783,7 @@
     letter-spacing: 4px
   }
 
-  .login-box a:hover {
-    background: #e8b923;
-    color: #e8b923;
-    border-radius: 5px;
-    box-shadow: 0 0 5px #e8b923,
-      0 0 25px #e8b923,
-      0 0 50px #e8b923,
-      0 0 100px #e8b923;
-  }
+ 
 
   .login-box a span {
     position: absolute;
@@ -4803,7 +4795,7 @@
     left: -100%;
     width: 100%;
     height: 2px;
-    background: linear-gradient(90deg, transparent, #e8b923);
+    background: linear-gradient(90deg, transparent, black);
     animation: btn-anim1 1s linear infinite;
   }
 
@@ -4823,7 +4815,7 @@
     right: 0;
     width: 2px;
     height: 100%;
-    background: linear-gradient(180deg, transparent, #e8b923);
+    background: linear-gradient(180deg, transparent, black);
     animation: btn-anim2 1s linear infinite;
     animation-delay: .25s
   }
@@ -4844,7 +4836,7 @@
     right: -100%;
     width: 100%;
     height: 2px;
-    background: linear-gradient(270deg, transparent, #e8b923);
+    background: linear-gradient(270deg, transparent, black);
     animation: btn-anim3 1s linear infinite;
     animation-delay: .5s
   }
@@ -4865,7 +4857,7 @@
     left: 0;
     width: 2px;
     height: 100%;
-    background: linear-gradient(360deg, transparent, #e8b923);
+    background: linear-gradient(360deg, transparent, black);
     animation: btn-anim4 1s linear infinite;
     animation-delay: .75s
   }
@@ -4883,7 +4875,7 @@
 
 
   .modal-body {
-    background: #0a2351;
+    background: white;
     box-sizing: border-box;
     box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
     border-radius: 9px;
@@ -5204,7 +5196,7 @@
   :root {
     --WhiteColor: white;
     --borderColor: #0d0707;
-    --goldColor: #e8b923;
+    --goldColor: black;
     --backGround: rgba(255, 255, 255, 0.9);
     --LinearGradient: linear-gradient(338deg, #a690de3d, #fcfaff);
     /* --goldBackground: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #d29c2b 30%, #c2983a 40%, transparent 80%), radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #ffc748 62.5%, #5d4a1f 100%); */
@@ -5330,8 +5322,8 @@
 
   /* .DepositModal {
     background: var(--backGround) !important;
-    border: 1px solid #e8b923 !important;
-    color: #e8b923 !important;
+    border: 1px solid black !important;
+    color: black !important;
   } */
 
 
@@ -5369,7 +5361,7 @@
 
   /* .BankHolderN {
     background: var(--backGround) !important;
-    border: 1px solid #e8b923 !important;
+    border: 1px solid black !important;
     color: var(--goldColor) !important;
   } */
 
@@ -5478,7 +5470,7 @@
 
   #nav-comps {
     color: #a58de1 !important;
-    font-size: 17px;
+    font-size: 15px;
     font-weight: 700;
   }
 
@@ -5499,7 +5491,7 @@
   }
 
   .SSidebar {
-    background: linear-gradient(338deg, #1a3d70, #000000);
+    background: linear-gradient(338deg, #a690de3d, #fcfaff);
     backdrop-filter: blur(10px);
   }
 
@@ -5521,6 +5513,7 @@
     border: 2px solid black;
     color: white;
     font-size: 15px;
+    font-weight: 800;
     margin-bottom: 20px;
     width: 600px;
   }
@@ -5545,7 +5538,7 @@
 
   
 
-  .Tr{
+  /* .Tr{
     background-color: #1a3d70 !important;
     padding-right: 20px;
   }
@@ -5563,14 +5556,10 @@
 
   .Td{
     padding-left: 20px;
-  }
+  } */
 
   .Table:hover {
-    color: var(--goldColor) !important;
-    font-weight: 700 !important;
-    letter-spacing: 3px;
-    background: none;
-    transition: all 0.3s ease 0s;
+    box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
     
   }
   

@@ -172,7 +172,7 @@ const WithdrawModal = () => {
                         </div>
                         <center>
                            
-                            <Button outline color="warning"  className=" mt-4"  onClick={() => { handleDebitClick(); }}>Submit</Button>
+                            <Button outline color="success"  className=" mt-4"  onClick={() => { handleDebitClick(); }}>Submit</Button>
                         </center>
                         <br />
                         <span className='eWallet'>* maximum withdraw limit 300k per day *</span>

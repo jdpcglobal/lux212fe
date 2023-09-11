@@ -11,7 +11,7 @@ const SetPinApi = (props) => {
     const [pinApi, setPinApi] = useState({
         Token: new Cookies().get("kisDiamond_LoggedIn")?.Token,
     });
-    
+
     const [data, setData] = useState({
         Token: new Cookies().get("kisDiamond_LoggedIn")?.Token,
     });
@@ -179,22 +179,16 @@ const SetPinApi = (props) => {
                                     <label>Old Pin</label>
                                 </div>
                             )}
-                            <a href="#">
-                                <span />
-                                <span />
-                                <span />
-                                <span />
-                                <Button outline color='warning' onClick={() => { handleClick(); }}>
-                                    Submit
-                                </Button>
-                            </a>
+                            <Button outline color='success' onClick={() => { handleClick(); }}>
+                                Submit
+                            </Button>
                         </form>
                     </div>
                     {pinApi && (
-                    <div className={`alert alert-${messageType}`} role="alert" style={{ margin: '0', padding: '0' }}>
-                    </div>
-                )}
-                <ToastContainer />
+                        <div className={`alert alert-${messageType}`} role="alert" style={{ margin: '0', padding: '0' }}>
+                        </div>
+                    )}
+                    <ToastContainer />
                 </Modal.Body>
             </Modal>
         </>

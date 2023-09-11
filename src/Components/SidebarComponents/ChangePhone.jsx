@@ -113,13 +113,7 @@ const ChangePhone = (props) => {
                             )}
                             <ToastContainer />
                             {hideButton && (
-                            <a href="#">
-                                <span />
-                                <span />
-                                <span />
-                                <span />
-                                <Button outline color='warning' onClick={onHandleClick}>Submit</Button>
-                            </a>
+                                <Button outline color='success' onClick={onHandleClick}>Submit</Button>
                             )}
                         </form>
                     </div>

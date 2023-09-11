@@ -423,7 +423,7 @@ const DepositModal = () => {
                             <span className="trn" data-trn-key="(<t>minimum</t> RM20)">(<t data-trn-key="minimum">minimum</t> RM20)</span>
                         </div>
                         <span id="message" />
-                        <center><Button outline color="warning" className='m-3' onClick={() => { toggleModal(); handleSaveClick(); }}>SUBMIT</Button>
+                        <center><Button outline color="success" className='m-3' onClick={() => { toggleModal(); handleSaveClick(); }}>SUBMIT</Button>
                             {message && (
                                 <div className={`alert alert-${messageType}`} role="alert">
                                 </div>
@@ -498,7 +498,7 @@ const DepositModal = () => {
                                 </Table>
                             </div>
                         </div>
-                        <Button color="warning" outline onClick={toggleModal}>Close</Button>
+                        <Button color="success" outline onClick={toggleModal}>Close</Button>
                     </ModalBody>
                 </Modal>
             </div>
@@ -551,7 +551,7 @@ const DepositModal = () => {
                             <span className="trn" data-trn-key="(<t>minimum</t> RM20)">(<t data-trn-key="minimum">minimum</t> RM20)</span>
                         </div>
                         <span id="message" />
-                        <center><Button outline color="warning" className='m-3' onClick={() => { toggleModal(); handleSaveClick(); }}>SUBMIT</Button>
+                        <center><Button outline color="success" className='m-3' onClick={() => { toggleModal(); handleSaveClick(); }}>SUBMIT</Button>
                             {message && (
                                 <div className={`alert alert-${messageType}`} role="alert">
                                 </div>
@@ -613,7 +613,7 @@ const DepositModal = () => {
                             <span className="trn" data-trn-key="(<t>minimum</t> RM20)">(<t data-trn-key="minimum">minimum</t> RM20)</span>
                         </div>
                         <span id="message" />
-                        <center><Button outline color="warning" className='m-3' onClick={() => { handleDepositClick(); }}>SUBMIT</Button>
+                        <center><Button outline color="success" className='m-3' onClick={() => { handleDepositClick(); }}>SUBMIT</Button>
                             {message && (
                                 <div className={`alert alert-${messageType}`} role="alert">
                                 </div>

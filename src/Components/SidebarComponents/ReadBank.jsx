@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Cookies from 'universal-cookie';
 import CreateBankAcc from "./CreateBankAcc";
 import { Button } from 'reactstrap';
+import Table from 'react-bootstrap/Table';
 
 
 const ReadBank = () => {
@@ -62,7 +63,7 @@ const ReadBank = () => {
                             </div>
 
                             {MyBank.length > 0 && MyBank.map((data) =>
-                                <table className="Table">
+                                <Table className="Table">
                                     <thead>
                                         <tr className="Tr">
                                             <th className="Td">Bank Name :  {data.BankName}</th>
@@ -84,13 +85,13 @@ const ReadBank = () => {
                                             <td></td>
                                         </tr>
                                     </tbody>
-                                </table>
+                                </Table>
                             )}
 
 
 
                             <div className="button">
-                                <Button outline color="warning" onClick={() => setCreateBankAccModal(true)}>
+                                <Button outline color="success" onClick={() => setCreateBankAccModal(true)}>
                                     Setup New Bank Account
                                 </Button>
                             </div>

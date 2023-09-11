@@ -6,6 +6,8 @@ import ChangePasswordModal from './ChangePasswordModal';
 import SetPinApi from './SetPinApi';
 import Cookies from 'universal-cookie';
 import { useBalance } from './BalanceContext';
+import Table from 'react-bootstrap/Table';
+
 
 const UserProfile2 = () => {
 
@@ -55,7 +57,7 @@ const UserProfile2 = () => {
                         <div className="align-self-center" >
                             <label className="font-800 font-22 trn Title" data-trn-key="Deposit">User Profile </label>
                         </div>
-                        <table className="UserProfileTable">
+                        <Table className="UserProfileTable">
                             <tbody>
                                 <tr className="Tr">
                                     <td className="Td">Id</td>
@@ -82,9 +84,9 @@ const UserProfile2 = () => {
                                     <td>{userData.CreditBalance}</td>
                                 </tr>
                             </tbody>
-                        </table>
+                        </Table>
 
-                        <table className='UserProfileTable' >
+                        <Table className='UserProfileTable' >
                             <tbody>
                                 <tr className='Tr'>
                                     <td className="font-800 font-22 Td">Change Password ?</td>
@@ -95,7 +97,7 @@ const UserProfile2 = () => {
                                     <td><Button style={{ marginLeft: '30px', width: '50px', marginTop: '5px', marginBottom: '5px' }} variant="outline-secondary" onClick={() => setPinApiModal(true)}><i class="bi bi-pencil-fill"></i> </Button></td>
                                 </tr>
                             </tbody>
-                        </table>
+                        </Table>
                     </div>
                 </div>
             </div>

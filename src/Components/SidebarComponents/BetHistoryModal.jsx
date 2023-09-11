@@ -125,7 +125,7 @@ const BetHistoryModal = () => {
                                 </ListGroup.Item>
                             </ListGroup>
                         </Card>
-                        <Button outline className='mb-3' color="warning" onClick={handleGameClick}>Submit</Button>
+                        <Button outline className='mb-3' color="success" onClick={handleGameClick}>Submit</Button>
                         <Table  className="table color-theme mb-2 history">
                             <thead>
                                 <tr>

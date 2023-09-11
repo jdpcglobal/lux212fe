@@ -59,13 +59,7 @@ const CreateBankAcc = ({ show, close, setDrawCount }) => {
                                             <label>Account No</label>
                                         </div>
 
-                                        <a href="#">
-                                            <span />
-                                            <span />
-                                            <span />
-                                            <span />
-                                            <Button outline color='warning' onClick={handleSubmit}>Submit</Button>
-                                        </a>
+                                            <Button outline color='success' onClick={handleSubmit}>Submit</Button>
                                     </form>
                                 </div>
                             </div>
