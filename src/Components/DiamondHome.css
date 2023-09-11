@@ -629,7 +629,7 @@
   }
 
   .color-magenta-light {
-    color: #AC92EC !important;
+    color: #0000ff !important;
   }
 
   .bg-magenta-light {
@@ -1019,7 +1019,7 @@
 
   #footer-bar .active-nav i {
     /* background-image: linear-gradient(to bottom, #5D9CEC, #4A89DC) !important; */
-    background-image: linear-gradient(to bottom, #641a70, #31155a) !important;
+    background-image: linear-gradient(to bottom, #539fff, #1a4681) !important;
     color: #FFF !important;
   }
 
@@ -4891,7 +4891,7 @@
     left: 10px;
     top: calc(10px + env(safe-area-inset-top));
     bottom: calc(10px + env(safe-area-inset-bottom));
-    background: linear-gradient(338deg, #a690de3d, #fcfaff);
+    background: linear-gradient(338deg, #a690de3d, #d5d5ff);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     box-shadow: 0 -5px 5px 0 rgb(0 0 0 / 4%);
@@ -5287,7 +5287,7 @@
     color: black;
     font-size: 10px;
     line-height: 20px;
-    background: #ededed;
+    background: #dfdffc;
     /* background: var(--backGround); */
   }
 
@@ -5311,6 +5311,7 @@
     position: relative;
     color: #000 !important;
     /* background: var(--goldBackground); */
+    background: linear-gradient(338deg, #cac7d13d, #c0c0ff);
     margin-bottom: 5px !important;
   }
 
@@ -5469,7 +5470,7 @@
   }
 
   #nav-comps {
-    color: #a58de1 !important;
+    color: #6c87ff  !important;
     font-size: 15px;
     font-weight: 700;
   }
@@ -5491,7 +5492,7 @@
   }
 
   .SSidebar {
-    background: linear-gradient(338deg, #a690de3d, #fcfaff);
+    background: linear-gradient(338deg, #a690de3d, #d5d5ff);
     backdrop-filter: blur(10px);
   }
 
@@ -5601,8 +5602,14 @@
     }
   }
   
-  
   /* RESPONSIVE CSS END */
+
+  .react-tabs__tab--selected{
+    border-color: #0d47fa;
+  }
+  .react-tabs__tab-list{
+    border-bottom: 1px solid #3226f8;
+  }
 
 
   /* Main Deposit Modal css End */

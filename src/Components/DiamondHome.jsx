@@ -64,7 +64,7 @@ const DiamondHome = () => {
                         </div>
                     </div>
                 </div>
-                <div className="bg-theme mx-3 rounded-m shadow-m mt-3 mb-3 Title">
+                <div className="bg-theme mx-3 rounded-m shadow-m mt-3 mb-3 Titles">
                     <div className="px-2 pb-2 pt-2 ">
                         <div className="ps-2 align-self-center">
 
@@ -496,11 +496,11 @@ const DiamondHome = () => {
             {/* FOOTER */}
 
             <div id="footer-bar" className="footer-bar footer-bar-detached">
-                <a href="#"><i className="ri-home-gear-line font-20" /><span className="trn" data-trn-key="Home">Home</span></a>
-                <a href="#" data-bs-toggle="offcanvas" data-bs-target="#QrModal"><i className="ri-qr-code-line font-20" /><span className="trn" data-trn-key="Invitation">Invitation</span></a>
+                <a href="#"><i className="ri-home-gear-line font-20" /><img width="25" height="25" src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/64/external-home-100-most-used-icons-flaticons-lineal-color-flat-icons.png" alt="external-home-100-most-used-icons-flaticons-lineal-color-flat-icons"/><span className="trn" data-trn-key="Home">Home</span></a>
+                <a href="#" data-bs-toggle="offcanvas" data-bs-target="#QrModal"><img width="25" height="25" src="https://img.icons8.com/fluency/48/qr-code.png" alt="qr-code"/><span className="trn" data-trn-key="Invitation">Invitation</span></a>
                 <a href="#" data-bs-toggle="offcanvas" data-bs-target="#DepositSelectMethod" className="active-nav"><i className="bi bi-coin font-17" /><span className="trn" data-trn-key="Deposit">Deposit</span></a>
-                <a href="#" data-bs-toggle="offcanvas" data-bs-target="#CreditModal" id="detail_ori_btn"><i className="ri-gift-line font-20" /><span className="trn" data-trn-key="Rewards">Rewards</span></a>
-                <a href="#" data-bs-toggle="offcanvas" data-bs-target="#supportmodal"><i className="ri-customer-service-2-line font-20" /><span className="trn" data-trn-key="Support">Support</span></a>
+                <a href="#" data-bs-toggle="offcanvas" data-bs-target="#CreditModal" id="detail_ori_btn"><img width="25" height="25" src="https://img.icons8.com/external-flatarticons-blue-flatarticons/65/external-gift-valentines-day-flatarticons-blue-flatarticons-3.png" alt="external-gift-valentines-day-flatarticons-blue-flatarticons-3"/><span className="trn" data-trn-key="Rewards">Rewards</span></a>
+                <a href="#" data-bs-toggle="offcanvas" data-bs-target="#supportmodal"><img width="25" height="25" src="https://img.icons8.com/external-filled-outline-satawat-anukul/64/external-communication-communication-filled-outline-filled-outline-satawat-anukul-13.png" alt="external-communication-communication-filled-outline-filled-outline-satawat-anukul-13"/><span className="trn" data-trn-key="Support">Support</span></a>
 
             </div>
 

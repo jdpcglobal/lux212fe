@@ -98,6 +98,11 @@ const SliderTabs = () => {
 
 
     //*****GET PROVIDERS API *****/
+
+    useEffect(() => {
+        getTabPanelData()
+        
+    },[]);
     const handleTabSelect = (index) => {
         getTabPanelData(index)
         setTabIndex(index)
@@ -111,7 +116,6 @@ const SliderTabs = () => {
                 {
                     method: 'POST',
                     body: formData
-
                 });
             const jsonData = await response.json();
             if (jsonData.isSuccess) {
@@ -245,7 +249,7 @@ const SliderTabs = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="Tabs" style={{ cursor: 'pointer', borderRadius:'15px', backgroundColor:'#ededed' }}>
+                            <div className="Tabs" style={{ cursor: 'pointer', borderRadius:'15px', backgroundColor:'#dfdffc' }}>
                                 <Tabs selectedIndex={tabIndex} onSelect={(index) => handleTabSelect(index)}>
                                     <div className="get TabPanel" style={{ marginTop: '7px' }}>
                                         <TabList>
