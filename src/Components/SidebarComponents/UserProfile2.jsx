@@ -57,7 +57,7 @@ const UserProfile2 = () => {
                         <div className="align-self-center" >
                             <label className="font-800 font-22 trn Title" data-trn-key="Deposit">User Profile </label>
                         </div>
-                        <Table className="UserProfileTable">
+                        <Table className="UserProfileTable glow-on-hover">
                             <tbody>
                                 <tr className="Tr">
                                     <td className="Td">Id</td>
@@ -86,7 +86,7 @@ const UserProfile2 = () => {
                             </tbody>
                         </Table>
 
-                        <Table className='UserProfileTable' >
+                        <Table className='UserProfileTable glow-on-hover' >
                             <tbody>
                                 <tr className='Tr'>
                                     <td className="font-800 font-22 Td">Change Password ?</td>

@@ -51,7 +51,7 @@ const ReadBank = () => {
 
     return (
         <>
-            <div className="container w-100" style={{marginTop:"100px"}}>
+            <div className="container w-100" style={{ marginTop: "100px" }}>
                 <div className="row">
                     <div className="col-md-3">
                     </div>
@@ -63,29 +63,31 @@ const ReadBank = () => {
                             </div>
 
                             {MyBank.length > 0 && MyBank.map((data) =>
-                                <Table className="Table">
-                                    <thead>
-                                        <tr className="Tr">
-                                            <th className="Td">Bank Name :  {data.BankName}</th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr className="Tr2">
-                                            <td className="Td">Acc Number : {data.HolderName}</td>
+                                <div className="">
+                                    <Table className="glow-on-hover">
+                                        <thead>
+                                            <tr className="Tr">
+                                                <th className="Td">Bank Name :  {data.BankName}</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr className="Tr2">
+                                                <td className="Td">Acc Number : {data.HolderName}</td>
 
-                                            <td>{
-                                                data.Status === 1 ? <img width="48" height="48" src="https://img.icons8.com/emoji/48/check-mark-button-emoji.png" alt="check-mark-button-emoji" /> : <img width="48" height="48" src="https://img.icons8.com/color/48/close-window.png" alt="close-window" />
-                                            }</td>
-                                        </tr>
-                                        <tr className="Tr">
+                                                <td>{
+                                                    data.Status === 1 ? <img width="48" height="48" src="https://img.icons8.com/emoji/48/check-mark-button-emoji.png" alt="check-mark-button-emoji" /> : <img width="48" height="48" src="https://img.icons8.com/color/48/close-window.png" alt="close-window" />
+                                                }</td>
+                                            </tr>
+                                            <tr className="Tr">
 
-                                            <td className="Td">Holder Name:{data.AccNumber}</td>
+                                                <td className="Td">Holder Name:{data.AccNumber}</td>
 
-                                            <td></td>
-                                        </tr>
-                                    </tbody>
-                                </Table>
+                                                <td></td>
+                                            </tr>
+                                        </tbody>
+                                    </Table>
+                                </div>
                             )}
 
 

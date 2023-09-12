@@ -104,7 +104,7 @@ const ChangePhone = (props) => {
                                     <input type="text" name="" required="" autoComplete='off' value={otp}
                                         onChange={(e) => setOtp(e.target.value)} />
                                     <label>Enter Otp</label>
-                                    <Button outline color='warning' onClick={handleClick}>Submit</Button>
+                                    <Button outline color='success' onClick={handleClick}>Submit</Button>
                                 </div>
                             )}
                             {data && (

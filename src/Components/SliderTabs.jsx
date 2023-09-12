@@ -1,6 +1,5 @@
 import React, { useEffect, useState, ChangeEvent } from "react";
 import Slider from "react-slick";
-import Sidebar from "./Sidebar";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { callPostApiWithoutPayload } from './ApiCaller';
@@ -15,7 +14,7 @@ const SliderTabs = () => {
 
     const [launchGameData, setLaunchGameData] = useState([]);
     const [responseData, setResponseData] = useState([]);
-    const [tabIndex, setTabIndex] = useState(1);
+    const [tabIndex, setTabIndex] = useState(0);
     const [tabpanelData, setTabpanelData] = useState([])
     const [tabsData, setTabsData] = useState([])
     const [loadingTabs, setLoadingTabs] = useState(false)
@@ -23,6 +22,7 @@ const SliderTabs = () => {
     const loggedInUser = new Cookies().get("kisDiamond_LoggedIn")
     const { balance } = useBalance();
     const [gameLoader, setGameLoader] = useState(false);
+    const [gameLoaders, setGameLoaders] = useState(false);
 
 
     const [launchGameReqObj, setLaunchGameReqObj] = useState({
@@ -100,9 +100,27 @@ const SliderTabs = () => {
     //*****GET PROVIDERS API *****/
 
     useEffect(() => {
-        getTabPanelData()
-        
+        getTabPanelData2()
     },[]);
+
+    const getTabPanelData2 = async (i) => {
+        let formData = new FormData();
+        formData.append('TCode', `1`);
+        try {
+            const response = await fetch('https://lux212.azurewebsites.net/Api/GetProviders',
+                {
+                    method: 'POST',
+                    body: formData
+                });
+            const jsonData = await response.json();
+            if (jsonData.isSuccess) {
+                setTabpanelData(jsonData.data)
+            }
+        } catch (error) {
+            // console.log('Error:', error);
+        }
+
+    }
     const handleTabSelect = (index) => {
         getTabPanelData(index)
         setTabIndex(index)
@@ -198,6 +216,31 @@ const SliderTabs = () => {
             // console.log('Error:', error);
         }
     };
+
+    useEffect(() => {
+        GetGame()
+        setGameLoaders(true)
+    },[]);
+   
+    const GetGame = async (tCode, pCode) => {
+        let formData = new FormData();
+        formData.append('TCode', `1`);
+        formData.append('PCode', `1006`);
+        try {
+            const response = await fetch('https://lux212.azurewebsites.net/Api/GetGames', {
+                method: 'POST',
+                body: formData,
+            });
+            const jsonData = await response.json();
+            if (jsonData.isSuccess) {
+                setResponseData(jsonData.data);
+                setGameLoaders(false)
+            }
+        } catch (error) {
+            setGameLoaders(false)
+            // console.log('Error:', error);
+        }
+    };
     //***** GET GAME API END *****/
 
     return (
@@ -281,12 +324,13 @@ const SliderTabs = () => {
                         <div className="row row-cols-3 row-cols-md-6">
 
                             {/* KING855 */}
+                            {gameLoaders ? <Loader /> :
                             <>
                                 {responseData.length > 0 && responseData.map((data) =>
                                     <div className="col-3 p-1 game-item livecasino allgame" style={{ cursor: 'pointer' }}>
                                         <div className="card card-style rounded-s m-0">
                                             <img src="/images/process.gif" alt="" className="KING855 process" />
-                                            {gameLoader ? <Loader /> :
+                                            {gameLoader ? <Loader width={120} /> :
                                                 <img onClick={() => handleGameClick(data.GameCode)}
                                                     className="lazyload cursor"
                                                     data-src="./imagies/live_855.jpg"
@@ -300,6 +344,7 @@ const SliderTabs = () => {
                                     </div>
                                 )}
                             </>
+                            }
 
                             {/* end KING855 */}
 

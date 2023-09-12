@@ -102,7 +102,7 @@ const ChangeEmailModal = (props) => {
                                         value={otp}
                                         onChange={(e) => setOtp(e.target.value)} />
                                     <label>Enter Otp</label>
-                                    <Button outline color="warning" onClick={handleClick}>
+                                    <Button outline color="success" onClick={handleClick}>
                                         Submit
                                     </Button>
                                 </div>
