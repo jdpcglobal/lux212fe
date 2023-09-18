@@ -1,5 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import Cookies from 'universal-cookie';
+import { callPostApi } from '../ApiCaller';
+import { UserProfile_Post } from '../ApiConst';
 
 const BalanceContext = createContext();
 
@@ -40,6 +42,12 @@ export function BalanceProvider({ children }) {
     const token = new Cookies().get('kisDiamond_LoggedIn')?.Token;
     let formData = new FormData();
     formData.append('Token', token);
+    // callPostApi( UserProfile_Post, formData, jsonData => {
+    //   if (jsonData.isSuccess) {
+    //     setUserData(jsonData.data.data);
+    //   }
+    //   console.log('API Response (UserProfile):', jsonData);
+    // })
     try {
       const response = await fetch('https://lux212.azurewebsites.net/Api/UserProfile', {
         method: 'POST',

@@ -4,6 +4,8 @@ import { Button } from 'reactstrap';
 import Cookies from 'universal-cookie';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { callPostApi } from '../ApiCaller';
+import { RequestOtp_Post, SavePhone_Post } from '../ApiConst';
 
 const ChangePhone = (props) => {
     const { show, close, setDrawCount } = props;
@@ -32,23 +34,18 @@ const ChangePhone = (props) => {
         let formData = new FormData();
         formData.append('Token', reqObj?.Token);
         formData.append('Phone', phone);
-        try {
-            const response = await fetch('https://lux212.azurewebsites.net/Api/RequestOtp', {
-                method: 'POST',
-                body: formData,
+        callPostApi(RequestOtp_Post, formData, jsonData => {
+            const respObj = jsonData.data;
+            toast(respObj.message, {
+                type: respObj.isSuccess ? 'success' : 'error',
             });
-            const jsonData = await response.json();
-            toast(jsonData.message, {
-                type: jsonData.isSuccess ? 'success' : 'error',
-            });
-            if (jsonData.isSuccess) {
-                setData(jsonData.data);
+            if (respObj.isSuccess) {
+                setData(respObj.data);
                 setShowOtpInput(true);
                 setHideButton(false);
             }
-        } catch (error) {
-            console.log('Error:', error);
-        }
+        })
+        
     };
 
     //***** Request Otp Api End *****//
@@ -67,22 +64,16 @@ const ChangePhone = (props) => {
         formData.append('RequestId', data.RequestId);
         formData.append('Phone', phone);
         formData.append('Otp', otp);
-        try {
-            const response = await fetch('https://lux212.azurewebsites.net/Api/SavePhone', {
-                method: 'POST',
-                body: formData,
-            });
-            const jsonData = await response.json();
-            if (jsonData.isSuccess) {
-                setChangePhone(jsonData.data)
+        callPostApi(SavePhone_Post, formData, jsonData => {
+            const respObj = jsonData.data;
+            if (respObj.isSuccess) {
+                setChangePhone(respObj.data)
                 setShowOtpInput(true);
-                toast(jsonData.message, {
-                    type: jsonData.isSuccess ? 'success' : 'error',
+                toast(respObj.message, {
+                    type: respObj.isSuccess ? 'success' : 'error',
                 });
             }
-        } catch (error) {
-            console.log('Error:', error);
-        }
+        })
     }
     //***** Change Phone Api End *****//
 

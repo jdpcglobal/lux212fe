@@ -4,9 +4,11 @@ import { Button } from 'reactstrap';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Loader from './Loader';
+import { callPostApi } from '../ApiCaller';
+import { Register_Post } from '../ApiConst';
 
 const Registration = (props) => {
-    const { show, close, setDrawCount } = props;
+    const { show, close } = props;
     const [register, setRegister] = useState('');
     const [name, setName] = useState('');
     const [userName, setUserName] = useState('');
@@ -56,24 +58,20 @@ const Registration = (props) => {
         formData.append('Phone', phone);
         // formData.append('Otp', otp);
         // formData.append('OTPid', requestId);
-
-        try {
-            const response = await fetch('https://lux212.azurewebsites.net/Api/Register', {
-                method: 'POST',
-                body: formData,
-            });
-            const jsonData = await response.json();
-            toast(jsonData.message, {
+        callPostApi(Register_Post, formData, (jsonData) => {
+            toast(jsonData.data.message, {
                 type: jsonData.isSuccess ? 'success' : 'error',
             });
             setMessage(jsonData.message);
             if (jsonData.isSuccess) {
-                setRegister(jsonData.data);
+                setRegister(jsonData.data.data);
 
             }
-        } catch (error) {
-            // console.log('Error:', error);
+
         }
+
+        )
+
     };
 
 
@@ -185,7 +183,7 @@ const Registration = (props) => {
                                 </div>
                                 <div className="col-2">
                                     {usernameLoader ? (
-                                        <Loader />
+                                        <Loader width={120} />
                                     ) : (
                                         apiResponse === true ? <span> <img width="48" height="48" src="https://img.icons8.com/emoji/48/check-mark-button-emoji.png" alt="check-mark-button-emoji" /></span> : <span><img width="48" height="48" src="https://img.icons8.com/color/48/cancel--v1.png" alt="cancel--v1" /></span>
                                     )}

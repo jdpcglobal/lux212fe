@@ -2,13 +2,12 @@ import React, { useEffect, useState, ChangeEvent } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { callPostApiWithoutPayload } from './ApiCaller';
+import { callPostApiWithoutPayload, callPostApi } from './ApiCaller';
 import * as ApiConst from './ApiConst';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import Cookies from 'universal-cookie';
-
-import { useBalance } from "./SidebarComponents/BalanceContext";
+import { Get_Providers_Post, GetGames_Post, LaunchGame_Post } from './ApiConst';
 import Loader from "./common/Loader";
 const SliderTabs = () => {
 
@@ -20,7 +19,6 @@ const SliderTabs = () => {
     const [loadingTabs, setLoadingTabs] = useState(false)
     const [AdsData, setAdsData] = useState([])
     const loggedInUser = new Cookies().get("kisDiamond_LoggedIn")
-    const { balance } = useBalance();
     const [gameLoader, setGameLoader] = useState(false);
     const [gameLoaders, setGameLoaders] = useState(false);
 
@@ -31,6 +29,7 @@ const SliderTabs = () => {
         GCode: "",
         Token: new Cookies().get("kisDiamond_LoggedIn")?.Token,
     })
+
 
     var settings = {
         infinite: true,
@@ -79,9 +78,11 @@ const SliderTabs = () => {
 
     const fetchData = async () => {
         try {
-            callPostApiWithoutPayload(ApiConst.Get_Game_Types_Post, (response) => {
-                if (response.isSuccess) {
-                    setTabsData(response.data)
+            callPostApiWithoutPayload(ApiConst.Get_Game_Types_Post, (jsonData) => {
+                if (jsonData.isSuccess) {
+                    setTabsData(jsonData.data)
+                    // getInitialGameProviders();
+                    getTabPanelData(0);
                     setLoadingTabs(false)
                 }
             }, (error) => {
@@ -99,28 +100,23 @@ const SliderTabs = () => {
 
     //*****GET PROVIDERS API *****/
 
-    useEffect(() => {
-        getTabPanelData2()
-    },[]);
+    // const getInitialGameProviders = async () => {
+    //     let formData = new FormData();
+    //     formData.append('TCode', `${1}`);
+    //     callPostApi(Get_Providers_Post, formData, (jsonData) => {
+    //         if (jsonData.data?.isSuccess) {
+    //             setTabpanelData(jsonData.data.data)
+    //             console.log('Tabpanel dddddddddddd  Data:', jsonData.data.data);
+    //         } else {
+    //         }
+    //     },
+    //         (error) => {
 
-    const getTabPanelData2 = async (i) => {
-        let formData = new FormData();
-        formData.append('TCode', `1`);
-        try {
-            const response = await fetch('https://lux212.azurewebsites.net/Api/GetProviders',
-                {
-                    method: 'POST',
-                    body: formData
-                });
-            const jsonData = await response.json();
-            if (jsonData.isSuccess) {
-                setTabpanelData(jsonData.data)
-            }
-        } catch (error) {
-            // console.log('Error:', error);
-        }
+    //         }
+    //     );
+    // }
 
-    }
+
     const handleTabSelect = (index) => {
         getTabPanelData(index)
         setTabIndex(index)
@@ -129,19 +125,25 @@ const SliderTabs = () => {
     const getTabPanelData = async (i) => {
         let formData = new FormData();
         formData.append('TCode', `${i + 1}`);
-        try {
-            const response = await fetch('https://lux212.azurewebsites.net/Api/GetProviders',
-                {
-                    method: 'POST',
-                    body: formData
-                });
-            const jsonData = await response.json();
-            if (jsonData.isSuccess) {
-                setTabpanelData(jsonData.data)
+        callPostApi(Get_Providers_Post, formData, (jsonData) => {
+            if (jsonData.data?.isSuccess) {
+                setTabpanelData(jsonData.data.data)
+                const tabPanelData = jsonData.data.data;
+                if (tabPanelData.length !== 0) {
+                    setLaunchGameReqObj({
+                        ...launchGameReqObj,
+                        PCode: tabPanelData[0].GameTypeCode,
+                        TCode: tabPanelData[0].Code,
+                    })
+                    GetGames(tabPanelData[0].GameTypeCode, tabPanelData[0].Code)
+                }
+                console.log('Tabpanel dddddddddddd  Data:', jsonData.data.data);
             }
-        } catch (error) {
-            // console.log('Error:', error);
-        }
+        },
+            (error) => {
+
+            }
+        );
 
     }
     //***** GET PROVIDER API END *****
@@ -177,7 +179,7 @@ const SliderTabs = () => {
                 // console.log();
                 setLaunchGameData(jsonData.data);
             } else {
-                window.location.reload();
+                 window.location.reload();
             }
 
         } catch (error) {
@@ -201,46 +203,42 @@ const SliderTabs = () => {
         let formData = new FormData();
         formData.append('TCode', `${tCode}`);
         formData.append('PCode', `${pCode}`);
-        try {
-            const response = await fetch('https://lux212.azurewebsites.net/Api/GetGames', {
-                method: 'POST',
-                body: formData,
-            });
-            const jsonData = await response.json();
-            if (jsonData.isSuccess) {
-                setResponseData(jsonData.data);
+        callPostApi(GetGames_Post, formData, (jsonData) => {
+            if (jsonData.data?.isSuccess) {
+                setResponseData(jsonData.data.data);
                 setGameLoader(false)
+            } else {
             }
-        } catch (error) {
-            setGameLoader(false)
-            // console.log('Error:', error);
-        }
+        },
+            (error) => {
+                setGameLoader(false)
+                // console.log('Error:', error);
+            }
+        );
+
     };
 
-    useEffect(() => {
-        GetGame()
-        setGameLoaders(true)
-    },[]);
-   
-    const GetGame = async (tCode, pCode) => {
-        let formData = new FormData();
-        formData.append('TCode', `1`);
-        formData.append('PCode', `1006`);
-        try {
-            const response = await fetch('https://lux212.azurewebsites.net/Api/GetGames', {
-                method: 'POST',
-                body: formData,
-            });
-            const jsonData = await response.json();
-            if (jsonData.isSuccess) {
-                setResponseData(jsonData.data);
-                setGameLoaders(false)
-            }
-        } catch (error) {
-            setGameLoaders(false)
-            // console.log('Error:', error);
-        }
-    };
+    // useEffect(() => {
+    //     GetGame()
+    // },[]);
+
+    // const GetGame = async () => {
+    //     let formData = new FormData();
+    //     formData.append('TCode', `1`);
+    //     formData.append('PCode', `1006`);
+    //     callPostApi(GetGames_Post,formData,(jsonData) => {
+    //         if (jsonData.data?.isSuccess) {
+    //             setResponseData(jsonData.data.data);
+    //             setGameLoader(false)
+    //         } else {
+    //         }
+    //       },
+    //       (error) => {
+    //         setGameLoader(false)
+    //         // console.log('Error:', error);
+    //       }
+    //     );
+    // };
     //***** GET GAME API END *****/
 
     return (
@@ -292,7 +290,7 @@ const SliderTabs = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="Tabs" style={{ cursor: 'pointer', borderRadius:'15px', backgroundColor:'#dfdffc' }}>
+                            <div className="Tabs" style={{ cursor: 'pointer', borderRadius: '15px', backgroundColor: '#dfdffc' }}>
                                 <Tabs selectedIndex={tabIndex} onSelect={(index) => handleTabSelect(index)}>
                                     <div className="get TabPanel" style={{ marginTop: '7px' }}>
                                         <TabList>
@@ -325,25 +323,25 @@ const SliderTabs = () => {
 
                             {/* KING855 */}
                             {gameLoaders ? <Loader /> :
-                            <>
-                                {responseData.length > 0 && responseData.map((data) =>
-                                    <div className="col-3 p-1 game-item livecasino allgame" style={{ cursor: 'pointer' }}>
-                                        <div className="card card-style rounded-s m-0">
-                                            <img src="/images/process.gif" alt="" className="KING855 process" />
-                                            {gameLoader ? <Loader width={120} /> :
-                                                <img onClick={() => handleGameClick(data.GameCode)}
-                                                    className="lazyload cursor"
-                                                    data-src="./imagies/live_855.jpg"
-                                                    src={data.ImageURL}
-                                                    alt=""
-                                                    onclick="action_live('KING855')"
-                                                />
-                                            }
+                                <>
+                                    {responseData.length > 0 && responseData.map((data) =>
+                                        <div className="col-3 p-1 game-item livecasino allgame" style={{ cursor: 'pointer' }}>
+                                            <div className="card card-style rounded-s m-0">
+                                                <img src="/images/process.gif" alt="" className="KING855 process" />
+                                                {gameLoader ? <Loader width={120} /> :
+                                                    <img onClick={() => handleGameClick(data.GameCode)}
+                                                        className="lazyload cursor"
+                                                        data-src="./imagies/live_855.jpg"
+                                                        src={data.ImageURL}
+                                                        alt=""
+                                                        onclick="action_live('KING855')"
+                                                    />
+                                                }
+                                            </div>
+                                            <div className="game-title" >{data.GameName}</div>
                                         </div>
-                                        <div className="game-title" >{data.GameName}</div>
-                                    </div>
-                                )}
-                            </>
+                                    )}
+                                </>
                             }
 
                             {/* end KING855 */}

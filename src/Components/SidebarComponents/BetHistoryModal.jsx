@@ -7,6 +7,8 @@ import Cookies from 'universal-cookie';
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import dayjs, { Dayjs } from 'dayjs';
+import { callPostApi } from '../ApiCaller';
+import { History_Post } from '../ApiConst';
 
 const BetHistoryModal = () => {
     const [dateFrom, setDateFrom] = useState('');
@@ -27,18 +29,13 @@ const BetHistoryModal = () => {
         formData.append('Token', reqObj?.Token);
         formData.append('DateFrom', dateFrom);
         formData.append('DateTo', dateFromTo);
-        try {
-            const response = await fetch('https://lux212.azurewebsites.net/Api/History', {
-                method: 'POST',
-                body: formData,
-            });
-            const jsonData = await response.json();
-            if (jsonData.isSuccess) {
-                setHistory(jsonData.data);
+        callPostApi(History_Post, formData, jsonData => {
+            const respObj = jsonData.data;
+            if (respObj.isSuccess) {
+                setHistory(respObj.data);
             }
-        } catch (error) {
-            console.log('Error:', error);
-        }
+        })
+       
     };
     //*****  History API END  *****/
 

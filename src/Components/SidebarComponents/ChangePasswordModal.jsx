@@ -4,6 +4,8 @@ import { Button } from 'reactstrap';
 import Cookies from 'universal-cookie';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { callPostApi } from '../ApiCaller';
+import { ChangePassword_Post } from '../ApiConst';
 
 const ChangePasswordModal = (props) => {
     const { show, close } = props;
@@ -30,21 +32,16 @@ const ChangePasswordModal = (props) => {
         formData.append('CurPassword', curPassword);
         formData.append('NewPassword', newPassword);
         formData.append('ConfPassword', confPassword);
-        try {
-            const response = await fetch('https://lux212.azurewebsites.net/Api/ChangePassword', {
-                method: 'POST',
-                body: formData,
+        callPostApi(ChangePassword_Post, formData, jsonData => {
+            const respObj = jsonData.data;
+            toast(respObj.message, {
+                type: respObj.isSuccess ? 'success' : 'error',
             });
-            const jsonData = await response.json();
-            toast(jsonData.message, {
-                type: jsonData.isSuccess ? 'success' : 'error',
-            });
-            if (jsonData.isSuccess) {
-                setChangePassword(jsonData.data);
+            if (respObj.isSuccess) {
+                setChangePassword(respObj.data);
             }
-        } catch (error) {
-            console.log('Error:', error);
-        }
+        })
+        
     };
 
     return (

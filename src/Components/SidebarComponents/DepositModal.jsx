@@ -187,6 +187,7 @@ const DepositModal = () => {
     //***** UPLOAD RECEIPTS END *****/
 
     //***** SAVE CREDIT INFO *****/
+    
     const toggleModal = () => {
         setIsModalOpen(!isModalOpen);
     };

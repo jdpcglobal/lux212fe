@@ -3,6 +3,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Table } from 'reactstrap';
 import Cookies from 'universal-cookie';
+import { callPostApi } from '../ApiCaller';
+import { BankTransactions_Post } from '../ApiConst';
 
 const BankTransaction = () => {
 
@@ -14,24 +16,18 @@ const BankTransaction = () => {
     }, []);
 
     const fetchBankTransactions = async () => {
-        try {
-            const formData = new FormData();
-            formData.append('Token', token);
-
-            const response = await fetch('https://lux212.azurewebsites.net/Api/BankTransactions', {
-                method: 'POST',
-                body: formData,
-            });
-            const jsonData = await response.json();
-            toast(jsonData.message, {
+        const formData = new FormData();
+        formData.append('Token', token);
+        callPostApi(BankTransactions_Post, formData, jsonData => {
+            const respObj = jsonData.data;
+            toast(respObj.message, {
                 type: jsonData.isSuccess ? 'success' : 'error',
             });
-            if (jsonData.isSuccess) {
-                setTransactionData(jsonData.data);
+            if (respObj.isSuccess) {
+                setTransactionData(respObj.data);
             }
-        } catch (error) {
-            console.log('Error:', error);
-        }
+        })
+
     };
 
     return (
@@ -49,7 +45,7 @@ const BankTransaction = () => {
                                 <div className="align-self-center" style={{ width: '16rem' }}>
                                     <label className="font-800 font-22 trn Title" data-trn-key="Deposit">Bank Transaction </label>
                                 </div>
-                                
+
                                 {transactionData.map((transaction, index) => (
                                     <Table>
                                         <tbody style={{ fontSize: 15, fontWeight: "bold" }}>

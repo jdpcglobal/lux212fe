@@ -4,6 +4,8 @@ import Cookies from 'universal-cookie';
 import { Button } from 'reactstrap';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { callPostApi } from '../ApiCaller';
+import { UserProfile_Post } from '../ApiConst';
 
 const SetPinApi = (props) => {
     const { smShow, close } = props;
@@ -118,18 +120,12 @@ const SetPinApi = (props) => {
         };
         let formData = new FormData();
         formData.append('Token', reqObj?.Token);
-        try {
-            const response = await fetch('https://lux212.azurewebsites.net/Api/UserProfile', {
-                method: 'POST',
-                body: formData,
-            });
-            const jsonData = await response.json();
-            if (jsonData.isSuccess) {
-                setData(jsonData.data); // Return the message from the API response
+        callPostApi(UserProfile_Post, formData, jsonData => {
+            const respObj = jsonData.data;
+            if (respObj.isSuccess) {
+                setData(respObj.data); // Return the message from the API response
             }
-        } catch (error) {
-            console.log('Error:', error);
-        }
+        })
     };
     //***** UserProfile Api End *****//
 

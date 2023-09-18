@@ -4,6 +4,8 @@ import { Button } from 'reactstrap';
 import Cookies from 'universal-cookie';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { callPostApi } from '../ApiCaller';
+import { RequestOtp_Post, SaveEmail_Post } from '../ApiConst';
 
 const ChangeEmailModal = (props) => {
     const { show, close } = props;
@@ -30,23 +32,17 @@ const ChangeEmailModal = (props) => {
         let formData = new FormData();
         formData.append('Token', reqObj?.Token);
         formData.append('Email', email);
-        try {
-            const response = await fetch('https://lux212.azurewebsites.net/Api/RequestOtp', {
-                method: 'POST',
-                body: formData,
-            });
-            const jsonData = await response.json();
-            if (jsonData.isSuccess) {
-                setData(jsonData.data);
+        callPostApi( RequestOtp_Post, formData, jsonData => {
+            const respObj = jsonData.data;
+            if (respObj.isSuccess) {
+                setData(respObj.data);
                 setShowOtpInput(true);
                 setHideButton(false);
-                toast(jsonData.message, {
-                    type: jsonData.isSuccess ? 'success' : 'error',
+                toast(respObj.message, {
+                    type: respObj.isSuccess ? 'success' : 'error',
                 });
             }
-        } catch (error) {
-            console.log('Error:', error);
-        }
+        })
     };
 
     const SaveEmail = async () => {
@@ -58,21 +54,16 @@ const ChangeEmailModal = (props) => {
         formData.append('RequestId', data.RequestId);
         formData.append('Email', email);
         formData.append('Otp', otp);
-        try {
-            const response = await fetch('https://lux212.azurewebsites.net/Api/SaveEmail', {
-                method: 'POST',
-                body: formData,
-            });
-            const jsonData = await response.json();
-            toast(jsonData.message, {
-                type: jsonData.isSuccess ? 'success' : 'error',
+        callPostApi(SaveEmail_Post, formData, jsonData => {
+            const respObj = jsonData.data; 
+            toast(respObj.message, {
+                type: respObj.isSuccess ? 'success' : 'error',
             });
             if (jsonData.isSuccess) {
-                setChangeEmail(jsonData.message);
+                setChangeEmail(respObj.message);
             }
-        } catch (error) {
-            console.log('Error:', error);
-        }
+        })
+        
     };
 
     const onHandleClick = () => {

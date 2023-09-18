@@ -46,10 +46,7 @@ const Login = (props) => {
     formData.append('Username', loginObj.Username);
     formData.append('Password', loginObj.Password);
 
-    callPostApi(
-      Login_User_Post,
-      formData,
-      (response) => {
+    callPostApi(Login_User_Post,formData,(response) => {
         if (response.data?.isSuccess) {
           toast.success(response.data.message);
           props.handleLogin(response.data.data);

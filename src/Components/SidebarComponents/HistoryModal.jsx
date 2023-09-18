@@ -7,6 +7,8 @@ import { Button } from 'reactstrap';
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import dayjs, { Dayjs } from 'dayjs';
+import { callPostApi } from '../ApiCaller';
+import { Transactions_Post } from '../ApiConst';
 
 const HistoryModal = () => {
     const [transactionsReqObj, setTransactionsReqObj] = useState({
@@ -30,19 +32,13 @@ const HistoryModal = () => {
         formData.append('Token', reqObj?.Token);
         formData.append('DateFrom', dateFrom);
         formData.append('DateTo', dateFromTo);
-
-        try {
-            const response = await fetch('https://lux212.azurewebsites.net/Api/Transactions', {
-                method: 'POST',
-                body: formData,
-            });
-            const jsonData = await response.json();
-            if (jsonData.isSuccess) {
-                setTransaction(jsonData.data);
+        callPostApi(Transactions_Post, formData, jsonData => {
+            const respObj = jsonData.data;
+            if (respObj.isSuccess) {
+                setTransaction(respObj.data);
             }
-        } catch (error) {
-            console.log('Error:', error);
-        }
+        })
+        
     };
     //*****  Transactions API END  *****/
 

@@ -14,7 +14,7 @@ const ReadBank = () => {
         const formData = new FormData();
         formData.append("Token", loggedInUser?.Token);
 
-        fetch("https://lux212.azurewebsites.net/Api/MyBankAccounts", {
+        fetch("https://lux212.azurewebsites.net/Api/MyBankAccounts", { 
             method: "POST",
 
             body: formData,

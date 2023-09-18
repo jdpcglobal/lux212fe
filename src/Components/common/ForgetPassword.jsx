@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
+import { Button } from 'reactstrap';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import {  callPostApi } from '../ApiCaller';
+import { ResetPassword_Post } from '../ApiConst';
 
 const ForgetPassword = (props) => {
     const { show, close, setDrawCount } = props;
@@ -29,26 +31,24 @@ const ForgetPassword = (props) => {
         formData.append('Username', username);
         formData.append('Email', email);
 
-        try {
-            const response = await fetch('https://lux212.azurewebsites.net/Api/ResetPassword', {
-                method: 'POST',
-                body: formData,
-            });
-
-            const jsonData = await response.json();
-            setMessage(jsonData.message);
-            toast(jsonData.message, {
+        callPostApi(ResetPassword_Post, formData, (jsonData) => {
+            setMessage(jsonData.data.message);
+            toast(jsonData.data.message, {
                 type: jsonData.isSuccess ? 'success' : 'error',
             });
             if (jsonData.isSuccess) {
-                setPassword(jsonData.data); // Assuming you have a state variable `setPassword` to store the API response message
+                setPassword(jsonData.data.data); 
             }
             if (formData.has('Phone') && formData.get('Phone').trim() !== '') {
                 setShowOtpInput(true);
             }
-        } catch (error) {
-            console.log('Error:', error);
-        }
+        },
+            (error) => {
+
+            }
+        );
+
+
     };
     //***** Reset password API End *****/
 
@@ -114,18 +114,12 @@ const ForgetPassword = (props) => {
                                 <div className="user-box">
                                     <input type="password" name="" required="" value={otp} onChange={(e) => setOtp(e.target.value)} />
                                     <label>OTP</label>
-                                    <Button variant="warning" onClick={handleVeryFyClick} >Submit otp</Button>
+                                    <Button outline color="success" onClick={handleVeryFyClick} >Submit otp</Button>
                                 </div>
                             )}
 
+                            <Button outline color="success" onClick={handleClick} >Submit</Button>
 
-                            <a>
-                                <span />
-                                <span />
-                                <span />
-                                <span />
-                                <Button variant="warning" onClick={handleClick} >Submit</Button>
-                            </a>
 
                         </form>
                     </div>
