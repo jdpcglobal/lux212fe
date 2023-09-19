@@ -4,7 +4,8 @@ import { Button } from 'reactstrap';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {  callPostApi } from '../ApiCaller';
-import { ResetPassword_Post } from '../ApiConst';
+import { ResetPassword_Post, VerifyOtp_Post } from '../ApiConst';
+import { json } from 'react-router-dom';
 
 const ForgetPassword = (props) => {
     const { show, close, setDrawCount } = props;
@@ -19,6 +20,7 @@ const ForgetPassword = (props) => {
     const [otp, setOtp] = useState('');
     const [messageType, setMessageType] = useState('');
     const [message, setMessage] = useState('');
+    const [hideButton, setHideButton] = useState(true);
 
     //***** Reset password API *****/
     const handleClick = () => {
@@ -32,15 +34,17 @@ const ForgetPassword = (props) => {
         formData.append('Email', email);
 
         callPostApi(ResetPassword_Post, formData, (jsonData) => {
-            setMessage(jsonData.data.message);
-            toast(jsonData.data.message, {
-                type: jsonData.isSuccess ? 'success' : 'error',
+            const respObj = jsonData.data; 
+            setMessage(respObj.message);
+            toast(respObj.message, {
+                type: respObj.isSuccess ? 'success' : 'error',
             });
-            if (jsonData.isSuccess) {
-                setPassword(jsonData.data.data); 
+            if (respObj.isSuccess) {
+                setPassword(respObj.data); 
             }
             if (formData.has('Phone') && formData.get('Phone').trim() !== '') {
                 setShowOtpInput(true);
+                setHideButton(false);
             }
         },
             (error) => {
@@ -63,26 +67,21 @@ const ForgetPassword = (props) => {
         formData.append('Phone', phone);
         formData.append('Otp', otp);
         formData.append('RequestId', password.RequestId);
-        try {
-            const response = await fetch('https://lux212.azurewebsites.net/Api/VerifyOtp', {
-                method: 'POST',
-                body: formData,
+        callPostApi(VerifyOtp_Post, formData, jsonData => {
+            const respObj = jsonData.data;
+            setVerifyOtp(respObj.message);
+            toast(respObj.message, {
+                type: respObj.isSuccess ? 'success' : 'error',
             });
-            const jsonData = await response.json();
-            setVerifyOtp(jsonData.message);
-            toast(jsonData.message, {
-                type: jsonData.isSuccess ? 'success' : 'error',
-            });
-            if (jsonData.isSuccess) {
+            if (respObj.isSuccess) {
                 let a = document.createElement('a');
                 a.target = '_blank';
-                a.href = jsonData.data;
+                a.href = respObj.data;
                 a.click();
 
             }
-        } catch (error) {
-            console.log('Error:', error);
-        }
+        })
+        
     };
     //***** Reset VeriFyOtp API End *****/
 
@@ -114,13 +113,12 @@ const ForgetPassword = (props) => {
                                 <div className="user-box">
                                     <input type="password" name="" required="" value={otp} onChange={(e) => setOtp(e.target.value)} />
                                     <label>OTP</label>
-                                    <Button outline color="success" onClick={handleVeryFyClick} >Submit otp</Button>
+                                    <Button outline color="success" onClick={handleVeryFyClick} >Submit</Button>
                                 </div>
                             )}
-
+                            {hideButton && (
                             <Button outline color="success" onClick={handleClick} >Submit</Button>
-
-
+                            )}
                         </form>
                     </div>
                     {verifyOtp && (

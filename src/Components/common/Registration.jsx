@@ -5,7 +5,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Loader from './Loader';
 import { callPostApi } from '../ApiCaller';
-import { Register_Post } from '../ApiConst';
+import { CheckUsername_Post, Register_Post } from '../ApiConst';
 
 const Registration = (props) => {
     const { show, close } = props;
@@ -120,20 +120,13 @@ const Registration = (props) => {
     const checkUsername = useCallback(async () => {
         let formData = new FormData();
         formData.append('Username', userName);
-        try {
-            setUsernameLoader(true);
-            const response = await fetch('https://lux212.azurewebsites.net/Api/CheckUsername', {
-                method: 'POST',
-                body: formData,
-            });
-            const jsonData = await response.json();
-            setApiResponse(jsonData.isSuccess);
-        } catch (error) {
-            console.error('Error:', error);
-            setApiResponse(false);
-        } finally {
+        setUsernameLoader(true);
+        callPostApi(CheckUsername_Post, formData, jsonData => {
+            const respObj = jsonData.data;
+            setApiResponse(respObj.isSuccess);
             setUsernameLoader(false);
-        }
+        })
+        
     }, [userName]);
 
     useEffect(() => {

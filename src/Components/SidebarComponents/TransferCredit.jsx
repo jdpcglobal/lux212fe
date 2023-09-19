@@ -1,7 +1,9 @@
-import React, { useState,useEffect } from 'react'
-import { Button} from 'reactstrap';
+import React, { useState, useEffect } from 'react'
+import { Button } from 'reactstrap';
 import Cookies from 'universal-cookie';
 import { useBalance } from './BalanceContext';
+import { callPostApi } from '../ApiCaller';
+import { TransferCredit_Post } from '../ApiConst';
 
 const TransferCredit = () => {
 
@@ -17,27 +19,35 @@ const TransferCredit = () => {
         const token = new Cookies().get("kisDiamond_LoggedIn")?.Token; // Retrieve Token here
         await TransferCredit(pinValue, token);
     };
-    
-    const TransferCredit = async (pinValue,token) => {
+
+    const TransferCredit = async (pinValue, token) => {
         let formData = new FormData();
         formData.append('Token', token);
         formData.append('ToUserId', toUserId);
-        formData.append('Amount',amount );
+        formData.append('Amount', amount);
         formData.append('Pin', pinValue);
-        try {
-            const response = await fetch('https://lux212.azurewebsites.net/Api/TransferCredit', {
-                method: 'POST',
-                body: formData,
-            });
-            const jsonData = await response.json();
-            if (jsonData.isSuccess) {
-                setData(jsonData.data);
-                await updateBalance();
+        callPostApi(TransferCredit_Post, formData, jsonData => {
+            const respObj = jsonData.data;
+            if (respObj.isSuccess) {
+                setData(respObj.data);
+                 updateBalance();
                 resetForm();
             }
-        } catch (error) {
-            console.log('Error:', error);
-        }
+        })
+        // try {
+        //     const response = await fetch('https://lux212.azurewebsites.net/Api/TransferCredit', {
+        //         method: 'POST',
+        //         body: formData,
+        //     });
+        //     const jsonData = await response.json();
+        //     if (jsonData.isSuccess) {
+        //         setData(jsonData.data);
+        //         await updateBalance();
+        //         resetForm();
+        //     }
+        // } catch (error) {
+        //     console.log('Error:', error);
+        // }
     }
 
     const resetForm = () => {
@@ -77,7 +87,7 @@ const TransferCredit = () => {
 
     return (
         <>
-            <div id="TransferCredit" style={{height: '100%' }} className="offcanvas offcanvas-end bg-theme">
+            <div id="TransferCredit" style={{ height: '100%' }} className="offcanvas offcanvas-end bg-theme">
                 <div className="content">
                     <div className="d-flex pb-2">
                         <div className="align-self-center">
@@ -126,7 +136,7 @@ const TransferCredit = () => {
                                         />
                                     ))}
                                 </div>
-                                <Button outline color="success"  className=" mt-4"  onClick={() => { handleClick(); }}>Submit</Button>
+                                <Button outline color="success" className=" mt-4" onClick={() => { handleClick(); }}>Submit</Button>
                             </div>
                         </div>
                     </div>

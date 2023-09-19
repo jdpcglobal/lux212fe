@@ -3,6 +3,10 @@ import Cookies from 'universal-cookie';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Button} from 'reactstrap';
+import { callPostApi } from '../ApiCaller';
+import { MyBankAccounts_Post, SaveDebitInfo_Post } from '../ApiConst';
+import { useBalance } from './BalanceContext';
+
 const WithdrawModal = () => {
 
     const loggedInUser = new Cookies().get("kisDiamond_LoggedIn")
@@ -14,32 +18,20 @@ const WithdrawModal = () => {
     })
     const [messageType, setMessageType] = useState('');
     const [message, setMessage] = useState('')
+    const { userData } = useBalance();
 
 
     //***** READ BANK ACC LIST *****/
     const GetBankList = () => {
         const formData = new FormData();
         formData.append("Token", loggedInUser?.Token);
-
-        fetch("https://lux212.azurewebsites.net/Api/MyBankAccounts", {
-            method: "POST",
-            body: formData,
+        callPostApi(MyBankAccounts_Post, formData, jsonData => {
+            const respObj = jsonData.data;
+            if (respObj.isSuccess) {
+                setMyBank(respObj.data);
+            }
         })
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error("Error fetching data");
-                }
-                return response.json();
-            })
-            .then((data) => {
-                if (data.isSuccess) {
-                    setMyBank(data.data);
-                }
-                console.log(data);
-            })
-            .catch((error) => {
-                console.error("Error fetching data:", error);
-            });
+        
     }
 
 
@@ -62,24 +54,18 @@ const WithdrawModal = () => {
         // formData.append('UserId', `16`);
         // formData.append('DestBankId',);
         formData.append('Amount', debitDetail.Amount);
-        formData.append('UserId', `16`);
+        formData.append('UserId', userData.Id);
         formData.append('DestBankId', debitDetail.DestBankId);
-
-        try {
-            const response = await fetch('https://lux212.azurewebsites.net/Api/SaveDebitInfo', {
-                method: 'POST',
-                body: formData,
+        callPostApi(SaveDebitInfo_Post, formData, jsonData => {
+            const respObj = jsonData.data; 
+            toast(respObj.message, {
+                type: respObj.isSuccess ? 'success' : 'error',
             });
-            const jsonData = await response.json();
-            toast(jsonData.message, {
-                type: jsonData.isSuccess ? 'success' : 'error',
-            });
-            if (jsonData.isSuccess) {
-                setMessage(jsonData.message); // Return the message from the API response
+            if (respObj.isSuccess) {
+                setMessage(respObj.message); // Return the message from the API response
             }
-        } catch (error) {
-            console.log('Error:', error);
-        }
+        })
+        
     };
 
     //***** SAVE DEBIT INFO *****/

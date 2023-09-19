@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import Cookies from 'universal-cookie';
 import CreateBankAcc from "./CreateBankAcc";
 import { Button } from 'reactstrap';
-import Table from 'react-bootstrap/Table';
+import Table from 'react-bootstrap/Table'; 
+import { callPostApi } from "../ApiCaller";
+import { MyBankAccounts_Post } from "../ApiConst";
 
 
 const ReadBank = () => {
@@ -13,27 +15,13 @@ const ReadBank = () => {
     const getData = () => {
         const formData = new FormData();
         formData.append("Token", loggedInUser?.Token);
-
-        fetch("https://lux212.azurewebsites.net/Api/MyBankAccounts", { 
-            method: "POST",
-
-            body: formData,
+        callPostApi(MyBankAccounts_Post, formData, jsonData => {
+            const respObj = jsonData.data;
+            if (respObj.isSuccess) {
+                setMyBank(respObj.data);
+            }
         })
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error("Error fetching data");
-                }
-                return response.json();
-            })
-            .then((data) => {
-                if (data.isSuccess) {
-                    setMyBank(data.data);
-                }
-                console.log(data);
-            })
-            .catch((error) => {
-                console.error("Error fetching data:", error);
-            });
+        
     }
     //done
     useEffect(() => {

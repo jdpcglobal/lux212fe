@@ -3,6 +3,8 @@ import { Button } from 'reactstrap';
 import Cookies from 'universal-cookie';
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
+import { callPostApi } from '../ApiCaller';
+import { SaveBankAcc_Post } from '../ApiConst';
 
 
 const CreateBankAcc = ({ show, close, setDrawCount }) => {
@@ -19,16 +21,12 @@ const CreateBankAcc = ({ show, close, setDrawCount }) => {
         formData.append("AccNumber", AccNumber);
         formData.append("HolderName", HolderName);
         formData.append("Token", loggedInUser?.Token);
-
-        fetch("https://lux212.azurewebsites.net/Api/SaveBankAcc", {
-            method: "POST",
-            body: formData,
+        callPostApi(SaveBankAcc_Post, formData, jsonData => {
+            setDrawCount(pre => pre + 1)
+            // history("/read-bank");
+            close();
         })
-            .then(() => {
-                setDrawCount(pre => pre + 1)
-                // history("/read-bank");
-                close();
-            });
+        
     };
 
     return (
@@ -39,7 +37,7 @@ const CreateBankAcc = ({ show, close, setDrawCount }) => {
                         <div className="col-lg-12">
                             <div className="row">
                                 <div className="login-box">
-                                    <h2>Change Phone</h2>
+                                    <h2>Add Bank Account</h2>
                                     <form>
                                         <div className="user-box">
                                             <input type="text" required="" autoComplete='off' id="bankNameInput" name="bankName"

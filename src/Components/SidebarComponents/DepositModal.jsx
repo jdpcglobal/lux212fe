@@ -6,6 +6,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Table from 'react-bootstrap/Table';
 import { useBalance } from './BalanceContext';
+import { callPostApi } from '../ApiCaller';
+import { CreditAccount_Post, Deposit_Post, PaymentGateways_Post, SaveCreditInfo_Post } from '../ApiConst';
 
 
 const DepositModal = () => {
@@ -63,25 +65,37 @@ const DepositModal = () => {
         let formData = new FormData();
         formData.append('Token', reqObj?.Token);
         formData.append('Type', reqObj?.Type);
-        try {
-            setBankNamesLoader(true)
-            const response = await fetch('https://lux212.azurewebsites.net/Api/CreditAccount', {
-                method: 'POST',
-                body: formData,
-            });
-            const jsonData = await response.json();
-            if (jsonData.isSuccess) {
-                setCreditAccount(jsonData.data);
-                const selectedItem = jsonData.data[0]; // Assuming the first item is selected
+        setBankNamesLoader(true)
+        callPostApi(CreditAccount_Post, formData, jsonData => {
+            const respObj = jsonData.data;
+            if (respObj.isSuccess) {
+                setCreditAccount(respObj.data);
+                const selectedItem = respObj.data[0]; // Assuming the first item is selected
                 setBankName(selectedItem.BankName);
                 setHolderName(selectedItem.HolderName);
                 setAccNumber(selectedItem.AccNumber);
                 setBankNamesLoader(false)
             }
-        } catch (error) {
-            setBankNamesLoader(false)
-            console.log('Error:', error);
-        }
+        })
+        // try {
+        //     setBankNamesLoader(true)
+        //     const response = await fetch('https://lux212.azurewebsites.net/Api/CreditAccount', {
+        //         method: 'POST',
+        //         body: formData,
+        //     });
+        //     const jsonData = await response.json();
+        //     if (jsonData.isSuccess) {
+        //         setCreditAccount(jsonData.data);
+        //         const selectedItem = jsonData.data[0]; // Assuming the first item is selected
+        //         setBankName(selectedItem.BankName);
+        //         setHolderName(selectedItem.HolderName);
+        //         setAccNumber(selectedItem.AccNumber);
+        //         setBankNamesLoader(false)
+        //     }
+        // } catch (error) {
+        //     setBankNamesLoader(false)
+        //     console.log('Error:', error);
+        // }
     };
 
     const handleItemClick = (itemId) => {
@@ -107,18 +121,24 @@ const DepositModal = () => {
         };
         let formData = new FormData();
         formData.append('Token', reqObj?.Token);
-        try {
-            const response = await fetch('https://lux212.azurewebsites.net/Pay/PaymentGateways', {
-                method: 'POST',
-                body: formData,
-            });
-            const jsonData = await response.json();
-            if (jsonData.isSuccess) {
-                setOnlineMethod(jsonData.data); // Return the message from the API response
+        callPostApi(PaymentGateways_Post, formData, jsonData => {
+             const respObj = jsonData.data;
+            if (respObj.isSuccess) {
+                setOnlineMethod(respObj.data); // Return the message from the API response
             }
-        } catch (error) {
-            console.log('Error:', error);
-        }
+        })
+        // try {
+        //     const response = await fetch('https://lux212.azurewebsites.net/Pay/PaymentGateways', {
+        //         method: 'POST',
+        //         body: formData,
+        //     });
+        //     const jsonData = await response.json();
+        //     if (jsonData.isSuccess) {
+        //         setOnlineMethod(jsonData.data); // Return the message from the API response
+        //     }
+        // } catch (error) {
+        //     console.log('Error:', error);
+        // }
     };
 
     //***** Online Payment Method End *****//
@@ -136,23 +156,34 @@ const DepositModal = () => {
         formData.append('Token', reqObj?.Token);
         formData.append('Amount', amount);
         formData.append('Gateway', selectedName);
-        try {
-            const response = await fetch('https://lux212.azurewebsites.net/Pay/Deposit', {
-                method: 'POST',
-                body: formData,
+        callPostApi(Deposit_Post, formData, jsonData => {
+            const respObj = jsonData.data;
+            toast(respObj.message, {
+                type: respObj.isSuccess ? 'success' : 'error',
             });
-            const jsonData = await response.json();
-            toast(jsonData.message, {
-                type: jsonData.isSuccess ? 'success' : 'error',
-            });
-            if (jsonData.isSuccess) {
-                window.open(jsonData.data.InvoiceUrl).focus();
-                setDeposit(jsonData.data);
+            if (respObj.isSuccess) {
+                window.open(respObj.data.InvoiceUrl).focus();
+                setDeposit(respObj.data);
 
             }
-        } catch (error) {
-            console.log('Error:', error);
-        }
+        })
+        // try {
+        //     const response = await fetch('https://lux212.azurewebsites.net/Pay/Deposit', {
+        //         method: 'POST',
+        //         body: formData,
+        //     });
+        //     const jsonData = await response.json();
+        //     toast(jsonData.message, {
+        //         type: jsonData.isSuccess ? 'success' : 'error',
+        //     });
+        //     if (jsonData.isSuccess) {
+        //         window.open(jsonData.data.InvoiceUrl).focus();
+        //         setDeposit(jsonData.data);
+
+        //     }
+        // } catch (error) {
+        //     console.log('Error:', error);
+        // }
     };
 
     //***** Online Deposit End *****//
@@ -161,7 +192,7 @@ const DepositModal = () => {
     const UploadReceipts = async (file) => {
         let formData = new FormData();
         formData.append('key', 'KYhpThsnejTYmofkOndfmkQnci0');
-        formData.append('img', file); // Append the selected file to the form data
+        formData.append('img', file); 
         try {
             const response = await fetch('https://www.jdpcglobal.com/cdn/api/uploadReceipts.php', {
                 method: 'POST',
@@ -204,21 +235,16 @@ const DepositModal = () => {
         formData.append('ReceiptUrl', UploadReceipt);
         formData.append('UserId', userData.Id);
         formData.append('DestBankId', selectedBank.Id);
-        try {
-            const response = await fetch('https://lux212.azurewebsites.net/Api/SaveCreditInfo', {
-                method: 'POST',
-                body: formData,
-            });
-            const jsonData = await response.json();
-            if (jsonData.isSuccess) {
-                setMessage(jsonData.data); // Return the message from the API response
+        callPostApi(SaveCreditInfo_Post, formData, jsonData => {
+            const respObj = jsonData.data;
+            if (respObj.isSuccess) {
+                setMessage(respObj.data); // Return the message from the API response
             }
-            toast(jsonData.message, {
-                type: jsonData.isSuccess ? 'success' : 'error',
+            toast(respObj.message, {
+                type: respObj.isSuccess ? 'success' : 'error',
             });
-        } catch (error) {
-            console.log('Error:', error);
-        }
+        })
+        
     };
 
     //***** SAVE SAVE CREDIT INFO END *****/
@@ -236,7 +262,7 @@ const DepositModal = () => {
                         </div>
                     </div>
                     <div className="list-group list-custom list-group-m rounded-xs">
-                        {/*<a href="#" class="list-group-item" data-bs-toggle="offcanvas" data-bs-target="#PaymentGwModal">*/}
+                        {/*<a href="#" class="list-group-item" data-bs-toggle="offcanvas" data-bs-target="#PaymentGwModal">
                         {/* <a href="#" className="list-group-item" data-bs-toggle="offcanvas" data-bs-target="#DGPayModal">
                             <img src="https://m.kissdiamond.net/images/dgpay.png" className="rounded-xs" alt="DGpay" style={{ width: '32px', height: '32px', marginRight: '15px' }} />
                             <div><strong><t data-trn-key="Instant top-up">Instant top-up</t> 🚀</strong></div>

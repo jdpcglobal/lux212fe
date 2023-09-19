@@ -5,7 +5,7 @@ import { Button } from 'reactstrap';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { callPostApi } from '../ApiCaller';
-import { UserProfile_Post } from '../ApiConst';
+import { SetPin_Post, UserProfile_Post } from '../ApiConst';
 
 const SetPinApi = (props) => {
     const { smShow, close } = props;
@@ -36,22 +36,31 @@ const SetPinApi = (props) => {
         let formData = new FormData();
         formData.append('Token', reqObj?.Token);
         formData.append('Pin', pinValue);
-        formData.append('OldPin', oldPinValue); // Include the Old Pin value
-        try {
-            const response = await fetch('https://lux212.azurewebsites.net/Api/SetPin', {
-                method: 'post',
-                body: formData,
+        formData.append('OldPin', oldPinValue); 
+        callPostApi(SetPin_Post, formData, jsonData => {
+            const respObj = jsonData.data;
+            toast(respObj.message, {
+                type: respObj.isSuccess ? 'success' : 'error',
             });
-            const jsonData = await response.json();
-            toast(jsonData.message, {
-                type: jsonData.isSuccess ? 'success' : 'error',
-            });
-            if (jsonData.isSuccess) {
-                setPinApi(jsonData.data);
+            if (respObj.isSuccess) {
+                setPinApi(respObj.data);
             }
-        } catch (error) {
-            console.log('Error:', error);
-        }
+        })
+        // try {
+        //     const response = await fetch('https://lux212.azurewebsites.net/Api/SetPin', {
+        //         method: 'post',
+        //         body: formData,
+        //     });
+        //     const jsonData = await response.json();
+        //     toast(jsonData.message, {
+        //         type: jsonData.isSuccess ? 'success' : 'error',
+        //     });
+        //     if (jsonData.isSuccess) {
+        //         setPinApi(jsonData.data);
+        //     }
+        // } catch (error) {
+        //     console.log('Error:', error);
+        // }
     }
 
     const handlePinChange = (index, value) => {
@@ -129,9 +138,6 @@ const SetPinApi = (props) => {
     };
     //***** UserProfile Api End *****//
 
-    const handleRefreshClick = () => {
-        window.location.reload(); // Reloads the page
-    };
 
     return (
         <>
