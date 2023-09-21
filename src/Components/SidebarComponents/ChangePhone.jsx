@@ -4,6 +4,7 @@ import { Button } from 'reactstrap';
 import Cookies from 'universal-cookie';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useBalance } from './BalanceContext';
 import { callPostApi } from '../ApiCaller';
 import { RequestOtp_Post, SavePhone_Post } from '../ApiConst';
 
@@ -20,6 +21,7 @@ const ChangePhone = (props) => {
     const [showOtpInput, setShowOtpInput] = useState(false);
     const [hideButton, setHideButton] = useState(true);
     const [messageType, setMessageType] = useState('');
+    const { UserProfileApi } = useBalance();
 
 
     //***** Request Otp Api *****//
@@ -68,6 +70,7 @@ const ChangePhone = (props) => {
             const respObj = jsonData.data;
             if (respObj.isSuccess) {
                 setChangePhone(respObj.data)
+                UserProfileApi();
                 setShowOtpInput(true);
                 toast(respObj.message, {
                     type: respObj.isSuccess ? 'success' : 'error',

@@ -464,7 +464,7 @@ const DepositModal = () => {
                         <div className="Title" style={{ fontWeight: '700', width: '8rem' }}>Your Detail</div>
                         <div className="container">
                             <div className="row">
-                                <Table striped bordered hover variant="dark">
+                                <Table >
                                     <tbody>
                                         <tr>
                                             <td>1</td>
@@ -473,53 +473,23 @@ const DepositModal = () => {
                                         </tr>
                                         <tr>
                                             <td>2</td>
-                                            <td>User Id</td>
-                                            <td>{message.UserId}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Tr Id</td>
-                                            <td>{message.TrId}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>4</td>
                                             <td>Amount</td>
                                             <td>{message.Amount}</td>
                                         </tr>
                                         <tr>
-                                            <td>5</td>
+                                            <td>3</td>
                                             <td>Method</td>
                                             <td>{message.Method}</td>
                                         </tr>
                                         <tr>
-                                            <td>6</td>
-                                            <td>Type</td>
-                                            <td>{message.Type}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>7</td>
+                                            <td>4</td>
                                             <td>Created</td>
                                             <td>{message.Created}</td>
                                         </tr>
                                         <tr>
-                                            <td>8</td>
+                                            <td>5</td>
                                             <td>Currency</td>
                                             <td>{message.Currency}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>9</td>
-                                            <td>Status</td>
-                                            <td>{message.Status}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>10</td>
-                                            <td>BankAccountId</td>
-                                            <td>{message.BankAccountId}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>11</td>
-                                            <td>VerifyStatus</td>
-                                            <td>{message.VerifyStatus}</td>
                                         </tr>
                                     </tbody>
                                 </Table>

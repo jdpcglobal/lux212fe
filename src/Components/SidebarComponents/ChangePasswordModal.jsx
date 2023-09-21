@@ -49,7 +49,7 @@ const ChangePasswordModal = (props) => {
             <Modal show={show} onHide={close}>
                 <Modal.Body>
                     <div className="login-box">
-                        <h2>Login</h2>
+                        <h2>Change Password</h2>
                         <form>
                             <div className="user-box">
                                 <input

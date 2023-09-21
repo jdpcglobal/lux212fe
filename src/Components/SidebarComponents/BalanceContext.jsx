@@ -38,20 +38,18 @@ export function BalanceProvider({ children }) {
     formData.append('Token', token);
     callPostApi(UserProfile_Post, formData, jsonData => {
       const respObj = jsonData.data;
-      if (respObj.isSuccess) {
         setUserData(respObj.data);
-      }
     })
     
   };
 
   useEffect(() => {
     updateBalance();
-    UserProfileApi(); // Call UserProfileApi on component mount
+    UserProfileApi(); 
   }, []);
 
   return (
-    <BalanceContext.Provider value={{ balance, updateBalance, userData }}>
+    <BalanceContext.Provider value={{ balance, updateBalance, userData, UserProfileApi }}>
       {children}
     </BalanceContext.Provider>
   );

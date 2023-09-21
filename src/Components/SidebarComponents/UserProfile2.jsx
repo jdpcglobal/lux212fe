@@ -12,7 +12,7 @@ import Table from 'react-bootstrap/Table';
 const UserProfile2 = () => {
 
 
-    const { userData } = useBalance();
+    const { userData, balance } = useBalance();
 
 
     const [changePhoneModal, setChangePhoneModal] = useState(false)
@@ -81,7 +81,7 @@ const UserProfile2 = () => {
                                 </tr>
                                 <tr className="Tr2">
                                     <td className="Td">Balance</td>
-                                    <td>{userData.CreditBalance}</td>
+                                    <td>{balance}</td>
                                 </tr>
                             </tbody>
                         </Table>

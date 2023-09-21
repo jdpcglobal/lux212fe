@@ -34,20 +34,7 @@ const TransferCredit = () => {
                 resetForm();
             }
         })
-        // try {
-        //     const response = await fetch('https://lux212.azurewebsites.net/Api/TransferCredit', {
-        //         method: 'POST',
-        //         body: formData,
-        //     });
-        //     const jsonData = await response.json();
-        //     if (jsonData.isSuccess) {
-        //         setData(jsonData.data);
-        //         await updateBalance();
-        //         resetForm();
-        //     }
-        // } catch (error) {
-        //     console.log('Error:', error);
-        // }
+        
     }
 
     const resetForm = () => {

@@ -4,6 +4,7 @@ import { Button } from 'reactstrap';
 import Cookies from 'universal-cookie';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useBalance } from './BalanceContext';
 import { callPostApi } from '../ApiCaller';
 import { RequestOtp_Post, SaveEmail_Post } from '../ApiConst';
 
@@ -14,16 +15,17 @@ const ChangeEmailModal = (props) => {
         Token: new Cookies().get("kisDiamond_LoggedIn")?.Token,
     });
 
-    const [changeEmail, setChangeEmail] = useState({
-        Token: new Cookies().get("kisDiamond_LoggedIn")?.Token,
-    });
 
     const [email, setEmail] = useState('');
     const [otp, setOtp] = useState('');
     const [showOtpInput, setShowOtpInput] = useState(false);
     const [hideButton, setHideButton] = useState(true);
     const [messageType, setMessageType] = useState('');
+    const { UserProfileApi } = useBalance();
 
+    const onHandleClick = () => {
+        RequestOtp();
+    };
 
     const RequestOtp = async () => {
         let reqObj = {
@@ -32,7 +34,7 @@ const ChangeEmailModal = (props) => {
         let formData = new FormData();
         formData.append('Token', reqObj?.Token);
         formData.append('Email', email);
-        callPostApi( RequestOtp_Post, formData, jsonData => {
+        callPostApi(RequestOtp_Post, formData, jsonData => {
             const respObj = jsonData.data;
             if (respObj.isSuccess) {
                 setData(respObj.data);
@@ -45,33 +47,29 @@ const ChangeEmailModal = (props) => {
         })
     };
 
-    const SaveEmail = async () => {
-        let reqObj = {
-            ...changeEmail,
-        };
+
+    const handleClick = async () => {
+        const token = new Cookies().get("kisDiamond_LoggedIn")?.Token;
+        await SaveEmail(token);
+    };
+
+    
+    const SaveEmail = async (token) => {
         let formData = new FormData();
-        formData.append('Token', reqObj?.Token);
+        formData.append('Token', token);
         formData.append('RequestId', data.RequestId);
         formData.append('Email', email);
         formData.append('Otp', otp);
         callPostApi(SaveEmail_Post, formData, jsonData => {
-            const respObj = jsonData.data; 
+            const respObj = jsonData.data;
             toast(respObj.message, {
                 type: respObj.isSuccess ? 'success' : 'error',
             });
-            if (jsonData.isSuccess) {
-                setChangeEmail(respObj.message);
+            if (respObj.isSuccess) {
+                UserProfileApi();
             }
         })
-        
-    };
 
-    const onHandleClick = () => {
-        RequestOtp();
-    };
-
-    const handleClick = () => {
-        SaveEmail();
     };
 
     return (
