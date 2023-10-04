@@ -77,10 +77,10 @@ const Login = (props) => {
                 <input type="password" name="" required="" id="Password" value={loginObj.Password}
                   onChange={handleTextChange} />
                 <label>Password</label>
-                <Button variant="dark" onClick={handleForgetPassword}>Forget</Button> Password
+                <Button outline color="success" onClick={handleLogin}>Submit</Button>
               </div>
               <a>
-              <Button outline color="success" onClick={handleLogin}>Submit</Button>
+              <Button variant="dark" onClick={handleForgetPassword}>Forget Password</Button> 
               </a>
               <a>
                 <Button outline color="success" onClick={() => setCreateRegisterModal(true)}>Register</Button>

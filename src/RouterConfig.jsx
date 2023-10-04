@@ -5,6 +5,7 @@ import ReadBank from "./Components/SidebarComponents/ReadBank";
 import UserProfile2 from "./Components/SidebarComponents/UserProfile2";
 import "./Components/DiamondHome.css"
 import SliderTabs from "./Components/SliderTabs";
+import PlayGame from "./Components/PlayGame";
 
 const RouteConfig = () => {
     return (
@@ -15,6 +16,7 @@ const RouteConfig = () => {
                     <Route path="/" element={<SliderTabs/>} />
                     <Route path="/ReadBank" element={<ReadBank />} />
                     <Route path="/UserProfile2" element={<UserProfile2 />} />
+                    <Route path="/PlayGame/:tCode/:pCode" element={<PlayGame />} />
                 </Routes>
             </BrowserRouter>
         </div>

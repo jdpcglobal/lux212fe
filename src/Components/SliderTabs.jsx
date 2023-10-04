@@ -1,4 +1,4 @@
-import React, { useEffect, useState, ChangeEvent } from "react";
+import React, { useEffect, useState} from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -7,12 +7,11 @@ import * as ApiConst from './ApiConst';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import Cookies from 'universal-cookie';
-import { Get_Providers_Post, GetGames_Post, LaunchGame_Post } from './ApiConst';
+import { Get_Providers_Post} from './ApiConst';
+import { Link } from 'react-router-dom'
 import Loader from "./common/Loader";
 const SliderTabs = () => {
 
-    const [launchGameData, setLaunchGameData] = useState([]);
-    const [responseData, setResponseData] = useState([]);
     const [tabIndex, setTabIndex] = useState(0);
     const [tabpanelData, setTabpanelData] = useState([])
     const [tabsData, setTabsData] = useState([])
@@ -99,24 +98,6 @@ const SliderTabs = () => {
 
 
     //*****GET PROVIDERS API *****/
-
-    // const getInitialGameProviders = async () => {
-    //     let formData = new FormData();
-    //     formData.append('TCode', `${1}`);
-    //     callPostApi(Get_Providers_Post, formData, (jsonData) => {
-    //         if (jsonData.data?.isSuccess) {
-    //             setTabpanelData(jsonData.data.data)
-    //             console.log('Tabpanel dddddddddddd  Data:', jsonData.data.data);
-    //         } else {
-    //         }
-    //     },
-    //         (error) => {
-
-    //         }
-    //     );
-    // }
-
-
     const handleTabSelect = (index) => {
         getTabPanelData(index)
         setTabIndex(index)
@@ -135,9 +116,7 @@ const SliderTabs = () => {
                         PCode: tabPanelData[0].GameTypeCode,
                         TCode: tabPanelData[0].Code,
                     })
-                    GetGames(tabPanelData[0].GameTypeCode, tabPanelData[0].Code)
                 }
-                console.log('Tabpanel dddddddddddd  Data:', jsonData.data.data);
             }
         },
             (error) => {
@@ -148,98 +127,6 @@ const SliderTabs = () => {
     }
     //***** GET PROVIDER API END *****
 
-    //***** GET LaunchGame API  *****/
-
-    const handleGameClick = (gCode) => {
-        let reqObj = {
-            ...launchGameReqObj,
-            GCode: gCode,
-        }
-        LaunchGame(reqObj);
-    };
-
-    const LaunchGame = async (reqObj) => {
-        let formData = new FormData();
-        formData.append('TCode', reqObj?.PCode);
-        formData.append('PCode', reqObj?.TCode);
-        formData.append('GCode', reqObj?.GCode);
-        formData.append('Token', reqObj?.Token);
-
-        try {
-            const response = await fetch('https://lux212.azurewebsites.net/Api/LaunchGame', {
-                method: 'POST',
-                body: formData,
-            });
-            const jsonData = await response.json();
-            if (jsonData.isSuccess) {
-                let a = document.createElement('a');
-                a.target = '_blank';
-                a.href = jsonData.data;
-                a.click();
-                // console.log();
-                setLaunchGameData(jsonData.data);
-            } else {
-                 window.location.reload();
-            }
-
-        } catch (error) {
-            console.log('Error:', error);
-        }
-    };
-    //***** GET LaunchGame API END *****/
-
-    //***** GET GAME API *****/
-    const handleButtonClick = (pCode, tCode) => {
-        setLaunchGameReqObj({
-            ...launchGameReqObj,
-            TCode: pCode,
-            PCode: tCode,
-        })
-        setGameLoader(true)
-        GetGames(tCode, pCode)
-    }
-
-    const GetGames = async (tCode, pCode) => {
-        let formData = new FormData();
-        formData.append('TCode', `${tCode}`);
-        formData.append('PCode', `${pCode}`);
-        callPostApi(GetGames_Post, formData, (jsonData) => {
-            if (jsonData.data?.isSuccess) {
-                setResponseData(jsonData.data.data);
-                setGameLoader(false)
-            } else {
-            }
-        },
-            (error) => {
-                setGameLoader(false)
-                // console.log('Error:', error);
-            }
-        );
-
-    };
-
-    // useEffect(() => {
-    //     GetGame()
-    // },[]);
-
-    // const GetGame = async () => {
-    //     let formData = new FormData();
-    //     formData.append('TCode', `1`);
-    //     formData.append('PCode', `1006`);
-    //     callPostApi(GetGames_Post,formData,(jsonData) => {
-    //         if (jsonData.data?.isSuccess) {
-    //             setResponseData(jsonData.data.data);
-    //             setGameLoader(false)
-    //         } else {
-    //         }
-    //       },
-    //       (error) => {
-    //         setGameLoader(false)
-    //         // console.log('Error:', error);
-    //       }
-    //     );
-    // };
-    //***** GET GAME API END *****/
 
     return (
         <>
@@ -290,7 +177,7 @@ const SliderTabs = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="Tabs" style={{ cursor: 'pointer', borderRadius: '15px', backgroundColor: '#dfdffc' }}>
+                            <div className="Tabs" style={{ cursor: 'pointer', borderRadius: '15px'}}>
                                 <Tabs selectedIndex={tabIndex} onSelect={(index) => handleTabSelect(index)}>
                                     <div className="get TabPanel" style={{ marginTop: '7px' }}>
                                         <TabList>
@@ -301,19 +188,6 @@ const SliderTabs = () => {
                                             )}
                                         </TabList>
                                     </div>
-                                    {tabsData.length > 0 && tabsData.map((rowData, i) =>
-                                        <TabPanel className=" ">
-                                            <>
-                                                <div className='TabPanel' >
-                                                    {tabpanelData.length > 0 && tabpanelData.map((data, i) =>
-                                                        <>
-                                                            <a className='mx-1 provider cursor' style={{ display: "inline-block", marginRight: '10px' }} onClick={() => handleButtonClick(data.Code, data.GameTypeCode)}>{data.Name}</a>
-                                                        </>
-                                                    )}
-                                                </div>
-                                            </>
-                                        </TabPanel>
-                                    )}
                                 </Tabs>
                             </div>
                             {/* end category pc */}
@@ -322,27 +196,35 @@ const SliderTabs = () => {
                         <div className="row row-cols-3 row-cols-md-6">
 
                             {/* KING855 */}
-                            {gameLoaders ? <Loader /> :
-                                <>
-                                    {responseData.length > 0 && responseData.map((data) =>
-                                        <div className="col-3 p-1 game-item livecasino allgame" style={{ cursor: 'pointer' }}>
-                                            <div className="card card-style rounded-s m-0">
-                                                <img src="/images/process.gif" alt="" className="KING855 process" />
-                                                {gameLoader ? <Loader width={120} /> :
-                                                    <img onClick={() => handleGameClick(data.GameCode)}
-                                                        className="lazyload cursor"
-                                                        data-src="./imagies/live_855.jpg"
-                                                        src={data.ImageURL}
-                                                        alt=""
-                                                        onclick="action_live('KING855')"
-                                                    />
-                                                }
+                            <>
+                                {gameLoaders ? <Loader /> :
+                                    <>
+                                        {tabpanelData.map((data, i) =>
+                                            <div className="col-3 p-1 game-item livecasino allgame" style={{ cursor: 'pointer' }}>
+                                                <Link to={`/PlayGame/${data.GameTypeCode + "/" + data.Code}`} >
+                                                    <div className="card card-style rounded-s m-0">
+                                                        <img src="/images/process.gif" alt="" className="KING855 process" />
+                                                        {gameLoader ? <Loader width={120} /> :
+
+                                                            <img
+                                                                className="lazyload cursor"
+                                                                data-src="./imagies/live_855.jpg"
+                                                                src={data.ImageUrl}
+                                                                alt=""
+                                                                onclick="action_live('KING855')"
+                                                            />
+
+                                                        }
+                                                    </div>
+                                                </Link>
+
+                                                <div className="game-title" >{data.Name}</div>
+
                                             </div>
-                                            <div className="game-title" >{data.GameName}</div>
-                                        </div>
-                                    )}
-                                </>
-                            }
+                                        )}
+                                    </>
+                                }
+                            </>
 
                             {/* end KING855 */}
 

@@ -5670,5 +5670,17 @@
   }
 
 
+  .react-tabs__tab--selected {
+    border-color: #ffffff !important;
+    border-bottom: 2px solid #ac92ec !important;
+    border-radius: 0px !important;
+    color: #ac92ec;
+}
+
+.react-tabs__tab-list {
+  border-bottom: 1px solid white !important;
+}
+
+
   /* Main Deposit Modal css End */
   /* Theme change css Ended */
