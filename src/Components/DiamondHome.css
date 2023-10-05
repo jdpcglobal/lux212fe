@@ -5681,6 +5681,10 @@
   border-bottom: 1px solid white !important;
 }
 
+.PlayGameLoader{
+  justify-content: center;
+}
+
 
   /* Main Deposit Modal css End */
   /* Theme change css Ended */

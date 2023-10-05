@@ -6,11 +6,10 @@ import { callPostApi } from './ApiCaller';
 import { GetGames_Post } from './ApiConst';
 
 
-const PlayGame = () => {
+const PlayGame = ({width}) => {
     const { tCode, pCode } = useParams();
     console.log("Tcode+++", pCode)
     const [launchGameData, setLaunchGameData] = useState([]);
-    const [gameLoader, setGameLoader] = useState(false);
     const [gameLoaders, setGameLoaders] = useState(false);
     const [responseData, setResponseData] = useState([]);
     const [launchGameReqObj, setLaunchGameReqObj] = useState({
@@ -23,6 +22,7 @@ const PlayGame = () => {
 
     useEffect(() => {
         GetGames(tCode, pCode);
+        setGameLoaders(true)
     }, [tCode, pCode]);
 
     const GetGames = async (tCode, pCode) => {
@@ -32,13 +32,12 @@ const PlayGame = () => {
         callPostApi(GetGames_Post, formData, (jsonData) => {
             if (jsonData.data?.isSuccess) {
                 setResponseData(jsonData.data.data);
-                // console.log('Tabpanel dddddddddddd  Data:', jsonData.data.data);
-                // setGameLoader(false)
+                setGameLoaders(false)
             } else {
             }
         },
             (error) => {
-                // setGameLoader(false)
+                setGameLoaders(false)
                 // console.log('Error:', error);
             }
         );
@@ -104,16 +103,15 @@ const PlayGame = () => {
 
 
                         <div className="mt-3"></div>
-                        <div className="row row-cols-3 row-cols-md-6">
+                        <div className="row row-cols-3 row-cols-md-6 PlayGameLoader">
 
                             <>
-                                {gameLoaders ? <Loader /> :
+                                {gameLoaders ? <Loader width={600} /> :
                                     <>
                                         {responseData.length > 0 && responseData.map((data) =>
                                             <div className="col-3 p-1 game-item livecasino allgame" style={{ cursor: 'pointer' }}>
                                                 <div className="card card-style rounded-s m-0">
                                                     <img src="/images/process.gif" alt="" className="KING855 process" />
-                                                    {gameLoader ? <Loader width={120} /> :
                                                         <img onClick={() => handleGameClick(data.GameCode)}
                                                             className="lazyload cursor"
                                                             data-src="./imagies/live_855.jpg"
@@ -121,7 +119,6 @@ const PlayGame = () => {
                                                             alt=""
                                                             onclick="action_live('KING855')"
                                                         />
-                                                    }
                                                 </div>
                                                 <div className="game-title" >{data.GameName}</div>
                                             </div>
