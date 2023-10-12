@@ -1,4 +1,4 @@
-import React, { useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -7,10 +7,10 @@ import * as ApiConst from './ApiConst';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import Cookies from 'universal-cookie';
-import { Get_Providers_Post} from './ApiConst';
+import { Get_Providers_Post } from './ApiConst';
 import { Link } from 'react-router-dom'
 import Loader from "./common/Loader";
-const SliderTabs = () => {
+const SliderTabs = ({ width }) => {
 
     const [tabIndex, setTabIndex] = useState(0);
     const [tabpanelData, setTabpanelData] = useState([])
@@ -83,6 +83,7 @@ const SliderTabs = () => {
                     // getInitialGameProviders();
                     getTabPanelData(0);
                     setLoadingTabs(false)
+                    setGameLoaders(true)
                 }
             }, (error) => {
             })
@@ -101,6 +102,7 @@ const SliderTabs = () => {
     const handleTabSelect = (index) => {
         getTabPanelData(index)
         setTabIndex(index)
+        setGameLoader(true)
     }
 
     const getTabPanelData = async (i) => {
@@ -118,9 +120,12 @@ const SliderTabs = () => {
                     })
                 }
             }
+            setGameLoader(false)
+            setGameLoaders(false)
         },
             (error) => {
-
+                setGameLoader(false)
+                setGameLoaders(false)
             }
         );
 
@@ -177,7 +182,7 @@ const SliderTabs = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="Tabs" style={{ cursor: 'pointer', borderRadius: '15px'}}>
+                            <div className="Tabs" style={{ cursor: 'pointer', borderRadius: '15px' }}>
                                 <Tabs selectedIndex={tabIndex} onSelect={(index) => handleTabSelect(index)}>
                                     <div className="get TabPanel" style={{ marginTop: '7px' }}>
                                         <TabList>
@@ -193,11 +198,11 @@ const SliderTabs = () => {
                             {/* end category pc */}
                         </div>
                         <div className="mt-3"></div>
-                        <div className="row row-cols-3 row-cols-md-6">
+                        <div className="row row-cols-3 row-cols-md-6" style={{ justifyContent: "center" }}>
 
                             {/* KING855 */}
                             <>
-                                {gameLoaders ? <Loader /> :
+                                {gameLoaders ? <Loader width={600} /> :
                                     <>
                                         {tabpanelData.map((data, i) =>
                                             <div className="col-3 p-1 game-item livecasino allgame" style={{ cursor: 'pointer' }}>

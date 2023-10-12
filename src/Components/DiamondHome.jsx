@@ -15,6 +15,7 @@ import BankTransaction from "./SidebarComponents/BankTransaction";
 import TransferCredit from "./SidebarComponents/TransferCredit";
 import { useBalance } from "./SidebarComponents/BalanceContext";
 import { Link } from 'react-router-dom'
+import BankAccounts from "./SidebarComponents/BankAccounts";
 
 
 const DiamondHome = () => {
@@ -35,6 +36,7 @@ const DiamondHome = () => {
         <>
 
             <Sidebar />
+            <BankAccounts/>
 
             <section id="mobile_header">
                 <div className="header-bar header-fixed header-app header-bar-detached">

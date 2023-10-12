@@ -16,11 +16,11 @@ const Sidebar = () => {
 
     return (
         <>
-            <div className="rounded-m pcsidebar">
+            <div className="rounded-m pcsidebar pcSidebarSlider">
                 <div className="bg-theme mx-3 align-items-center rounded-m shadow-m mt-3 mb-3"
                     style={{ backgroundColor: "black" }}
                 >
-                    <div className=" pb-2 pt-2" style={{paddingLeft:'34px'}}>
+                    <div className=" pb-2 pt-2" style={{ paddingLeft: '34px' }}>
                         <div className="ps-2 align-self-center">
                             <h5 className="ps-1 mb-0 line-height-xs pt-1">
                                 <img src="../imagies/logo.png" style={{ width: 150 }} />
@@ -34,18 +34,17 @@ const Sidebar = () => {
 
                             <div
                                 className="pc_wallet "
-                                style={{ cursor: "pointer" }}
                                 onclick="window.location='/gamecredit'"
                             >
-                                <Link to="/UserProfile2" id="nav-bank">
-                                    <div id="nav-comps">
-                                        IDR:<span className="wallet">{balance}  </span> &nbsp;&nbsp;
-                                        <i
-                                            className="bi bi-info-circle"
-                                            style={{ color: "#AC92EC !important" }}
-                                        />
-                                    </div>
-                                </Link>
+
+                                <div id="nav-comps">
+                                    IDR:<span className="wallet">{balance}  </span> &nbsp;&nbsp;
+                                    <i
+                                        className="bi bi-info-circle"
+                                        style={{ color: "#AC92EC !important" }}
+                                    />
+                                </div>
+
                             </div>
                             <h5 className="ps-1 mb-0 line-height-xs pt-1">{loggedInUser?.Name}</h5>
                             <h6 className="ps-1 mb-0 font-400 opacity-40" style={{ width: "20%" }}>
@@ -57,6 +56,18 @@ const Sidebar = () => {
                 {/* <span class="menu-divider">NAVIGATION</span> */}
                 <div className="menu-list menuList">
                     <div className="card card-style rounded-m p-3 py-2 mb-0 card-styles">
+                        <Link to="/UserProfile2" id="nav-bank">
+                            <a
+                                href="#"
+                            >
+                                <i className="MyProfile shadow-bg shadow-bg-xs bi bi-person" />
+                                <span className="trn" data-trn-key="Deposit">
+                                    my Profile
+                                </span>
+                                <i className="bi bi-chevron-right" />
+                            </a>
+                        </Link>
+
                         <a
                             href="#"
                             data-bs-toggle="offcanvas"
@@ -105,7 +116,7 @@ const Sidebar = () => {
                             </span>
                             <i className="bi bi-chevron-right" />
                         </a> */}
-                        <a
+                        {/* <a
                             href="#"
                             data-bs-toggle="offcanvas"
                             data-bs-target="#HistoryModal"
@@ -116,7 +127,20 @@ const Sidebar = () => {
                                 Transactions
                             </span>
                             <i className="bi bi-chevron-right" />
-                        </a>
+                        </a> */}
+
+                        <Link to="/TransactionsHistory" id="nav-bank">
+                            <a
+                                href="#"
+                                id="nav-comps"
+                            >
+                                <i className="gradient-brown shadow-bg shadow-bg-xs bi bi-clock-history" />
+                                <span className="trn" data-trn-key="History">
+                                    Transactions
+                                </span>
+                                <i className="bi bi-chevron-right" />
+                            </a>
+                        </Link>
 
                         <a
                             href="#"
@@ -143,16 +167,27 @@ const Sidebar = () => {
                             </span>
                             <i className="bi bi-chevron-right" />
                         </a>
-                        
-                        <Link to="/ReadBank" id="nav-bank">
-                        <div id="nav-homes">
+
+                        {/* <Link to="/ReadBank" id="nav-bank">
+                            <div id="nav-homes">
+                                <i className="gradient-bluess shadow-bg shadow-bg-xs bi bi bi-bank2" />
+                                <span className="trn" data-trn-key="Deposit">
+                                    Bank Account
+                                </span>
+                                <i className="bi bi-chevron-right" />
+                            </div>
+                        </Link> */}
+
+                        <a href="#"
+                            data-bs-toggle="offcanvas"
+                            data-bs-target="#BankAccounts"
+                            id="nav-comps">
                             <i className="gradient-bluess shadow-bg shadow-bg-xs bi bi bi-bank2" />
-                            <span className="trn" data-trn-key="Deposit">
+                            <span className="trn" data-trn-key="Promotion">
                                 Bank Account
                             </span>
                             <i className="bi bi-chevron-right" />
-                        </div>
-                        </Link>
+                        </a>
 
                         {/* <a href="/downline/">
                             <i className="gradient-blue shadow-bg shadow-bg-xs bi bi-people-fill" />

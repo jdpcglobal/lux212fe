@@ -5288,6 +5288,7 @@
     font-size: 10px;
     line-height: 20px;
     background: #dfdffc;
+    border-radius: 5px;
     /* background: var(--backGround); */
   }
 
@@ -5685,6 +5686,73 @@
   justify-content: center;
 }
 
+.pcSidebarSlider{
+  overflow-y: scroll;
+}
 
+
+.MyProfile {
+  border: none;
+  background-image: linear-gradient(to bottom, #2fa9ff, #2974c4);
+}
+
+.TransferCreditFormBox{
+  border-radius: 35px !important;
+}
+
+
+.TransactionHistory{
+  height: 100vh !important;
+  overflow-y: scroll;
+}
+
+.tabs-borders a[aria-expanded=true] {
+  color: #b29aed !important;
+  border-color: #ac92ec !important;
+}
+
+.TransactionTable{
+  border-bottom: 2px solid black;
+}
+
+
+#BankAccounts{
+  background: rgb(255 255 255 / 90%);
+}
+
+.BankAccountShadow{
+  height: 45px;
+  background-color: #e9ecef !important;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.BankAccountName{
+  margin-left: 15px;
+  font-size: 14px;
+  font-weight: 200;
+}
+
+.BankAccountName2{
+  margin-left: 15px;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+
+.BankAccountNames{
+  margin-left: 25px;
+  font-size: 14px;
+  font-weight: 200;
+}
+
+.BankAccountNames2{
+  margin-left: 25px;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.BankAccountShadows{
+  height: 45px;
+}
   /* Main Deposit Modal css End */
   /* Theme change css Ended */

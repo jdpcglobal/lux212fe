@@ -30,11 +30,11 @@ const TransferCredit = () => {
             const respObj = jsonData.data;
             if (respObj.isSuccess) {
                 setData(respObj.data);
-                 updateBalance();
+                updateBalance();
                 resetForm();
             }
         })
-        
+
     }
 
     const resetForm = () => {
@@ -74,8 +74,8 @@ const TransferCredit = () => {
 
     return (
         <>
-            <div id="TransferCredit" style={{ height: '100%' }} className="offcanvas offcanvas-end bg-theme">
-                <div className="content">
+            <div id="TransferCredit" style={{ height: '100%' }} className="offcanvas offcanvas-bottom bg-theme">
+                <div className="content" >
                     <div className="d-flex pb-2">
                         <div className="align-self-center">
                             <label className="font-800 font-22 trn Title eWallet" data-trn-key="Deposit">Transfer Credit</label>
@@ -85,47 +85,43 @@ const TransferCredit = () => {
                         </div>
                     </div>
 
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-10 offset-1">
-                                <div className="formbold-input-group">
-                                    <label htmlFor="name" className="formbold-form-label eWallet">
-                                        To User Id
-                                    </label>
-                                    <input type="text" placeholder="To User Id" className="formbold-form-input DepositModal" autoComplete="off" value={toUserId}
-                                        onChange={(e) => setToUserId(e.target.value)} />
-                                </div>
-
-                                <div className="formbold-input-group">
-                                    <label htmlFor="name" className="formbold-form-label eWallet">
-                                        Amount
-                                    </label>
-
-                                    <input type="text" placeholder="Enter Amount" className="formbold-form-input DepositModal" autoComplete="off" value={amount}
-                                        onChange={(e) => setAmount(e.target.value)} />
-                                </div>
-
-                                <div className="formbold-input-group">
-                                    <label htmlFor="name" className="formbold-form-label eWallet">
-                                        Pin
-                                    </label>
-                                    {pinDigits.map((digit, index) => (
-                                        <input
-                                            key={index}
-                                            type="text"
-                                            maxLength={1}
-                                            className="pin-input-box DepositModal"
-                                            style={{ width: '25px', marginLeft: '30px', textAlign: 'center' }}
-                                            autoComplete="off"
-                                            value={digit}
-                                            id={`pin-input-${index}`}
-                                            onChange={(e) => handlePinChange(index, e.target.value)}
-                                        />
-                                    ))}
-                                </div>
-                                <Button outline color="success" className=" mt-4" onClick={() => { handleClick(); }}>Submit</Button>
-                            </div>
+                    <div className="card card-style TransferCreditFormBox" style={{ marginBottom: '10px', padding:"15px" }}>
+                        <div className="formbold-input-group">
+                            <label htmlFor="name" className="formbold-form-label eWallet">
+                                 User Id
+                            </label>
+                            <input type="text"  placeholder="Enter receiver's User Id" className=" formbold-form-input formbold-form-input2 DepositModal" autoComplete="off" value={toUserId}
+                                onChange={(e) => setToUserId(e.target.value)} />
                         </div>
+
+                        <div className="formbold-input-group">
+                            <label htmlFor="name" className="formbold-form-label eWallet">
+                                Amount
+                            </label>
+
+                            <input type="text" placeholder="Enter Amount" className="formbold-form-input formbold-form-input2 DepositModal" autoComplete="off" value={amount}
+                                onChange={(e) => setAmount(e.target.value)} />
+                        </div>
+
+                        <div className="formbold-input-group">
+                            <label htmlFor="name" className="formbold-form-label eWallet">
+                                Pin
+                            </label>
+                            {pinDigits.map((digit, index) => (
+                                <input
+                                    key={index}
+                                    type="text"
+                                    maxLength={1}
+                                    className="pin-input-box DepositModal formbold-form-input2"
+                                    style={{ width: '25px', marginLeft: '30px', textAlign: 'center' }}
+                                    autoComplete="off"
+                                    value={digit}
+                                    id={`pin-input-${index}`}
+                                    onChange={(e) => handlePinChange(index, e.target.value)}
+                                />
+                            ))}
+                        </div>
+                        <button id="transferbtn" type="button" class="btn btn-full gradient-green mt-3 text-uppercase w-100 trn" name="button" data-trn-key="Submit" fdprocessedid="yf6ft" onClick={() => { handleClick(); }}>Submit</button>
                     </div>
                 </div>
             </div>
