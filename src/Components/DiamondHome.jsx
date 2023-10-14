@@ -21,7 +21,7 @@ import BankAccounts from "./SidebarComponents/BankAccounts";
 const DiamondHome = () => {
     const loggedInUser = new Cookies().get("kisDiamond_LoggedIn")
     const { balance } = useBalance();
-    
+
 
     const handleLogout = () => {
         const cookies = new Cookies();
@@ -29,20 +29,20 @@ const DiamondHome = () => {
         window.location.reload();
     };
 
-    
+
     //***** GET GAME API END *****/
 
     return (
         <>
 
             <Sidebar />
-            <BankAccounts/>
+            <BankAccounts />
 
             <section id="mobile_header">
                 <div className="header-bar header-fixed header-app header-bar-detached">
                     <a data-bs-toggle="offcanvas" data-bs-target="#menu-main" href="#"><i className="bi bi-list color-magenta-light" /></a>
-                    <div  className="header-title color-magenta-light" style={{textAlign:'center'}}>
-                        <img src="../imagies/logo.png" alt="KISSDIAMOND" width="110px"  />
+                    <div className="header-title color-magenta-light" style={{ textAlign: 'center' }}>
+                        <img src="../imagies/logo.png" alt="KISSDIAMOND" width="110px" />
                     </div>
                     <a href="gamecredit/index.html" style={{ display: 'inherit' }}> <i className="bi bi-wallet2" style={{ color: '#AC92EC !important', marginRight: '11px', textAlign: 'center', marginTop: '-15px', fontSize: '17px' }}>
                         <small style={{ lineHeight: '2px', display: 'block', textAlign: 'center', marginTop: '-9px', fontSize: '9px' }} className="trn">Return</small></i></a>
@@ -75,15 +75,13 @@ const DiamondHome = () => {
                                 style={{ cursor: "pointer" }}
                                 onclick="window.location='/gamecredit'"
                             >
-                                <Link to="/UserProfile2" id="nav-bank">
-                                    <div id="nav-comps">
-                                        IDR:<span className="wallet">{balance}  </span>
-                                        <i
-                                            className="bi bi-info-circle"
-                                            style={{ color: "#AC92EC !important" }}
-                                        />
-                                    </div>
-                                </Link>
+                                <div id="nav-comps">
+                                    IDR:<span className="wallet">{balance}  </span>
+                                    <i
+                                        className="bi bi-info-circle"
+                                        style={{ color: "#AC92EC !important" }}
+                                    />
+                                </div>
                             </div>
                             <h5 className="ps-1 mb-0 line-height-xs pt-1">{loggedInUser?.Name}</h5>
                             <h6 className="ps-1 mb-0 font-400 opacity-40" style={{ width: "20%" }}>
@@ -95,6 +93,19 @@ const DiamondHome = () => {
                 {/* <span class="menu-divider">NAVIGATION</span> */}
                 <div className="menu-list">
                     <div className="card card-style rounded-m p-3 py-2 mb-0 SmSidebar">
+
+                        <Link to="/UserProfile2" id="nav-bank">
+                            <a
+                                href="#"
+                            >
+                                <i className="MyProfile shadow-bg shadow-bg-xs bi bi-person" />
+                                <span className="trn" data-trn-key="Deposit">
+                                    my Profile
+                                </span>
+                                <i className="bi bi-chevron-right" />
+                            </a>
+                        </Link>
+
                         <a
                             href="#"
                             data-bs-toggle="offcanvas"
@@ -143,18 +154,18 @@ const DiamondHome = () => {
                             </span>
                             <i className="bi bi-chevron-right" />
                         </a> */}
-                        <a
-                            href="#"
-                            data-bs-toggle="offcanvas"
-                            data-bs-target="#HistoryModal"
-                            id="nav-comps"
-                        >
-                            <i className="gradient-brown shadow-bg shadow-bg-xs bi bi-clock-history" />
-                            <span className="trn" data-trn-key="History">
-                                Transactions
-                            </span>
-                            <i className="bi bi-chevron-right" />
-                        </a>
+                        <Link to="/TransactionsHistory" id="nav-bank">
+                            <a
+                                href="#"
+                                id="nav-comps"
+                            >
+                                <i className="gradient-brown shadow-bg shadow-bg-xs bi bi-clock-history" />
+                                <span className="trn" data-trn-key="History">
+                                    Transactions
+                                </span>
+                                <i className="bi bi-chevron-right" />
+                            </a>
+                        </Link>
 
                         <a
                             href="#"
@@ -182,15 +193,16 @@ const DiamondHome = () => {
                             <i className="bi bi-chevron-right" />
                         </a>
 
-                        <Link to="/ReadBank" id="nav-bank">
-                            <div id="nav-homes">
-                                <i className="gradient-bluess shadow-bg shadow-bg-xs bi bi bi-bank2" />
-                                <span className="trn" data-trn-key="Deposit">
-                                    Bank Account
-                                </span>
-                                <i className="bi bi-chevron-right" />
-                            </div>
-                        </Link>
+                        <a href="#"
+                            data-bs-toggle="offcanvas"
+                            data-bs-target="#BankAccounts"
+                            id="nav-comps">
+                            <i className="gradient-bluess shadow-bg shadow-bg-xs bi bi bi-bank2" />
+                            <span className="trn" data-trn-key="Promotion">
+                                Bank Account
+                            </span>
+                            <i className="bi bi-chevron-right" />
+                        </a>
 
                         {/* <a href="/downline/">
                             <i className="gradient-blue shadow-bg shadow-bg-xs bi bi-people-fill" />
@@ -267,7 +279,7 @@ const DiamondHome = () => {
                 </div>
             </div>
 
-            
+
             {/* App side bar */}
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
             <style media="screen" dangerouslySetInnerHTML={{ __html: "\n\n.playerbutton {\n\n  background-color: transparent;\n\n  color: #222222;\n\n  width: fit-content;\n\n  border: 2px solid #818181;\n\n  padding: 0 10px;\n\n  border-radius: 10px;\n\n  font-size: 12px;\n\n  text-transform: uppercase;\n\n}\n\n.playerbutton:active,.playerbutton:focus {\n\n  background-color: transparent; /* Green */\n\n  border-color: #92c659;\n\n}\n\n.transfer_slider .swiper-wrapper .swiper-slide {\n\n  width: auto !important;\n\n  padding: 0 5px 10px 0;\n\n}\n\n#qrcode_transfer img {\n\n  max-width: 250px;\n\n  margin: 0 auto;\n\n}\n\n.processdiv {\n\n  position: absolute;\n\n  width: 100%;\n\n  top: 0;\n\n  background: #fdfdfd;\n\n  z-index: 99;\n\n  pointer-events: none;\n\n  height: 100%;\n\n  display: flex;\n\n  flex-direction: column;\n\n  justify-content: center;\n\n  align-items: center;\n\n}\n\n#TransferModal #turnover_requirement {\n\n  border: 1px solid #ced4da;\n\n  background: #e9ecef;\n\n}\n\n" }} />
@@ -498,11 +510,11 @@ const DiamondHome = () => {
             {/* FOOTER */}
 
             <div id="footer-bar" className="footer-bar footer-bar-detached">
-                <a href="#"><i className="ri-home-gear-line font-20" /><img width="25" height="25" src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/64/external-home-100-most-used-icons-flaticons-lineal-color-flat-icons.png" alt="external-home-100-most-used-icons-flaticons-lineal-color-flat-icons"/><span className="trn" data-trn-key="Home">Home</span></a>
-                <a href="#" data-bs-toggle="offcanvas" data-bs-target="#QrModal"><img width="25" height="25" src="https://img.icons8.com/fluency/48/qr-code.png" alt="qr-code"/><span className="trn" data-trn-key="Invitation">Invitation</span></a>
+                <a href="#"><i className="ri-home-gear-line font-20" /><img width="25" height="25" src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/64/external-home-100-most-used-icons-flaticons-lineal-color-flat-icons.png" alt="external-home-100-most-used-icons-flaticons-lineal-color-flat-icons" /><span className="trn" data-trn-key="Home">Home</span></a>
+                <a href="#" data-bs-toggle="offcanvas" data-bs-target="#QrModal"><img width="25" height="25" src="https://img.icons8.com/fluency/48/qr-code.png" alt="qr-code" /><span className="trn" data-trn-key="Invitation">Invitation</span></a>
                 <a href="#" data-bs-toggle="offcanvas" data-bs-target="#DepositSelectMethod" className="active-nav"><i className="bi bi-coin font-17" /><span className="trn" data-trn-key="Deposit">Deposit</span></a>
-                <a href="#" data-bs-toggle="offcanvas" data-bs-target="#CreditModal" id="detail_ori_btn"><img width="25" height="25" src="https://img.icons8.com/external-flatarticons-blue-flatarticons/65/external-gift-valentines-day-flatarticons-blue-flatarticons-3.png" alt="external-gift-valentines-day-flatarticons-blue-flatarticons-3"/><span className="trn" data-trn-key="Rewards">Rewards</span></a>
-                <a href="#" data-bs-toggle="offcanvas" data-bs-target="#supportmodal"><img width="25" height="25" src="https://img.icons8.com/external-filled-outline-satawat-anukul/64/external-communication-communication-filled-outline-filled-outline-satawat-anukul-13.png" alt="external-communication-communication-filled-outline-filled-outline-satawat-anukul-13"/><span className="trn" data-trn-key="Support">Support</span></a>
+                <a href="#" data-bs-toggle="offcanvas" data-bs-target="#CreditModal" id="detail_ori_btn"><img width="25" height="25" src="https://img.icons8.com/external-flatarticons-blue-flatarticons/65/external-gift-valentines-day-flatarticons-blue-flatarticons-3.png" alt="external-gift-valentines-day-flatarticons-blue-flatarticons-3" /><span className="trn" data-trn-key="Rewards">Rewards</span></a>
+                <a href="#" data-bs-toggle="offcanvas" data-bs-target="#supportmodal"><img width="25" height="25" src="https://img.icons8.com/external-filled-outline-satawat-anukul/64/external-communication-communication-filled-outline-filled-outline-satawat-anukul-13.png" alt="external-communication-communication-filled-outline-filled-outline-satawat-anukul-13" /><span className="trn" data-trn-key="Support">Support</span></a>
 
             </div>
 

@@ -220,6 +220,26 @@ const Sidebar = () => {
                             </span>
                             <i className="bi bi-chevron-right" />
                         </a> */}
+
+                        <Link to="/Promotion" id="nav-bank">
+                            <a>
+                                <i class="gradient-red shadow-bg shadow-bg-xs bi bi-gift-fill"></i>
+                                <span className="trn" data-trn-key="Instruction">
+                                    Promotion
+                                </span>
+                                <i className="bi bi-chevron-right" />
+                            </a>
+                        </Link>
+
+                        <Link to="/DownLinePlayer" id="nav-bank">
+                            <a>
+                                <i class="gradient-mint shadow-bg shadow-bg-xs bi bi-people-fill"></i>
+                                <span className="trn" data-trn-key="Instruction">
+                                    DownLine Player
+                                </span>
+                                <i className="bi bi-chevron-right" />
+                            </a>
+                        </Link>
                         <a href="#" id="nav-mails" onclick="switch_lang()">
                             <i className="gradient-teal shadow-bg shadow-bg-xs bi bi-translate" />
                             <span className="trn" data-trn-key="Lang">
@@ -227,13 +247,15 @@ const Sidebar = () => {
                             </span>
                             <i className="bi bi-chevron-right" />
                         </a>
-                        <a href="/instruction/">
-                            <i className="gradient-red shadow-bg shadow-bg-xs bi bi-card-image" />
-                            <span className="trn" data-trn-key="Instruction">
-                                Instruction
-                            </span>
-                            <i className="bi bi-chevron-right" />
-                        </a>
+                        <Link to="/Instruction" id="nav-bank">
+                            <a>
+                                <i className="instruction shadow-bg shadow-bg-xs bi bi-card-image" />
+                                <span className="trn" data-trn-key="Instruction">
+                                    Instruction
+                                </span>
+                                <i className="bi bi-chevron-right" />
+                            </a>
+                        </Link>
                         <a id="nav-mails" style={{ cursor: 'pointer' }} onClick={handleLogout}>
                             <i className="gradient-dark shadow-bg shadow-bg-xs bi bi-box-arrow-left" />
                             <span className="trn"  >

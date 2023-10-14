@@ -5433,6 +5433,11 @@
     border-radius: 10px;
   } */
 
+  .rayan {
+    width: 120px;
+    margin-left: 50px !important;
+  }
+
   /* ---- */
   #HistoryModal {
     background: var(--backGround);
@@ -5753,6 +5758,11 @@
 
 .BankAccountShadows{
   height: 45px;
+}
+
+.instruction {
+  border: none;
+  background-image: linear-gradient(to bottom, #ffd24c, #ca9b0d);
 }
   /* Main Deposit Modal css End */
   /* Theme change css Ended */

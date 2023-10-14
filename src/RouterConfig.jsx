@@ -7,6 +7,9 @@ import "./Components/DiamondHome.css"
 import SliderTabs from "./Components/SliderTabs";
 import PlayGame from "./Components/PlayGame";
 import TransactionsHistory from "./Components/SidebarComponents/TransactionsHistory";
+import Promotion from "./Components/SidebarComponents/Promotion";
+import Instruction from "./Components/SidebarComponents/Instruction";
+import DownLinePlayer from "./Components/SidebarComponents/DownLinePlayer";
 
 const RouteConfig = () => {
     return (
@@ -19,6 +22,9 @@ const RouteConfig = () => {
                     <Route path="/UserProfile2" element={<UserProfile2 />} />
                     <Route path="/PlayGame/:tCode/:pCode" element={<PlayGame />} />
                     <Route path="/TransactionsHistory" element={<TransactionsHistory />} />
+                    <Route path="/Promotion" element={<Promotion />} />
+                    <Route path="/Instruction" element={<Instruction />} />
+                    <Route path="DownLinePlayer" element={<DownLinePlayer/>}/>
                 </Routes>
             </BrowserRouter>
         </div>
