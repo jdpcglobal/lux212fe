@@ -273,7 +273,35 @@ const TransactionsHistory = () => {
                                             </th>
                                         </tr>
                                     </thead>
-                                    <tbody></tbody>
+                                    {transaction.length > 0 && transaction
+                                        .filter(data => data.Type === 'TrCr' || data.Type==='TrDr') 
+                                        .map((data, index) => (
+                                            <tbody key={index}>
+                                                <tr className="border-fade-blue">
+                                                    <td>
+                                                        <small>{data.Date}</small>
+                                                    </td>
+                                                    <td>
+                                                        <small className="trn Deposit" data-trn-key="Deposit">
+                                                            {data.Type}
+                                                        </small>
+                                                    </td>
+                                                    <td>
+                                                        <small className=" ">{data.Type}</small>
+                                                    </td>
+                                                    <td>
+                                                        <small>{(data.Amount).toFixed(2)}</small>
+                                                    </td>
+                                                    <td>
+                                                        <small>REJECT</small>
+                                                    </td>
+                                                    <td className="text-center">
+                                                        <i className="bi  bi-x-octagon color-red-dark" />
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        ))
+                                    }
                                 </table>
                             </div>
                         </div>

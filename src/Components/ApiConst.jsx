@@ -11,6 +11,7 @@ export const Get_Game_Types_Post = BASE_URL + "GetGameTypes";
 export const Get_Providers_Post = BASE_URL + "GetProviders";
 export const Login_User_Post = BASE_URL + "login";
 export const ADS_Post = BASE_URL + "Ads";
+export const Instructions_Post = BASE_URL + "Instructions";
 export const GetGames_Post = BASE_URL + "GetGames";
 export const LaunchGame_Post = BASE_URL + "LaunchGame";//
 export const CreditAccount_Post = BASE_URL + "CreditAccount";
