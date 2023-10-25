@@ -26,7 +26,7 @@ const Instruction = () => {
             <div className="page-content header-clear-medium">
                 <div className="card card-style rounded-m">
                     <div className="content">
-                        <h3 className="font-800 color-magenta-dark">How To Deposit 如何充值</h3>
+                        <h3 className="font-800 color-magenta-dark">INSTRUCTIONS</h3>
                         <div className="divider mt-3 mb-1" />
                         <div className="accordion accordion-m border-0" id="accordion-group-5">
 

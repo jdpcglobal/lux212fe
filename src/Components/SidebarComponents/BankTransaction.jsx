@@ -64,17 +64,13 @@ const BankTransaction = () => {
                                                 </td>
                                                 <td className="Th">
                                                     {transaction.Status === "Pending" ? (
-                                                        <img
-                                                            src="./imagies/sahil.png"
-                                                            style={{ height: '50px', width: '100px' }}
-                                                            alt="Pending"
-                                                        />
+                                                        <div className='transactionStatus'>
+                                                        <span className="pending">PENDING</span>
+                                                    </div>
                                                     ) : (
-                                                        <img
-                                                            src="./imagies/approved.png"
-                                                            style={{ height: '50px', width: '100px' }}
-                                                            alt="Approved"
-                                                        />
+                                                        <div className='transactionStatus'>
+                                                            <span className="Approved">APPROVED</span>
+                                                        </div>
                                                     )}
                                                 </td>
                                             </tr>

@@ -22,10 +22,16 @@ const TransactionsHistory = () => {
         })
 
     };
+    const goBack = () => {
+        window.history.back();
+    };
     return (
         <>
             <div className="card card-style mb-5 TransactionHistory">
-                <div className="mt-1 mx-2 mb-3" style={{ paddingTop: '65px' }}>
+                <span className='BackButton'>
+                    <img onClick={goBack} width="54" height="54" src="https://img.icons8.com/sf-black-filled/64/circled-left-2.png" alt="circled-left-2" />
+                </span>
+                <div className="mt-1 mx-2 mb-3">
                     <div className="tabs tabs-borders" id="history-tab">
                         <div className="tab-controls">
                             <a
@@ -274,7 +280,7 @@ const TransactionsHistory = () => {
                                         </tr>
                                     </thead>
                                     {transaction.length > 0 && transaction
-                                        .filter(data => data.Type === 'TrCr' || data.Type==='TrDr') 
+                                        .filter(data => data.Type === 'TrCr' || data.Type === 'TrDr')
                                         .map((data, index) => (
                                             <tbody key={index}>
                                                 <tr className="border-fade-blue">

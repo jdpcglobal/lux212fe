@@ -55,56 +55,57 @@ const Sidebar = () => {
                 </div>
                 {/* <span class="menu-divider">NAVIGATION</span> */}
                 <div className="menu-list menuList">
-                    <div className="card card-style rounded-m p-3 py-2 mb-0 card-styles">
-                        <Link to="/UserProfile2" id="nav-bank">
+                    {loggedInUser && (
+                        <div className="card card-style rounded-m p-3 py-2 mb-0 card-styles">
+                            <Link to="/UserProfile2" id="nav-bank">
+                                <a
+                                    href="#"
+                                >
+                                    <i className="MyProfile shadow-bg shadow-bg-xs bi bi-person" />
+                                    <span className="trn" data-trn-key="Deposit">
+                                        my Profile
+                                    </span>
+                                    <i className="bi bi-chevron-right" />
+                                </a>
+                            </Link>
+
                             <a
                                 href="#"
+                                data-bs-toggle="offcanvas"
+                                data-bs-target="#DepositSelectMethod"
+                                id="nav-homes"
                             >
-                                <i className="MyProfile shadow-bg shadow-bg-xs bi bi-person" />
+                                <i className="gradient-mint shadow-bg shadow-bg-xs bi bi-coin" />
                                 <span className="trn" data-trn-key="Deposit">
-                                    my Profile
+                                    Deposit
                                 </span>
                                 <i className="bi bi-chevron-right" />
                             </a>
-                        </Link>
-
-                        <a
-                            href="#"
-                            data-bs-toggle="offcanvas"
-                            data-bs-target="#DepositSelectMethod"
-                            id="nav-homes"
-                        >
-                            <i className="gradient-mint shadow-bg shadow-bg-xs bi bi-coin" />
-                            <span className="trn" data-trn-key="Deposit">
-                                Deposit
-                            </span>
-                            <i className="bi bi-chevron-right" />
-                        </a>
-                        <a
-                            href="#"
-                            data-bs-toggle="offcanvas"
-                            data-bs-target="#WithdrawMethod"
-                            onclick="get_turnover();"
-                            id="nav-homes"
-                        >
-                            <i className="gradient-orange shadow-bg shadow-bg-xs bi bi-box-arrow-up" />
-                            <span className="trn" data-trn-key="Withdraw">
-                                Withdraw
-                            </span>
-                            <i className="bi bi-chevron-right" />
-                        </a>
-                        <a href="#"
-                            data-bs-toggle="offcanvas"
-                            data-bs-target="#BetHistoryModal"
-                            id="nav-comps">
-                            <i className="gradient-pink shadow-bg shadow-bg-xs bi bi-clock-history" />
-                            <span className="trn" data-trn-key="Promotion">
-                                History
-                            </span>
-                            <i className="bi bi-chevron-right" />
-                        </a>
-                        {/*<a href="/promotion/" id="nav-comps"><i class="gradient-red shadow-bg shadow-bg-xs bi bi-gift-fill"></i><span class="trn">Reward</span><i class="bi bi-chevron-right"></i></a>*/}
-                        {/* <a
+                            <a
+                                href="#"
+                                data-bs-toggle="offcanvas"
+                                data-bs-target="#WithdrawMethod"
+                                onclick="get_turnover();"
+                                id="nav-homes"
+                            >
+                                <i className="gradient-orange shadow-bg shadow-bg-xs bi bi-box-arrow-up" />
+                                <span className="trn" data-trn-key="Withdraw">
+                                    Withdraw
+                                </span>
+                                <i className="bi bi-chevron-right" />
+                            </a>
+                            <a href="#"
+                                data-bs-toggle="offcanvas"
+                                data-bs-target="#BetHistoryModal"
+                                id="nav-comps">
+                                <i className="gradient-pink shadow-bg shadow-bg-xs bi bi-clock-history" />
+                                <span className="trn" data-trn-key="Promotion">
+                                    History
+                                </span>
+                                <i className="bi bi-chevron-right" />
+                            </a>
+                            {/*<a href="/promotion/" id="nav-comps"><i class="gradient-red shadow-bg shadow-bg-xs bi bi-gift-fill"></i><span class="trn">Reward</span><i class="bi bi-chevron-right"></i></a>*/}
+                            {/* <a
                             href="#"
                             data-bs-toggle="offcanvas"
                             data-bs-target="#CreditModal"
@@ -116,7 +117,7 @@ const Sidebar = () => {
                             </span>
                             <i className="bi bi-chevron-right" />
                         </a> */}
-                        {/* <a
+                            {/* <a
                             href="#"
                             data-bs-toggle="offcanvas"
                             data-bs-target="#HistoryModal"
@@ -129,46 +130,46 @@ const Sidebar = () => {
                             <i className="bi bi-chevron-right" />
                         </a> */}
 
-                        <Link to="/TransactionsHistory" id="nav-bank">
+                            <Link to="/TransactionsHistory" id="nav-bank">
+                                <a
+                                    href="#"
+                                    id="nav-comps"
+                                >
+                                    <i className="gradient-brown shadow-bg shadow-bg-xs bi bi-clock-history" />
+                                    <span className="trn" data-trn-key="History">
+                                        Transactions
+                                    </span>
+                                    <i className="bi bi-chevron-right" />
+                                </a>
+                            </Link>
+
                             <a
                                 href="#"
+                                data-bs-toggle="offcanvas"
+                                data-bs-target="#BankTransaction"
                                 id="nav-comps"
                             >
-                                <i className="gradient-brown shadow-bg shadow-bg-xs bi bi-clock-history" />
+                                <i className="gradient-blue shadow-bg shadow-bg-xs bi bi bi-bank2" />
                                 <span className="trn" data-trn-key="History">
-                                    Transactions
+                                    Bank Transaction
                                 </span>
                                 <i className="bi bi-chevron-right" />
                             </a>
-                        </Link>
 
-                        <a
-                            href="#"
-                            data-bs-toggle="offcanvas"
-                            data-bs-target="#BankTransaction"
-                            id="nav-comps"
-                        >
-                            <i className="gradient-blue shadow-bg shadow-bg-xs bi bi bi-bank2" />
-                            <span className="trn" data-trn-key="History">
-                                Bank Transaction
-                            </span>
-                            <i className="bi bi-chevron-right" />
-                        </a>
+                            <a
+                                href="#"
+                                data-bs-toggle="offcanvas"
+                                data-bs-target="#TransferCredit"
+                                id="nav-comps"
+                            >
+                                <i className="gradient-blues shadow-bg shadow-bg-xs bi bi bi-arrow-left-right" />
+                                <span className="trn" data-trn-key="History">
+                                    Transfer Credit
+                                </span>
+                                <i className="bi bi-chevron-right" />
+                            </a>
 
-                        <a
-                            href="#"
-                            data-bs-toggle="offcanvas"
-                            data-bs-target="#TransferCredit"
-                            id="nav-comps"
-                        >
-                            <i className="gradient-blues shadow-bg shadow-bg-xs bi bi bi-arrow-left-right" />
-                            <span className="trn" data-trn-key="History">
-                                Transfer Credit
-                            </span>
-                            <i className="bi bi-chevron-right" />
-                        </a>
-
-                        {/* <Link to="/ReadBank" id="nav-bank">
+                            {/* <Link to="/ReadBank" id="nav-bank">
                             <div id="nav-homes">
                                 <i className="gradient-bluess shadow-bg shadow-bg-xs bi bi bi-bank2" />
                                 <span className="trn" data-trn-key="Deposit">
@@ -178,25 +179,25 @@ const Sidebar = () => {
                             </div>
                         </Link> */}
 
-                        <a href="#"
-                            data-bs-toggle="offcanvas"
-                            data-bs-target="#BankAccounts"
-                            id="nav-comps">
-                            <i className="gradient-bluess shadow-bg shadow-bg-xs bi bi bi-bank2" />
-                            <span className="trn" data-trn-key="Promotion">
-                                Bank Account
-                            </span>
-                            <i className="bi bi-chevron-right" />
-                        </a>
+                            <a href="#"
+                                data-bs-toggle="offcanvas"
+                                data-bs-target="#BankAccounts"
+                                id="nav-comps">
+                                <i className="gradient-bluess shadow-bg shadow-bg-xs bi bi bi-bank2" />
+                                <span className="trn" data-trn-key="Promotion">
+                                    Bank Account
+                                </span>
+                                <i className="bi bi-chevron-right" />
+                            </a>
 
-                        {/* <a href="/downline/">
+                            {/* <a href="/downline/">
                             <i className="gradient-blue shadow-bg shadow-bg-xs bi bi-people-fill" />
                             <span className="trn" data-trn-key="Downline Player">
                                 Downline Player
                             </span>
                             <i className="bi bi-chevron-right" />
                         </a> */}
-                        {/* <a
+                            {/* <a
                             href="#"
                             data-bs-toggle="offcanvas"
                             data-bs-target="#supportmodal"
@@ -208,7 +209,7 @@ const Sidebar = () => {
                             </span>
                             <i className="bi bi-chevron-right" />
                         </a> */}
-                        {/* <a
+                            {/* <a
                             href="#"
                             data-bs-toggle="offcanvas"
                             data-bs-target="#QrModal"
@@ -221,49 +222,50 @@ const Sidebar = () => {
                             <i className="bi bi-chevron-right" />
                         </a> */}
 
-                        <Link to="/Promotion" id="nav-bank">
-                            <a>
-                                <i class="gradient-red shadow-bg shadow-bg-xs bi bi-gift-fill"></i>
-                                <span className="trn" data-trn-key="Instruction">
-                                    Promotion
-                                </span>
-                                <i className="bi bi-chevron-right" />
-                            </a>
-                        </Link>
+                            <Link to="/Promotion" id="nav-bank">
+                                <a>
+                                    <i class="gradient-red shadow-bg shadow-bg-xs bi bi-gift-fill"></i>
+                                    <span className="trn" data-trn-key="Instruction">
+                                        Promotion
+                                    </span>
+                                    <i className="bi bi-chevron-right" />
+                                </a>
+                            </Link>
 
-                        <Link to="/DownLinePlayer" id="nav-bank">
-                            <a>
-                                <i class="gradient-mint shadow-bg shadow-bg-xs bi bi-people-fill"></i>
-                                <span className="trn" data-trn-key="Instruction">
-                                    DownLine Player
+                            <Link to="/DownLinePlayer" id="nav-bank">
+                                <a>
+                                    <i class="gradient-mint shadow-bg shadow-bg-xs bi bi-people-fill"></i>
+                                    <span className="trn" data-trn-key="Instruction">
+                                        DownLine Player
+                                    </span>
+                                    <i className="bi bi-chevron-right" />
+                                </a>
+                            </Link>
+                            <a href="#" id="nav-mails" onclick="switch_lang()">
+                                <i className="gradient-teal shadow-bg shadow-bg-xs bi bi-translate" />
+                                <span className="trn" data-trn-key="Lang">
+                                    Language
                                 </span>
                                 <i className="bi bi-chevron-right" />
                             </a>
-                        </Link>
-                        <a href="#" id="nav-mails" onclick="switch_lang()">
-                            <i className="gradient-teal shadow-bg shadow-bg-xs bi bi-translate" />
-                            <span className="trn" data-trn-key="Lang">
-                                Language
-                            </span>
-                            <i className="bi bi-chevron-right" />
-                        </a>
-                        <Link to="/Instruction" id="nav-bank">
-                            <a>
-                                <i className="instruction shadow-bg shadow-bg-xs bi bi-card-image" />
-                                <span className="trn" data-trn-key="Instruction">
-                                    Instruction
+                            <Link to="/Instruction" id="nav-bank">
+                                <a>
+                                    <i className="instruction shadow-bg shadow-bg-xs bi bi-card-image" />
+                                    <span className="trn" data-trn-key="Instruction">
+                                        Instruction
+                                    </span>
+                                    <i className="bi bi-chevron-right" />
+                                </a>
+                            </Link>
+                            <a id="nav-mails" style={{ cursor: 'pointer' }} onClick={handleLogout}>
+                                <i className="gradient-dark shadow-bg shadow-bg-xs bi bi-box-arrow-left" />
+                                <span className="trn"  >
+                                    Logout
                                 </span>
                                 <i className="bi bi-chevron-right" />
                             </a>
-                        </Link>
-                        <a id="nav-mails" style={{ cursor: 'pointer' }} onClick={handleLogout}>
-                            <i className="gradient-dark shadow-bg shadow-bg-xs bi bi-box-arrow-left" />
-                            <span className="trn"  >
-                                Logout
-                            </span>
-                            <i className="bi bi-chevron-right" />
-                        </a>
-                    </div>
+                        </div>
+                    )}
                 </div>
             </div>
         </>
