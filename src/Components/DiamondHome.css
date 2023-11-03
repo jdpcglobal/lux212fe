@@ -387,10 +387,10 @@
     border-color: #F6BB42 !important;
   }
 
-  .gradient-yellow {
+  /* .gradient-yellow {
     border: none;
-    background-image: linear-gradient(to bottom, #FFCE54, #F6BB42);
-  }
+    background-image: linear-gradient(to bottom, rgb(84, 212, 255), #42baf6);
+  } */
 
   .bg-fade2-blue {
     background-color: rgba(74, 137, 220, 0.2) !important;
@@ -5033,8 +5033,8 @@
 
   .gradient-yellow {
     border: none;
-    background-image: linear-gradient(to bottom, #FFCE54, #F6BB42);
-  }
+    background-image: linear-gradient(to bottom, #3fd1e1, #099ebc);
+}
 
   .gradient-magenta {
     border: none;
@@ -5460,6 +5460,22 @@
   }
 
   #WalletModal {
+    background: var(--backGround);
+  }
+
+  #QrModal {
+    background: var(--backGround);
+  }
+
+  #supportmodal {
+    background: var(--backGround);
+  }
+
+  #InstructionPage {
+    background: var(--backGround) !important;
+  }
+
+  #CreditModal {
     background: var(--backGround);
   }
 

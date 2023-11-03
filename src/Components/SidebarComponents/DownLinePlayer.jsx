@@ -1,10 +1,17 @@
 import React from 'react'
 
+const goBack = () => {
+    window.history.back();
+};
+
 const DownLinePlayer = () => {
     return (
         <>
             <div className='card card-style TransactionHistory'>
-                <div className="page-content header-clear-medium">
+            <span className='BackButton' >
+                <img onClick={goBack} width="54" height="54" src="https://img.icons8.com/sf-black-filled/64/circled-left-2.png" alt="circled-left-2" />
+            </span>
+                <div className="page-content header-clear-medium" style={{marginTop:'-20px'}}>
                     <div className="content mt-3">
                         <div className="tabs tabs-box" id="tab-group-1">
                             <div className="tab-controls rounded-s border-highlight">
@@ -54,13 +61,6 @@ const DownLinePlayer = () => {
                             </div>
                         </div>
                         <div style={{ width: "100%", height: "auto" }}></div>
-                        {/*-   <div class="row" id="allpromotion">
-
-    <div class="d-flex justify-content-center">
-    <div class="spinner-border color-teal-dark" role="status"></div>
-    </div>
-
-  </div> -*/}
                     </div>
                 </div>
 

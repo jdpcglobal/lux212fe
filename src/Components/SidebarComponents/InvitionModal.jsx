@@ -3,7 +3,7 @@ import React from 'react'
 const InvitionModal = () => {
   return (
     <>
-    <div className="offcanvas offcanvas-bottom rounded-m offcanvas-detached bg-theme" id="QrModal">
+    <div className="offcanvas offcanvas-bottom rounded-m offcanvas-detached bg-theme" id="QrModal" style={{height:"98%"}}>
                 <div className="content">
                     <div className="d-flex pb-2">
                         <div className="align-self-center">
