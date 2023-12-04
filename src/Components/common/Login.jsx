@@ -146,7 +146,7 @@ const Login = (props) => {
                 <div className="" style={{ display: "inline" }}>
                   <input
                     name="player"
-                    type="tel"
+                    type="text"
                     className="form-control rounded-xs"
                     id="Username"
                     autoComplete="off"
