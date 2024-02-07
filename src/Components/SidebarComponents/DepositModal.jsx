@@ -193,8 +193,10 @@ const DepositModal = () => {
         let formData = new FormData();
         formData.append('key', 'KYhpThsnejTYmofkOndfmkQnci0');
         formData.append('img', file); 
+
+        // console.log('77777777777777777777',file)
         try {
-            const response = await fetch('https://www.jdpcglobal.com/cdn/api/uploadReceipts.php', {
+            const response = await fetch('https://www.jdpcglobal.com/cdn/api/uploadReceipts', {
                 method: 'POST',
                 body: formData,
 

@@ -6,12 +6,14 @@ import { callPostApi } from './ApiCaller';
 import { GetGames_Post } from './ApiConst';
 
 
-const PlayGame = ({width}) => {
+const PlayGame = ({ width }) => {
     const { tCode, pCode } = useParams();
-    console.log("Tcode+++", pCode)
+    //console.log("Tcode+++", pCode)
     const [launchGameData, setLaunchGameData] = useState([]);
     const [gameLoaders, setGameLoaders] = useState(false);
     const [responseData, setResponseData] = useState([]);
+    const [gameMessage, setGameMessage] = useState('')
+    const [messageContent, setMessageContent] = useState(false)
     const [launchGameReqObj, setLaunchGameReqObj] = useState({
         TCode: "",
         PCode: "",
@@ -30,10 +32,13 @@ const PlayGame = ({width}) => {
         formData.append('TCode', tCode);
         formData.append('PCode', pCode);
         callPostApi(GetGames_Post, formData, (jsonData) => {
+            setGameMessage(jsonData.data.message)
+            setGameLoaders(false)
             if (jsonData.data?.isSuccess) {
                 setResponseData(jsonData.data.data);
-                setGameLoaders(false)
+
             } else {
+                setMessageContent(true)
             }
         },
             (error) => {
@@ -76,7 +81,7 @@ const PlayGame = ({width}) => {
                 // console.log();
                 setLaunchGameData(jsonData.data);
             } else {
-                 window.location.reload();
+                window.location.reload();
             }
 
         } catch (error) {
@@ -85,7 +90,7 @@ const PlayGame = ({width}) => {
     };
     //***** GET LaunchGame API END *****/
 
-
+    // console.log('1111111111222222',gameMessage)
     return (
         <>
             <section className="pcview" >
@@ -101,6 +106,11 @@ const PlayGame = ({width}) => {
 
                     <div className="content mx-3 mt-0" id="mobilediv">
 
+                        {messageContent &&
+                            <div style={{ textAlign: 'center', color: 'black', fontSize: '25px', fontWeight: "800", marginTop: '200px' }}>
+                                {gameMessage}
+                            </div>
+                        }
 
                         <div className="mt-3"></div>
                         <div className="row row-cols-3 row-cols-md-6 PlayGameLoader">
@@ -112,13 +122,13 @@ const PlayGame = ({width}) => {
                                             <div className="col-3 p-1 game-item livecasino allgame" style={{ cursor: 'pointer' }}>
                                                 <div className="card card-style rounded-s m-0">
                                                     <img src="/images/process.gif" alt="" className="KING855 process" />
-                                                        <img onClick={() => handleGameClick(data.GameCode)}
-                                                            className="lazyload cursor"
-                                                            data-src="./imagies/live_855.jpg"
-                                                            src={data.ImageURL}
-                                                            alt=""
-                                                            onclick="action_live('KING855')"
-                                                        />
+                                                    <img onClick={() => handleGameClick(data.GameCode)}
+                                                        className="lazyload cursor"
+                                                        data-src="./imagies/live_855.jpg"
+                                                        src={data.ImageURL}
+                                                        alt=""
+                                                        onclick="action_live('KING855')"
+                                                    />
                                                 </div>
                                                 <div className="game-title" >{data.GameName}</div>
                                             </div>
