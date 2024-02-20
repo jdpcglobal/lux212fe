@@ -207,11 +207,10 @@ const SliderTabs = ({ width }) => {
                                         {tabpanelData.map((data, i) =>
                                             <div className="col-3 p-1 game-item livecasino allgame" style={{ cursor: 'pointer' }}>
                                                 <Link to={`/PlayGame/${data.GameTypeCode + "/" + data.Code}`} >
-                                                    <div className="card card-style rounded-s m-0">
-                                                        <img src="/images/process.gif" alt="" className="KING855 process" />
+                                                    <div className="card card-style rounded-s m-0" style={{height:'92%'}}>
                                                         {gameLoader ? <Loader width={120} /> :
 
-                                                            <img
+                                                            <img style={{height:'100%', width:'100%'}}
                                                                 className="lazyload cursor"
                                                                 data-src="./imagies/live_855.jpg"
                                                                 src={data.ImageUrl}
@@ -221,9 +220,10 @@ const SliderTabs = ({ width }) => {
 
                                                         }
                                                     </div>
+                                                     <div className="game-title" >{data.Name}</div>
                                                 </Link>
 
-                                                <div className="game-title" >{data.Name}</div>
+                                               
 
                                             </div>
                                         )}
