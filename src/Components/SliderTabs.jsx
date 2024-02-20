@@ -210,7 +210,7 @@ const SliderTabs = ({ width }) => {
                                                     <div className="card card-style rounded-s m-0" style={{height:'92%'}}>
                                                         {gameLoader ? <Loader width={120} /> :
 
-                                                            <img style={{height:'100%', width:'100%'}}
+                                                            <img style={{height:'100%', width:'100%'}} 
                                                                 className="lazyload cursor"
                                                                 data-src="./imagies/live_855.jpg"
                                                                 src={data.ImageUrl}
