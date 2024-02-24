@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import Loader from "./common/Loader";
 import { callPostApi } from './ApiCaller';
 import { GetGames_Post } from './ApiConst';
+import { Link } from 'react-router-dom';
 
 
 const PlayGame = ({ width }) => {
@@ -21,6 +22,10 @@ const PlayGame = ({ width }) => {
         Token: new Cookies().get("kisDiamond_LoggedIn")?.Token,
     })
 
+    const str = gameMessage;
+    const startIndex = str.indexOf('ErrorMessage') + 'ErrorMessage'.length + 3;
+    const endIndex = str.lastIndexOf('"');
+    const errorMessage = str.substring(startIndex, endIndex);
 
     useEffect(() => {
         GetGames(tCode, pCode);
@@ -32,8 +37,9 @@ const PlayGame = ({ width }) => {
         formData.append('TCode', tCode);
         formData.append('PCode', pCode);
         callPostApi(GetGames_Post, formData, (jsonData) => {
-            setGameMessage(jsonData.data.message)
-            setGameLoaders(false)
+            // const messageObj2 = JSON.parse(messageObj);
+            setGameMessage(jsonData.data.message);
+            setGameLoaders(false);
             if (jsonData.data?.isSuccess) {
                 setResponseData(jsonData.data.data);
 
@@ -100,6 +106,11 @@ const PlayGame = ({ width }) => {
                         id="mobilebanner"
                         style={{ visibility: "visible" }}
                     >
+                        <div style={{textAlign:"left"}}>
+                            <Link to="/" style={{color:'black', fontSize:20, fontWeight:'700'}}>
+                                <img width="40" height="40" src="https://img.icons8.com/badges/48/back.png" alt="back" /> Back
+                            </Link>
+                        </div>
                     </div>
 
                     {/* slider */}
@@ -108,7 +119,7 @@ const PlayGame = ({ width }) => {
 
                         {messageContent &&
                             <div style={{ textAlign: 'center', color: 'black', fontSize: '25px', fontWeight: "800", marginTop: '200px' }}>
-                                {gameMessage}
+                                {errorMessage}
                             </div>
                         }
 
