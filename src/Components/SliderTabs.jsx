@@ -10,6 +10,9 @@ import Cookies from 'universal-cookie';
 import { Get_Providers_Post } from './ApiConst';
 import { Link } from 'react-router-dom'
 import Loader from "./common/Loader";
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
+
 const SliderTabs = ({ width }) => {
 
     const [tabIndex, setTabIndex] = useState(0);
@@ -20,7 +23,13 @@ const SliderTabs = ({ width }) => {
     const loggedInUser = new Cookies().get("kisDiamond_LoggedIn")
     const [gameLoader, setGameLoader] = useState(false);
     const [gameLoaders, setGameLoaders] = useState(false);
+    const [icon, setIcons] = useState(false)
+    const [icon2, setIcons2] = useState(true)
+    const [showModal, setShowModal] = useState(false);
 
+    const toggleModal = () => {
+        setShowModal(!showModal)
+    }
 
     const [launchGameReqObj, setLaunchGameReqObj] = useState({
         TCode: "",
@@ -28,7 +37,6 @@ const SliderTabs = ({ width }) => {
         GCode: "",
         Token: new Cookies().get("kisDiamond_LoggedIn")?.Token,
     })
-
 
     var settings = {
         infinite: true,
@@ -122,6 +130,17 @@ const SliderTabs = ({ width }) => {
             }
             setGameLoader(false)
             setGameLoaders(false)
+            //console.log('5555', new Cookies().get("kisDiamond_LoggedIn")?.Token)
+            if (new Cookies().get("kisDiamond_LoggedIn")?.Token === undefined) {
+                console.log('Jai shree Ram');
+                setIcons(true);
+                setIcons2(false);
+            } else {
+                console.log('Jai Hanuman');
+                setIcons(false);
+                setIcons2(true);
+            }
+
         },
             (error) => {
                 setGameLoader(false)
@@ -131,6 +150,10 @@ const SliderTabs = ({ width }) => {
 
     }
     //***** GET PROVIDER API END *****
+
+    const ReloadPAge = async => {
+        window.location.reload();
+    }
 
 
     return (
@@ -202,35 +225,79 @@ const SliderTabs = ({ width }) => {
 
                             {/* KING855 */}
                             <>
-                                {gameLoaders ? <Loader width={600} /> :
+
+                                {icon2 &&
                                     <>
-                                        {tabpanelData.map((data, i) =>
-                                            <div className="col-3 p-1 game-item livecasino allgame" style={{ cursor: 'pointer' }}>
-                                                <Link to={`/PlayGame/${data.GameTypeCode + "/" + data.Code}`} >
-                                                    <div className="card card-style rounded-s m-0" style={{height:'92%'}}>
-                                                        {gameLoader ? <Loader width={120} /> :
-
-                                                            <img style={{height:'100%', width:'100%'}} 
-                                                                className="lazyload cursor"
-                                                                data-src="./imagies/live_855.jpg"
-                                                                src={data.ImageUrl}
-                                                                alt=""
-                                                                onclick="action_live('KING855')"
-                                                            />
-
-                                                        }
+                                        {gameLoaders ? <Loader width={600} /> :
+                                            <>
+                                                {tabpanelData.map((data, i) =>
+                                                    <div className="col-3 p-1 game-item livecasino allgame" style={{ cursor: 'pointer' }} key={i}>
+                                                        <Link to={`/PlayGame/${data.GameTypeCode}/${data.Code}`}>
+                                                            <div className="card card-style rounded-s m-0" style={{ height: '100%' }}>
+                                                                {gameLoader ? <Loader width={120} /> :
+                                                                    <img
+                                                                        style={{ height: '100%', width: '100%' }}
+                                                                        className="lazyload cursor"
+                                                                        data-src="./imagies/live_855.jpg"
+                                                                        src={data.ImageUrl || 'https://cdn2.unrealengine.com/fortnite-battle-royale-chapter-5-season-2-myths-and-mortals-thumbnail-576x576-53c0a1db8297.jpg'}
+                                                                        alt=""
+                                                                        onError={(e) => {
+                                                                            e.target.onerror = null; // Prevent infinite loop if default image also fails to load
+                                                                            e.target.src = 'https://cdn2.unrealengine.com/fortnite-battle-royale-chapter-5-season-2-myths-and-mortals-thumbnail-576x576-53c0a1db8297.jpg'; // Set default image URL
+                                                                        }}
+                                                                    // Make sure action_live is defined
+                                                                    />
+                                                                }
+                                                                <div className="game-title">{data.Name}</div>
+                                                            </div>
+                                                        </Link>
                                                     </div>
-                                                     <div className="game-title" >{data.Name}</div>
-                                                </Link>
-
-                                               
-
-                                            </div>
-                                        )}
+                                                )}
+                                            </>
+                                        }
                                     </>
                                 }
-                            </>
 
+                                {icon &&
+                                    <>
+                                        {gameLoaders ? <Loader width={600} /> :
+                                            <>
+                                                {tabpanelData.map((data, i) =>
+                                                    <div className="col-3 p-1 game-item livecasino allgame" style={{ cursor: 'pointer' }} key={i}>
+
+                                                        <div onClick={toggleModal} className="card card-style rounded-s m-0" style={{ height: '100%' }}>
+                                                            {gameLoader ? <Loader width={120} /> :
+                                                                <img
+                                                                    style={{ height: '100%', width: '100%' }}
+                                                                    className="lazyload cursor"
+                                                                    data-src="./imagies/live_855.jpg"
+                                                                    src={data.ImageUrl || 'https://cdn2.unrealengine.com/fortnite-battle-royale-chapter-5-season-2-myths-and-mortals-thumbnail-576x576-53c0a1db8297.jpg'}
+                                                                    alt=""
+                                                                    onError={(e) => {
+                                                                        e.target.onerror = null; // Prevent infinite loop if default image also fails to load
+                                                                        e.target.src = 'https://cdn2.unrealengine.com/fortnite-battle-royale-chapter-5-season-2-myths-and-mortals-thumbnail-576x576-53c0a1db8297.jpg'; // Set default image URL
+                                                                    }}
+                                                                // Make sure action_live is defined
+                                                                />
+                                                            }
+                                                            <div className="game-title">{data.Name}</div>
+                                                        </div>
+
+                                                    </div>
+                                                )}
+                                            </>
+                                        }
+                                    </>
+                                }
+
+                            </>
+                            <Modal style={{ marginTop: '80px' }} show={showModal} onHide={toggleModal}>
+                                <Modal.Body className='ModalBody' style={{fontSize:'23px', fontWeight:'900', color:'black', textAlign:'center'}}>Please Login for play Games.
+                                    <div className='mAnchor mt-2 ' style={{color:'white'}}>
+                                    <Button variant="primary" onClick={ReloadPAge}>Login</Button>
+                                    </div>
+                                </Modal.Body>
+                            </Modal>
                             {/* end KING855 */}
 
                         </div>

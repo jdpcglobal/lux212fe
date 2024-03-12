@@ -32,9 +32,16 @@ const Promotion = () => {
 
     const getADSLists = () => {
     }
+
+    const goBack = () => {
+        window.history.back();
+    };
     return (
         <>
             <div className="card card-style mb-5 TransactionHistory">
+            <span className='BackButton profileTbe'>
+                            <img onClick={goBack} width="54" height="54" src="https://img.icons8.com/sf-black-filled/64/circled-left-2.png" alt="circled-left-2" />Promotion
+                        </span>
                 <div className="page-content header-clear-medium">
                     <div className="content mx-3 mt-0">
                         <div className="row" id="allpromotion">

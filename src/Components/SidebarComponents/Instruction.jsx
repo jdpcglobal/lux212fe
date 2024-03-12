@@ -21,9 +21,16 @@ const Instruction = () => {
         } catch (error) { }
     }
 
+     const goBack = () => {
+        window.history.back();
+    };
+
     return (
         <div className=' TransactionHistory card card-style'>
             <div className="page-content header-clear-medium">
+            <span className='BackButton2'>
+                <img onClick={goBack} width="54" height="54" src="https://img.icons8.com/sf-black-filled/64/circled-left-2.png" alt="circled-left-2" />
+            </span>
                 <div className="card card-style rounded-m">
                     <div className="content">
                         <h3 className="font-800 color-magenta-dark">INSTRUCTIONS</h3>

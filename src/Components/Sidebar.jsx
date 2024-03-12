@@ -122,17 +122,17 @@ const Sidebar = () => {
                             </a>
 
                             <a
-                            href="#"
-                            data-bs-toggle="offcanvas"
-                            data-bs-target="#CreditModal"
-                            id="nav-comps"
-                        >
-                            <i class="gradient-dark shadow-bg shadow-bg-xs bi bi-box2-heart"></i>
-                            <span className="trn" data-trn-key="Rewards">
-                                Rewards
-                            </span>
-                            <i className="bi bi-chevron-right" />
-                        </a>
+                                href="#"
+                                data-bs-toggle="offcanvas"
+                                data-bs-target="#CreditModal"
+                                id="nav-comps"
+                            >
+                                <i class="gradient-dark shadow-bg shadow-bg-xs bi bi-box2-heart"></i>
+                                <span className="trn" data-trn-key="Rewards">
+                                    Rewards
+                                </span>
+                                <i className="bi bi-chevron-right" />
+                            </a>
 
                             <a href="#"
                                 data-bs-toggle="offcanvas"
@@ -145,7 +145,7 @@ const Sidebar = () => {
                                 <i className="bi bi-chevron-right" />
                             </a>
                             {/*<a href="/promotion/" id="nav-comps"><i class="gradient-red shadow-bg shadow-bg-xs bi bi-gift-fill"></i><span class="trn">Reward</span><i class="bi bi-chevron-right"></i></a>*/}
-                            
+
                             {/* <a
                             href="#"
                             data-bs-toggle="offcanvas"
@@ -185,7 +185,7 @@ const Sidebar = () => {
                                 <i className="bi bi-chevron-right" />
                             </a>
 
-                            
+
 
                             {/* <Link to="/ReadBank" id="nav-bank">
                             <div id="nav-homes">
@@ -251,19 +251,19 @@ const Sidebar = () => {
                                     <i className="bi bi-chevron-right" />
                                 </a>
                             </Link>
-                            
+
                             <a
-                            href="#"
-                            data-bs-toggle="offcanvas"
-                            data-bs-target="#supportmodal"
-                            id="nav-support"
-                        >
-                            <i className="gradient-yellow shadow-bg shadow-bg-xs bi bi-headset" />
-                            <span className="trn" data-trn-key="Support">
-                                Support
-                            </span>
-                            <i className="bi bi-chevron-right" />
-                        </a>
+                                href="#"
+                                data-bs-toggle="offcanvas"
+                                data-bs-target="#supportmodal"
+                                id="nav-support"
+                            >
+                                <i className="gradient-yellow shadow-bg shadow-bg-xs bi bi-headset" />
+                                <span className="trn" data-trn-key="Support">
+                                    Support
+                                </span>
+                                <i className="bi bi-chevron-right" />
+                            </a>
                             <a id="nav-mails" style={{ cursor: 'pointer' }} onClick={handleLogout}>
                                 <i className="gradient-dark shadow-bg shadow-bg-xs bi bi-box-arrow-left" />
                                 <span className="trn"  >

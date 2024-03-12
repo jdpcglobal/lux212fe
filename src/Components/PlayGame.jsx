@@ -12,6 +12,9 @@ const PlayGame = ({ width }) => {
     //console.log("Tcode+++", pCode)
     const [launchGameData, setLaunchGameData] = useState([]);
     const [gameLoaders, setGameLoaders] = useState(false);
+    const [gameLoaders2, setGameLoaders2] = useState(true);
+    const [gameFlim, setGameFlim] = useState(true)
+    const [clickedImage, setClickedImage] = useState(null);
     const [responseData, setResponseData] = useState([]);
     const [gameMessage, setGameMessage] = useState('')
     const [messageContent, setMessageContent] = useState(false)
@@ -64,6 +67,7 @@ const PlayGame = ({ width }) => {
             GCode: gCode,
         }
         LaunchGame(reqObj);
+        setClickedImage(gCode);
     };
 
     const LaunchGame = async (reqObj) => {
@@ -84,6 +88,7 @@ const PlayGame = ({ width }) => {
                 a.target = '_blank';
                 a.href = jsonData.data;
                 a.click();
+                setClickedImage(false);
                 // console.log();
                 setLaunchGameData(jsonData.data);
             } else {
@@ -96,6 +101,10 @@ const PlayGame = ({ width }) => {
     };
     //***** GET LaunchGame API END *****/
 
+    const goBack = () => {
+        window.history.back();
+    };
+
     // console.log('1111111111222222',gameMessage)
     return (
         <>
@@ -106,10 +115,10 @@ const PlayGame = ({ width }) => {
                         id="mobilebanner"
                         style={{ visibility: "visible" }}
                     >
-                        <div style={{textAlign:"left"}}>
-                            <Link to="/" style={{color:'black', fontSize:20, fontWeight:'700'}}>
-                                <img width="40" height="40" src="https://img.icons8.com/badges/48/back.png" alt="back" /> Back
-                            </Link>
+                        <div style={{ textAlign: "left", cursor: 'pointer', width: '50px' }}>
+                            <span className='BackButton'>
+                                <img onClick={goBack} width="54" height="54" src="https://img.icons8.com/sf-black-filled/64/circled-left-2.png" alt="circled-left-2" />
+                            </span>
                         </div>
                     </div>
 
@@ -118,36 +127,50 @@ const PlayGame = ({ width }) => {
                     <div className="content mx-3 mt-0" id="mobilediv">
 
                         {messageContent &&
-                            <div style={{ textAlign: 'center', color: 'black', fontSize: '25px', fontWeight: "800", marginTop: '200px' }}>
-                                {errorMessage}
+                            <div className='container' style={{ textAlign: 'center', color: 'black', fontSize: '25px', fontWeight: "800", marginTop: '50px' }}>
+                                <div className="row">
+                                    <div className="col-12">
+                                        <div>
+                                            {errorMessage}
+                                        </div>
+                                        <img style={{ marginTop: '50px', height: '250px' }} src="https://static.wixstatic.com/media/46eb04_4748a9498f6d4702ae3b7aca832ad64a~mv2.png/v1/fill/w_560,h_396,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/website_under_maintenance.png" alt="" />
+                                    </div>
+                                </div>
                             </div>
                         }
 
                         <div className="mt-3"></div>
                         <div className="row row-cols-3 row-cols-md-6 PlayGameLoader">
-
+                        {gameLoaders ? <Loader width={200} /> :
                             <>
-                                {gameLoaders ? <Loader width={600} /> :
-                                    <>
-                                        {responseData.length > 0 && responseData.map((data) =>
-                                            <div className="col-3 p-1 game-item livecasino allgame" style={{ cursor: 'pointer' }}>
-                                                <div className="card card-style rounded-s m-0">
-                                                    <img src="/images/process.gif" alt="" className="KING855 process" />
-                                                    <img onClick={() => handleGameClick(data.GameCode)}
-                                                        className="lazyload cursor"
-                                                        data-src="./imagies/live_855.jpg"
-                                                        src={data.ImageURL}
-                                                        alt=""
-                                                        onclick="action_live('KING855')"
-                                                    />
-                                                </div>
-                                                <div className="game-title" >{data.GameName}</div>
-                                            </div>
-                                        )}
-                                    </>
-                                }
-                            </>
+                                {responseData.length > 0 && responseData.map((data) =>
+                                    <div className="col-3 p-1 game-item livecasino allgame" style={{ cursor: 'pointer', position: 'relative' }} key={data.GameCode}>
+                                        <div className="card card-style rounded-s m-0" style={{ height: '100%' }}>
+                                            <img onClick={() => handleGameClick(data.GameCode)}
+                                                style={{ height: '100%' }}
+                                                className="lazyload cursor"
+                                                data-src="./imagies/live_855.jpg"
+                                                src={data.ImageURL}
+                                                alt=""
+                                                onError={(e) => {
+                                                    e.target.onerror = null;
+                                                    e.target.src = 'https://www.shutterstock.com/image-vector/slot-single-flat-icon-on-260nw-287826776.jpg';
+                                                }}
+                                            />
+                                            <div className="game-title">{data.GameName}</div>
+                                        </div>
 
+                                        {clickedImage === data.GameCode &&
+                                            <div className='logoFlim' style={{display:'flex', justifyContent:'center'}}>
+                                                {gameLoaders2 ? <Loader width={90} /> :
+                                                    <div className="ghyjn"></div>
+                                                }
+                                            </div>
+                                        }
+                                    </div>
+                                )}
+                            </>
+}
                         </div>
 
                     </div>

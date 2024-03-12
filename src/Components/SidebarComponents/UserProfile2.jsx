@@ -40,6 +40,11 @@ const UserProfile2 = () => {
     }, [drawCount]);
 
 
+    const goBack = () => {
+        window.history.back();
+    };
+
+
     //***** UserProfile Api *****//
 
     //***** UserProfile Api End *****//
@@ -52,12 +57,40 @@ const UserProfile2 = () => {
 
                     </div>
 
-                    <div className="col-lg-8 UserTable" style={{ marginTop: '100px' }}>
-
-                        <div className="align-self-center" >
+                    <div className="col-lg-8 UserTable" style={{ marginTop: '20px' }}>
+                        <span className='BackButton profileTbe'>
+                            <img onClick={goBack} width="54" height="54" src="https://img.icons8.com/sf-black-filled/64/circled-left-2.png" alt="circled-left-2" />User Profile
+                        </span>
+                        <div className="align-self-center" style={{ marginTop: '60px', color:"black" }}>
                             <label className="font-800 font-22 trn Title" data-trn-key="Deposit">User Profile </label>
                         </div>
-                        <Table className="UserProfileTable ">
+
+                        <div className="container">
+                            <div className="row profileTable2">
+                                <div className="col-4  pColumn" style={{ textAlign: 'center', borderBottom: '1px solid black' }}> Id</div>
+                                <div className="col-8  pColumn" style={{ textAlign: 'center', borderBottom: '1px solid black' }}>  {userData.Id}</div>
+                                <div className="col-4  pColumn" style={{ textAlign: 'center', borderBottom: '1px solid black' }}>  Name</div>
+                                <div className="col-8  pColumn" style={{ textAlign: 'center', borderBottom: '1px solid black' }}>  {userData.Name}</div>
+                                <div className="col-4  pColumn" style={{ textAlign: 'center', borderBottom: '1px solid black' }}>  User Name</div>
+                                <div className="col-8  pColumn" style={{ textAlign: 'center', borderBottom: '1px solid black' }}>  {userData.UId}</div>
+                                <div className="col-4  pColumn" style={{ textAlign: 'center', borderBottom: '1px solid black' }}>  Email</div>
+                                <div className="col-8  pColumn" style={{ textAlign: 'center', borderBottom: '1px solid black' }}>  {userData.Email} <Button style={{ marginLeft: '30px', width: '50px', marginTop: '-5px', marginBottom: '-5px' }} variant="outline-secondary" onClick={() => setChangeEmailModal(true)}><i class="bi bi-pencil-fill"></i></Button></div>
+                                <div className="col-4  pColumn" style={{ textAlign: 'center', borderBottom: '1px solid black' }}>  Phone</div>
+                                <div className="col-8  pColumn" style={{ textAlign: 'center', borderBottom: '1px solid black' }}>  {userData.Phone}<Button style={{ marginLeft: '30px', width: '50px', marginTop: '-5px', marginBottom: '-5px' }} variant="outline-secondary" onClick={() => setChangePhoneModal(true)}><i class="bi bi-pencil-fill"></i></Button></div>
+                                <div className="col-4  pColumn" style={{ textAlign: 'center', borderBottom: '1px solid black' }}>  Balance</div>
+                                <div className="col-8  pColumn" style={{ textAlign: 'center', borderBottom: '1px solid black' }}>  {balance}</div>
+                            </div>
+
+                            <div className="row profileTable2 mt-5 ">
+                                <div className="col-6 pt-2 pb-2 pColumn font-800 font-22 Td" style={{ textAlign: 'center', borderBottom: '1px solid black ' }}>Change Password ?</div>
+                                <div className="col-6 pt-2 pb-2 pColumn" style={{ textAlign: 'center', borderBottom: '1px solid black' }}>  <Button style={{ marginLeft: '30px', width: '50px', marginTop: '-5px', marginBottom: '-5px' }} variant="outline-secondary" onClick={() => setChangePasswordModal(true)}><i class="bi bi-pencil-fill"></i></Button></div>
+                                <div className="col-6 pt-2 pb-2 pColumn font-800 font-22 Td" style={{ textAlign: 'center', borderBottom: '1px solid black' }}>  Set Pin ?</div>
+                                <div className="col-6 pt-2 pb-2 pColumn" style={{ textAlign: 'center', borderBottom: '1px solid black' }}>  <Button style={{ marginLeft: '30px', width: '50px', marginTop: '-5px', marginBottom: '-5px' }} variant="outline-secondary" onClick={() => setPinApiModal(true)}><i class="bi bi-pencil-fill"></i> </Button></div>
+                            </div>
+                        </div>
+
+
+                         {/* <Table className="UserProfileTable ">
                             <tbody>
                                 <tr className="Tr">
                                     <td className="Td">Id</td>
@@ -73,31 +106,31 @@ const UserProfile2 = () => {
                                 </tr>
                                 <tr className="Tr2 m-1">
                                     <td className="Td">Email</td>
-                                    <td>{userData.Email} <Button style={{ marginLeft: '30px', width: '50px', marginTop: '5px', marginBottom: '5px' }} variant="outline-secondary" onClick={() => setChangeEmailModal(true)}><i class="bi bi-pencil-fill"></i></Button></td>
+                                    <td>{userData.Email} <Button style={{ marginLeft: '30px', width: '50px', marginTop: '-5px', marginBottom: '-5px' }} variant="outline-secondary" onClick={() => setChangeEmailModal(true)}><i class="bi bi-pencil-fill"></i></Button></td>
                                 </tr>
                                 <tr className="Tr">
                                     <td className="Td">Phone</td>
-                                    <td>{userData.Phone}<Button style={{ marginLeft: '30px', width: '50px', marginTop: '5px', marginBottom: '5px' }} variant="outline-secondary" onClick={() => setChangePhoneModal(true)}><i class="bi bi-pencil-fill"></i></Button></td>
+                                    <td>{userData.Phone}<Button style={{ marginLeft: '30px', width: '50px', marginTop: '-5px', marginBottom: '-5px' }} variant="outline-secondary" onClick={() => setChangePhoneModal(true)}><i class="bi bi-pencil-fill"></i></Button></td>
                                 </tr>
                                 <tr className="Tr2">
                                     <td className="Td">Balance</td>
                                     <td>{balance}</td>
                                 </tr>
                             </tbody>
-                        </Table>
+                        </Table> */}
 
-                        <Table className='UserProfileTable ' >
+                        {/*<Table className='UserProfileTable ' >
                             <tbody>
                                 <tr className='Tr'>
                                     <td className="font-800 font-22 Td">Change Password ?</td>
-                                    <td><Button style={{ marginLeft: '30px', width: '50px', marginTop: '5px', marginBottom: '5px' }} variant="outline-secondary" onClick={() => setChangePasswordModal(true)}><i class="bi bi-pencil-fill"></i></Button></td>
+                                    <td><Button style={{ marginLeft: '30px', width: '50px', marginTop: '-5px', marginBottom: '-5px' }} variant="outline-secondary" onClick={() => setChangePasswordModal(true)}><i class="bi bi-pencil-fill"></i></Button></td>
                                 </tr>
                                 <tr className='Tr2'>
                                     <td className="font-800 font-22 Td">Set Pin ?</td>
-                                    <td><Button style={{ marginLeft: '30px', width: '50px', marginTop: '5px', marginBottom: '5px' }} variant="outline-secondary" onClick={() => setPinApiModal(true)}><i class="bi bi-pencil-fill"></i> </Button></td>
+                                    <td><Button style={{ marginLeft: '30px', width: '50px', marginTop: '-5px', marginBottom: '-5px' }} variant="outline-secondary" onClick={() => setPinApiModal(true)}><i class="bi bi-pencil-fill"></i> </Button></td>
                                 </tr>
                             </tbody>
-                        </Table>
+                        </Table> */}
                     </div>
                 </div>
             </div>

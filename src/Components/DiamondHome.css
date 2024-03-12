@@ -5294,7 +5294,11 @@
   }
 
   .game-title:hover {
-    font-weight: 700;
+   font-size: 12px;
+  }
+
+  .lazyload:hover{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
   }
 
   /* Diamond Css End */
@@ -5565,7 +5569,37 @@
     }
   }
 
-  
+.profileTable2{
+  border: 2px solid black;
+  border-radius: 5px;
+  color: #000;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.pColumn{
+  font-size: 16px;
+  font-weight: 800;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: left !important;
+}
+
+.profileTbe{
+  font-size: 32px;
+  font-weight: 800;
+  font-family: 'emoji';
+  color: #000;
+}
+
+  .logoFlim{
+     position: absolute;
+    top: 0;
+    background-color: black;
+    opacity: 0.4;
+    height: 222px;
+    width: 195px;
+    border-radius: 10px;
+  }
 
   /* .Tr{
     background-color: #1a3d70 !important;
@@ -5732,8 +5766,22 @@
   background-image: linear-gradient(to bottom, #ffd24c, #ca9b0d);
 }
 
+.BackButton{
+  cursor: pointer;
+}
+
+.BackButton2{
+  cursor: pointer;
+  margin-top: -100px;
+}
+
+
 @media screen and (max-width:991px) {
   .BackButton{
+    display: none;
+  }
+
+  .BackButton2{
     display: none;
   }
 
