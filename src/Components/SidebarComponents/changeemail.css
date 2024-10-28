@@ -89,7 +89,7 @@
     border-color: rgba(16, 222, 230, 0.6); /* Blue on focus */
 }
 .modal-content{
-    width: 80% !important;
+    width: 100% !important;
 }
 
 .user-box label {

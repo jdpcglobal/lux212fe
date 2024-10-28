@@ -1,0 +1,99 @@
+/* Offcanvas Styles */
+.offcanvas {
+    transition: transform 0.3s ease-in-out;
+}
+
+.offcanvas.show {
+    transform: translateX(0);
+}
+
+.offcanvas-end {
+    right: 0;
+}
+
+/* Background */
+.bg-theme {
+    background-color: #f8f9fa; /* Light background */
+}
+
+/* Content Styling */
+.content {
+    padding: 20px;
+}
+
+/* Title */
+.font-800 {
+    font-weight: 800;
+}
+
+.font-22 {
+    font-size: 22px;
+}
+
+.trn.Title {
+    color: #333; /* Dark text for title */
+}
+
+/* Close Icon */
+.icon-m {
+    cursor: pointer;
+}
+
+/* List Group Styles */
+.list-group {
+    margin-top: 20px;
+}
+
+.list-group-item {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    transition: background-color 0.3s, transform 0.2s;
+    cursor: pointer;
+}
+
+.list-group-item:hover {
+    background-color: #e9ecef; /* Hover background color */
+    transform: scale(1.02); /* Slight scale on hover */
+}
+a.list-group-item.DepositModal {
+    margin-top: 10px;
+}
+
+/* Icon Styles */
+.has-bg {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 15px;
+    line-height: 40px;
+    text-align: center;
+    color: white; /* Icon color */
+}
+
+/* EWallet and Bank Transfer Icons */
+.bg-red-darks {
+    background-color: #dc3545; /* EWallet Background */
+}
+
+.bg-red-dark {
+    background-color: #c82333; /* Bank Transfer Background */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .font-22 {
+        font-size: 18px; /* Smaller title font size for mobile */
+    }
+
+    .list-group-item {
+        padding: 10px; /* Less padding on mobile */
+    }
+
+    .content {
+        padding: 15px; /* Less padding on mobile */
+    }
+}

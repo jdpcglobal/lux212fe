@@ -1,0 +1,71 @@
+/* Card Styles */
+.card-style {
+    background: #ffffff; /* White background for card */
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin: 20px auto; /* Center the card */
+    overflow: hidden; /* Ensure no overflow */
+    transition: transform 0.2s ease; /* Animation on hover */
+}
+
+.card-style:hover {
+    transform: scale(1.02); /* Slightly scale up on hover */
+}
+
+/* Back Button */
+.BackButton {
+    display: flex;
+    justify-content: flex-start;
+    padding: 10px;
+    cursor: pointer; /* Pointer cursor for better UX */
+}
+
+/* Table Styles */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th, .table td {
+    padding: 12px; /* Add padding for table cells */
+    border: 1px solid #4A89DC; /* Border color for cells */
+}
+
+.table th {
+    background-color: #4A89DC; /* Header background color */
+    color: white; /* Header text color */
+}
+
+.color-theme {
+    color: #333; /* Default text color */
+}
+
+/* Tabs Styles */
+.tabs {
+    margin-top: 20px;
+}
+
+.tab-controls {
+    margin-bottom: 10px;
+}
+
+.tab-controls a {
+    padding: 10px 15px;
+    border-radius: 8px;
+    transition: background 0.3s;
+}
+
+.tab-controls a:hover {
+    background: rgba(74, 137, 220, 0.2); /* Lighten on hover */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .card-style {
+        margin: 10px; /* Less margin on mobile */
+    }
+
+    .table th, .table td {
+        padding: 8px; /* Less padding on mobile */
+    }
+}
