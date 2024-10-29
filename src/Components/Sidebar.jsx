@@ -17,6 +17,7 @@ const Sidebar = () => {
     return (
         <>
             <div className="rounded-m pcsidebar pcSidebarSlider">
+               ew
                 <div className="bg-theme mx-3 align-items-center rounded-m shadow-m mt-3 mb-3"
                     style={{ backgroundColor: "black" }}
                 >
