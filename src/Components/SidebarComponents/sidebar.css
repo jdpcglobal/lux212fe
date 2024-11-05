@@ -1,6 +1,30 @@
-/* .box-top{
-    border: 5px solid red;
-    border-radius: 10px;
-    z-index: 4;
-    color: red;
-} */
+.border-line {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%; 
+    height: 20px; 
+    background-color: #0101ff; 
+    border-radius: 5px; 
+    z-index: 5000; 
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); 
+    pointer-events: none; 
+}
+.pcSidebarSlider{
+    position: relative;
+    overflow-y: auto;
+}
+.border-line1 {
+    position: fixed; 
+    bottom: 0;
+    left: 0;
+    width: 100%; 
+    height: 20px; 
+    background-color: #0101ff; 
+    border-radius: 5px; 
+    z-index: 5000; 
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); 
+    pointer-events: none; 
+  
+}
+
