@@ -89,6 +89,22 @@ const SetPinApi = (props) => {
                 <Modal.Body>
                     <div className="pin-container">
                         <form>
+                        <div className="user-box4">
+                                    <label>Enter Old Pin</label>
+                                    <div className="pin-input-group">
+                                        {oldPinDigits.map((digit, index) => (
+                                            <input
+                                                key={index}
+                                                type="text"
+                                                maxLength={1}
+                                                id={`old-pin-input-${index}`}
+                                                value={digit}
+                                                onChange={(e) => handleOldPinChange(index, e.target.value)}
+                                                className="pin-input"
+                                            />
+                                        ))}
+                                    </div>
+                                    </div>
                             <div className="user-box4">
                                 <label>Enter New Pin</label>
                                 <div className="pin-input-group">
