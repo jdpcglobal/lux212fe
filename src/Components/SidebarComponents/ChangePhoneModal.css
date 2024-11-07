@@ -1,0 +1,148 @@
+/* Blur background effect */
+/* .custom-modal .modal-content {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 0.4s ease-in-out;
+} */
+
+/* Smooth fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Custom modal header with close button */
+.modal-header-custom1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    border-bottom: 1px solid #444;
+}
+
+.modal-header-custom1 .modal-title1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 22px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Close button styling */
+.close-btn {
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    color: #333;
+    cursor: pointer;
+    transition: transform 0.2s, color 0.3s;
+}
+
+.close-btn:hover {
+    color: rgb(255, 69, 69); /* Red hover effect */
+    transform: scale(1.5);
+}
+
+/* Form container styling */
+.login-box1 {
+    margin-top: 30px;
+}
+
+.user-box1 {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.user-box1 input {
+    width: 100%;
+    padding: 12px;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid #aaa;
+    outline: none;
+    color: #333;
+    font-size: 16px;
+    transition: border-color 0.3s;
+    font-family: 'Poppins', sans-serif;
+}
+
+.user-box1 input:focus {
+    border-color: #333; /* Light blue border on focus */
+}
+
+.user-box1 label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    transition: 0.3s ease;
+    color: #aaa;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Shrink label when input is focused or filled */
+.user-box1 input:focus + label,
+.user-box1 input:not(:placeholder-shown) + label {
+    top: -15px;
+    font-size: 12px;
+    color: #333;
+}
+
+/* Button styling */
+button.submit-btn1 {
+    margin-top: 15px;
+    width: 100%; /* Full width for better responsiveness */
+    max-width: 250px;
+    border-radius: 25px;
+    padding: 12px 0;
+    background-color: rgba(0, 0, 0, 0.6); /* Transparent black */
+    border: none;
+    color: white;
+    transition: background-color 0.3s;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button.submit-btn1:hover {
+    background-color: rgba(88, 86, 86, 0.8);
+}
+
+.submit-button1{
+    text-align: center;
+   
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .modal-header-custom1 .modal-title1 {
+        font-size: 20px;
+    }
+    .login-box1 {
+        padding: 10px;
+    }
+    .submit-btn {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-header-custom {
+        padding: 8px 10px;
+    }
+    .modal-header-custom .modal-title {
+        font-size: 18px;
+    }
+    .close-btn {
+        font-size: 20px;
+    }
+}
+

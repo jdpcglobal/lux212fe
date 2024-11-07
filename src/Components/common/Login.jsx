@@ -92,17 +92,7 @@ const Login = (props) => {
           <div className="content">
             <div className="d-flex pb-2">
               <div className="align-self-center">
-                <h5
-                  className="mb-n2 font-12 color-highlight font-700 text-uppercase pt-1 trn"
-                  data-trn-key="Welcome"
-                >
-                  Welcome
-                </h5>
-                <h1 className="font-800 font-22 trn" data-trn-key="Login">
-                  Login
-                </h1>
-              </div>
-              <div className="align-self-center ms-auto">
+              <div className="align-self-center ms-auto mb-2">
                 <a
                   href="#"
                   className="btn btn-xxs gradient-night"
@@ -112,6 +102,11 @@ const Login = (props) => {
                   <i className=" bi bi-translate"  /> 中文 / EN
                 </a>
               </div>
+                <h1 className="font-800 font-22 trn" data-trn-key="Login">
+                  Login
+                </h1>
+              </div>
+             
             </div>
 
             <form
@@ -120,29 +115,9 @@ const Login = (props) => {
               method="post"
               id="login_form"
             >
-              <div className="form-custom form-label form-border form-icon mb-3 bg-transparent">
+              <div className="form-custom form-label form-border form-icon mb-3 bg-">
                 <i className="bi bi-person-circle font-13" />
-                {/* <div className="" style={{ display: "inline" }}>
-                    <select
-                      className="form-select rounded-xs"
-                      name="country_code"
-                      style={{ display: "inline", width: "28%" }}
-                      id="country_code"
-                      fdprocessedid="b47gk"
-                    >
-                      <option selected="" value={60}>
-                        +60
-                      </option>
-                      <option value={91}>+91</option>
-                      <option value={65}>+65</option>
-                      <option value={66}>+66</option>
-                      <option value={62}>+62</option>
-                      <option value={61}>+61</option>
-                      <option value={86}>+86</option>
-                      <option value={852}>+852</option>
-                      <option value={853}>+853</option>
-                    </select>
-                  </div> */}
+               
                 <div className="" style={{ display: "inline" }}>
                   <input
                     name="player"
@@ -151,14 +126,9 @@ const Login = (props) => {
                     id="Username"
                     autoComplete="off"
                     placeholder="User Name"
-                    style={{
-                      display: "inline",
-                      width: "70%",
-                      paddingLeft: "15px !important"
-                    }}
+                    
                     required=""
-                    // data-ph-trn-key="Phone"
-                    // fdprocessedid="pqoe78"
+                   
                     value={loginObj.Username}
                     onChange={handleTextChange}
                   />
@@ -201,7 +171,7 @@ const Login = (props) => {
                 </span>
               </div>
 
-              <Button className='btn btn-full gradient-blue shadow-bg shadow-bg-s mt-4 button_100 trn' onClick={handleLogin}>Submit</Button>
+              <Button className='btn btn-full gradient-blue shadow-bg shadow-bg-s mt-1 button_100 trn' onClick={handleLogin}>Submit</Button>
             </form>
             <div className="row">
               <div className="col-6 text-start">
@@ -209,7 +179,7 @@ const Login = (props) => {
                   href="#"
                   // data-bs-toggle="offcanvas"
                   // data-bs-target="#ForgotPasswordModal"
-                  className="font-11 color-theme opacity-40 pt-3 d-block trn"
+                  className="font-11 color-theme opacity-90 pt-3 d-block trn "
                   // data-trn-key="Forgot Password?"
                   onClick={handleForgetPassword}
                 >

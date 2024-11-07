@@ -1,5 +1,5 @@
 import React from 'react'
-
+import './downline.css'
 const goBack = () => {
     window.history.back();
 };
