@@ -89,42 +89,7 @@ const ForgetPassword = (props) => {
         <>
             <Modal size='sm' show={show} onHide={close} >
                 <Modal.Body className='RegisterName'>
-                    {/* <div className="login-box">
-                        <h2>Forget Password</h2>
-                        <form>
-                            <div className="user-box">
-                                <input type="text" name="" required="" value={phone || username || email}
-                                    onChange={(e) => {
-                                        setPhone('');
-                                        setUsername('');
-                                        setEmail('');
-                                        // Determine which field to update based on the input value
-                                        if (/^\d+$/.test(e.target.value)) {
-                                            setPhone(e.target.value);
-                                        } else if (/\S+@\S+\.\S+/.test(e.target.value)) {
-                                            setEmail(e.target.value);
-                                        } else {
-                                            setUsername(e.target.value);
-                                        }
-                                    }} />
-                                <label>Enter your User Name or Phone or Email</label>
-                            </div>
-                            {showOtpInput && (
-                                <div className="user-box">
-                                    <input type="password" name="" required="" value={otp} onChange={(e) => setOtp(e.target.value)} />
-                                    <label>OTP</label>
-                                    <Button outline color="success" onClick={handleVeryFyClick} >Submit</Button>
-                                </div>
-                            )}
-                            {hideButton && (
-                            <Button outline color="success" onClick={handleClick} >Submit</Button>
-                            )}
-                        </form>
-                    </div>
-                    {verifyOtp && (
-                        <div className={`alert alert-${messageType}`} role="alert">
-                        </div>
-                    )} */}
+                   
 
 
                     <div className="content">
@@ -160,9 +125,7 @@ const ForgetPassword = (props) => {
                                             }
                                         }} />
 
-                                    <span className="trn" data-trn-key="(required)">
-                                        (required)
-                                    </span>
+                                   
                                 </div>
                             </div>
 

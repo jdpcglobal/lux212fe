@@ -1,0 +1,131 @@
+/* Main Container */
+#BankTransaction {
+    width: 100%;
+    max-width: 500px;
+    margin: auto;
+    padding: 20px;
+    background-color: #fff; 
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); 
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  /* Fade-in animation */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .transaction-table{
+    width: 100%;
+    max-width: 500px;
+    margin: auto;
+    padding: 20px;
+    background-color: #fff; /* White background for the box */
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* Box shadow */
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  /* Title Section */
+  .title-section {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #6c757d;
+     /* Green background for Deposit */
+    padding: 10px 15px;
+    border-bottom: 4px solid #ddd; /* Bottom border for Deposit section */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+  .border-row{
+    border-bottom: 2px solid #ddd;
+  }
+  /* Style for the Deposit label */
+.label-deposit {
+    color: white;
+    background-color: green;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: inline-block;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    font-size: 14px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .label-deposit:hover {
+    background-color: darkgreen;  /* Darken on hover */
+    transform: scale(1.05);  /* Slightly enlarge on hover */
+  }
+  
+  
+  /* Table Styling */
+  .transaction-table {
+    width: 100%;
+    margin-top: 15px;
+  }
+  
+  .transaction-table tbody tr {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .transaction-table tbody tr:last-child {
+    border-bottom: none;
+  }
+  
+  .transaction-table th, .transaction-table td {
+    font-weight: bold;
+    font-size: 1rem;
+  }
+  
+  /* Transaction Status Colors */
+  .transactionStatus .pending {
+    color: red;
+    font-weight: 700;
+  }
+  
+  .transactionStatus .approved {
+    color: green;
+    font-weight: 700;
+  }
+  
+  /* Left and Right Column Styling */
+  .transaction-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+  }
+  
+  .transaction-row .label {
+    color: #6c757d;
+    font-weight: 500;
+  }
+  
+  .transaction-row .value {
+    font-weight: 700;
+    text-align: right;
+  }
+  
+  /* Responsive Styling */
+  @media (max-width: 768px) {
+    #BankTransaction {
+      padding: 10px;
+    }
+  
+    .title-section {
+      font-size: 1.2rem;
+    }
+  
+    .transaction-table th, .transaction-table td {
+      font-size: 0.9rem;
+    }
+  }
+  
