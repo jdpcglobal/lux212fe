@@ -18,7 +18,7 @@ const WithdrawModal = () => {
     })
     const [messageType, setMessageType] = useState(''); 
     const [message, setMessage] = useState('')
-    const { userData } = useBalance();
+    const { userData } = useBalance(); 
 
 
     //***** READ BANK ACC LIST *****/
