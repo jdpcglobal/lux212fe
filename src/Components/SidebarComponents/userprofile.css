@@ -74,45 +74,24 @@ body {
   }
   
   /* Input Wrapper with Edit Button */
-  /* Input Wrapper with Flexbox Alignment */
-.input-wrapper {
-  display: flex;
-  align-items: center;
-  position: relative;
-}
-
-/* Input Box Styles */
-.input-box {
-  flex: 1; /* Take remaining space */
-  padding: 10px 40px 10px 15px; /* Leave space for the edit button */
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  font-size: 16px;
-  background-color: #f9f9f9;
-  transition: border-color 0.3s;
-}
-
-.input-box:focus {
-  outline: none;
-  border-color: #007bff;
-}
-
-/* Edit Button Styles */
-.edit-btn {
-  position: absolute;
-  right: 10px;
-  background: transparent;
-  border: none;
-  font-size: 18px;
-  color: #007bff;
-  cursor: pointer;
-  transition: transform 0.2s;
-}
-
-.edit-btn:hover {
-  transform: scale(1.2);
-}
-
+  .input-wrapper {
+    display: flex;
+    align-items: center;
+  }
+  
+  .edit-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+    font-size: 18px;
+    color: #007bff;
+    transition: transform 0.2s;
+  }
+  
+  .edit-btn:hover {
+    transform: scale(1.2);
+  }
   
   /* Action Section */
   .action-section {
@@ -128,39 +107,19 @@ body {
   }
   
   .action-btn {
-    background-color:transparent;
-    color: #007bff;
-    border: 1px solid #007bff;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
     border-radius: 8px;
-    padding: 4px 12px;
+    padding: 8px 12px;
     font-size: 16px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: background-color 0.3s;
+  }
   
-}
-
-/* Hover Effect */
-.action-btn:hover {
+  .action-btn:hover {
     background-color: #0056b3;
-    border-color: white;
-    color: white;
-    transform: translateY(-2px); /* Subtle lift effect */
-   
-}
-
-/* Active/Pressed State */
-.action-btn:active {
-    transform: translateY(0); /* Reset lift */
-   
-    background-color: #004494;
-}
-
-/* Focus State for Accessibility */
-.action-btn:focus {
-    outline: none;
-    /* box-shadow: 0 0 8px rgba(0, 123, 255, 0.6); */
-}
-
+  }
   
   /* Fade-in Animation */
   @keyframes fadeIn {
@@ -181,32 +140,14 @@ body {
       gap: 10px;
     }
   
-    /* .action-row {
+    .action-row {
       flex-direction: column;
       align-items: flex-start;
       gap: 8px;
-    }*/
+    }
   
     .action-btn {
-     font-size: 16px;
-    } 
-    .profile-container{
-      width: fit-content;
-      margin-top: 80px;
-      margin-bottom: 100px;
+      width: 100%;
     }
   }
   
-  @media (max-width: 480px) {
-    .profile-header h2 {
-      font-size: 24px;
-    }
-  
-    .input-box {
-      font-size: 14px;
-    }
-  
-    .edit-btn {
-      font-size: 16px;
-    }
-  }

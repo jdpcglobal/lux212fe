@@ -90,15 +90,14 @@ const UserProfile2 = () => {
       </div>
 
       <div class="profile-column">
-  <label class="input-label">Email</label>
-  <div class="input-wrapper">
-    <input class="input-box" type="email" value={userData.Email} readonly />
-    <button class="edit-btn" onClick={() => setChangeEmailModal(true)}>
-      <i class="bi bi-pencil-fill"></i>
-    </button>
-  </div>
-</div>
-
+        <label class="input-label">Email</label>
+        <div class="input-wrapper">
+          <input class="input-box" type="email" value={userData.Email} readonly />
+          <button class="edit-btn" onClick={() => setChangeEmailModal(true)}>
+            <i class="bi bi-pencil-fill"></i>
+          </button>
+        </div>
+      </div>
     </div>
 
     <div class="profile-row">
