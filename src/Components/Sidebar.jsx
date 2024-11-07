@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Cookies from 'universal-cookie'
 import { useBalance } from './SidebarComponents/BalanceContext'
 import { Link } from 'react-router-dom'
-import '../Components/SidebarComponents/sidebar.css'
+
 
 const Sidebar = () => {
     const loggedInUser = new Cookies().get("kisDiamond_LoggedIn")
@@ -16,10 +16,9 @@ const Sidebar = () => {
 
     return (
         <>
-            <div className="rounded-m pcsidebar pcSidebarSlider mb-5">
-            <div className='border-line'></div>
-            
-                <div className="bg-theme mx-3 align-items-center rounded-m shadow-m mt-4 mb-3"
+            <div className="rounded-m pcsidebar pcSidebarSlider">
+               ew
+                <div className="bg-theme mx-3 align-items-center rounded-m shadow-m mt-3 mb-3"
                     style={{ backgroundColor: "black" }}
                 >
                     <div className=" pb-2 pt-2" style={{ paddingLeft: '34px' }}>
@@ -55,7 +54,7 @@ const Sidebar = () => {
                         </div>
                     </div>
                 </div>
-               
+                {/* <span class="menu-divider">NAVIGATION</span> */}
                 <div className="menu-list menuList">
                     {loggedInUser && (
                         <div className="card card-style rounded-m p-3 py-2 mb-0 card-styles">
@@ -146,7 +145,20 @@ const Sidebar = () => {
                                 </span>
                                 <i className="bi bi-chevron-right" />
                             </a>
-                           
+                            {/*<a href="/promotion/" id="nav-comps"><i class="gradient-red shadow-bg shadow-bg-xs bi bi-gift-fill"></i><span class="trn">Reward</span><i class="bi bi-chevron-right"></i></a>*/}
+
+                            {/* <a
+                            href="#"
+                            data-bs-toggle="offcanvas"
+                            data-bs-target="#HistoryModal"
+                            id="nav-comps"
+                        >
+                            <i className="gradient-brown shadow-bg shadow-bg-xs bi bi-clock-history" />
+                            <span className="trn" data-trn-key="History">
+                                Transactions
+                            </span>
+                            <i className="bi bi-chevron-right" />
+                        </a> */}
 
                             <Link to="/TransactionsHistory" id="nav-bank">
                                 <a
@@ -176,6 +188,16 @@ const Sidebar = () => {
 
 
 
+                            {/* <Link to="/ReadBank" id="nav-bank">
+                            <div id="nav-homes">
+                                <i className="gradient-bluess shadow-bg shadow-bg-xs bi bi bi-bank2" />
+                                <span className="trn" data-trn-key="Deposit">
+                                    Bank Account
+                                </span>
+                                <i className="bi bi-chevron-right" />
+                            </div>
+                        </Link> */}
+
                             <a href="#"
                                 data-bs-toggle="offcanvas"
                                 data-bs-target="#BankAccounts"
@@ -187,7 +209,13 @@ const Sidebar = () => {
                                 <i className="bi bi-chevron-right" />
                             </a>
 
-                         
+                            {/* <a href="/downline/">
+                            <i className="gradient-blue shadow-bg shadow-bg-xs bi bi-people-fill" />
+                            <span className="trn" data-trn-key="Downline Player">
+                                Downline Player
+                            </span>
+                            <i className="bi bi-chevron-right" />
+                        </a> */}
 
                             <Link to="/DownLinePlayer" id="nav-bank">
                                 <a>
@@ -242,17 +270,12 @@ const Sidebar = () => {
                                 <span className="trn"  >
                                     Logout
                                 </span>
-                                <i className="bi bi-chevron-right"/>
+                                <i className="bi bi-chevron-right" />
                             </a>
-                           
                         </div>
-                        
                     )}
-                     
                 </div>
-                {/* <div className='border-line1 mt-5'></div>  */}
             </div>
-           
         </>
     )
 }
