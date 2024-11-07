@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Cookies from 'universal-cookie'
 import { useBalance } from './SidebarComponents/BalanceContext'
 import { Link } from 'react-router-dom'
-
+import '../Components/SidebarComponents/sidebar.css'
 
 const Sidebar = () => {
     const loggedInUser = new Cookies().get("kisDiamond_LoggedIn")
