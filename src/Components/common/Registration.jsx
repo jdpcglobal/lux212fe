@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Loader from './Loader';
 import { callPostApi } from '../ApiCaller';
 import { CheckUsername_Post, Register_Post } from '../ApiConst';
-import './registration.css'
+
 const Registration = (props) => {
     const { show, close } = props;
     const [register, setRegister] = useState('');
@@ -362,43 +362,40 @@ const Registration = (props) => {
                             ""
                         )}
 
-<div className="container12">
-   
-        <div className="col-12"> {/* Changed to col-12 for full-width */}
-            <div className="form-custom form-label form-border form-icon mb-3 bg-transparent position-relative">
-                <i className="bi bi-person-check-fill font-17" />
-                <input
-                    name="afid"
-                    type="text"
-                    id="real_afid2"
-                    className="form-control rounded-xs pr-5" // Added padding to the right
-                    placeholder="User Name"
-                    value={userName}
-                    onChange={(e) => setUserName(e.target.value)}
-                    autoComplete='off'
-                />
-                <label htmlFor="c17" className="color-theme">
-                    {" "}
-                </label>
-              
+                        <div className="container">
+                            <div className="row">
+                                <div className="col-10">
+                                    <div className="form-custom form-label form-border form-icon mb-3 bg-transparent">
+                                        <i className="bi bi-person-check-fill font-17" />
+                                        <input
+                                            name="afid"
+                                            type="text"
+                                            id="real_afid2"
+                                            className="form-control rounded-xs"
+                                            placeholder="User Name"
+                                            value={userName}
+                                            onChange={(e) => setUserName(e.target.value)}
+                                            autoComplete='off'
+                                        />
+                                        <label htmlFor="c17" className="color-theme">
+                                            {" "}
+                                        </label>
 
-                {/* Loader or check/cross icon positioned inside the input */}
-                <div className="position-absolute" style={{ right: '10px', top: '50%', transform: 'translateY(-50%)' }}>
-                    {usernameLoader ? (
-                        <Loader width={24} /> // Adjusted width for better fit
-                    ) : (
-                        apiResponse === true ? (
-                            <img width="24" height="24" src="https://img.icons8.com/emoji/24/check-mark-button-emoji.png" alt="check-mark-button-emoji" />
-                        ) : (
-                            <img width="24" height="24" src="https://img.icons8.com/color/24/cancel--v1.png" alt="cancel--v1" />
-                        )
-                    )}
-                
-            </div>
-        </div>
-    </div>
-</div>
+                                        <span className="trn" data-trn-key="Affiliate">
+                                            (UserName)
+                                        </span>
+                                    </div>
 
+                                </div>
+                                <div className="col-2">
+                                    {usernameLoader ? (
+                                        <Loader width={120} />
+                                    ) : (
+                                        apiResponse === true ? <span> <img width="48" height="48" src="https://img.icons8.com/emoji/48/check-mark-button-emoji.png" alt="check-mark-button-emoji" /></span> : <span><img width="48" height="48" src="https://img.icons8.com/color/48/cancel--v1.png" alt="cancel--v1" /></span>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
 
 
                         {error && email.length <= 0 ?
@@ -428,26 +425,34 @@ const Registration = (props) => {
 
                         {error && phone.length <= 0 ?
                             <label style={{ color: "red" }}>** Enter your Contact **</label> : ""}
-                         <div className="form-custom form-label form-border form-icon mb-3 bg-transparent">
+                        <div className="form-custom form-label form-border form-icon mb-3 bg-transparent">
                             <i className="bi bi-telephone-fill font-13" />
-                          
-                            <input
-                                name="afid"
-                                type="text"
-                                id="real_afid2"
-                                className="form-control rounded-xs"
-                                placeholder="  Phone"
-                                value={bank}
-                                onChange={(e) => setPhone(e.target.value)}
-                                autoComplete='off'
-                            />
-                            <label htmlFor="c17" className="color-theme">
-                            Phone
-                            </label>
-                            <span className="trn" data-trn-key="Affiliate">
-                                (required)
-                            </span>
-                          
+
+                            <div className="" style={{ display: "inline" }}>
+                                <input
+                                    name="tel"
+                                    type="tel"
+                                    className="form-control rounded-xs"
+                                    id="register_phone_number"
+                                    placeholder="Phone"
+                                    style={{
+                                        display: "inline",
+                                        paddingLeft: "15px !important"
+                                    }}
+                                    autoComplete="off"
+                                    required=""
+                                    data-ph-trn-key="Phone"
+                                    fdprocessedid="jzbg7x"
+                                    value={phone}
+                                    onChange={(e) => setPhone(e.target.value)}
+                                />
+                                <label htmlFor="register_phone_number" className="color-theme">
+                                    Phone
+                                </label>
+                                <span className="trn" data-trn-key="(required)">
+                                    (required)
+                                </span>
+                            </div>
                         </div>
 
 

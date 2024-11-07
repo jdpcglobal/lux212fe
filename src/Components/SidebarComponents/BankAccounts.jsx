@@ -3,7 +3,7 @@ import Cookies from 'universal-cookie';
 import { callPostApi } from "../ApiCaller";
 import { MyBankAccounts_Post } from "../ApiConst";
 import { SaveBankAcc_Post } from '../ApiConst';
-import './bank.css'
+
 const BankAccounts = () => {
     const [MyBank, setMyBank] = useState([]);
     const loggedInUser = new Cookies().get("kisDiamond_LoggedIn")
@@ -125,7 +125,7 @@ const BankAccounts = () => {
                                 <div className='BankAccountNames'>Bank Account</div>
                                 <div className='BankAccountNames2'>{data.AccNumber}</div>
                             </div>
-<hr/>
+
                         </form>
                     )}
 

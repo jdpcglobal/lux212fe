@@ -8,7 +8,7 @@ import Table from 'react-bootstrap/Table';
 import { useBalance } from './BalanceContext';
 import { callPostApi } from '../ApiCaller';
 import { CreditAccount_Post, Deposit_Post, PaymentGateways_Post, SaveCreditInfo_Post } from '../ApiConst';
-import './deposite.css';
+
 
 const DepositModal = () => {
     const [bankName, setBankName] = useState([]);
@@ -249,10 +249,10 @@ const DepositModal = () => {
         
     };
 
-   
+    //***** SAVE SAVE CREDIT INFO END *****/
     return (
         <>
-           
+            {/* Deposit Modal */}
             <div id="DepositSelectMethod" style={{ width: '100%' }} className="offcanvas offcanvas-end bg-theme">
                 <div className="content">
                     <div className="d-flex pb-2">
@@ -264,7 +264,35 @@ const DepositModal = () => {
                         </div>
                     </div>
                     <div className="list-group list-custom list-group-m rounded-xs">
-                       
+                        {/*<a href="#" class="list-group-item" data-bs-toggle="offcanvas" data-bs-target="#PaymentGwModal">
+                        {/* <a href="#" className="list-group-item" data-bs-toggle="offcanvas" data-bs-target="#DGPayModal">
+                            <img src="https://m.kissdiamond.net/images/dgpay.png" className="rounded-xs" alt="DGpay" style={{ width: '32px', height: '32px', marginRight: '15px' }} />
+                            <div><strong><t data-trn-key="Instant top-up">Instant top-up</t> 🚀</strong></div>
+                            <i className="bi bi-chevron-right" />
+                        </a>
+                        <a href="#" className="list-group-item" data-bs-toggle="offcanvas" data-bs-target="#FpayModal">
+                            <i className="has-bg bg-yellow-dark rounded-xs bi bi-credit-card-2-back-fill" />
+                            <div><strong><t data-trn-key="Instant Top-up">Instant Top-up</t> 🌪</strong></div>
+                            <i className="bi bi-chevron-right" />
+                        </a>
+                        <a href="#" className="list-group-item " data-bs-toggle="offcanvas" data-bs-target="#pay81Modal">
+                            <img src="https://m.kissdiamond.net/images/81pay.png" className="rounded-xs" alt="81pay" style={{ width: '32px', height: '32px', marginRight: '15px' }} />
+                            <div><strong><t data-trn-key="81PAY Deposit">81PAY Deposit</t>  <small className=" opacity-30">— </small><small> 5 ⭐ <t data-trn-key="Reviews">Reviews</t></small></strong></div>
+                            <i className="bi bi-chevron-right" />
+                        </a>
+                        <a href="#" className="list-group-item" data-bs-toggle="offcanvas" data-bs-target="#FPX_EwalletModal">
+                            <img src="https://m.kissdiamond.net/images/fpx.png" className="rounded-xs" alt="FPX_EWALLET" style={{ width: '32px', height: '32px', marginRight: '15px' }} />
+                            <img src="	https://m.kissdiamond.net/images/tng.jpg" className="rounded-xs" alt="FPX_EWALLET" style={{ width: '32px', height: '32px', marginRight: '15px' }} />
+                            <img src="https://m.kissdiamond.net/images/boost.jpg" className="rounded-xs" alt="FPX_EWALLET" style={{ width: '32px', height: '32px', marginRight: '15px' }} />
+                            <img src="	https://m.kissdiamond.net/images/grab.jpg" className="rounded-xs" alt="FPX_EWALLET" style={{ width: '32px', height: '32px', marginRight: '15px' }} />
+                            <img src="	https://m.kissdiamond.net/images/presto.jpg" className="rounded-xs" alt="FPX_EWALLET" style={{ width: '32px', height: '32px', marginRight: '15px' }} />
+                            <i className="bi bi-chevron-right" />
+                        </a>
+                        <a href="#" className="list-group-item" data-bs-toggle="offcanvas" data-bs-target="#UsdtModal">
+                            <img src="https://m.kissdiamond.net/images/usdt.png" className="rounded-xs" alt="Usdt" style={{ width: '32px', height: '32px', marginRight: '15px' }} />
+                            <div><strong><t data-trn-key="USDT Deposit">USDT Deposit</t></strong></div>
+                            <i className="bi bi-chevron-right" />
+                        </a> */}
 
                         <a onClick={() => CreditAccount('EWallet')} className="list-group-item DepositModal" data-bs-toggle="offcanvas" data-bs-target="#EWallet">
                             <i className="has-bg bg-red-darks rounded-xs bi bi-wallet2" />
