@@ -16,7 +16,7 @@ const WithdrawModal = () => {
         UserId: "",
         DestBankId: "",
     })
-    const [messageType, setMessageType] = useState('');
+    const [messageType, setMessageType] = useState(''); 
     const [message, setMessage] = useState('')
     const { userData } = useBalance();
 
