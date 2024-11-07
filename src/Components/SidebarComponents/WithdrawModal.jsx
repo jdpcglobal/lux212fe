@@ -13,7 +13,7 @@ const WithdrawModal = () => {
     const [MyBank, setMyBank] = useState([]);
     const [debitDetail, setDebitDetails] = useState({
         Amount: "",
-        UserId: "",
+        UserId: "", 
         DestBankId: "",
     })
     const [messageType, setMessageType] = useState(''); 
