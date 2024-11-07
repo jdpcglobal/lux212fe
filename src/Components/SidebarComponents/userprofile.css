@@ -70,7 +70,7 @@ body {
   
   .input-box:focus {
     outline: none;
-    border-color: #333;
+    border-color: #007bff;
   }
   
   /* Input Wrapper with Edit Button */
@@ -94,7 +94,7 @@ body {
 
 .input-box:focus {
   outline: none;
-  border-color: #333;
+  border-color: #007bff;
 }
 
 /* Edit Button Styles */
@@ -181,7 +181,11 @@ body {
       gap: 10px;
     }
   
-   
+    /* .action-row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }*/
   
     .action-btn {
      font-size: 16px;
