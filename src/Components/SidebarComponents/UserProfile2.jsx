@@ -7,7 +7,6 @@ import SetPinApi from './SetPinApi';
 import Cookies from 'universal-cookie';
 import { useBalance } from './BalanceContext';
 import Table from 'react-bootstrap/Table';
-import './userprofile.css';
 
 
 const UserProfile2 = () => {
@@ -59,84 +58,36 @@ const UserProfile2 = () => {
                     </div>
 
                     <div className="col-lg-8 UserTable" style={{ marginTop: '20px' }}>
-                        {/* <span className='BackButton profileTbe'>
+                        <span className='BackButton profileTbe'>
                             <img onClick={goBack} width="54" height="54" src="https://img.icons8.com/sf-black-filled/64/circled-left-2.png" alt="circled-left-2" />User Profile
-                        </span> */}
-                        {/* <div className="align-self-center" style={{ marginTop: '60px', color:"black" }}>
+                        </span>
+                        <div className="align-self-center" style={{ marginTop: '60px', color:"black" }}>
                             <label className="font-800 font-22 trn Title" data-trn-key="Deposit">User Profile </label>
-                        </div> */}
-                  <div class="profile-container">
-  <div class="profile-header">
-    <h2>User Profile</h2>
-  </div>
+                        </div>
 
-  <div class="profile-table">
-    <div class="profile-row">
-      <div class="profile-column">
-        <label class="input-label">Id</label>
-        <input class="input-box" type="text" value={userData.Id} readonly />
-      </div>
+                        <div className="container">
+                            <div className="row profileTable2">
+                                <div className="col-4  pColumn" style={{ textAlign: 'center', borderBottom: '1px solid black' }}> Id</div>
+                                <div className="col-8  pColumn" style={{ textAlign: 'center', borderBottom: '1px solid black' }}>  {userData.Id}</div>
+                                <div className="col-4  pColumn" style={{ textAlign: 'center', borderBottom: '1px solid black' }}>  Name</div>
+                                <div className="col-8  pColumn" style={{ textAlign: 'center', borderBottom: '1px solid black' }}>  {userData.Name}</div>
+                                <div className="col-4  pColumn" style={{ textAlign: 'center', borderBottom: '1px solid black' }}>  User Name</div>
+                                <div className="col-8  pColumn" style={{ textAlign: 'center', borderBottom: '1px solid black' }}>  {userData.UId}</div>
+                                <div className="col-4  pColumn" style={{ textAlign: 'center', borderBottom: '1px solid black' }}>  Email</div>
+                                <div className="col-8  pColumn" style={{ textAlign: 'center', borderBottom: '1px solid black' }}>  {userData.Email} <Button style={{ marginLeft: '30px', width: '50px', marginTop: '-5px', marginBottom: '-5px' }} variant="outline-secondary" onClick={() => setChangeEmailModal(true)}><i class="bi bi-pencil-fill"></i></Button></div>
+                                <div className="col-4  pColumn" style={{ textAlign: 'center', borderBottom: '1px solid black' }}>  Phone</div>
+                                <div className="col-8  pColumn" style={{ textAlign: 'center', borderBottom: '1px solid black' }}>  {userData.Phone}<Button style={{ marginLeft: '30px', width: '50px', marginTop: '-5px', marginBottom: '-5px' }} variant="outline-secondary" onClick={() => setChangePhoneModal(true)}><i class="bi bi-pencil-fill"></i></Button></div>
+                                <div className="col-4  pColumn" style={{ textAlign: 'center', borderBottom: '1px solid black' }}>  Balance</div>
+                                <div className="col-8  pColumn" style={{ textAlign: 'center', borderBottom: '1px solid black' }}>  {balance}</div>
+                            </div>
 
-      <div class="profile-column">
-        <label class="input-label">Name</label>
-        <input class="input-box" type="text" value={userData.Name} readonly />
-      </div>
-    </div>
-
-    <div class="profile-row">
-      <div class="profile-column">
-        <label class="input-label">Username</label>
-        <input class="input-box" type="text" value={userData.UId} readonly />
-      </div>
-
-      <div class="profile-column">
-        <label class="input-label">Email</label>
-        <div class="input-wrapper">
-          <input class="input-box" type="email" value={userData.Email} readonly />
-          <button class="edit-btn" onClick={() => setChangeEmailModal(true)}>
-            <i class="bi bi-pencil-fill"></i>
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <div class="profile-row">
-      <div class="profile-column">
-        <label class="input-label">Phone</label>
-        <div class="input-wrapper">
-          <input class="input-box" type="tel" value={userData.Phone} readonly />
-          <button class="edit-btn" onClick={() => setChangePhoneModal(true)}>
-            <i class="bi bi-pencil-fill"></i>
-          </button>
-        </div>
-      </div>
-
-      <div class="profile-column">
-        <label class="input-label">Balance</label>
-        <input class="input-box" type="text" value={balance} readonly />
-      </div>
-    </div>
-  </div>
-
-  <div class="action-section">
-    <div class="action-row">
-      <span>Change Password?</span>
-      <button class="action-btn" onClick={() => setChangePasswordModal(true)}>
-        <i class="bi bi-pencil-fill"></i>
-      </button>
-    </div>
-
-    <div class="action-row">
-      <span>Set Pin?</span>
-      <button class="action-btn" onClick={() => setPinApiModal(true)}>
-        <i class="bi bi-pencil-fill"></i>
-      </button>
-    </div>
-  </div>
-</div>
-
-
-
+                            <div className="row profileTable2 mt-5 ">
+                                <div className="col-6 pt-2 pb-2 pColumn font-800 font-22 Td" style={{ textAlign: 'center', borderBottom: '1px solid black ' }}>Change Password ?</div>
+                                <div className="col-6 pt-2 pb-2 pColumn" style={{ textAlign: 'center', borderBottom: '1px solid black' }}>  <Button style={{ marginLeft: '30px', width: '50px', marginTop: '-5px', marginBottom: '-5px' }} variant="outline-secondary" onClick={() => setChangePasswordModal(true)}><i class="bi bi-pencil-fill"></i></Button></div>
+                                <div className="col-6 pt-2 pb-2 pColumn font-800 font-22 Td" style={{ textAlign: 'center', borderBottom: '1px solid black' }}>  Set Pin ?</div>
+                                <div className="col-6 pt-2 pb-2 pColumn" style={{ textAlign: 'center', borderBottom: '1px solid black' }}>  <Button style={{ marginLeft: '30px', width: '50px', marginTop: '-5px', marginBottom: '-5px' }} variant="outline-secondary" onClick={() => setPinApiModal(true)}><i class="bi bi-pencil-fill"></i> </Button></div>
+                            </div>
+                        </div>
 
 
                          {/* <Table className="UserProfileTable ">
