@@ -30,7 +30,7 @@ jobs:
           CI=false npm run build  # Disable treating warnings as errors
 
       - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v2
         with:
           name: node-app
           path: build/
@@ -44,7 +44,7 @@ jobs:
 
     steps:
       - name: Download artifact from build job
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v2
         with:
           name: node-app
 
