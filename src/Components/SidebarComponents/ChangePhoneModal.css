@@ -76,7 +76,7 @@
 }
 
 .user-box1 input:focus {
-    border-color: #333; /* Light blue border on focus */
+    border-color: rgba(4, 179, 238, 0.6); /* Light blue border on focus */
 }
 
 .user-box1 label {
@@ -94,7 +94,7 @@
 .user-box1 input:not(:placeholder-shown) + label {
     top: -15px;
     font-size: 12px;
-    color: #333;
+    color: rgba(4, 179, 238, 0.6);
 }
 
 /* Button styling */

@@ -34,7 +34,7 @@
 }
 
 .pin-input:focus {
-    border-color: #333;
+    border-color: rgba(4, 179, 238, 0.6);
    
     outline: none;
 }

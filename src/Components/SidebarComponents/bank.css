@@ -1,106 +1,157 @@
-/* Main Container */
-#BankTransaction {
-    width: 100%;
-    max-width: 500px;
-    margin: auto;
-    padding: 20px;
-    background-color: #f8f9fa;
-    border-radius: 8px;
-    animation: fadeIn 0.5s ease-in-out;
-  }
-  
-  /* Fade-in animation */
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  
-  /* Title Section */
-  .title-section {
-    font-size: 1.5rem;
-    font-weight: 700;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 15px;
-    border-bottom: 2px solid #ddd;
-    color: #343a40;
-  }
-  .border-row{
-    border-bottom: 2px solid #ddd;
-  }
-  
-  /* Table Styling */
-  .transaction-table {
-    width: 100%;
-  max-width: 500px;
-  margin: auto;
-  padding: 20px;
-  background-color: #fff; /* White background for the box */
-  border-radius: 8px;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* Box shadow */
-  animation: fadeIn 0.5s ease-in-out;
-  margin-top: 15px;
-  }
+/* Offcanvas Styles */
+.offcanvas {
+    transition: transform 0.3s ease-in-out;
+}
 
-  
-  .transaction-table tbody tr {
+.offcanvas.show {
+    transform: translateX(0);
+}
+
+.offcanvas-end {
+    right: 0;
+}
+
+/* Background */
+.bg-theme {
+    background-color: #f8f9fa; /* Light background */
+}
+
+/* Content Styling */
+.content {
+    padding: 20px;
+}
+
+/* Title */
+.font-800 {
+    font-weight: 800;
+}
+
+.font-22 {
+    font-size: 22px;
+}
+
+.trn.Title {
+    color: #333; /* Dark text for title */
+}
+
+/* Close Icon */
+.icon-m {
+    cursor: pointer;
+}
+
+/* Form Styles */
+.form-custom {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.form-icon {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 10px 0;
-    border-bottom: 1px solid #eee;
-  }
-  
-  .transaction-table tbody tr:last-child {
-    border-bottom: none;
-  }
-  
-  .transaction-table th, .transaction-table td {
-    font-weight: bold;
-    font-size: 1rem;
-  }
-  
-  /* Transaction Status Colors */
-  .transactionStatus .pending {
-    color: red;
-    font-weight: 700;
-  }
-  
-  .transactionStatus .approved {
-    color: green;
-    font-weight: 700;
-  }
-  
-  /* Left and Right Column Styling */
-  .transaction-row {
-    display: flex;
-    justify-content: space-between;
-    padding: 8px 0;
-  }
-  
-  .transaction-row .label {
-    color: #6c757d;
-    font-weight: 500;
-  }
-  
-  .transaction-row .value {
-    font-weight: 700;
-    text-align: right;
-  }
-  
-  /* Responsive Styling */
-  @media (max-width: 768px) {
-    #BankTransaction {
-      padding: 10px;
+}
+
+.form-border {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    transition: border-color 0.3s;
+}
+
+.form-border:focus-within {
+    border-color: #007bff; /* Bootstrap primary color */
+}
+
+.BankAccountShadow {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Bank Account Name Styles */
+.BankAccountNames,
+.BankAccountName {
+    font-weight: 600;
+    color: #333;
+}
+
+.BankAccountNames2,
+.BankAccountName2 {
+    color: #555;
+    margin-top: 5px;
+}
+
+/* Submit Button */
+.btn-full {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.gradient-green {
+    background: linear-gradient(90deg, #28a745, #218838); /* Green gradient */
+}
+
+.btn-full:hover {
+    background: linear-gradient(90deg, #218838, #28a745); /* Darker on hover */
+    transform: scale(1.02); /* Slight scale on hover */
+}
+
+/* Modal Box */
+.login-box {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.user-box {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.user-box input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: border-color 0.3s;
+}
+
+.user-box input:focus {
+    border-color: #007bff; /* Bootstrap primary color */
+}
+
+.user-box label {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    color: #999;
+    transition: 0.2s ease all;
+}
+
+.user-box input:focus + label,
+.user-box input:not(:placeholder-shown) + label {
+    top: -15px;
+    left: 5px;
+    font-size: 12px;
+    color: #007bff; /* Bootstrap primary color */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .font-22 {
+        font-size: 18px; /* Smaller title font size for mobile */
     }
-  
-    .title-section {
-      font-size: 1.2rem;
+
+    .content {
+        padding: 15px; /* Less padding on mobile */
     }
-  
-    .transaction-table th, .transaction-table td {
-      font-size: 0.9rem;
+
+    .btn-full {
+        padding: 10px; /* Less padding on mobile */
     }
-  }
-  
+
+    .login-box {
+        padding: 15px; /* Less padding on mobile */
+    }
+}
