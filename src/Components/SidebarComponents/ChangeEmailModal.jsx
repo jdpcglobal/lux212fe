@@ -7,6 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useBalance } from './BalanceContext';
 import { callPostApi } from '../ApiCaller';
 import { RequestOtp_Post, SaveEmail_Post } from '../ApiConst';
+ import './changeemail.css'; 
 
 const ChangeEmailModal = (props) => {
     const { show, close } = props;
@@ -15,12 +16,10 @@ const ChangeEmailModal = (props) => {
         Token: new Cookies().get("kisDiamond_LoggedIn")?.Token,
     });
 
-
     const [email, setEmail] = useState('');
     const [otp, setOtp] = useState('');
     const [showOtpInput, setShowOtpInput] = useState(false);
     const [hideButton, setHideButton] = useState(true);
-    const [messageType, setMessageType] = useState('');
     const { UserProfileApi } = useBalance();
 
     const onHandleClick = () => {
@@ -44,16 +43,14 @@ const ChangeEmailModal = (props) => {
                     type: respObj.isSuccess ? 'success' : 'error',
                 });
             }
-        })
+        });
     };
-
 
     const handleClick = async () => {
         const token = new Cookies().get("kisDiamond_LoggedIn")?.Token;
         await SaveEmail(token);
     };
 
-    
     const SaveEmail = async (token) => {
         let formData = new FormData();
         formData.append('Token', token);
@@ -67,52 +64,75 @@ const ChangeEmailModal = (props) => {
             });
             if (respObj.isSuccess) {
                 UserProfileApi();
+                close(); // Close the modal on successful email change
             }
-        })
-
+        });
     };
 
     return (
         <>
-            <Modal show={show} onHide={close}>
-                <Modal.Body>
-                    <div className="login-box">
-                        <h2>Change Email</h2>
-                        <form>
+        <Modal show={show} onHide={close} className="change-email-modal" centered>
+          
+            <Modal.Body>
+                <div className="login-box1">
+                    <div className='header'>
+                    <div className='title'>Change Email</div>
+                    <button className="close-btn" onClick={close}>×</button>
+                    </div>
+                    
+                    <form>
+                        <div className="user-box">
+                            <input
+                                type="text"
+                                placeholder=" "
+                                required
+                                autoComplete="off"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
+                            <label>Enter Email</label>
+                        </div>
+                        {showOtpInput && (
                             <div className="user-box">
-                                <input type="text" name="" required="" autoComplete="off"
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)} />
-                                <label>Enter Email</label>
-                            </div>
-                            {showOtpInput && (
-                                <div className="user-box">
-                                    <input type="text" name="" required="" autoComplete="off"
-                                        value={otp}
-                                        onChange={(e) => setOtp(e.target.value)} />
-                                    <label>Enter Otp</label>
-                                    <Button outline color="success" onClick={handleClick}>
-                                        Submit
-                                    </Button>
-                                </div>
-                            )}
-
-                            {hideButton && (
-                                <Button outline color="success" onClick={onHandleClick}>
+                                <input
+                                    type="text"
+                                    required
+                                    autoComplete="off"
+                                    value={otp}
+                                    onChange={(e) => setOtp(e.target.value)}
+                                />
+                                <label>Enter Otp</label>
+                                <div className='submit-button'>
+                                <Button
+                                    className="btn-submit1"
+                                    outline
+                                    color="success"
+                                    onClick={handleClick}
+                                >
                                     Submit
                                 </Button>
-                            )}
-                        </form>
-                    </div>
-                    {data && (
-                        <span className={`alert alert-${messageType}`} role="alert">
-                        </span>
-                    )}
-                    <ToastContainer />
-                </Modal.Body>
-            </Modal>
-        </>
-    );
+                                </div>
+                            </div>
+                        )}
+                        {hideButton && (
+                             <div className='submit-button'>
+                            <Button
+                                className="btn-submit1"
+                                outline
+                                color="success"
+                                onClick={onHandleClick}
+                            >
+                                Submit
+                            </Button>
+                            </div>
+                        )}
+                    </form>
+                </div>
+                <ToastContainer />
+            </Modal.Body>
+        </Modal>
+    </>
+);
 };
 
 export default ChangeEmailModal;
