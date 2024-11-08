@@ -1,0 +1,96 @@
+/* Modal Styles */
+.pin-container {
+    text-align: center;
+    padding: 20px;
+}
+
+.user-box4 {
+    margin-bottom: 20px;
+}
+
+.user-box4 label {
+    display: block;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #333;
+    font-weight: 500;
+}
+
+.pin-input-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.pin-input {
+    width: 45px;
+    height: 50px;
+    font-size: 1.5rem;
+    text-align: center;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    transition: border 0.3s, box-shadow 0.3s;
+}
+
+.pin-input:focus {
+    border-color: #333;
+   
+    outline: none;
+}
+
+/* Button Styles */
+
+
+/* Modal Header */
+.modal-header {
+    border-bottom: none;
+    background-color: #f8f9fa;
+    border-radius: 10px 10px 0 0;
+    padding: 15px;
+}
+
+
+button.submit-btn4 {
+    margin-top: 15px;
+    width: 100%; /* Full width for better responsiveness */
+    max-width: 250px;
+    border-radius: 25px;
+    padding: 12px 0;
+    background-color: rgba(0, 0, 0, 0.6); /* Transparent black */
+    border: none;
+    color: white;
+    transition: background-color 0.3s;
+    font-size: 16px;
+    cursor: pointer;
+}
+.submit-button1{
+    text-align: center;
+   
+}
+
+button.submit-btn4:hover {
+    background-color: rgba(116, 111, 111, 0.8);
+}
+.modal-header-custom1 .modal-title1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 22px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Close button styling */
+.close-btn {
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    color: #333;
+    cursor: pointer;
+    transition: transform 0.2s, color 0.3s;
+}
+
+.close-btn:hover {
+    color: rgb(255, 69, 69); /* Red hover effect */
+    transform: scale(1.5);
+}
+

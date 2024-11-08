@@ -46,9 +46,9 @@ const UserProfile2 = () => {
     };
 
 
-    //***** UserProfile Api *****//
+    
 
-    //***** UserProfile Api End *****//
+    
 
     return (
       <div className="user-from-profile">
@@ -140,48 +140,6 @@ const UserProfile2 = () => {
 
 
 
-
-                         {/* <Table className="UserProfileTable ">
-                            <tbody>
-                                <tr className="Tr">
-                                    <td className="Td">Id</td>
-                                    <td>{userData.Id}</td>
-                                </tr>
-                                <tr className="Tr2">
-                                    <td className="Td">Name</td>
-                                    <td>{userData.Name}</td>
-                                </tr>
-                                <tr className="Tr">
-                                    <td className="Td">User Name</td>
-                                    <td>{userData.UId}</td>
-                                </tr>
-                                <tr className="Tr2 m-1">
-                                    <td className="Td">Email</td>
-                                    <td>{userData.Email} <Button style={{ marginLeft: '30px', width: '50px', marginTop: '-5px', marginBottom: '-5px' }} variant="outline-secondary" onClick={() => setChangeEmailModal(true)}><i class="bi bi-pencil-fill"></i></Button></td>
-                                </tr>
-                                <tr className="Tr">
-                                    <td className="Td">Phone</td>
-                                    <td>{userData.Phone}<Button style={{ marginLeft: '30px', width: '50px', marginTop: '-5px', marginBottom: '-5px' }} variant="outline-secondary" onClick={() => setChangePhoneModal(true)}><i class="bi bi-pencil-fill"></i></Button></td>
-                                </tr>
-                                <tr className="Tr2">
-                                    <td className="Td">Balance</td>
-                                    <td>{balance}</td>
-                                </tr>
-                            </tbody>
-                        </Table> */}
-
-                        {/*<Table className='UserProfileTable ' >
-                            <tbody>
-                                <tr className='Tr'>
-                                    <td className="font-800 font-22 Td">Change Password ?</td>
-                                    <td><Button style={{ marginLeft: '30px', width: '50px', marginTop: '-5px', marginBottom: '-5px' }} variant="outline-secondary" onClick={() => setChangePasswordModal(true)}><i class="bi bi-pencil-fill"></i></Button></td>
-                                </tr>
-                                <tr className='Tr2'>
-                                    <td className="font-800 font-22 Td">Set Pin ?</td>
-                                    <td><Button style={{ marginLeft: '30px', width: '50px', marginTop: '-5px', marginBottom: '-5px' }} variant="outline-secondary" onClick={() => setPinApiModal(true)}><i class="bi bi-pencil-fill"></i> </Button></td>
-                                </tr>
-                            </tbody>
-                        </Table> */}
                     </div>
                 </div>
             </div>
