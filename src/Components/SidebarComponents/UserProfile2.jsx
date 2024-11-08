@@ -51,13 +51,8 @@ const UserProfile2 = () => {
     //***** UserProfile Api End *****//
 
     return (
-<<<<<<< Updated upstream
-      <div className='user-from-profile'>
+      <div className="user-from-profile">
         <div className='profile2'  >
-=======
-      <div className='user-form-profile'>
-        <div className='profile2'>
->>>>>>> Stashed changes
             <div className="container w-100">
                 <div className="row ">
                     <div className="col-3 " >
@@ -195,12 +190,8 @@ const UserProfile2 = () => {
             <ChangePasswordModal show={changePasswordModal} close={toggleChangePasswordModal} setDrawCount={setDrawCount} />
             <SetPinApi smShow={pinApiModal} close={togglePinApiModal} setDrawCount={setDrawCount} />
         </div>
-<<<<<<< Updated upstream
-</div>
-=======
         </div>
 
->>>>>>> Stashed changes
     )
 }
 
