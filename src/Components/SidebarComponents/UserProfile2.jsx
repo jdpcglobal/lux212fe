@@ -50,6 +50,7 @@ const UserProfile2 = () => {
     //***** UserProfile Api End *****//
 
     return (
+      <div className='user-from-profile'>
         <div className='profile2'  >
             <div className="container w-100">
                 <div className="row ">
@@ -139,7 +140,7 @@ const UserProfile2 = () => {
             <ChangePasswordModal show={changePasswordModal} close={toggleChangePasswordModal} setDrawCount={setDrawCount} />
             <SetPinApi smShow={pinApiModal} close={togglePinApiModal} setDrawCount={setDrawCount} />
         </div>
-
+</div>
     )
 }
 
