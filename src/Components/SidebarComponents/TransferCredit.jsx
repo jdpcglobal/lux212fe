@@ -4,7 +4,7 @@ import Cookies from 'universal-cookie';
 import { useBalance } from './BalanceContext';
 import { callPostApi } from '../ApiCaller';
 import { TransferCredit_Post } from '../ApiConst';
-
+import './Transfer.css'
 const TransferCredit = () => {
 
     const [data, setData] = useState('');
