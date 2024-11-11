@@ -81,17 +81,17 @@ const BankAccounts = () => {
         {MyBank.length > 0 && MyBank.map((data, index) => (
             <form key={index} id="withdraw_form" name="withdraw_form" className="" method="post" style={{ marginBottom: '50px' }}>
                 
-                <div className="form-custom">
+                <div className="form-custom12">
                     <div className="BankAccountNames">Holder's Name</div>
                     <div className="BankAccountNames2">{data.HolderName}</div>
                 </div>
 
-                <div className="form-custom">
+                <div className="form-custom12">
                     <div className="BankAccountNames">Bank Name</div>
                     <div className="BankAccountNames2">{data.BankName}</div>
                 </div>
 
-                <div className="form-custom">
+                <div className="form-custom12">
                     <div className="BankAccountNames">Bank Account</div>
                     <div className="BankAccountNames2">{data.AccNumber}</div>
                 </div>

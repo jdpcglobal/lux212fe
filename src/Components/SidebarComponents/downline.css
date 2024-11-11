@@ -8,9 +8,9 @@
     transition: transform 0.2s ease; /* Animation on hover */
 }
 
-.card-style:hover {
-    transform: scale(1.02); /* Slightly scale up on hover */
-}
+/* .card-style:hover {
+    transform: scale(1.02); 
+} */
 
 /* Back Button */
 .BackButton {

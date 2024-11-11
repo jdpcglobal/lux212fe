@@ -2818,7 +2818,7 @@
 
   .shadow-card:after {
     transform: scale(0.95) translateY(10px) translateZ(-36px);
-    filter: blur(12px);
+    
     content: "";
     position: absolute;
     top: 0px;
@@ -2848,7 +2848,7 @@
 
   .shadow-card-m::after {
     transform: scale(0.93) translateY(15px) translateZ(-40px);
-    filter: blur(12px);
+    
   }
 
   .shadow-card-l::after {
