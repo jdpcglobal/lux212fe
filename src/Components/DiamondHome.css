@@ -5225,7 +5225,7 @@
   .pc_wallet {
     top: 2px;
     margin-right: 27px;
-    float: right;
+    float: left;
     border: 1px solid;
     border-color: #dbd1f3;
     padding: 3px 12px;
@@ -5235,7 +5235,7 @@
     color: #a58de1 !important;
     position: relative;
     background: var(--LinearGradient);
-    margin-bottom: 5px !important;
+    margin-bottom: 10px !important;
   }
 
   #nav-bank {
@@ -5252,14 +5252,7 @@
     color: var(--WhiteColor);
   } */
 
-  .react-tabs__tab--selected {
-    
-    /* border-color: var(--borderColor); */
-    color: #030303;
-    border-radius: 5px;
-    /* background: var(--goldBackground); */
-    font-weight: 700;
-  }
+
 
   .mx-1 {
     color: black;
@@ -5285,12 +5278,13 @@
     text-transform: uppercase;
     text-align: center;
     /* color: var(--WhiteColor); */
-    color: black;
-    font-size: 10px;
-    line-height: 20px;
-    background: #dfdffc;
-    border-radius: 5px;
-    /* background: var(--backGround); */
+    color: gray;
+    font-size: 14px;
+    line-height: 27px;
+    font-family: Arial, Helvetica, sans-serif;
+   
+   
+    
   }
 
   .game-title:hover {
@@ -5308,7 +5302,7 @@
     background: var(--backGround);
   }
 
-  /* Remove for include this class */
+  
   .Titles {
     top: 2px;
     /* border: 1px solid; */
@@ -5327,12 +5321,6 @@
     margin-top: 1rem;
     margin-bottom: 1rem;
   }
-
-  /* .DepositModal {
-    background: var(--backGround) !important;
-    border: 1px solid black !important;
-    color: black !important;
-  } */
 
 
   /* ======= */
@@ -5354,34 +5342,9 @@
     background: var(--backGround);
   }
 
-  /* .BankTransfer {
-    color: var(--goldColor) !important;
-  } */
 
-  /* .bg-green-dark {
-    background: var(--goldBackground) !important;
-    color: #FFF !important;
-  } */
 
-  /* .color-red-dark {
-    color: var(--goldColor) !important;
-  } */
-
-  /* .BankHolderN {
-    background: var(--backGround) !important;
-    border: 1px solid black !important;
-    color: var(--goldColor) !important;
-  } */
-
-  /* .rounded-xss {
-    background-color: #113e73 !important;
-    color: white !important;
-    border-radius: 10px !important;
-  } */
-
-  /* =========== */
-
-  /* =========== */
+ 
   #SelectBank {
     background: var(--backGround);
   }
@@ -5419,24 +5382,14 @@
     background: var(--backGround);
   }
 
-  /* .listGroup {
-    background: var(--backGround) !important;
-    border: 1px solid var(--goldColor) !important;
-    color: var(--WhiteColor) !important;
-  } */
+  
 
   .CardFont {
     font-size: 13px;
     align-self: center;
   }
 
-  /* .rayan {
-    background: #555;
-    border: 1px solid var(--goldColor) !important;
-    width: 130px;
-    height: 48px;
-    border-radius: 10px;
-  } */
+
 
   .rayan {
     width: 130px;
@@ -5679,14 +5632,33 @@
 
   .react-tabs__tab--selected {
     border-color: #ffffff !important;
-    border-bottom: 2px solid #ac92ec !important;
-    border-radius: 0px !important;
-    color: #ac92ec;
-}
+    border-radius: 6px !important;
+    color: #ffffff;
+    margin-bottom: 4px;
+    background-color: #ac92ec !important;
+    /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);  */
+    transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transition */
+    border-bottom: none;
+  }
+    .react-tabs__tab{
+   display: inline-block;
+    /* border: 1px solid transparent; */
+    border-bottom: none;
+    bottom: -1px;
+    position: relative;
+    list-style: none;
+    padding: 6px 12px;
+    cursor: pointer;
+    background-color: #f6f6f6;
+    margin: 0px 6px;
+    border-radius: 6px;
+  }  
+  
+  
 
-.react-tabs__tab-list {
-  border-bottom: 1px solid white !important;
-}
+ .react-tabs__tab-list {
+  border-bottom: 1px solid white ;
+} 
 
 .PlayGameLoader{
   justify-content: center;

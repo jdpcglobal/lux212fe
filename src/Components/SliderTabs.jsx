@@ -211,7 +211,7 @@ const SliderTabs = ({ width }) => {
                                         <TabList>
                                             {tabsData.length > 0 && tabsData.map((games) =>
                                                 <>
-                                                    <Tab >{games.Description}</Tab>
+                                                    <Tab>{games.Description}</Tab>
                                                 </>
                                             )}
                                         </TabList>

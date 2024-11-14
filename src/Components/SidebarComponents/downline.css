@@ -1,11 +1,11 @@
 /* Card Styles */
 .card-style {
-    background: #ffffff; /* White background for card */
+    background: #ffffff; 
     border-radius: 12px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    margin: 20px auto; /* Center the card */
+    margin: 20px auto; 
     overflow: hidden; /* Ensure no overflow */
-    transition: transform 0.2s ease; /* Animation on hover */
+    transition: transform 0.2s ease; 
 }
 
 /* .card-style:hover {
