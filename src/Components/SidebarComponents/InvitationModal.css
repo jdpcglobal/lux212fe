@@ -37,6 +37,16 @@
     margin-bottom: 15px;
     border-bottom: 1px solid #888;
   }
+  button#copy_link{
+    background: white !important;
+    color: #888;
+  }
+ 
+ 
+  button#copy_link:hover{
+    color: white;
+    background: #888 !important;
+  }
   
   .title-container6 h5 {
     font-size: 12px;
