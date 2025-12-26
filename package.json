@@ -33,6 +33,7 @@
     "universal-cookie": "^4.0.4",
     "web-vitals": "^2.1.4"
   },
+  
   "scripts": {
     "start": "react-scripts start",
     "build": "CI=false TREAT_WARNINGS_AS_ERRORS=false react-scripts build",
